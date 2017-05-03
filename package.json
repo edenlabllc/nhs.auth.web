@@ -1,8 +1,8 @@
 {
-  "name": "nsz.web",
+  "name": "nhs.auth.web",
   "version": "0.1.0",
-  "description": "NSZ UI",
-  "repository": "https://github.com/Nebo15/nsz.web.git",
+  "description": "NHS AUTH UI",
+  "repository": "https://github.com/Nebo15/nhs.auth.web.git",
   "scripts": {
     "postinstall": "[ $PREBUILD ] && npm run build || exit 0",
     "predev": "npm run webpack",
