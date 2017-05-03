@@ -16,8 +16,8 @@ export const LANG_COOKIE_NAME = 'lang';
 
 export const API_PROXY_PATH = '/api';
 
-export const CLIENT_ID = '66613666';
-export const AUTH_COOKIE_NAME = 'token';
+export const CLIENT_ID = process.env.CLIENT_ID || '66613666';
+export const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME || 'token';
 
 // for internal app usage. for example for XHR requests or server side rendering
 export const API_URL = typeof window !== 'undefined' ? API_PROXY_PATH : API_HOST;

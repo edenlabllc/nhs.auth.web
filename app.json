@@ -1,5 +1,5 @@
 {
-  "name": "nhs.admin.web",
+  "name": "nhs.auth.web",
   "scripts": {
   },
   "env": {
