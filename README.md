@@ -1,4 +1,4 @@
-# Mán Dashboard
+# NHS Auth UI
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/Nebo15/nhs.auth.web.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/Nebo15/nhs.auth.web.svg?branch=master)](https://travis-ci.org/Nebo15/nhs.auth.web)
