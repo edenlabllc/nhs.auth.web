@@ -48,6 +48,8 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
           <Route component={Default}>
             <Route path="sign-in" component={SignInPage} />
             <Route path="accept" component={AcceptPage} onEnter={requireAuth} />
+
+            <Route path="*" component={NotFoundPage} />
           </Route>
 
           <Route component={FAQ}>
@@ -55,7 +57,6 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
           </Route>
 
           <IndexRedirect to="sign-in" />
-          <Route path="*" component={NotFoundPage} />
         </Route>
       </Route>
     </Route>
