@@ -12,9 +12,7 @@ export default class NotFoundPage extends React.Component {
       <div className={styles.error} id="not-found-page">
         <H1>ПОМИЛКА</H1>
 
-        <div className={styles.code}>
-          404
-        </div>
+        <div className={styles.code}>404</div>
 
         <H1 tag="h2">Сторінку не знайдено</H1>
 
