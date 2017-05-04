@@ -29,7 +29,7 @@ const Checkbox = ({
       />
     }
     <span className={styles.view}>
-      <Icon name="check-right" />
+      <Icon name="check-left" />
     </span>
 
     <span className={styles.label}>

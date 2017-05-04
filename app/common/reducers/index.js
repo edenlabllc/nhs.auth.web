@@ -7,6 +7,7 @@ import session from 'redux/session';
 import auth from 'redux/auth';
 import clients from 'redux/clients';
 import user from 'redux/user';
+import requests from 'redux/requests';
 
 import Aside from 'containers/blocks/Aside/redux';
 
@@ -17,6 +18,7 @@ const blocks = combineReducers({
 const data = combineReducers({
   clients,
   user,
+  requests,
 });
 
 export default combineReducers({
@@ -36,3 +38,4 @@ export const getToken = state => state.session.token;
 
 export const getUser = state => state.data.user;
 export const getClientById = (state, id) => state.data.clients[id];
+export const getRequestById = (state, id) => state.data.requests[id];

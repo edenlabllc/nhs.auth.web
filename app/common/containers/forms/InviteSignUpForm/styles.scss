@@ -1,0 +1,14 @@
+.main {
+  max-width: 420px;
+  margin: 0 auto;
+  color: #3c4858;
+
+  & > div {
+    margin-bottom: 24px;
+  }
+
+  .description {
+    font-size: 16px;
+    color: #62758f;
+  }
+}
