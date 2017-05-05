@@ -4,6 +4,8 @@ import { normalize } from 'normalizr';
 import { request } from 'schemas';
 import { invoke } from './api';
 
+export const APPROVED_STATUS = 'APPROVED';
+
 export const fetchRequestById = id => invoke({
   endpoint: `${EMPLOYEE_API_URL}/employee_requests/${id}`,
   method: 'GET',

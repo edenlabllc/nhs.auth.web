@@ -10,17 +10,17 @@ if (global.__CLIENT__ && window && window.__CONFIG__) {
 export const PORT = config.PORT || process.env.PORT || 8080;
 export const HOSTNAME = typeof window !== 'undefined' ? window.location.origin : (config.HOSTNAME || 'http://localhost:8080');
 export const API_HOST = config.API_HOST || process.env.API_HOST || 'http://private-eeef2-mithril1.apiary-mock.com';
-export const EMPLOYEE_API_HOST = config.EMPLOYEE_API_HOST || process.env.EMPLOYEE_API_HOST || 'http://private-f50be-ehealthapi1.apiary-mock.com';
+export const EHEALTH_API_HOST = config.EHEALTH_API_HOST || process.env.EHEALTH_API_HOST || 'http://private-f50be-ehealthapi1.apiary-mock.com';
 
 export const SITEMAP_HOSTNAME = process.env.SITEMAP_HOSTNAME || 'http://localhost:8080'; // used in sitemap
 export const LANG_COOKIE_NAME = 'lang';
 
 export const API_PROXY_PATH = '/api';
-export const EMPLOYEE_API_PROXY_PATH = '/employee/api';
+export const EHEALTH_API_PROXY_PATH = '/api.ehealth';
 
 export const CLIENT_ID = process.env.CLIENT_ID || '66613666';
 export const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME || 'token';
 
 // for internal app usage. for example for XHR requests or server side rendering
 export const API_URL = typeof window !== 'undefined' ? API_PROXY_PATH : API_HOST;
-export const EMPLOYEE_API_URL = typeof window !== 'undefined' ? EMPLOYEE_API_PROXY_PATH : EMPLOYEE_API_HOST;
+export const EMPLOYEE_API_URL = typeof window !== 'undefined' ? EHEALTH_API_PROXY_PATH : EHEALTH_API_HOST;
