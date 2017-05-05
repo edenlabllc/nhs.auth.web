@@ -3,7 +3,8 @@ $errored: #ff1f44;
 .wrap {
   position: relative;
   line-height: 1;
-  display: inline-block;
+  display: flex;
+  flex-flow: row nowrap;
   cursor: pointer;
   user-select: none;
 
@@ -17,9 +18,10 @@ $errored: #ff1f44;
 
 .view {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 16px;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  line-height: 30px;
   background-color: #fff;
   border: 1px solid #c9c9c9;
   text-align: center;
@@ -29,7 +31,7 @@ $errored: #ff1f44;
     vertical-align: middle;
     opacity: 0;
     width: 18px;
-    font-size: 10px;
+    font-size: 14px;
     color: #44e240;
     transition: opacity 0.05s ease-in-out;
   }
@@ -51,8 +53,9 @@ $errored: #ff1f44;
 
 .label {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 20px;
   vertical-align: middle;
+  text-align: left;
 }
 
 .isError {

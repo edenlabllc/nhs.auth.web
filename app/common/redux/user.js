@@ -13,6 +13,20 @@ export const fetchUserData = token => invoke({
   }, 'user/FETCH_USER_FAILURE'],
 });
 
+export const createUser = (email, password) => invoke({
+  endpoint: `${API_URL}/users`,
+  method: 'POST',
+  types: ['user/FETCH_USER_REQUEST', {
+    type: 'user/FETCH_USER_SUCCESS',
+    payload: (action, state, res) => res.json().then(
+      json => json.data
+    ),
+  }, 'user/FETCH_USER_FAILURE'],
+  body: {
+    user: { email, password },
+  },
+});
+
 export default handleAction(
   'user/FETCH_USER_SUCCESS',
   (state, action) => ({

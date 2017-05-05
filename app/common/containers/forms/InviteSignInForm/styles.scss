@@ -1,0 +1,14 @@
+.main {
+  max-width: 520px;
+  margin: 0 auto;
+  color: #3c4858;
+
+  & > div {
+    margin-bottom: 24px;
+  }
+
+  .input {
+    max-width: 420px;
+    margin: 0 auto 24px;
+  }
+}

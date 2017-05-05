@@ -1,0 +1,21 @@
+.main {
+  text-align: center;
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .content {
+    font-size: 18px;
+    line-height: 24px;
+
+    p {
+      margin-bottom: 12px;
+    }
+  }
+
+  .form {
+    max-width: 520px;
+    margin: 32px auto 0;
+  }
+}

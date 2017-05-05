@@ -1,0 +1,10 @@
+.main {
+  & > div {
+    margin-bottom: 34px;
+  }
+
+  .description {
+    font-size: 16px;
+    color: #62758f;
+  }
+}
