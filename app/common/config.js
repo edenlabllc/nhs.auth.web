@@ -23,4 +23,4 @@ export const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME || 'token';
 
 // for internal app usage. for example for XHR requests or server side rendering
 export const API_URL = typeof window !== 'undefined' ? API_PROXY_PATH : API_HOST;
-export const EMPLOYEE_API_URL = typeof window !== 'undefined' ? EHEALTH_API_PROXY_PATH : EHEALTH_API_HOST;
+export const EHEALTH_API_URL = typeof window !== 'undefined' ? EHEALTH_API_PROXY_PATH : EHEALTH_API_HOST;
