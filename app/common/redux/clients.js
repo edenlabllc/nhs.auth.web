@@ -1,11 +1,11 @@
 import { handleAction } from 'redux-actions';
-import { API_URL } from 'config';
+import { AUTH_URL } from 'config';
 import { normalize } from 'normalizr';
 import { client } from 'schemas';
 import { invoke } from './api';
 
 export const fetchClientById = id => invoke({
-  endpoint: `${API_URL}/client/${id}`,
+  endpoint: `${AUTH_URL}/admin/clients/${id}`,
   method: 'GET',
   types: ['client/FETCH_CLIENT_REQUEST', {
     type: 'client/FETCH_CLIENT_SUCCESS',

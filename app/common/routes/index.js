@@ -32,6 +32,7 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
       const currentState = store.getState();
       const person = getUser(currentState);
 
+      console.log('loginned', loginned, person, currentState);
       if (person) return next();
 
       return store.dispatch(fetchUserData(getToken(currentState))).then((action) => {
@@ -48,18 +49,19 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
     <Route component={App}>
       <Route component={Main}>
         <Route path="/">
+          <Route component={FAQ}>
+            <Route path="conditions" component={ConditionPage} />
+          </Route>
           <Route component={Default}>
             <Route path="invite" component={InvitePage} />
             <Route path="invite/step-2" component={SignUpStep2Page} />
             <Route path="invite/success" component={InviteSuccessPage} />
             <Route path="sign-in" component={SignInPage} />
-            <Route path="accept" component={AcceptPage} onEnter={requireAuth} />
+            <Route onEnter={requireAuth}>
+              <Route path="accept" component={AcceptPage} />
+            </Route>
 
             <Route path="*" component={NotFoundPage} />
-          </Route>
-
-          <Route component={FAQ}>
-            <Route path="conditions" component={ConditionPage} />
           </Route>
 
           <IndexRedirect to="sign-in" />

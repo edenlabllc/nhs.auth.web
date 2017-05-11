@@ -7,7 +7,7 @@ import { provideHooks } from 'redial';
 import Button from 'components/Button';
 
 import { fetchClientById } from 'redux/clients';
-import { fetchApproval } from 'redux/auth';
+import { authorize } from 'redux/auth';
 import { getClientById, getUser } from 'reducers';
 
 import styles from './styles.scss';
@@ -20,7 +20,7 @@ import styles from './styles.scss';
 @connect((state, { location: { query } }) => ({
   client: getClientById(state, query.client_id),
   user: getUser(state),
-}), { fetchApproval })
+}), { authorize })
 export default class AcceptPage extends React.Component {
   state = {
     isLoading: false,
@@ -31,7 +31,7 @@ export default class AcceptPage extends React.Component {
 
     this.setState({ isLoading: true });
 
-    this.props.fetchApproval({
+    this.props.authorize({
       clientId: query.client_id,
       scope: query.scope,
       redirectUri: query.redirect_uri,
@@ -41,8 +41,52 @@ export default class AcceptPage extends React.Component {
     });
   }
 
+  renderNotFoundClientId() {
+    return (
+      <section className={styles.main} id="accept-page">
+        <header className={styles.header}>
+          <b>Помилка</b>
+        </header>
+        <article className={styles.content}>
+          <p>Не вказан идентифікатор додатку для авторизації</p>
+        </article>
+      </section>
+    );
+  }
+  renderNotFoundScope() {
+    return (
+      <section className={styles.main} id="accept-page">
+        <header className={styles.header}>
+          <b>Помилка</b>
+        </header>
+        <article className={styles.content}>
+          <p>Не вказані параметри доступу до данних</p>
+        </article>
+      </section>
+    );
+  }
+  renderNotFoundRedirectUri() {
+    return (
+      <section className={styles.main} id="accept-page">
+        <header className={styles.header}>
+          <b>Помилка</b>
+        </header>
+        <article className={styles.content}>
+          <p>Не вказано адресу зворотнього визову</p>
+        </article>
+      </section>
+    );
+  }
   render() {
-    const { client = {}, user = {} } = this.props;
+    const {
+      client = {},
+      user = {},
+      location: { query: { client_id, scope, redirect_uri } },
+    } = this.props;
+
+    if (!client_id) return this.renderNotFoundClientId();
+    if (!scope) return this.renderNotFoundScope();
+    if (!redirect_uri) return this.renderNotFoundRedirectUri();
 
     return (
       <section className={styles.main} id="accept-page">
@@ -55,7 +99,7 @@ export default class AcceptPage extends React.Component {
             {user.email}
           </p>
 
-          <Button theme="link">Не ваша електронна адреса?</Button>
+          {/* <Button theme="link">Не ваша електронна адреса?</Button> */}
         </article>
         <footer className={styles.footer}>
           <div>
@@ -63,7 +107,7 @@ export default class AcceptPage extends React.Component {
           </div>
           <div className={styles.links}>
             <div>
-              <Button to="/conditions" theme="link">Угода Користувача</Button>
+              <Button to="/conditions" theme="link">Угода користувача</Button>
             </div>
             <div>
               <Button to="/conditions" theme="link">Умови використання</Button>

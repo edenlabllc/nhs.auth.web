@@ -1,5 +1,5 @@
-import { setRequestStatus, APPROVED_STATUS } from 'redux/requests';
+import { performActionWithRequest, APPROVED_STATUS } from 'redux/requests';
 
 export const onSubmit = id => dispatch => (
-  dispatch(setRequestStatus(id, APPROVED_STATUS))
+  dispatch(performActionWithRequest(id, APPROVED_STATUS))
 );
