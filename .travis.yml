@@ -3,14 +3,17 @@ services:
 - docker
 cache:
   directories:
-  - ~/.nvm
+  - "~/.nvm"
   - node_modules
 env:
   global:
   - RELEASE_BRANCH="master"
   - DOCKER_HUB_ACCOUNT="nebo15"
   - MAIN_BRANCHES="master develop"
-  - secure: UsC6twXDHKmpo63h3Y1nStdUXk1iVxXgcQBTJmWGU4wlz72xMOqfJhGRC4YCLKJXzSF7r2djxRCRJNLyGaw/h1hf3nJoEpS1vBq06CxiaF8KNktNzrSl4hAzcnlpecu+2Qwb8adba4s3PPDjkDTtaIa9ZqfL37DzAomttQmWRKyWzVU+7goSEGj19Rjn7f0i/NxPBZulRoOQM+cmb/sEj6uMr2FYf2bd4seli2rsl5jvx6bgdH+fU+k8pkx5uxKMYSFOLbnDAALOcRo+d2Qg4F6NIjFhDl/7xPxF6x1UzNx/zv361PqA9MWE+n/KDkl894GuxmJfsbQrsx0eKEKF7wEOynOyhsiKDF5Z0xoRhiiPRDC51MYh5srEdM/Pca6KCbayxSzrWW9ratNAa37wpwgEBw35ZtgsMWUuCIsTNTE58/YZbE+zmZp8X0lpvURAo9ErdJyBIBLtOqPw+WpiMm4EiZIY2ed2KRVhVrWsqjXbfQnTaWqGFHgR9h87uIJGbp50oypG+byPSA7jlp+lqQkhob7bfJ5AGkdVQibc8aRr1TpmVXPqH1Vgpl6TfZ+GvTSj5aEVC5etOReY3pmvrnCFqVKzc+hUBNStG73nXqesvWxgZPAUDVUzgomATwdYyVY8ehjtM8guHcyv7iNYWRRMiXUNd1JaVcjeqoS1R98=
+  # DOCKER_USERNAME DOCKER_PASSWORD
+  - secure: WUFVz4msoN5X9hJ/gCx9JK3tqzrYXmEz28sQAoQYdNVBYmdoJM7TgXE7YjcvpHm6Lp9guLFxGA1YngvgP15LIT94NK0lAEo9n5T2PbCQj8NrFQg/hZ+ZIXpI2UmJgA1vASApKyG1xiDsikD2zHLIjJQhLl5IZahsylDRiHdMToXuY7RCoqejxMot0StNigENTWTGOgat/05T/ElTmO7OVYvEG/b944WRoNIBH9bp6FUU2vkkiorXeEY+LiMa33A/jpxAZjxa3zhTClOBb87ncm2IXwNXb8iDbm5nb+zBoBRmndJI4Vlr+TPvggWfbhP8jsGuyCpyShOQNbrIpZIqPdCpgErOwN2pRwwgFRHVcsFjS6o45UN52q1QhBonRoIYXD/IQdsl0xH7fyRwZEtmlMpUkcPj1wutOrli5B1gg4IP1b3qkozv6JWu2DWS52rnVDfj5xZhC0i8lUsB/fEzzWFNPxRH99KlcbNxsKr0/bf0QfuRAsHypoDcxKSsaaGbr3xzvlLNYOiam2gZQSgHoiHJShYIF4xqFbl9Z89yUNhA2POxmKz6lR5fNFmCCZhYbWEv8vDaXZ6joMMWY0Hwvz04+0kc5AufiyEWe8zxbAoS9xvaMNnlHFR5MrPaJCeZioBcDpMIlsh3Rh4Me6+1/Gp33fyS7tHwLtztKJcr/6A=
+  # GITHUB_TOKEN
+  - secure: OMrPUzHZblDZSw8nhdtkBmZinClg9Jg91StUkI26LbGU/GtoluPIZFPXBjRd9mkj/cevGAj+ZN9MpSo0yGzmuVdyBQhn4J44P+KEc2CjD3KAFEEHtIzjSf8Y76+KqvI2CZEiWwsj00PRpjOlHdTYsrEvlmRwIb/D1RAPagYXBV7s/pwI//8PHdCGet7YIFeSUj/tD2uHkEceCPMkJMwB8q1ehQqpmyVKQkHcgdBREGl4gnnnSpZW4xNYSIPCLa1VT/nMbk6NRwaTOi5ZoYc4yGEr/qPLqlzzz6wu8IX4NwjybRz/YEaB9fC3C8AtoLQXJ9eymFCt6wpoW3K4ZAowV/v0p4AFB29LIqvbdbt8ZZpf91dhtmIq9qEPl2T6WqhDo7AvSPgS7reBUVhVIKr0V1GHaTpI7wmduIiYQcycsmHFqeV9+xMUz6X4+vUjDaEgaHvTtb0VfBAGPH0OBImlT6AO4s+J2PQqDnpW2jUqPYvvf1Xjh/EbkjuHzPP87ftE0sXQsZbmBpNd0ukLSY0Ihe5+5Y+MVmVrK4UNLT6CPyqyWBT6NlbYZ1Lh6XUpuZzMYf4odK2OnKmHg0RyqIqR+XWMB/T4V1qZHFIiWRRip9HbX9uznwlICMkUm04FsH681cXA4Zro5lAvEmYQBaMDDboyC8YUyUeSeR+++Hq6uNI=
 node_js:
 - 7.5.0
 before_install:
@@ -19,9 +22,9 @@ before_install:
 script:
 - npm run test
 - npm run lint
-- ./bin/version-increment.sh
-- ./bin/build.sh
-- ./bin/start.sh
+- "./bin/version-increment.sh"
+- "./bin/build.sh"
+- "./bin/start.sh"
 - sleep 5
 - docker ps
 - RUNNING_CONTAINERS=`docker ps | wc -l`; if [ "${RUNNING_CONTAINERS//[[:space:]]/}"
@@ -30,4 +33,4 @@ script:
 - npm run nightwatch -- -e travis
 - sleep 5
 after_success:
-- ./bin/ci/push.sh
+- "./bin/ci/push.sh"
