@@ -59,9 +59,7 @@ export default class SignUpPage extends React.Component {
                 party.email,
                 password,
                 location.query.invite,
-              ).then(() => (
-                this.props.router.push(`/invite/success${location.search}`)
-              ))
+              )
             )}
           />}
 
@@ -71,9 +69,7 @@ export default class SignUpPage extends React.Component {
               this.props.onSubmitSignUp(
                 party.email,
                 password,
-              ).then(() => (
-                this.props.router.push(`/invite/step-2${location.search}`)
-              ))
+              )
             )}
           />}
         </article>
