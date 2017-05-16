@@ -1,7 +1,7 @@
 import { CALL_API } from 'redux-api-middleware';
 import { getToken } from 'reducers';
 
-export const invoke = (config, { auth = false } = {}) => (dispatch, getState) => {
+export const invoke = (config, { auth = true } = {}) => (dispatch, getState) => {
   const result = {
     ...config,
   };

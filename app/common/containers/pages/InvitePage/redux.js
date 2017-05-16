@@ -1,30 +1,62 @@
+import { push } from 'react-router-redux';
+import { SubmissionError } from 'redux-form';
+import { getLocation } from 'reducers';
 import { createSessionToken } from 'redux/auth';
 import { createUser } from 'redux/user';
 import { login } from 'redux/session';
-import { performActionWithRequest, APPROVED_STATUS } from 'redux/requests';
+import { CLIENT_ID } from 'config';
 
-export const onSubmitSignUp = (email, password) => dispatch => (
-  dispatch(createUser(email, password)).then(() => (
-    dispatch(createSessionToken({
+export const onSubmitSignUp = (email, password) => (dispatch, getState) => (
+  dispatch(createUser(email, password)).then((action) => {
+    if (action.error) return new Error(action.error);
+
+    return dispatch(createSessionToken({
       grant_type: 'password',
-      username: email,
+      email,
       password,
-      scope: 'apps:create',
-    })).then(action => (
-      dispatch(login(action.payload.value))
-    ))
-  ))
+      client_id: CLIENT_ID,
+      scope: 'employee_request:write',
+    })).then((action) => {
+      if (action.error) return new Error(action.error);
+
+      const state = getState();
+      const location = getLocation(state);
+
+      return dispatch([
+        login(action.payload.value),
+        push({
+          ...location,
+          pathname: '/invite/accept',
+        }),
+      ]);
+    });
+  })
 );
 
-export const onSubmitSignIn = (email, password, requestId) => dispatch => (
-  dispatch(createSessionToken({
-    grant_type: 'password',
-    username: email,
-    password,
-    scope: 'apps:create',
-  })).then(action => (
-    dispatch(login(action.payload.value))
-  )).then(() => (
-    dispatch(performActionWithRequest(requestId, APPROVED_STATUS))
-  ))
-);
+export const onSubmitSignIn = (email, password) => (dispatch, getState) =>
+dispatch(createSessionToken({
+  grant_type: 'password',
+  email,
+  password,
+  client_id: CLIENT_ID,
+  scope: 'employee_request:write',
+})).then((action) => {
+  if (action.error) {
+    throw new SubmissionError({
+      password: {
+        passwordMismatch: true,
+      },
+    });
+  }
+
+  const state = getState();
+  const location = getLocation(state);
+
+  return dispatch([
+    login(action.payload.value),
+    push({
+      ...location,
+      pathname: '/invite/accept',
+    }),
+  ]);
+});

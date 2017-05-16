@@ -11,14 +11,14 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @reduxForm({
-  form: 'sign-up-confirm-form',
+  form: 'invite-accept-form',
   validate: reduxFormValidate({
     confirm: {
       required: true,
     },
   }),
 })
-export default class SignUpConfirmForm extends React.Component {
+export default class InviteAcceptForm extends React.Component {
   render() {
     const { handleSubmit, onSubmit = () => {}, submitting } = this.props;
 

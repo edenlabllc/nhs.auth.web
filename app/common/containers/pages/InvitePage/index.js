@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { provideHooks } from 'redial';
 import withStyles from 'withStyles';
 import { withRouter } from 'react-router';
 import format from 'date-fns/format';
@@ -11,17 +10,12 @@ import Points from 'components/Points';
 import InviteSignInForm from 'containers/forms/InviteSignInForm';
 import InviteSignUpForm from 'containers/forms/InviteSignUpForm';
 
-import { fetchRequestById } from 'redux/requests';
-
 import { getRequestById } from 'reducers';
 
 import { onSubmitSignUp, onSubmitSignIn } from './redux';
 
 import styles from './styles.scss';
 
-@provideHooks({
-  fetch: ({ dispatch, location: { query } }) => dispatch(fetchRequestById(query.invite)),
-})
 @withRouter
 @withStyles(styles)
 @connect((state, { location: { query } }) => ({
@@ -54,26 +48,18 @@ export default class SignUpPage extends React.Component {
 
           {user_id && <InviteSignInForm
             email={party.email}
-            onSubmit={({ password }) => (
-              this.props.onSubmitSignIn(
-                party.email,
-                password,
-                location.query.invite,
-              ).then(() => (
-                this.props.router.push(`/invite/success${location.search}`)
-              ))
+            onSubmit={({ password }) => this.props.onSubmitSignIn(
+              party.email,
+              password,
+              location.query.invite,
             )}
           />}
 
           {!user_id && <InviteSignUpForm
             email={party.email}
-            onSubmit={({ password }) => (
-              this.props.onSubmitSignUp(
-                party.email,
-                password,
-              ).then(() => (
-                this.props.router.push(`/invite/step-2${location.search}`)
-              ))
+            onSubmit={({ password }) => this.props.onSubmitSignUp(
+              party.email,
+              password,
             )}
           />}
         </article>

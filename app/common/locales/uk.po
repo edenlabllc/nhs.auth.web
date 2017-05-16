@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2017-04-28 11:21+0300\n"
-"PO-Revision-Date: 2017-04-28 11:23+0300\n"
+"POT-Creation-Date: 2017-05-16 18:01+0200\n"
+"PO-Revision-Date: 2017-05-16 18:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -11,4 +11,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.1\n"
+
+msgid "Required field"
+msgstr "Обов’язкове поле"
+
+msgid "Invalid email format"
+msgstr "Невірний формат Email"
+
+msgid "Invalid surname"
+msgstr "Невірний формат прізвища"
+
+msgid "Length must be less than <%= params %>"
+msgstr "Довжина повинна бути менше <%= params %>"
+
+msgid "Length must be more than <%= params %>"
+msgstr "Довжина повинна бути більша за <%= params %>"
+
+msgid "Invalid card number"
+msgstr "Невірний номер карти"
+
+msgid "Card with such names already exist"
+msgstr "Карта з такою назвою вже існує"
+
+msgid "Card with such number already exist"
+msgstr "Карта з таким номером вже існує"
+
+msgid "Support only {{types}} cards"
+msgstr "Ми підтримуємо тільки картки {{types}}"
+
+msgid "Minimal value is <%= params %>"
+msgstr "Мінімальним значенням є < % = params %>"
+
+msgid "Maximum value is <%= params %>"
+msgstr "* Максимальне значення"
+
+msgid "Password mismatch with existing account"
+msgstr "Невірний email або пароль"
+
+msgid "Yes"
+msgstr "Так"
+
+msgid "No"
+msgstr "Ні"
+
+msgid "Dashboard"
+msgstr "Дашборд"
+
+msgid "Clinics"
+msgstr "Клініки"
+
+msgid "Declarations"
+msgstr "Декларації"
+
+msgid "Pending declarations"
+msgstr ""
+
+msgid "Employees"
+msgstr "Працівники"
+
+msgid "Dictionaries"
+msgstr "Словники"
+
+msgid "System configuration"
+msgstr "Конфігурація системи"
+
+msgid "Documentation"
+msgstr "Документація"

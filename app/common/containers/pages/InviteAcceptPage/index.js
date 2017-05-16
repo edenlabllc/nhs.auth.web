@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import { H1 } from 'components/Title';
 import Points from 'components/Points';
 
-import SignUpConfirmForm from 'containers/forms/SignUpConfirmForm';
+import InviteAcceptForm from 'containers/forms/InviteAcceptForm';
 
 import { onSubmit } from './redux';
 
@@ -17,12 +17,12 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class SignUpStep2Page extends React.Component {
   render() {
-    const { location } = this.props;
+    const { onSubmit, location } = this.props;
 
     return (
       <section className={styles.main} id="sign-up-page">
         <header className={styles.header}>
-          <H1>Реєстрація</H1>
+          <H1>Прийняти запрошення</H1>
 
           <Points count={2} active={1} />
         </header>
@@ -33,13 +33,7 @@ export default class SignUpStep2Page extends React.Component {
           </p>
 
           <div className={styles.form}>
-            <SignUpConfirmForm
-              onSubmit={() => (
-                this.props.onSubmit(location.query.invite).then(() => (
-                  this.props.router.push(`/invite/success${location.search}`)
-                ))
-              )}
-            />
+            <InviteAcceptForm onSubmit={() => onSubmit(location.query.invite)} />
           </div>
         </article>
       </section>
