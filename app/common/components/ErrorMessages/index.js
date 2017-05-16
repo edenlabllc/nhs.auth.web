@@ -13,6 +13,7 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="email">{t('Invalid email format')}</ErrorMessage>
         <ErrorMessage when="userName">{t('Invalid surname')}</ErrorMessage>
         <ErrorMessage when="maxLength">{t('Length must be less than <%= params %>')}</ErrorMessage>
+        <ErrorMessage when="minLength">{t('Length must be more than <%= params %>')}</ErrorMessage>
         <ErrorMessage when="card_number">{ t('Invalid card number') }</ErrorMessage>
         <ErrorMessage when="uniqueCardName">{t('Card with such names already exist')}</ErrorMessage>
         <ErrorMessage when="uniqueCardNumber">{t('Card with such number already exist')}</ErrorMessage>
@@ -21,6 +22,7 @@ export default class ErrorMessagesTranslated extends React.Component {
         </ErrorMessage>
         <ErrorMessage when="min">{t('Minimal value is <%= params %>')}</ErrorMessage>
         <ErrorMessage when="max">{t('Maximum value is <%= params %>')}</ErrorMessage>
+        <ErrorMessage when="passwordMismatch">{t('Password mismatch with existing account')}</ErrorMessage>
       </ErrorMessages>
     );
   }

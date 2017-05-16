@@ -112,7 +112,7 @@ textarea.input {
 .error-label {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: -1px;
   padding: 8px 15px 7px 13px;
   color: #fff;
   background-color: $errored;

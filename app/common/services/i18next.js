@@ -2,8 +2,6 @@ import i18n from 'i18next';
 import { LANG_COOKIE_NAME } from 'config';
 
 import uk from '../locales/uk.po';
-import ru from '../locales/ru.po';
-import en from '../locales/en.po';
 
 const LanguageDetector = __CLIENT__ ? require('i18next-browser-languagedetector') : require('i18next-express-middleware').LanguageDetector; // eslint-disable-line
 
@@ -19,16 +17,10 @@ service.init({
   nsSeparator: false,
   keySeparator: false,
   fallbackLng: 'uk',
-  whitelist: ['uk', 'ru', 'en'],
+  whitelist: ['uk'],
   resources: {
     uk: {
       translation: uk,
-    },
-    ru: {
-      translation: ru,
-    },
-    en: {
-      translation: en,
     },
   },
 });

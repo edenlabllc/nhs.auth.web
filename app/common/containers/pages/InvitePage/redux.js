@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux';
+import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
 import { createSessionToken } from 'redux/auth';
 import { createUser } from 'redux/user';
@@ -32,26 +33,30 @@ export const onSubmitSignUp = (email, password) => (dispatch, getState) => (
   })
 );
 
-export const onSubmitSignIn = (email, password) => (dispatch, getState) => (
-  dispatch(createSessionToken({
-    grant_type: 'password',
-    email,
-    password,
-    client_id: CLIENT_ID,
-    scope: 'employee_request:write',
-  })).then((action) => {
-    if (action.error) throw action;
+export const onSubmitSignIn = (email, password) => (dispatch, getState) =>
+dispatch(createSessionToken({
+  grant_type: 'password',
+  email,
+  password,
+  client_id: CLIENT_ID,
+  scope: 'employee_request:write',
+})).then((action) => {
+  if (action.error) {
+    throw new SubmissionError({
+      password: {
+        passwordMismatch: true,
+      },
+    });
+  }
 
-    const state = getState();
-    const location = getLocation(state);
+  const state = getState();
+  const location = getLocation(state);
 
-    return dispatch([
-      login(action.payload.value),
-      push({
-        ...location,
-        pathname: '/invite/accept',
-      }),
-    ]);
-  })
-  .catch(err => err)
-);
+  return dispatch([
+    login(action.payload.value),
+    push({
+      ...location,
+      pathname: '/invite/accept',
+    }),
+  ]);
+});

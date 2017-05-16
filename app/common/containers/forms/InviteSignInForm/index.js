@@ -25,10 +25,10 @@ import styles from './styles.scss';
 })
 export default class InviteSignInForm extends React.Component {
   render() {
-    const { handleSubmit, onSubmit = () => {}, submitting, email } = this.props;
+    const { handleSubmit, submitting, email } = this.props;
 
     return (
-      <form className={styles.main} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.main} onSubmit={handleSubmit}>
         <div>
           <H1>ВХІД з E-heath</H1>
         </div>
@@ -36,7 +36,12 @@ export default class InviteSignInForm extends React.Component {
           {email}
         </div>
         <div className={styles.input}>
-          <Field type="password" placeholder="Пароль" name="password" component={FieldInput} />
+          <Field
+            type="password"
+            placeholder="Пароль"
+            name="password"
+            component={FieldInput}
+          />
         </div>
         <div>
           <Field labelText="Даю згоду на обробку моїх персональних даних та доступ до мого облікового запису в E-health" type="checkobox" name="confirm" component={FieldCheckbox} />
