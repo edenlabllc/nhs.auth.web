@@ -40,5 +40,5 @@ export default handleAction(
     ...state,
     ...action.payload.entities.requests,
   }),
-  null
+  {}
 );

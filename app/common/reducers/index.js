@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import { routerReducer as routing } from 'react-router-redux';
+import { denormalize } from 'normalizr';
+import * as schemas from 'schemas';
 
 import loading from 'redux/loading';
 import session from 'redux/session';
@@ -37,5 +39,5 @@ export const getForm = (state, formName) => state.form[formName];
 export const getToken = state => state.session.token;
 
 export const getUser = state => state.data.user;
-export const getClientById = (state, id) => state.data.clients[id];
-export const getRequestById = (state, id) => state.data.requests[id];
+export const getClientById = (state, id) => denormalize(id, schemas.client, state.data);
+export const getRequestById = (state, id) => denormalize(id, schemas.request, state.data);
