@@ -22,7 +22,7 @@ export const fetchRequestById = id => invoke({
 });
 
 export const performActionWithRequest = (id, action) => invoke({
-  endpoint: `${API_URL}/api/employee_requests/${id}/actions/${action}`,
+  endpoint: `${API_URL}/api/employee_requests/${id}/${action}`,
   method: 'POST',
   types: [
     'requests/PERFORM_ACTION_WITH_REQUEST',
