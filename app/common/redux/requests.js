@@ -29,7 +29,7 @@ export const performActionWithRequest = (id, action) => invoke({
     'requests/PERFORM_ACTION_WITH_SUCCESS',
     'requests/PERFORM_ACTION_WITH_FAILURE',
   ],
-}, { auth: true });
+});
 
 export default handleAction(
   combineActions(
