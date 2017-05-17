@@ -1,16 +1,17 @@
 import React from 'react';
 import withStyles from 'withStyles';
+import { translate } from 'react-i18next';
 
 import styles from './styles.scss';
 
-const App = ({ children }) => (
+const App = ({ children, t }) => (
   <div className={styles.main}>
     <main>
       {children}
     </main>
     <footer className={styles.footer}>
-      ©2017 All Rights Recerved
+      ©{(new Date()).getFullYear()} {t('All Rights Recerved')}
     </footer>
   </div>
 );
-export default withStyles(styles)(App);
+export default translate()(withStyles(styles)(App));

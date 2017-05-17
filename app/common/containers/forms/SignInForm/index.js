@@ -24,10 +24,10 @@ import styles from './styles.scss';
 })
 export default class SignInForm extends React.Component {
   render() {
-    const { handleSubmit, onSubmit = () => {}, submitting } = this.props;
+    const { handleSubmit, submitting } = this.props;
 
     return (
-      <form className={styles.main} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.main} onSubmit={handleSubmit}>
         <div>
           <Field placeholder="E-mail" name="email" component={FieldInput} />
         </div>

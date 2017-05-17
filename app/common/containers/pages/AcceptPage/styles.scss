@@ -16,6 +16,11 @@
 
   .links {
     margin-top: 30px;
+    display: block;
+
+    a {
+      min-width: 0;
+    }
 
     & > div {
       display: inline-block;
@@ -29,5 +34,13 @@
 
   p {
     margin-bottom: 10px;
+  }
+}
+
+.error {
+  margin-bottom: 30px;
+
+  b {
+    color: #ff1f44;
   }
 }

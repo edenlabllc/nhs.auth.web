@@ -24,6 +24,7 @@ import styles from './styles.scss';
 export default class AcceptPage extends React.Component {
   state = {
     isLoading: false,
+    error: null,
   };
 
   approval() {
@@ -35,9 +36,22 @@ export default class AcceptPage extends React.Component {
       clientId: query.client_id,
       scope: query.scope,
       redirectUri: query.redirect_uri,
-    }).then(({ payload }) => {
-      this.setState({ isLoading: false });
-      window && (window.location.href = payload);
+    }).then(({ payload, error }) => {
+      console.log(payload.headers);
+      if (error) {
+        return this.setState({
+          error: Object.entries(payload.response.error).map(([key, value]) => ({
+            key,
+            value,
+          })),
+          isLoading: false,
+        });
+      }
+      this.setState({
+        isLoading: false,
+        error: null,
+      });
+      return window && (window.location = payload.headers.get('location'));
     });
   }
 
@@ -49,6 +63,18 @@ export default class AcceptPage extends React.Component {
         </header>
         <article className={styles.content}>
           <p>Не вказан идентифікатор додатку для авторизації</p>
+        </article>
+      </section>
+    );
+  }
+  renderNotFoundClient() {
+    return (
+      <section className={styles.main} id="accept-page">
+        <header className={styles.header}>
+          <b>Помилка</b>
+        </header>
+        <article className={styles.content}>
+          <p>Не знайдено додаток за вказанним ідентифікатором</p>
         </article>
       </section>
     );
@@ -79,12 +105,13 @@ export default class AcceptPage extends React.Component {
   }
   render() {
     const {
-      client = {},
-      user = {},
+      client,
+      user,
       location: { query: { client_id, scope, redirect_uri } },
     } = this.props;
 
     if (!client_id) return this.renderNotFoundClientId();
+    if (!client) return this.renderNotFoundClient();
     if (!scope) return this.renderNotFoundScope();
     if (!redirect_uri) return this.renderNotFoundRedirectUri();
 
@@ -101,6 +128,12 @@ export default class AcceptPage extends React.Component {
 
           {/* <Button theme="link">Не ваша електронна адреса?</Button> */}
         </article>
+        { this.state.error && (
+          <article className={styles.error}>
+            <b>Помилка:</b>
+            {this.state.error.map(i => (<div key={i.key}>{i.value} ({i.key})</div>))}
+          </article>
+        )}
         <footer className={styles.footer}>
           <div>
             <Button disabled={this.state.isLoading} onClick={() => this.approval()} color="blue">прийняти та продовжити</Button>
