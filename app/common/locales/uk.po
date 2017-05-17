@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2017-05-16 18:01+0200\n"
-"PO-Revision-Date: 2017-05-16 18:02+0200\n"
+"POT-Creation-Date: 2017-05-17 11:17+0200\n"
+"PO-Revision-Date: 2017-05-17 11:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -47,6 +47,9 @@ msgid "Maximum value is <%= params %>"
 msgstr "* Максимальне значення"
 
 msgid "Password mismatch with existing account"
+msgstr "Невірний email або пароль"
+
+msgid "Account, password combination is mismatch"
 msgstr "Невірний email або пароль"
 
 msgid "Yes"

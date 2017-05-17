@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { translate } from 'react-i18next';
 import { ErrorMessages, ErrorMessage } from 'react-nebo15-validate';
@@ -23,6 +24,7 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="min">{t('Minimal value is <%= params %>')}</ErrorMessage>
         <ErrorMessage when="max">{t('Maximum value is <%= params %>')}</ErrorMessage>
         <ErrorMessage when="passwordMismatch">{t('Password mismatch with existing account')}</ErrorMessage>
+        <ErrorMessage when="accountPasswordMismatch">{t('Account, password combination is mismatch')}</ErrorMessage>
       </ErrorMessages>
     );
   }

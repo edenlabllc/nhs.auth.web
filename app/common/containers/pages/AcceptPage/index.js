@@ -37,7 +37,7 @@ export default class AcceptPage extends React.Component {
       redirectUri: query.redirect_uri,
     }).then(({ payload }) => {
       this.setState({ isLoading: false });
-      window && (window.location.href = payload);
+      window && (window.location = payload);
     });
   }
 
@@ -49,6 +49,18 @@ export default class AcceptPage extends React.Component {
         </header>
         <article className={styles.content}>
           <p>Не вказан идентифікатор додатку для авторизації</p>
+        </article>
+      </section>
+    );
+  }
+  renderNotFoundClient() {
+    return (
+      <section className={styles.main} id="accept-page">
+        <header className={styles.header}>
+          <b>Помилка</b>
+        </header>
+        <article className={styles.content}>
+          <p>Не знайдено додаток за вказанним ідентифікатором</p>
         </article>
       </section>
     );
@@ -79,12 +91,13 @@ export default class AcceptPage extends React.Component {
   }
   render() {
     const {
-      client = {},
-      user = {},
+      client,
+      user,
       location: { query: { client_id, scope, redirect_uri } },
     } = this.props;
 
     if (!client_id) return this.renderNotFoundClientId();
+    if (!client) return this.renderNotFoundClient();
     if (!scope) return this.renderNotFoundScope();
     if (!redirect_uri) return this.renderNotFoundRedirectUri();
 
