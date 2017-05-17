@@ -24,6 +24,7 @@ import styles from './styles.scss';
 export default class AcceptPage extends React.Component {
   state = {
     isLoading: false,
+    error: null,
   };
 
   approval() {
@@ -35,9 +36,22 @@ export default class AcceptPage extends React.Component {
       clientId: query.client_id,
       scope: query.scope,
       redirectUri: query.redirect_uri,
-    }).then(({ payload }) => {
-      this.setState({ isLoading: false });
-      window && (window.location = payload);
+    }).then(({ payload, error }) => {
+      console.log(payload.headers);
+      if (error) {
+        return this.setState({
+          error: Object.entries(payload.response.error).map(([key, value]) => ({
+            key,
+            value,
+          })),
+          isLoading: false,
+        });
+      }
+      this.setState({
+        isLoading: false,
+        error: null,
+      });
+      return window && (window.location = payload.headers.get('location'));
     });
   }
 
@@ -114,6 +128,12 @@ export default class AcceptPage extends React.Component {
 
           {/* <Button theme="link">Не ваша електронна адреса?</Button> */}
         </article>
+        { this.state.error && (
+          <article className={styles.error}>
+            <b>Помилка:</b>
+            {this.state.error.map(i => (<div key={i.key}>{i.value} ({i.key})</div>))}
+          </article>
+        )}
         <footer className={styles.footer}>
           <div>
             <Button disabled={this.state.isLoading} onClick={() => this.approval()} color="blue">прийняти та продовжити</Button>
