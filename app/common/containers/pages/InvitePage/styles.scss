@@ -5,13 +5,14 @@
     margin-bottom: 32px;
   }
 
-  .content {
+  .content,
+  .form {
     font-size: 18px;
     line-height: 24px;
+  }
 
-    p {
-      margin-bottom: 12px;
-    }
+  .description {
+    margin-bottom: 12px;
   }
 
   .accept {
@@ -22,9 +23,31 @@
   .email {
     margin: 32px 0;
   }
+}
 
-  .form {
-    max-width: 420px;
-    margin: 0 auto;
+.details {
+  margin-bottom: 30px;
+
+  &__body {
+    margin-top: 15px;
+    margin-bottom: 60px;
+    font-size: 14px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__block {
+    margin-top: 10px;
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-top: 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
