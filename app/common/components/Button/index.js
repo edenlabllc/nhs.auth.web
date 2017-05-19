@@ -18,6 +18,7 @@ const Button = (props) => {
     disabled = false,
     block = false,
     inheritColor = false,
+    inheritFontSize = false,
     type = 'button',
     to, children, onClick, id, icon, name, ...rest,
   } = props;
@@ -31,6 +32,7 @@ const Button = (props) => {
     disabled && styles.disabled,
     block && styles.block,
     inheritColor && styles['inherit-color'],
+    inheritFontSize && styles['inherit-font-size'],
   );
 
   const content = (

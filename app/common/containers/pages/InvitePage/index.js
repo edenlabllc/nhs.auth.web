@@ -149,7 +149,7 @@ export default class SignUpPage extends React.Component {
         </article>
         <div className={styles.details}>
           <div className={styles.details__header}>
-            <Button onClick={this.toggleDetails} theme="link">
+            <Button onClick={this.toggleDetails} theme="link" inheritFontSize>
               {this.state.showDetails ? 'Сховати деталі' : 'Детальніше'}
             </Button>
           </div>

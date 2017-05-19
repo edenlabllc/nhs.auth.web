@@ -17,7 +17,7 @@
 
   .accept {
     font-weight: 700;
-    margin: 26px 0;
+    margin: 12px 0 26px;
   }
 
   .email {
@@ -27,11 +27,11 @@
 
 .details {
   margin-bottom: 30px;
+  font-size: 16px;
 
   &__body {
     margin-top: 15px;
     margin-bottom: 60px;
-    font-size: 14px;
 
     p {
       margin-bottom: 0;
