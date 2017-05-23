@@ -37,40 +37,10 @@ export default class SignUpPage extends React.Component {
       showDetails: !this.state.showDetails,
     });
   }
-  renderDetails() {
-    const { request: { doctor, party } } = this.props;
-    const GENDER_NAMES = { MALE: 'чоловіча', FEMALE: 'жіноча' };
-    const DOCUMENT_NAMES = { PASSPORT: 'Паспорт' };
-    const PHONE_NAMES = { MOBILE: 'Мобільний' };
-
+  renderDoctorDetails() {
+    const { request: { doctor } } = this.props;
     return (
-      <div className={styles.details__body}>
-        <div className={styles.details__title}>Персональная інформація</div>
-        <div className={styles.details__block}>
-          <p>{party.first_name} {party.second_name} {party.last_name}</p>
-          <p>{party.birth_date} рн</p>
-          <p><b>Стать:</b> {GENDER_NAMES[party.gender] || '-'}</p>
-          <p><b>ІНН:</b> {party.tax_id}</p>
-          <p><b>Email:</b> {party.email}</p>
-        </div>
-        <div className={styles.details__title}>Документи</div>
-        {(party.documents && party.documents) ?
-          party.documents.map((doc, idx) => (
-            <div className={styles.details__block} key={idx}>
-              <p><b>Тип документу:</b> {DOCUMENT_NAMES[doc.type] || '-'}</p>
-              <p><b>Номер:</b> {doc.number}</p>
-            </div>
-          )) : '-'
-        }
-        <div className={styles.details__title}>Контактні номери телефону</div>
-        {(party.phones && party.phones) ?
-          party.phones.map((phone, idx) => (
-            <div className={styles.details__block} key={idx}>
-              <p><b>Тип телефону:</b> {PHONE_NAMES[phone.type] || '-'}</p>
-              <p><b>Номер:</b> {phone.number}</p>
-            </div>
-          )) : '-'
-        }
+      <div>
         <div className={styles.details__title}>Освіта</div>
         {(doctor.educations && doctor.educations.length) ?
           doctor.educations.map((education, idx) => (
@@ -118,6 +88,44 @@ export default class SignUpPage extends React.Component {
             </div>
           )) : '-'
         }
+      </div>
+    );
+  }
+  renderDetails() {
+    const { request: { doctor, party } } = this.props;
+    const GENDER_NAMES = { MALE: 'чоловіча', FEMALE: 'жіноча' };
+    const DOCUMENT_NAMES = { PASSPORT: 'Паспорт' };
+    const PHONE_NAMES = { MOBILE: 'Мобільний' };
+
+    return (
+      <div className={styles.details__body}>
+        <div className={styles.details__title}>Персональная інформація</div>
+        <div className={styles.details__block}>
+          <p>{party.first_name} {party.second_name} {party.last_name}</p>
+          <p>{party.birth_date} рн</p>
+          <p><b>Стать:</b> {GENDER_NAMES[party.gender] || '-'}</p>
+          <p><b>ІНН:</b> {party.tax_id}</p>
+          <p><b>Email:</b> {party.email}</p>
+        </div>
+        <div className={styles.details__title}>Документи</div>
+        {(party.documents && party.documents) ?
+          party.documents.map((doc, idx) => (
+            <div className={styles.details__block} key={idx}>
+              <p><b>Тип документу:</b> {DOCUMENT_NAMES[doc.type] || '-'}</p>
+              <p><b>Номер:</b> {doc.number}</p>
+            </div>
+          )) : '-'
+        }
+        <div className={styles.details__title}>Контактні номери телефону</div>
+        {(party.phones && party.phones) ?
+          party.phones.map((phone, idx) => (
+            <div className={styles.details__block} key={idx}>
+              <p><b>Тип телефону:</b> {PHONE_NAMES[phone.type] || '-'}</p>
+              <p><b>Номер:</b> {phone.number}</p>
+            </div>
+          )) : '-'
+        }
+        { doctor && this.renderDoctorDetails() }
       </div>
     );
   }
