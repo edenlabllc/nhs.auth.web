@@ -54,6 +54,7 @@ export default () => (req, res, next) => {
     if (redirectLocation) {
       return res.redirect(301, redirectLocation.pathname + redirectLocation.search);
     } else if (error) {
+      console.log('match route error', error.message);
       return res.status(500).send(error.message);
     } else if (renderProps == null) {
       return res.status(404).send('Not found');
@@ -89,8 +90,7 @@ export default () => (req, res, next) => {
           </I18nextProvider>
         );
       } catch (e) {
-        console.log('render error');
-        console.error(e);
+        console.log('page render error', e.message);
         html = null;
       }
 

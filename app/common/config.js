@@ -19,8 +19,9 @@ export const API_PROXY_PATH = '/api';
 export const AUTH_PROXY_PATH = '/api.auth';
 
 export const CLIENT_ID = process.env.CLIENT_ID || 'e2e1d2c8-9bac-43c6-adef-83239940b30a';
+
 export const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME || 'token';
 
 // for internal app usage. for example for XHR requests or server side rendering
-export const API_URL = typeof window !== 'undefined' ? API_PROXY_PATH : API_ENDPOINT;
-export const AUTH_URL = typeof window !== 'undefined' ? AUTH_PROXY_PATH : AUTH_ENDPOINT;
+export const API_URL = API_ENDPOINT;
+export const AUTH_URL = AUTH_ENDPOINT;
