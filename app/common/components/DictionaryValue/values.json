@@ -388,6 +388,24 @@
         "EXTERNAL"
       ],
       "is_active": true
+    },
+    {
+      "values": {
+        "app:authorize": "Авторизація стороннього додатку",
+        "legal_entity:read": "Отримання інформації про клініку",
+        "legal_entity:write": "Створення/зміна інформації про клініку",
+        "employee_request:write": "Створення/зміна запиту на роботу",
+        "employee_request:read": "Отримання інформації про запит на роботу",
+        "employee:read": "Отримання інформації про співробітника",
+        "employee:write": "Зміна інформації про співробітника",
+        "address:read": "Отримання інформації про адресу"
+      },
+      "name": "SCOPES",
+      "labels": [
+        "SYSTEM",
+        "EXTERNAL"
+      ],
+      "is_active": true
     }
   ]
 }

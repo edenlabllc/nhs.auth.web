@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import { provideHooks } from 'redial';
 
 import Button from 'components/Button';
+import DictionaryValue from 'components/DictionaryValue';
 
 import { fetchClientById } from 'redux/clients';
 import { authorize } from 'redux/auth';
@@ -37,7 +38,6 @@ export default class AcceptPage extends React.Component {
       scope: query.scope,
       redirectUri: query.redirect_uri,
     }).then(({ payload, error }) => {
-      console.log(payload.headers);
       if (error) {
         return this.setState({
           error: Object.entries(payload.response.error).map(([key, value]) => ({
@@ -118,15 +118,15 @@ export default class AcceptPage extends React.Component {
     return (
       <section className={styles.main} id="accept-page">
         <header className={styles.header}>
-          <b>{client.name}</b> отримає наступну інформацію:
-          вашу електронну адресу та дані e-health-акаунту
+          Ви даєте доступ додатку <b>{client.name}</b> на наступні дії:
+          <ul className={styles.list}>
+            { scope.split(',').map(i => <li key={i}>• <DictionaryValue dictionary="SCOPES" value={i} /></li>)}
+          </ul>
         </header>
         <article className={styles.content}>
           <p>
             {user.email}
           </p>
-
-          {/* <Button theme="link">Не ваша електронна адреса?</Button> */}
         </article>
         { this.state.error && (
           <article className={styles.error}>
