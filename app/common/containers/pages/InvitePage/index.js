@@ -7,6 +7,7 @@ import format from 'date-fns/format';
 import Button from 'components/Button';
 import { H1 } from 'components/Title';
 import Points from 'components/Points';
+import DictionaryValue from 'components/DictionaryValue';
 
 import InviteSignInForm from 'containers/forms/InviteSignInForm';
 import InviteSignUpForm from 'containers/forms/InviteSignUpForm';
@@ -45,8 +46,9 @@ export default class SignUpPage extends React.Component {
         {(doctor.educations && doctor.educations.length) ?
           doctor.educations.map((education, idx) => (
             <div className={styles.details__block} key={idx}>
-              <p>{education.institution_name}, {education.city} {education.country}</p>
+              <p>{education.institution_name}, {education.city} <DictionaryValue dictionary="COUNTRY" value={education.country} /></p>
               <p><b>Диплом:</b> {education.diploma_number} від {education.issued_date}</p>
+              <p><b>Ступінь:</b> <DictionaryValue dictionary="EDUCATION_DEGREE" value={education.degree} /></p>
               <p><b>Спеціальність:</b> {education.speciality}</p>
             </div>
           )) : '-'
@@ -55,9 +57,9 @@ export default class SignUpPage extends React.Component {
         {(doctor.science_degree && toArray(doctor.science_degree).length) ?
           toArray(doctor.science_degree).map((degree, idx) => (
             <div className={styles.details__block} key={idx}>
-              <p>{degree.degree}, {degree.city} {degree.country}</p>
-              <p><b>Спеціальність:</b> {degree.speciality}</p>
-              <p>{degree.institution_name}, {degree.city} {degree.country}</p>
+              <p><DictionaryValue dictionary="SCIENCE_DEGREE" value={degree.degree} />, {degree.city} {degree.country}</p>
+              <p><b>Спеціальність:</b> <DictionaryValue dictionary="SPECIALITY_TYPE" value={degree.speciality} /></p>
+              <p>{degree.institution_name}, {degree.city} <DictionaryValue dictionary="COUNTRY" value={degree.country} /></p>
               <p><b>Диплом:</b> {degree.diploma_number} від {degree.issued_date}</p>
             </div>
           )) : '-'
@@ -66,7 +68,7 @@ export default class SignUpPage extends React.Component {
         {(doctor.qualifications && doctor.qualifications.length) ?
           doctor.qualifications.map((qualification, idx) => (
             <div className={styles.details__block} key={idx}>
-              <p>{qualification.type} в {qualification.institution_name}</p>
+              <p><DictionaryValue dictionary="QUALIFICATION_TYPE" value={qualification.type} /> в {qualification.institution_name}</p>
               <p><b>Сертифікат:</b>{' '}
                 {qualification.certificate_number} від {qualification.issued_date}
               </p>
@@ -78,11 +80,10 @@ export default class SignUpPage extends React.Component {
         {(doctor.specialities && doctor.specialities.length) ?
           doctor.specialities.map((speciality, idx) => (
             <div className={styles.details__block} key={idx}>
-              <p>{speciality.speciality} {speciality.level}</p>
+              <p><DictionaryValue dictionary="SPECIALITY_TYPE" value={speciality.speciality} /> <DictionaryValue dictionary="SPECIALITY_LEVEL" value={speciality.level} /></p>
               <p><b>Сертифікат:</b> {speciality.certificate_number}</p>
               <p><b>Виданий:</b> {speciality.attestation_name} {speciality.attestation_date}</p>
-              <p><b>Тип кваліфікації:</b> {speciality.qualification_type}</p>
-              <p><b>Спеціальність:</b> {speciality.speciality}</p>
+              <p><b>Тип кваліфікації:</b> {<DictionaryValue dictionary="QUALIFICATION_TYPE" value={speciality.qualification_type} />}</p>
               <p><b>Спеціальність за посадою:</b> {speciality.speciality_officio ? 'Так' : 'Ні'}</p>
               <p><b>Дійсний до:</b> {speciality.valid_to_date}</p>
             </div>
@@ -93,9 +94,6 @@ export default class SignUpPage extends React.Component {
   }
   renderDetails() {
     const { request: { doctor, party } } = this.props;
-    const GENDER_NAMES = { MALE: 'чоловіча', FEMALE: 'жіноча' };
-    const DOCUMENT_NAMES = { PASSPORT: 'Паспорт' };
-    const PHONE_NAMES = { MOBILE: 'Мобільний' };
 
     return (
       <div className={styles.details__body}>
@@ -103,7 +101,7 @@ export default class SignUpPage extends React.Component {
         <div className={styles.details__block}>
           <p>{party.first_name} {party.second_name} {party.last_name}</p>
           <p>{party.birth_date} рн</p>
-          <p><b>Стать:</b> {GENDER_NAMES[party.gender] || '-'}</p>
+          <p><b>Стать:</b> <DictionaryValue dictionary="GENDER" value={party.gender} /></p>
           <p><b>ІНН:</b> {party.tax_id}</p>
           <p><b>Email:</b> {party.email}</p>
         </div>
@@ -111,7 +109,7 @@ export default class SignUpPage extends React.Component {
         {(party.documents && party.documents) ?
           party.documents.map((doc, idx) => (
             <div className={styles.details__block} key={idx}>
-              <p><b>Тип документу:</b> {DOCUMENT_NAMES[doc.type] || '-'}</p>
+              <p><b>Тип документу:</b> <DictionaryValue dictionary="DOCUMENT_TYPE" value={doc.type} /></p>
               <p><b>Номер:</b> {doc.number}</p>
             </div>
           )) : '-'
@@ -120,7 +118,7 @@ export default class SignUpPage extends React.Component {
         {(party.phones && party.phones) ?
           party.phones.map((phone, idx) => (
             <div className={styles.details__block} key={idx}>
-              <p><b>Тип телефону:</b> {PHONE_NAMES[phone.type] || '-'}</p>
+              <p><b>Тип телефону:</b> <DictionaryValue dictionary="PHONE_TYPE" value={phone.type} /></p>
               <p><b>Номер:</b> {phone.number}</p>
             </div>
           )) : '-'
