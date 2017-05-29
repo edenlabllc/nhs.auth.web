@@ -2,12 +2,12 @@ import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
 import { createSessionToken } from 'redux/auth';
-import { createUser } from 'redux/user';
+import { createUserFromRequest } from 'redux/user';
 import { login } from 'redux/session';
 import { CLIENT_ID } from 'config';
 
-export const onSubmitSignUp = (email, password) => (dispatch, getState) => (
-  dispatch(createUser(email, password)).then((action) => {
+export const onSubmitSignUp = (employeeRequestId, email, password) => (dispatch, getState) => (
+  dispatch(createUserFromRequest(employeeRequestId, { password })).then((action) => {
     if (action.error) return new Error(action.error);
 
     return dispatch(createSessionToken({
@@ -33,7 +33,7 @@ export const onSubmitSignUp = (email, password) => (dispatch, getState) => (
   })
 );
 
-export const onSubmitSignIn = (email, password) => (dispatch, getState) =>
+export const onSubmitSignIn = (employeeRequestId, email, password) => (dispatch, getState) =>
 dispatch(createSessionToken({
   grant_type: 'password',
   email,

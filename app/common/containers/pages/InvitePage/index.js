@@ -166,15 +166,16 @@ export default class SignUpPage extends React.Component {
           {user_id && <InviteSignInForm
             email={party.email}
             onSubmit={({ password }) => this.props.onSubmitSignIn(
-              party.email,
-              password,
               location.query.invite,
+              party.email,
+              password
             )}
           />}
 
           {!user_id && <InviteSignUpForm
             email={party.email}
             onSubmit={({ password }) => this.props.onSubmitSignUp(
+              location.query.invite,
               party.email,
               password,
             )}

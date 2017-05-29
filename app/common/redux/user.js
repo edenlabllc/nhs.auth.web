@@ -1,5 +1,5 @@
 import { handleAction, combineActions } from 'redux-actions';
-import { AUTH_URL } from 'config';
+import { AUTH_URL, API_URL } from 'config';
 import { invoke } from './api';
 import { fetchSessionToken } from './auth';
 
@@ -28,39 +28,32 @@ export const fetchUserData = token => dispatch =>
   });
 
 
-export const createUser = (email, password) => invoke({
-  endpoint: `${AUTH_URL}/admin/users`,
-  method: 'POST',
-  types: ['user/CREATE_USER_REQUEST', {
-    type: 'user/CREATE_USER_SUCCESS',
-    payload: (action, state, res) => res.json().then(
-      json => json.data
-    ),
-  }, 'user/CREATE_USER_FAILURE'],
-  body: {
-    user: { email, password },
-  },
-});
-
 export const fetchUser = userId => invoke({
   endpoint: `${AUTH_URL}/admin/users/${userId}`,
   method: 'GET',
-  types: ['user/FETCH_USER_REQUEST', {
-    type: 'user/FETCH_USER_SUCCESS',
-    payload: (action, state, res) => res.json().then(
-      json => json.data
-    ),
-  }, 'user/FETCH_USER_FAILURE'],
+  types: ['user/FETCH_USER_REQUEST', 'user/FETCH_USER_SUCCESS', 'user/FETCH_USER_FAILURE'],
+});
+
+
+export const createUserFromRequest = (employeeRequestId, body) => invoke({
+  endpoint: `${API_URL}/api/employee_requests/${employeeRequestId}/user`,
+  method: 'POST',
+  types: [
+    'user/CREATE_USER_FROM_REQUEST_REQUEST',
+    'user/CREATE_USER_FROM_REQUEST_SUCCESS',
+    'user/CREATE_USER_FROM_REQUEST_FAILURE',
+  ],
+  body,
 });
 
 export default handleAction(
   combineActions(
   'user/FETCH_USER_SUCCESS',
-  'user/CREATE_USER_SUCCESS'
+  'user/CREATE_USER_FROM_REQUEST_SUCCESS'
   ),
   (state, action) => ({
     ...state,
-    ...action.payload,
+    ...action.payload.data,
   }),
   null
 );
