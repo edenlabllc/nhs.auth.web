@@ -64,3 +64,5 @@ server.listen(server.get('port'), (err) => {
   /* eslint-disable no-console */
   console.log(`Listening at http://localhost: ${server.get('port')}`);
 });
+
+export default server;

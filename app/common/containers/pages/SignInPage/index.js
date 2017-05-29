@@ -21,7 +21,7 @@ export default class SignInPage extends React.Component {
     return (
       <section className={styles.main} id="sign-in-page">
         <header className={styles.header}>
-          <H1>ВХІД до E-heath</H1>
+          <H1>ВХІД до E-health</H1>
         </header>
         <article className={styles.form}>
           <SignInForm onSubmit={onSubmit} />

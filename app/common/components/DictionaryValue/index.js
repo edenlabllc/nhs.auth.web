@@ -1,9 +1,10 @@
 import React from 'react';
-import keyByFn from 'lodash/keyBy';
 import getFn from 'lodash/get';
-import values from './values.json';
+import { connect } from 'react-redux';
+import { getDictionary } from 'reducers';
 
-const valuesObject = keyByFn(values.data, 'name');
-
-export default ({ dictionary, value }) =>
-  <span>{getFn(valuesObject[dictionary], `values[${value}]`, value)}</span>;
+export default connect((state, { dictionary }) => ({
+  dictionaryObj: getDictionary(state, dictionary),
+}))(
+  ({ value, dictionaryObj }) => <span>{getFn(dictionaryObj, `values[${value}]`, value)}</span>
+);
