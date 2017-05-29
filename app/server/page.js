@@ -10,6 +10,7 @@ import match from 'react-router/lib/match';
 import Router from 'react-router/lib/Router';
 
 import Helmet from 'react-helmet';
+import NodeCache from 'node-cache';
 
 import { I18nextProvider } from 'react-i18next';
 import { triggerHooks } from 'react-router-redial';
@@ -24,6 +25,11 @@ import { configureStore } from '../common/store';
 
 import { configureRoutes } from '../common/routes';
 import WithStylesContext from '../common/WithStylesContext';
+
+const cache = new NodeCache({
+  stdTTL: 5 * 60, // 5 minutes
+  checkperiod: 60, // 1 minute
+});
 
 export default () => (req, res, next) => {
   if (__DEV__) {
@@ -40,6 +46,10 @@ export default () => (req, res, next) => {
     history: memoryHistory,
     cookies: new CookieDough(req),
     i18n: req.i18n,
+  }, {
+    data: {
+      dictionaries: cache.get('dictionaries'),
+    },
   });
   const history = syncHistoryWithStore(memoryHistory, store);
   const routes = configureRoutes({
@@ -66,14 +76,18 @@ export default () => (req, res, next) => {
       dispatch,
       getState,
     };
-
     // Wait for async data fetching to complete, then render:
     return triggerHooks({
       renderProps,
       locals,
       hooks: ['fetch', 'server', 'done'],
     }).then(() => {
-      const reduxState = escape(JSON.stringify(getState()));
+      const state = getState();
+      if (!cache.get('dictionaries') && state.data.dictionaries) {
+        cache.set('dictionaries', state.data.dictionaries);
+      }
+
+      const reduxState = escape(JSON.stringify(state));
       const css = new Set();
       /* eslint-disable no-underscore-dangle */
       let html;
@@ -90,7 +104,7 @@ export default () => (req, res, next) => {
           </I18nextProvider>
         );
       } catch (e) {
-        console.log('page render error', e.message);
+        console.log('page render error', e.message, e.stack);
         html = null;
       }
 

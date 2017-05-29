@@ -10,6 +10,7 @@ import auth from 'redux/auth';
 import clients from 'redux/clients';
 import user from 'redux/user';
 import requests from 'redux/requests';
+import dictionaries from 'redux/dictionaries';
 
 import Aside from 'containers/blocks/Aside/redux';
 
@@ -21,6 +22,7 @@ const data = combineReducers({
   clients,
   user,
   requests,
+  dictionaries,
 });
 
 export default combineReducers({
@@ -41,3 +43,6 @@ export const getToken = state => state.session.token;
 export const getUser = state => state.data.user;
 export const getClientById = (state, id) => denormalize(id, schemas.client, state.data);
 export const getRequestById = (state, id) => denormalize(id, schemas.request, state.data);
+
+export const getDictionary = (state, dictionary) =>
+  denormalize(dictionary, schemas.dictionary, state.data);
