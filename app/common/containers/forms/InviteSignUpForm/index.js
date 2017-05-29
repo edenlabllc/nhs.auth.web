@@ -5,7 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 import FieldInput from 'components/reduxForm/FieldInput';
 import Button from 'components/Button';
 
-import { reduxFormValidate } from 'react-nebo15-validate';
+import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 
 import styles from './styles.scss';
 
@@ -16,6 +16,11 @@ import styles from './styles.scss';
     password: {
       required: true,
       minLength: 8,
+    },
+    confirmPassword: {
+      required: true,
+      minLength: 8,
+      confirmation: 'password',
     },
   }),
 })
@@ -33,6 +38,11 @@ export default class SignUpForm extends React.Component {
         </div>
         <div>
           <Field type="password" placeholder="Пароль" name="password" component={FieldInput} />
+        </div>
+        <div>
+          <Field type="password" placeholder="Підтвердіть пароль" name="confirmPassword" component={FieldInput}>
+            <ErrorMessage when="confirmation">Паролі не співпадають</ErrorMessage>
+          </Field>
         </div>
         <div className={styles.description}>
           Пароль має містити не менш ніж 8 символів
