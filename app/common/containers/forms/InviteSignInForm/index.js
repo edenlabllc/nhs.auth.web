@@ -30,7 +30,7 @@ export default class InviteSignInForm extends React.Component {
     return (
       <form className={styles.main} onSubmit={handleSubmit}>
         <div>
-          <H1>ВХІД з E-heath</H1>
+          <H1>ВХІД з eHealth</H1>
         </div>
         <div>
           {email}
@@ -44,7 +44,7 @@ export default class InviteSignInForm extends React.Component {
           />
         </div>
         <div>
-          <Field labelText="Даю згоду на обробку моїх персональних даних та доступ до мого облікового запису в E-health" type="checkobox" name="confirm" component={FieldCheckbox} />
+          <Field labelText="Даю згоду на обробку моїх персональних даних та доступ до мого облікового запису в eHealth" type="checkobox" name="confirm" component={FieldCheckbox} />
         </div>
         <div>
           <Button disabled={submitting} type="submit" color="blue">
