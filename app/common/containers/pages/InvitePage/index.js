@@ -7,6 +7,7 @@ import format from 'date-fns/format';
 import Button from 'components/Button';
 import { H1 } from 'components/Title';
 import Points from 'components/Points';
+import Icon from 'components/Icon';
 import DictionaryValue from 'components/DictionaryValue';
 
 import InviteSignInForm from 'containers/forms/InviteSignInForm';
@@ -156,7 +157,12 @@ export default class SignUpPage extends React.Component {
         <div className={styles.details}>
           <div className={styles.details__header}>
             <Button onClick={this.toggleDetails} theme="link" inheritFontSize>
-              {this.state.showDetails ? 'Сховати деталі' : 'Детальніше'}
+              <span className={styles.details__header__title}>
+                {this.state.showDetails ? 'Сховати деталі' : 'Детальніше'}
+                <span className={styles.details__header__arrow}>
+                  <Icon name={this.state.showDetails ? 'caret-up' : 'caret-down'} />
+                </span>
+              </span>
             </Button>
           </div>
           { this.state.showDetails && this.renderDetails() }

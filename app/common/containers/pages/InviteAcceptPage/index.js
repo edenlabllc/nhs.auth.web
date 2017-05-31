@@ -23,19 +23,13 @@ export default class SignUpStep2Page extends React.Component {
     return (
       <section className={styles.main} id="sign-up-page">
         <header className={styles.header}>
-          <H1>Прийняти запрошення</H1>
+          <H1>Прийняття Регламенту</H1>
 
           <Points count={2} active={1} />
         </header>
         <article className={styles.content}>
           <p>{
-            nl2br(`Зверніть увагу, що приймаючи запрошення,
-            Ви погоджуєтесь з положеннями
-            Регламенту функціонування системи eHealth
-            та надаєте згоду адміністратору системи
-            на обробку Ваших персональних даних з
-            метою забезпечення роботи в системі eHealth
-            (електронній системі охорони здоров'я).`)
+            nl2br('Приймаючи запрошення на роботу в системі eHealth ви також погоджуєтесь з положеннями Регламенту функціонування системи (посилання на регламент - текст поки що не затвердили, можемо покищо кинути білий скрін)')
           }</p>
 
           <div className={styles.form}>
