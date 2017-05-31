@@ -145,7 +145,7 @@ export default class SignUpPage extends React.Component {
         }
         <article className={styles.content}>
           <div className={styles.description}>
-            Я, {party.first_name} {party.second_name} {party.last_name}, {format(party.birth_date, 'DD/MM/YYYY')} р.н.
+            Я, {party.first_name} {party.second_name} {party.last_name}, {format(party.birth_date, 'DD.MM.YYYY')} р.н.
           </div>
 
           <div className={styles.accept}>
