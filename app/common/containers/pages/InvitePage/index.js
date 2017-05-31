@@ -150,7 +150,7 @@ export default class SignUpPage extends React.Component {
 
           <div className={styles.accept}>
             даю згоду на обробку моїх даних та <br />
-            реєстрацію мене як {position} <br />
+            реєстрацію мене як "<DictionaryValue dictionary="POSITION" value={position} />" <br />
             {legal_entity.name}
           </div>
         </article>

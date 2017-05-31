@@ -8,7 +8,7 @@ const FAQ = ({ children }) => (
   <div className={styles.faq}>
     <header className={styles.header}>
       <a className={styles.logo} href="/">
-        <img src="/images/logo.png" alt="Logo" />
+        <img src="/images/logo.svg" alt="Logo" />
       </a>
     </header>
     <section className={styles.main}>
