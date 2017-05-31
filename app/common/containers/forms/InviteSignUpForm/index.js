@@ -3,6 +3,8 @@ import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 
 import FieldInput from 'components/reduxForm/FieldInput';
+import FieldCheckbox from 'components/reduxForm/FieldCheckbox';
+
 import Button from 'components/Button';
 
 import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
@@ -21,6 +23,9 @@ import styles from './styles.scss';
       required: true,
       minLength: 8,
       confirmation: 'password',
+    },
+    confirm: {
+      required: true,
     },
   }),
 })
@@ -46,6 +51,9 @@ export default class SignUpForm extends React.Component {
         </div>
         <div className={styles.description}>
           Пароль має містити не менш ніж 8 символів
+        </div>
+        <div>
+          <Field labelText="Даю згоду на обробку моїх персональних даних в системі eHealth" type="checkbox" name="confirm" component={FieldCheckbox} />
         </div>
         <div>
           <Button disabled={submitting} type="submit" color="blue">
