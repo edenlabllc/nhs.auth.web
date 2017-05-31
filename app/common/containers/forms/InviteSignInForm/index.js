@@ -2,8 +2,8 @@ import React from 'react';
 import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 
-import FieldCheckbox from 'components/reduxForm/FieldCheckbox';
 import FieldInput from 'components/reduxForm/FieldInput';
+
 import Button from 'components/Button';
 import { H1 } from 'components/Title';
 
@@ -16,9 +16,6 @@ import styles from './styles.scss';
   form: 'invite-sign-in-form',
   validate: reduxFormValidate({
     password: {
-      required: true,
-    },
-    confirm: {
       required: true,
     },
   }),
@@ -42,9 +39,6 @@ export default class InviteSignInForm extends React.Component {
             name="password"
             component={FieldInput}
           />
-        </div>
-        <div>
-          <Field labelText="Даю згоду на обробку моїх персональних даних та доступ до мого облікового запису в eHealth" type="checkobox" name="confirm" component={FieldCheckbox} />
         </div>
         <div>
           <Button disabled={submitting} type="submit" color="blue">

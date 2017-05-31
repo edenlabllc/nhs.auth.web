@@ -22,7 +22,7 @@ export default class App extends React.Component {
           { rel: 'icon', type: 'image/png', href: '/favicon-16x16.png', sizes: '16x16' },
           { rel: 'manifest', href: '/manifest.json' },
           { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#2c83b5' },
-          { rel: 'shortcut icon', href: '/favicon.ico?v=1' },
+          { rel: 'shortcut icon', href: '/favicon.ico?v=3' },
         ]}
         meta={[
           { charset: 'utf-8' },

@@ -25,7 +25,7 @@ export default class InviteAcceptForm extends React.Component {
     return (
       <form className={styles.main} onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <Field labelText="Даю згоду на обробку моїх персональних даних та доступ до мого облікового запису в eHealth" type="checkobox" name="confirm" component={FieldCheckbox} />
+          <Field labelText="Погоджуюсь з Регламентом функціонування системи eHealth" type="checkbox" name="confirm" component={FieldCheckbox} />
         </div>
         <div>
           <Button disabled={submitting} type="submit" color="blue">
