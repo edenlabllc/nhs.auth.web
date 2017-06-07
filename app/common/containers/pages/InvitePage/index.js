@@ -101,7 +101,7 @@ export default class SignUpPage extends React.Component {
         <div className={styles.details__title}>Персональная інформація</div>
         <div className={styles.details__block}>
           <p>{party.first_name} {party.second_name} {party.last_name}</p>
-          <p>{party.birth_date} рн</p>
+          <p>{format(party.birth_date, 'DD.MM.YYYY')} р.н.</p>
           <p><b>Стать:</b> <DictionaryValue dictionary="GENDER" value={party.gender} /></p>
           <p><b>ІНН:</b> {party.tax_id}</p>
           <p><b>Email:</b> {party.email}</p>
@@ -149,8 +149,8 @@ export default class SignUpPage extends React.Component {
           </div>
 
           <div className={styles.accept}>
-            даю згоду на обробку моїх даних та <br />
-            реєстрацію мене як "<DictionaryValue dictionary="POSITION" value={position} />" <br />
+            даю згоду на реєстрацію мене в системі eHealth<br />
+            у ролі "<DictionaryValue dictionary="POSITION" value={position} />" <br />
             {legal_entity.name}
           </div>
         </article>
