@@ -11,6 +11,7 @@ import InviteLayout from 'containers/layouts/InviteLayout';
 import InvitePage from 'containers/pages/InvitePage';
 import InviteAcceptPage from 'containers/pages/InviteAcceptPage';
 import InviteSuccessPage from 'containers/pages/InviteSuccessPage';
+import InviteRejectPage from 'containers/pages/InviteRejectPage';
 import SignInPage from 'containers/pages/SignInPage';
 import AcceptPage from 'containers/pages/AcceptPage';
 import ConditionPage from 'containers/pages/ConditionPage';
@@ -67,6 +68,11 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
                 path="success"
                 inviteStatuses={['APPROVED']}
                 component={InviteSuccessPage}
+              />
+              <Route
+                path="reject"
+                inviteStatuses={['REJECTED']}
+                component={InviteRejectPage}
               />
             </Route>
             <Route path="sign-in" component={SignInPage} />
