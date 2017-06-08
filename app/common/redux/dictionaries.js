@@ -5,9 +5,6 @@ import { dictionary } from 'schemas';
 import { createUrl } from 'helpers/url';
 import { invoke } from './api';
 
-export const APPROVED_STATUS = 'approve';
-export const REJECT_REQUEST = 'reject';
-
 export const fetchDictionaries = (options, { useCache = false } = {}) => invoke({
   endpoint: createUrl(`${API_URL}/api/dictionaries`, options),
   method: 'GET',

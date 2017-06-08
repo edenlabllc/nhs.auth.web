@@ -22,3 +22,11 @@
     font-size: 18px;
   }
 }
+
+.reject button {
+  cursor: pointer;
+
+  &:hover {
+    color: #548ef0;
+  }
+}

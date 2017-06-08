@@ -9,16 +9,16 @@ import Points from 'components/Points';
 
 import InviteAcceptForm from 'containers/forms/InviteAcceptForm';
 
-import { onSubmit } from './redux';
+import { onSubmit, onReject } from './redux';
 
 import styles from './styles.scss';
 
 @withRouter
 @withStyles(styles)
-@connect(null, { onSubmit })
+@connect(null, { onSubmit, onReject })
 export default class SignUpStep2Page extends React.Component {
   render() {
-    const { onSubmit, location } = this.props;
+    const { onSubmit, onReject, location } = this.props;
 
     return (
       <section className={styles.main} id="sign-up-page">
@@ -34,6 +34,9 @@ export default class SignUpStep2Page extends React.Component {
 
           <div className={styles.form}>
             <InviteAcceptForm onSubmit={() => onSubmit(location.query.invite)} />
+          </div>
+          <div className={styles.reject}>
+            <button onClick={() => onReject(location.query.invite)}>Відхилити запрошення</button>
           </div>
         </article>
       </section>
