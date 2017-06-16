@@ -140,10 +140,10 @@ export default class AcceptPage extends React.Component {
           </div>
           <div className={styles.links}>
             <div>
-              <Button to="/conditions" theme="link">Угода користувача</Button>
+              <Button rel="noopener noreferrer" target="__blank" to="https://ti-ukraine.org/news/rehlament-funktsionuvannia-pilotnoho-proektu-elektronnoi-systemy-okhorony-zdorov-ia/" theme="link">Угода користувача</Button>
             </div>
             <div>
-              <Button to="/conditions" theme="link">Умови використання</Button>
+              <Button rel="noopener noreferrer" target="__blank" to="https://ti-ukraine.org/news/rehlament-funktsionuvannia-pilotnoho-proektu-elektronnoi-systemy-okhorony-zdorov-ia/" theme="link">Умови використання</Button>
             </div>
           </div>
         </footer>
