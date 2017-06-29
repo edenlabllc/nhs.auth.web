@@ -7,9 +7,9 @@ cache:
   - node_modules
 env:
   global:
-  - RELEASE_BRANCH="master"
+  - RELEASE_BRANCH="master v0.1"
   - DOCKER_HUB_ACCOUNT="nebo15"
-  - MAIN_BRANCHES="master develop"
+  - MAIN_BRANCHES="master develop v0.1"
   # DOCKER_USERNAME DOCKER_PASSWORD
   - secure: WUFVz4msoN5X9hJ/gCx9JK3tqzrYXmEz28sQAoQYdNVBYmdoJM7TgXE7YjcvpHm6Lp9guLFxGA1YngvgP15LIT94NK0lAEo9n5T2PbCQj8NrFQg/hZ+ZIXpI2UmJgA1vASApKyG1xiDsikD2zHLIjJQhLl5IZahsylDRiHdMToXuY7RCoqejxMot0StNigENTWTGOgat/05T/ElTmO7OVYvEG/b944WRoNIBH9bp6FUU2vkkiorXeEY+LiMa33A/jpxAZjxa3zhTClOBb87ncm2IXwNXb8iDbm5nb+zBoBRmndJI4Vlr+TPvggWfbhP8jsGuyCpyShOQNbrIpZIqPdCpgErOwN2pRwwgFRHVcsFjS6o45UN52q1QhBonRoIYXD/IQdsl0xH7fyRwZEtmlMpUkcPj1wutOrli5B1gg4IP1b3qkozv6JWu2DWS52rnVDfj5xZhC0i8lUsB/fEzzWFNPxRH99KlcbNxsKr0/bf0QfuRAsHypoDcxKSsaaGbr3xzvlLNYOiam2gZQSgHoiHJShYIF4xqFbl9Z89yUNhA2POxmKz6lR5fNFmCCZhYbWEv8vDaXZ6joMMWY0Hwvz04+0kc5AufiyEWe8zxbAoS9xvaMNnlHFR5MrPaJCeZioBcDpMIlsh3Rh4Me6+1/Gp33fyS7tHwLtztKJcr/6A=
   # GITHUB_TOKEN

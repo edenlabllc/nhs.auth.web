@@ -5,7 +5,7 @@ import { client } from 'schemas';
 import { invoke } from './api';
 
 export const fetchClientById = id => invoke({
-  endpoint: `${AUTH_URL}/admin/clients/${id}`,
+  endpoint: `${AUTH_URL}/admin/clients/${id}/details`,
   method: 'GET',
   types: ['client/FETCH_CLIENT_REQUEST', {
     type: 'client/FETCH_CLIENT_SUCCESS',

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import withStyles from 'withStyles';
-import nl2br from 'react-nl2br';
 import { withRouter } from 'react-router';
 
 import { H1 } from 'components/Title';
@@ -28,9 +27,10 @@ export default class SignUpStep2Page extends React.Component {
           <Points count={2} active={1} />
         </header>
         <article className={styles.content}>
-          <p>{
-            nl2br('Приймаючи запрошення на роботу в системі eHealth ви також погоджуєтесь з положеннями Регламенту функціонування системи')
-          }</p>
+          <p>
+            Приймаючи запрошення на роботу в системі eHealth ви також <br />
+            погоджуєтесь з положеннями <a rel="noopener noreferrer" target="__blank" href="https://ti-ukraine.org/news/rehlament-funktsionuvannia-pilotnoho-proektu-elektronnoi-systemy-okhorony-zdorov-ia/">Регламенту функціонування системи</a>
+          </p>
 
           <div className={styles.form}>
             <InviteAcceptForm onSubmit={() => onSubmit(location.query.invite)} />

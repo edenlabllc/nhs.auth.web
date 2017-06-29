@@ -14,7 +14,7 @@ REPO_URL="https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git";
 git remote add upstream $REPO_URL
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-  if [ "$TRAVIS_BRANCH" == "$RELEASE_BRANCH" ]; then
+  if [[ "$RELEASE_BRANCH" =~ "$TRAVIS_BRANCH" ]]; then
     echo "Release docker container"
     ./bin/release.sh -a $DOCKER_HUB_ACCOUNT -t $TRAVIS_BRANCH -l;
   fi;
