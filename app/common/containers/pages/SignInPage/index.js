@@ -16,7 +16,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class SignInPage extends React.Component {
   render() {
-    const { onSubmit } = this.props;
+    const { onSubmit, location } = this.props;
 
     return (
       <section className={styles.main} id="sign-in-page">
@@ -24,7 +24,12 @@ export default class SignInPage extends React.Component {
           <H1>ВХІД до eHealth</H1>
         </header>
         <article className={styles.form}>
-          <SignInForm onSubmit={onSubmit} />
+          <SignInForm
+            onSubmit={onSubmit}
+            initialValues={{
+              email: location.query.email,
+            }}
+          />
         </article>
       </section>
     );
