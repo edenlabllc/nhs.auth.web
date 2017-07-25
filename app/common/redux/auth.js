@@ -16,7 +16,6 @@ export const createSessionToken = body => invoke({
   },
 });
 
-
 export const fetchSessionToken = token => invoke({
   endpoint: `${AUTH_URL}/admin/tokens/${token}/verify`,
   method: 'GET',
