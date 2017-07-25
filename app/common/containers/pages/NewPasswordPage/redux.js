@@ -1,5 +1,5 @@
 import { SubmissionError } from 'redux-form';
-import { push } from 'react-router';
+import { push } from 'react-router-redux';
 import { newPasswordRequest } from 'redux/password';
 
 
