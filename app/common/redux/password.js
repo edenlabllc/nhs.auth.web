@@ -1,7 +1,7 @@
 import { AUTH_URL } from 'config';
 import { invoke } from './api';
 
-export const passwordRecoveryRequest = body => invoke({
+export const passwordRecoveryRequest = email => invoke({
   endpoint: `${AUTH_URL}/api/credentials_recovery_requests`,
   method: 'POST',
   types: ['auth/CREATE_PASSWORD_RECOVERY_REQUEST', {
@@ -11,7 +11,9 @@ export const passwordRecoveryRequest = body => invoke({
     ),
   }, 'auth/CREATE_PASSWORD_RECOVERY_FAILURE'],
   body: {
-    credentials_recovery_request: body,
+    credentials_recovery_request: {
+      email,
+    },
   },
 });
 

@@ -54,7 +54,7 @@ export default class ResetPasswordPage extends React.Component {
           </div>
           <ButtonsGroup>
             <Button color="blue" size="small" onClick={() => this.setState({ isSend: false })}>Назад</Button>
-            <Button theme="link" onClick={() => onSubmit(this.state.email)}>Надіслати повторно</Button>
+            <Button theme="link" onClick={() => onSubmit({ email: this.state.email })}>Надіслати повторно</Button>
           </ButtonsGroup>
         </div>
         )}
