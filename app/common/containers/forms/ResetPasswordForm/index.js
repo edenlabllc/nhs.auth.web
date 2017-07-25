@@ -3,7 +3,7 @@ import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
 
 import FieldInput from 'components/reduxForm/FieldInput';
-import Button from 'components/Button';
+import Button, { ButtonsGroup } from 'components/Button';
 
 import { reduxFormValidate } from 'react-nebo15-validate';
 
@@ -32,11 +32,14 @@ export default class ResetPasswordForm extends React.Component {
             component={FieldInput}
           />
         </div>
-        <div>
+        <ButtonsGroup>
           <Button disabled={submitting} type="submit" color="blue">
             далі
           </Button>
-        </div>
+          <Button disabled={submitting} theme="link" to="/sign-in">
+            Назад
+          </Button>
+        </ButtonsGroup>
       </form>
     );
   }
