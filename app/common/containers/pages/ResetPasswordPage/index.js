@@ -26,6 +26,7 @@ export default class ResetPasswordPage extends React.Component {
     this.setState({
       isSend: false,
       email: '',
+      timer: false,
     });
   }
 
@@ -53,8 +54,19 @@ export default class ResetPasswordPage extends React.Component {
             <H3>На ваш email було надісладно листа для відновлення паролю</H3>
           </div>
           <ButtonsGroup>
-            <Button color="blue" size="small" onClick={() => this.setState({ isSend: false })}>Назад</Button>
-            <Button theme="link" onClick={() => onSubmit({ email: this.state.email })}>Надіслати повторно</Button>
+            <Button color="blue" size="small" to="/sign-in">Повернутися до входу</Button>
+            <Button
+              theme="link"
+              disabled={this.state.timer}
+              onClick={() => onSubmit({ email: this.state.email })
+                .then(() => {
+                  this.setState({ timer: true });
+                  setTimeout(() => this.setState({ timer: false }), 10000);
+                })
+              }
+            >
+              Надіслати повторно (через 10 сек)
+            </Button>
           </ButtonsGroup>
         </div>
         )}

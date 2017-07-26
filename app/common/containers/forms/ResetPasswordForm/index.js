@@ -36,7 +36,7 @@ export default class ResetPasswordForm extends React.Component {
           <Button disabled={submitting} type="submit" color="blue">
             далі
           </Button>
-          <Button disabled={submitting} theme="link" to="/sign-in">
+          <Button disabled={submitting} to="/sign-in">
             Назад
           </Button>
         </ButtonsGroup>
