@@ -80,7 +80,7 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
             </Route>
             <Route path="sign-in" component={SignInPage} />
             <Route path="reset" component={ResetPasswordPage} />
-            <Route path="credentials_recovery_requests/:id/actions/reset_password/" component={NewPasswordPage} />
+            <Route path="reset/:id" component={NewPasswordPage} />
             <Route onEnter={requireAuth}>
               <Route path="accept" component={AcceptPage} />
             </Route>

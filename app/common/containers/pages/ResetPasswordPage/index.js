@@ -17,17 +17,33 @@ import styles from './styles.scss';
 @withStyles(styles)
 @connect(null, { onSubmit })
 export default class ResetPasswordPage extends React.Component {
-  state = {
-    isSend: false,
-    email: '',
-  };
+  constructor(props) {
+    super(props);
+    this.onClickResend = this.onClickResend.bind(this);
+    this.state = {
+      isSend: false,
+      email: '',
+      timer: '',
+    };
+    this.interval = null;
+  }
 
   componentWillUnmount() {
     this.setState({
       isSend: false,
       email: '',
-      timer: false,
     });
+    clearInterval(this.interval);
+  }
+
+  onClickResend() {
+    this.interval = setInterval(() => {
+      this.state.timer > 1 ?
+        this.setState({ timer: this.state.timer - 1 })
+        : this.setState({ timer: 0 });
+
+      if (this.state.timer === 0) clearInterval(this.interval);
+    }, 1000);
   }
 
   render() {
@@ -54,18 +70,18 @@ export default class ResetPasswordPage extends React.Component {
             <H3>На ваш email було надісладно листа для відновлення паролю</H3>
           </div>
           <ButtonsGroup>
-            <Button color="blue" size="small" to="/sign-in">Повернутися до входу</Button>
+            <Button color="blue" to="/sign-in">Повернутися до входу</Button>
             <Button
               theme="link"
-              disabled={this.state.timer}
+              disabled={this.state.timer > 0}
               onClick={() => onSubmit({ email: this.state.email })
                 .then(() => {
-                  this.setState({ timer: true });
-                  setTimeout(() => this.setState({ timer: false }), 10000);
+                  this.setState({ timer: 10 });
+                  return this.onClickResend();
                 })
               }
             >
-              Надіслати повторно (через 10 сек)
+              {this.state.timer ? `Надіслати повторно через ${this.state.timer} сек` : 'Надіслати повторно'}
             </Button>
           </ButtonsGroup>
         </div>
