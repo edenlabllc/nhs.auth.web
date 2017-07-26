@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import withStyles from 'withStyles';
 import { withRouter } from 'react-router';
 
-import { H1 } from 'components/Title';
+import { H1, H3 } from 'components/Title';
+import Button from 'components/Button';
 
 import NewPasswordForm from 'containers/forms/NewPasswordForm';
 
@@ -15,6 +16,10 @@ import styles from './styles.scss';
 @withStyles(styles)
 @connect(null, { onSubmit })
 export default class NewPasswordPage extends React.Component {
+  state = {
+    updatePassword: false,
+  };
+
   render() {
     const { onSubmit } = this.props;
 
@@ -24,9 +29,21 @@ export default class NewPasswordPage extends React.Component {
           <H1>Сторінка відновлення паролю до eHealth</H1>
         </header>
         <article className={styles.form}>
-          <NewPasswordForm
-            onSubmit={v => onSubmit(v, this.props)}
-          />
+          {
+            !this.state.updatePassword ? (
+              <NewPasswordForm
+                onSubmit={v => onSubmit(v, this.props).then(() =>
+                  this.setState({ updatePassword: true }))}
+              />
+            ) : (
+              <div>
+                <H3>Пароль успішно оновлено</H3>
+                <div className={styles.description}>
+                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
+                </div>
+              </div>
+            )
+          }
         </article>
       </section>
     );

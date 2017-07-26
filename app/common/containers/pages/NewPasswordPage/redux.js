@@ -1,7 +1,5 @@
 import { SubmissionError } from 'redux-form';
-import { push } from 'react-router-redux';
 import { newPasswordRequest } from 'redux/password';
-
 
 export const onSubmit = (values, props) => (dispatch) => {
   if (values.password !== values.confirm_password) {
@@ -20,7 +18,6 @@ export const onSubmit = (values, props) => (dispatch) => {
           },
         });
       }
-      return dispatch(push('/sign-in'));
+      return action;
     });
 };
-
