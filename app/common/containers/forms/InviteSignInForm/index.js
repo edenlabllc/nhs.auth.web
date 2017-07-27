@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 
 import FieldInput from 'components/reduxForm/FieldInput';
 
-import Button from 'components/Button';
+import Button, { ButtonsGroup } from 'components/Button';
 import { H1 } from 'components/Title';
 
 import { reduxFormValidate } from 'react-nebo15-validate';
@@ -40,10 +40,15 @@ export default class InviteSignInForm extends React.Component {
             component={FieldInput}
           />
         </div>
-        <div>
-          <Button disabled={submitting} type="submit" color="blue">
-            далі
-          </Button>
+        <div className={styles.btns}>
+          <ButtonsGroup>
+            <Button disabled={submitting} type="submit" color="blue">
+              далі
+            </Button>
+            <Button disabled={submitting} theme="link" to="/reset">
+              Забули пароль?
+            </Button>
+          </ButtonsGroup>
         </div>
       </form>
     );

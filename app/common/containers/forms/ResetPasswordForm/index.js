@@ -11,35 +11,33 @@ import styles from './styles.scss';
 
 @withStyles(styles)
 @reduxForm({
-  form: 'sign-in-form',
+  form: 'reset-password-form',
   validate: reduxFormValidate({
     email: {
       required: true,
       email: true,
     },
-    password: {
-      required: true,
-    },
   }),
 })
-export default class SignInForm extends React.Component {
+export default class ResetPasswordForm extends React.Component {
   render() {
     const { handleSubmit, submitting } = this.props;
 
     return (
       <form className={styles.main} onSubmit={handleSubmit}>
         <div>
-          <Field placeholder="E-mail" name="email" component={FieldInput} />
-        </div>
-        <div>
-          <Field type="password" placeholder="Пароль" name="password" component={FieldInput} />
+          <Field
+            placeholder="Введіть адрес своєї електронної пошти"
+            name="email"
+            component={FieldInput}
+          />
         </div>
         <ButtonsGroup>
           <Button disabled={submitting} type="submit" color="blue">
             далі
           </Button>
-          <Button disabled={submitting} theme="link" to="/reset">
-            Забули пароль?
+          <Button to="/sign-in">
+            Назад
           </Button>
         </ButtonsGroup>
       </form>
