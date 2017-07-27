@@ -120,7 +120,7 @@ export default class AcceptPage extends React.Component {
         <header className={styles.header}>
           Ви даєте доступ додатку <b>{client.name}</b> на наступні дії:
           <ul className={styles.list}>
-            { scope.split(',').map(i => <li key={i}>• <DictionaryValue dictionary="SCOPES" value={i} /></li>)}
+            { scope.split(',').split(' ').map(i => <li key={i}>• <DictionaryValue dictionary="SCOPES" value={i} /></li>)}
           </ul>
         </header>
         <article className={styles.content}>
