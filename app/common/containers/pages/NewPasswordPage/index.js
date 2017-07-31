@@ -66,7 +66,7 @@ export default class NewPasswordPage extends React.Component {
           {
             this.state.alreadyUsed && (
               <div>
-                <H3>Упс, хтось вже скористався цією лінкою</H3>
+                <H3>Дана ссилка відновлення на відновлення не дійсна</H3>
                 <div className={styles.description}>
                   <Button color="blue" to="/sign-in">Повернутися до входу</Button>
                 </div>
