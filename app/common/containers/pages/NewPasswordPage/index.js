@@ -18,6 +18,8 @@ import styles from './styles.scss';
 export default class NewPasswordPage extends React.Component {
   state = {
     updatePassword: false,
+    alreadyUsed: false,
+    tokenExpired: false,
   };
 
   render() {
@@ -30,14 +32,41 @@ export default class NewPasswordPage extends React.Component {
         </header>
         <article className={styles.form}>
           {
-            !this.state.updatePassword ? (
+            !this.state.updatePassword && (
               <NewPasswordForm
-                onSubmit={v => onSubmit(v, this.props).then(() =>
-                  this.setState({ updatePassword: true }))}
+                onSubmit={v => onSubmit(v, this.props).then((code) => {
+                  if (code === 422) {
+                    return this.setState({ tokenExpired: true, updatePassword: true });
+                  }
+                  if (code === 404) {
+                    return this.setState({ alreadyUsed: true, updatePassword: true });
+                  }
+                  return this.setState({ updatePassword: true });
+                })}
               />
-            ) : (
+            )
+          }
+          {
+            this.state.updatePassword && !this.state.tokenExpired && !this.state.alreadyUsed && (
               <div>
                 <H3>Пароль успішно оновлено</H3>
+                <div className={styles.description}>
+                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
+                </div>
+              </div>
+            )
+          }
+          {
+            this.state.tokenExpired && (
+              <div className={styles.description}>
+                <Button color="blue" to="/sign-in">Вийшов час дії токену</Button>
+              </div>
+            )
+          }
+          {
+            this.state.alreadyUsed && (
+              <div>
+                <H3>Упс, хтось вже скористався цією лінкою</H3>
                 <div className={styles.description}>
                   <Button color="blue" to="/sign-in">Повернутися до входу</Button>
                 </div>

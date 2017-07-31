@@ -6,7 +6,7 @@ export const onSubmit = ({ email }) => dispatch =>
     if (action.error) {
       throw new SubmissionError({
         email: {
-          accountPasswordMismatch: true,
+          accountEmailMismatch: true,
         },
       });
     }
