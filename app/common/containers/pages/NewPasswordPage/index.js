@@ -58,15 +58,18 @@ export default class NewPasswordPage extends React.Component {
           }
           {
             this.state.tokenExpired && (
-              <div className={styles.description}>
-                <Button color="blue" to="/sign-in">Вийшов час дії токену</Button>
+              <div>
+                <H3>Вийшов час дії токену</H3>
+                <div className={styles.description}>
+                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
+                </div>
               </div>
             )
           }
           {
             this.state.alreadyUsed && (
               <div>
-                <H3>Дана ссилка відновлення на відновлення не дійсна</H3>
+                <H3>Дана ссилка на відновлення паролю не дійсна</H3>
                 <div className={styles.description}>
                   <Button color="blue" to="/sign-in">Повернутися до входу</Button>
                 </div>
