@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2017-07-31 14:46+0300\n"
-"PO-Revision-Date: 2017-07-31 14:46+0300\n"
+"POT-Creation-Date: 2017-07-31 18:45+0300\n"
+"PO-Revision-Date: 2017-07-31 18:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -52,9 +52,6 @@ msgstr "Невірний email або пароль"
 msgid "Account, password combination is mismatch"
 msgstr "Невірний email або пароль"
 
-msgid "Account, email is mismatch"
-msgstr "Користувача з таким email не існує"
-
 msgid "Yes"
 msgstr "Так"
 
@@ -85,8 +82,14 @@ msgstr "Конфігурація системи"
 msgid "Documentation"
 msgstr "Документація"
 
+msgid "Email does register"
+msgstr "Користувача з таким email не існує"
+
 msgid "All Rights Recerved"
 msgstr "Всі права захищені"
+
+#~ msgid "Account, email is mismatch"
+#~ msgstr "Користувача з таким email не існує"
 
 #~ msgid "Passwords is not equal"
 #~ msgstr "Паролі не співпадають"

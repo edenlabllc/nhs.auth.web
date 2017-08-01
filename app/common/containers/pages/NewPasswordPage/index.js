@@ -17,7 +17,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class NewPasswordPage extends React.Component {
   state = {
-    updatePassword: false,
+    submitted: false,
     alreadyUsed: false,
     tokenExpired: false,
   };
@@ -32,22 +32,22 @@ export default class NewPasswordPage extends React.Component {
         </header>
         <article className={styles.form}>
           {
-            !this.state.updatePassword && (
+            !this.state.submitted && (
               <NewPasswordForm
                 onSubmit={v => onSubmit(v, this.props).then((code) => {
                   if (code === 422) {
-                    return this.setState({ tokenExpired: true, updatePassword: true });
+                    return this.setState({ tokenExpired: true, submitted: true });
                   }
                   if (code === 404) {
-                    return this.setState({ alreadyUsed: true, updatePassword: true });
+                    return this.setState({ alreadyUsed: true, submitted: true });
                   }
-                  return this.setState({ updatePassword: true });
+                  return this.setState({ submitted: true });
                 })}
               />
             )
           }
           {
-            this.state.updatePassword && !this.state.tokenExpired && !this.state.alreadyUsed && (
+            this.state.submitted && !this.state.tokenExpired && !this.state.alreadyUsed && (
               <div>
                 <H3>Пароль успішно оновлено</H3>
                 <div className={styles.description}>
