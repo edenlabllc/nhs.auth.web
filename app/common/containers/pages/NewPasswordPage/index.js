@@ -21,23 +21,21 @@ export default class NewPasswordPage extends React.Component {
     this.state = {
       code: false,
     };
-    this.onAction = this.onAction.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  componentWillUnmount() {
-    this.setState({ code: false });
+  onSubmit(v, props) {
+    this.props.onSubmit(v, props).then((action) => {
+      if (action.error) {
+        return this.setState({
+          code: action.payload.status,
+        });
+      }
+      return this.setState({ code: 200 });
+    });
   }
-  onAction(action) {
-    if (action.error) {
-      return this.setState({
-        code: action.payload.status,
-      });
-    }
-    return this.setState({ code: 200 });
-  }
+
 
   render() {
-    const { onSubmit } = this.props;
-
     return (
       <section className={styles.main} id="sign-in-page">
         <header className={styles.header}>
@@ -47,7 +45,7 @@ export default class NewPasswordPage extends React.Component {
           {
             !this.state.code && (
               <NewPasswordForm
-                onSubmit={v => onSubmit(v, this.props).then(action => this.onAction(action))}
+                onSubmit={v => this.onSubmit(v, this.props)}
               />
             )
           }
