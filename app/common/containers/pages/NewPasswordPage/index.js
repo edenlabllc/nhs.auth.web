@@ -68,6 +68,19 @@ export default class NewPasswordPage extends React.Component {
             )
           }
           {
+            this.state.code === 400 && (
+              <div>
+                <H3>Помилка коду відновлення</H3>
+                <div className={styles.description}>
+                  Спробуйте перейти за посиланням у листі заново.
+                </div>
+                <div className={styles.description}>
+                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
+                </div>
+              </div>
+            )
+          }
+          {
             this.state.code === 404 && (
               <div>
                 <H3>Дана ссилка на відновлення паролю не дійсна</H3>
