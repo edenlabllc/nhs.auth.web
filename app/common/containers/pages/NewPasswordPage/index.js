@@ -23,8 +23,8 @@ export default class NewPasswordPage extends React.Component {
     };
     this.onSubmit = this.onSubmit.bind(this);
   }
-  onSubmit(v, props) {
-    this.props.onSubmit(v, props).then((action) => {
+  onSubmit(values) {
+    return this.props.onSubmit(values, this.props).then((action) => {
       if (action.error) {
         return this.setState({
           code: action.payload.status,
@@ -44,9 +44,7 @@ export default class NewPasswordPage extends React.Component {
         <article className={styles.form}>
           {
             !this.state.code && (
-              <NewPasswordForm
-                onSubmit={v => this.onSubmit(v, this.props)}
-              />
+              <NewPasswordForm onSubmit={this.onSubmit} />
             )
           }
           {
