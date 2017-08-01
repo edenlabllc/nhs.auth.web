@@ -16,9 +16,24 @@ import styles from './styles.scss';
 @withStyles(styles)
 @connect(null, { onSubmit })
 export default class NewPasswordPage extends React.Component {
-  state = {
-    code: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      code: false,
+    };
+    this.onAction = this.onAction.bind(this);
+  }
+  componentWillUnmount() {
+    this.setState({ code: false });
+  }
+  onAction(action) {
+    if (action.error) {
+      return this.setState({
+        code: action.payload.status,
+      });
+    }
+    return this.setState({ code: 200 });
+  }
 
   render() {
     const { onSubmit } = this.props;
@@ -32,7 +47,7 @@ export default class NewPasswordPage extends React.Component {
           {
             !this.state.code && (
               <NewPasswordForm
-                onSubmit={v => onSubmit(v, this.props).then(code => this.setState({ code }))}
+                onSubmit={v => onSubmit(v, this.props).then(action => this.onAction(action))}
               />
             )
           }
