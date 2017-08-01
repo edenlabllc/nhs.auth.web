@@ -9,15 +9,5 @@ export const onSubmit = (values, props) => (dispatch) => {
       },
     });
   }
-  return dispatch(newPasswordRequest(props.params.id, { password: values.password }))
-    .then((action) => {
-      if (action.error) {
-        throw new SubmissionError({
-          email: {
-            accountPasswordMismatch: true,
-          },
-        });
-      }
-      return action;
-    });
+  return dispatch(newPasswordRequest(props.params.id, { password: values.password }));
 };

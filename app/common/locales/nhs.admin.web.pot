@@ -6,8 +6,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2017-07-25 14:05+0300\n"
-"PO-Revision-Date: 2017-07-25T11:04:45.647Z\n"
+"POT-Creation-Date: 2017-07-31 18:45+0300\n"
+"PO-Revision-Date: 2017-07-31T15:42:45.834Z\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.2\n"
@@ -51,9 +51,6 @@ msgstr ""
 msgid "Account, password combination is mismatch"
 msgstr ""
 
-msgid "Passwords is not equal"
-msgstr ""
-
 msgid "Yes"
 msgstr ""
 
@@ -82,6 +79,9 @@ msgid "System configuration"
 msgstr ""
 
 msgid "Documentation"
+msgstr ""
+
+msgid "Email does register"
 msgstr ""
 
 msgid "All Rights Recerved"

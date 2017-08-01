@@ -16,13 +16,26 @@ import styles from './styles.scss';
 @withStyles(styles)
 @connect(null, { onSubmit })
 export default class NewPasswordPage extends React.Component {
-  state = {
-    updatePassword: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      code: false,
+    };
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  onSubmit(values) {
+    return this.props.onSubmit(values, this.props).then((action) => {
+      if (action.error) {
+        return this.setState({
+          code: action.payload.status,
+        });
+      }
+      return this.setState({ code: 200 });
+    });
+  }
+
 
   render() {
-    const { onSubmit } = this.props;
-
     return (
       <section className={styles.main} id="sign-in-page">
         <header className={styles.header}>
@@ -30,14 +43,47 @@ export default class NewPasswordPage extends React.Component {
         </header>
         <article className={styles.form}>
           {
-            !this.state.updatePassword ? (
-              <NewPasswordForm
-                onSubmit={v => onSubmit(v, this.props).then(() =>
-                  this.setState({ updatePassword: true }))}
-              />
-            ) : (
+            !this.state.code && (
+              <NewPasswordForm onSubmit={this.onSubmit} />
+            )
+          }
+          {
+            this.state.code === 200 && (
               <div>
                 <H3>Пароль успішно оновлено</H3>
+                <div className={styles.description}>
+                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
+                </div>
+              </div>
+            )
+          }
+          {
+            this.state.code === 422 && (
+              <div>
+                <H3>Вийшов час дії токену</H3>
+                <div className={styles.description}>
+                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
+                </div>
+              </div>
+            )
+          }
+          {
+            this.state.code === 400 && (
+              <div>
+                <H3>Помилка коду відновлення</H3>
+                <div className={styles.description}>
+                  Спробуйте перейти за посиланням у листі заново.
+                </div>
+                <div className={styles.description}>
+                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
+                </div>
+              </div>
+            )
+          }
+          {
+            this.state.code === 404 && (
+              <div>
+                <H3>Дана ссилка на відновлення паролю не дійсна</H3>
                 <div className={styles.description}>
                   <Button color="blue" to="/sign-in">Повернутися до входу</Button>
                 </div>

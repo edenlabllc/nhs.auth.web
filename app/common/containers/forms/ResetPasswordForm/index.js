@@ -1,14 +1,15 @@
 import React from 'react';
 import withStyles from 'withStyles';
+import { translate } from 'react-i18next';
 import { reduxForm, Field } from 'redux-form';
+import { ErrorMessage, reduxFormValidate } from 'react-nebo15-validate';
 
 import FieldInput from 'components/reduxForm/FieldInput';
 import Button, { ButtonsGroup } from 'components/Button';
 
-import { reduxFormValidate } from 'react-nebo15-validate';
-
 import styles from './styles.scss';
 
+@translate()
 @withStyles(styles)
 @reduxForm({
   form: 'reset-password-form',
@@ -21,7 +22,7 @@ import styles from './styles.scss';
 })
 export default class ResetPasswordForm extends React.Component {
   render() {
-    const { handleSubmit, submitting } = this.props;
+    const { handleSubmit, submitting, t } = this.props;
 
     return (
       <form className={styles.main} onSubmit={handleSubmit}>
@@ -30,7 +31,9 @@ export default class ResetPasswordForm extends React.Component {
             placeholder="Введіть адрес своєї електронної пошти"
             name="email"
             component={FieldInput}
-          />
+          >
+            <ErrorMessage when="accountPasswordMismatch">{t('Email does register')}</ErrorMessage>
+          </Field>
         </div>
         <ButtonsGroup>
           <Button disabled={submitting} type="submit" color="blue">
