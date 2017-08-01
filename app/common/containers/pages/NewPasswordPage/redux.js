@@ -10,5 +10,10 @@ export const onSubmit = (values, props) => (dispatch) => {
     });
   }
   return dispatch(newPasswordRequest(props.params.id, { password: values.password }))
-    .then(action => action.payload.status);
+    .then((action) => {
+      if (action.error) {
+        return action.payload.status;
+      }
+      return 200;
+    });
 };

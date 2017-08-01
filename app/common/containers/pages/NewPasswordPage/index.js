@@ -17,9 +17,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class NewPasswordPage extends React.Component {
   state = {
-    submitted: false,
-    alreadyUsed: false,
-    tokenExpired: false,
+    code: false,
   };
 
   render() {
@@ -32,22 +30,14 @@ export default class NewPasswordPage extends React.Component {
         </header>
         <article className={styles.form}>
           {
-            !this.state.submitted && (
+            !this.state.code && (
               <NewPasswordForm
-                onSubmit={v => onSubmit(v, this.props).then((code) => {
-                  if (code === 422) {
-                    return this.setState({ tokenExpired: true, submitted: true });
-                  }
-                  if (code === 404) {
-                    return this.setState({ alreadyUsed: true, submitted: true });
-                  }
-                  return this.setState({ submitted: true });
-                })}
+                onSubmit={v => onSubmit(v, this.props).then(code => this.setState({ code }))}
               />
             )
           }
           {
-            this.state.submitted && !this.state.tokenExpired && !this.state.alreadyUsed && (
+            this.state.code === 200 && (
               <div>
                 <H3>Пароль успішно оновлено</H3>
                 <div className={styles.description}>
@@ -57,7 +47,7 @@ export default class NewPasswordPage extends React.Component {
             )
           }
           {
-            this.state.tokenExpired && (
+            this.state.code === 422 && (
               <div>
                 <H3>Вийшов час дії токену</H3>
                 <div className={styles.description}>
@@ -67,7 +57,7 @@ export default class NewPasswordPage extends React.Component {
             )
           }
           {
-            this.state.alreadyUsed && (
+            this.state.code === 404 && (
               <div>
                 <H3>Дана ссилка на відновлення паролю не дійсна</H3>
                 <div className={styles.description}>
