@@ -2,6 +2,7 @@ import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
 import { createSessionToken } from 'redux/auth';
+import { fetchUserData } from 'redux/user';
 import { login } from 'redux/session';
 import { CLIENT_ID } from 'config';
 
@@ -12,7 +13,13 @@ dispatch(createSessionToken({
   password,
   client_id: CLIENT_ID,
   scope: 'app:authorize',
-})).then((action) => {
+}))
+.then((action) => {
+  if (action.error) return action;
+
+  dispatch(login(action.payload.value));
+  return dispatch(fetchUserData(action.payload.value));
+}).then((action) => {
   if (action.error) {
     throw new SubmissionError({
       email: {
@@ -24,7 +31,6 @@ dispatch(createSessionToken({
   const location = getLocation(state);
 
   return dispatch([
-    login(action.payload.value),
     push({
       ...location,
       pathname: '/accept',
