@@ -9,16 +9,22 @@ import DictionaryValue from 'components/DictionaryValue';
 
 import { fetchClientById } from 'redux/clients';
 import { authorize } from 'redux/auth';
+
 import { getClientById, getUser } from 'reducers';
 
+import { fetchScope } from './redux';
 import styles from './styles.scss';
 
 @provideHooks({
-  fetch: ({ dispatch, location: { query } }) => dispatch(fetchClientById(query.client_id)),
+  fetch: ({ dispatch, location: { query } }) => Promise.all([
+    dispatch(fetchClientById(query.client_id)),
+    dispatch(fetchScope(query.client_id)),
+  ]),
 })
 @withRouter
 @withStyles(styles)
 @connect((state, { location: { query } }) => ({
+  scope: query.scope || state.pages.AcceptPage.scope,
   client: getClientById(state, query.client_id),
   user: getUser(state),
 }), { authorize })
@@ -29,13 +35,13 @@ export default class AcceptPage extends React.Component {
   };
 
   approval() {
-    const { location: { query } } = this.props;
+    const { location: { query }, scope } = this.props;
 
     this.setState({ isLoading: true });
 
     this.props.authorize({
       clientId: query.client_id,
-      scope: query.scope,
+      scope,
       redirectUri: query.redirect_uri,
     }).then(({ payload, error }) => {
       if (error) {
@@ -107,7 +113,8 @@ export default class AcceptPage extends React.Component {
     const {
       client,
       user,
-      location: { query: { client_id, scope, redirect_uri } },
+      scope,
+      location: { query: { client_id, redirect_uri } },
     } = this.props;
 
     if (!client_id) return this.renderNotFoundClientId();
