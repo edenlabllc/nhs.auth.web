@@ -15,7 +15,7 @@ export const onSubmitSignUp = (employeeRequestId, email, password) => (dispatch,
       email,
       password,
       client_id: CLIENT_ID,
-      scope: 'employee_request:approve',
+      scope: 'employee_request:approve employee_request:reject',
     })).then((action) => {
       if (action.error) return new Error(action.error);
 
@@ -39,7 +39,7 @@ dispatch(createSessionToken({
   email,
   password,
   client_id: CLIENT_ID,
-  scope: 'employee_request:approve',
+  scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
     throw new SubmissionError({
