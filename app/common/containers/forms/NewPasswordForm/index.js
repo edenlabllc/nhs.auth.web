@@ -15,9 +15,11 @@ import styles from './styles.scss';
   validate: reduxFormValidate({
     password: {
       required: true,
+      minLength: 8,
     },
     confirm_password: {
       required: true,
+      minLength: 8,
       confirmation: 'password',
     },
   }),
