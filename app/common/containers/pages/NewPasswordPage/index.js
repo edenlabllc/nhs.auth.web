@@ -34,7 +34,6 @@ export default class NewPasswordPage extends React.Component {
     });
   }
 
-
   render() {
     return (
       <section className={styles.main} id="sign-in-page">
@@ -61,9 +60,6 @@ export default class NewPasswordPage extends React.Component {
             this.state.code === 422 && (
               <div>
                 <H3>Вийшов час дії токену</H3>
-                <div className={styles.description}>
-                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
-                </div>
               </div>
             )
           }
@@ -84,9 +80,6 @@ export default class NewPasswordPage extends React.Component {
             this.state.code === 404 && (
               <div>
                 <H3>Дана ссилка на відновлення паролю не дійсна</H3>
-                <div className={styles.description}>
-                  <Button color="blue" to="/sign-in">Повернутися до входу</Button>
-                </div>
               </div>
             )
           }

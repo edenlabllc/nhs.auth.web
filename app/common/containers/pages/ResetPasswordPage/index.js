@@ -70,7 +70,6 @@ export default class ResetPasswordPage extends React.Component {
             <H3>На ваш email було надісладно листа для відновлення паролю</H3>
           </div>
           <ButtonsGroup>
-            <Button color="blue" to="/sign-in">Повернутися до входу</Button>
             <Button
               theme="link"
               disabled={this.state.timer > 0}
