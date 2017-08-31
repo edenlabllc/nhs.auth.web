@@ -39,6 +39,5 @@ script:
   --since 5h; exit 1; fi;
 - npm run nightwatch -- -e travis || travis_terminate 1
 - sleep 5
-after_success:
 - "./bin/ci/push.sh"
 - sudo ./bin/deploy.sh || travis_terminate 1
