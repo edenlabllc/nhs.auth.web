@@ -1,6 +1,6 @@
 {
   "name": "nhs.auth.web",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "description": "NHS AUTH UI",
   "repository": "https://github.com/Nebo15/nhs.auth.web.git",
   "scripts": {
