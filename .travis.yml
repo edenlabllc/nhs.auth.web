@@ -13,9 +13,9 @@ notifications:
 env:
   global:
   - Chart=fe
-  - RELEASE_BRANCH="master v0.1"
+  - RELEASE_BRANCH="master"
   - DOCKER_HUB_ACCOUNT="edenlabllc"
-  - MAIN_BRANCHES="master develop v0.1"
+  - MAIN_BRANCHES="master develop develop"
   # DOCKER_USERNAME DOCKER_PASSWORD
   - secure: "Iq+UX6Rlg7MGIPBOOBPEgLPjm8ZDnBUdAQEnXU7QItSWT5sjaB5s3nvuBboE2STwfSJAalrjnJDZo28wmWCcRPiIeCuODYqF7jxfBZhe+nDvXUozEfcC1PUwizh5LxIT7zcb3W943XQJ6iQAeq24KDM5AKHjV3mgLBwwql+ViC8H6dOP3ILkqiGnn1X+DikmV1ddceS4nrftAT2fIwYwuunWIMxUr/QoHn6XthoQTpigrHVYLAz4JVCaVAETFZnsmOJKfNcs7SoDLBmsNf3nkuLAuSJsRbRMftYAwc7xYLfjGuppeP0EldOxcshiPT7Wr/v1cMFgscKch2XuZ5JhnHcys4PV22e5oufveIX+DwTu0Y4WchyyLAV4DB/unGoCmD59mpJlNnt8XDuaZHkYCzBB/FgDnJ169uXeCDZm0xigOSvuVkctbv7SgL9pRk8IdLpkvDz1LBIORPqB96rV0vGGCfwMadsb6DGR/Movlfu6HP1Dp/TIcet8oiQa9sM0NPrgvKF3EAQbjKKqamYzgK8E1M+pu2+leQ1cLyAvEFrk1ogL38p/9PPmeXfz90qJVmr/JkLnbni14XMiSOhh6MfSG3EHJAuo4a5+57LbMr2zBO58AuxyXyPpiExNaMC1Y6hJmQfxvPdDuZQlOKFGq9b0nYAWX+YUoysBhlrrCzE="
   # GITHUB_TOKEN
@@ -29,9 +29,9 @@ before_install:
 script:
 - npm run test
 - npm run lint || travis_terminate 1
-- "./bin/version-increment.sh || travis_terminate 1" 
-- "./bin/build.sh || travis_terminate 1"
-- "./bin/start.sh || travis_terminate 1"
+- ./bin/version-increment.sh || travis_terminate 1
+- ./bin/build.sh || travis_terminate 1
+- ./bin/start.sh || travis_terminate 1
 - sleep 5
 - docker ps
 - RUNNING_CONTAINERS=`docker ps | wc -l`; if [ "${RUNNING_CONTAINERS//[[:space:]]/}"
@@ -39,5 +39,5 @@ script:
   --since 5h; exit 1; fi;
 - npm run nightwatch -- -e travis || travis_terminate 1
 - sleep 5
-- "./bin/ci/push.sh"
+- ./bin/ci/push.sh
 - sudo ./bin/deploy.sh || travis_terminate 1
