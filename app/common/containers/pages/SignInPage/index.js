@@ -21,7 +21,7 @@ export default class SignInPage extends React.Component {
     return (
       <section className={styles.main} id="sign-in-page">
         <header className={styles.header}>
-          <H1>ВХІД до eHealth</H1>
+          <H1>Вхід у систему eHealth</H1>
         </header>
         <article className={styles.form}>
           <SignInForm

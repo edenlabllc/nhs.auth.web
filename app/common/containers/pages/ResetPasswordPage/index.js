@@ -51,7 +51,7 @@ export default class ResetPasswordPage extends React.Component {
     return (
       <section className={styles.main} id="reset-password-in-page">
         <header className={styles.header}>
-          <H1>Сторінка відновлення паролю до eHealth</H1>
+          <H1>Відновлення паролю до системи eHealth</H1>
         </header>
         {
           !this.state.isSend && (
