@@ -27,7 +27,7 @@ export default class InviteSignInForm extends React.Component {
     return (
       <form className={styles.main} onSubmit={handleSubmit}>
         <div>
-          <H1>ВХІД з eHealth</H1>
+          <H1>Вхід у систему eHealth</H1>
         </div>
         <div>
           {email}
@@ -44,9 +44,6 @@ export default class InviteSignInForm extends React.Component {
           <ButtonsGroup>
             <Button disabled={submitting} type="submit" color="blue">
               далі
-            </Button>
-            <Button disabled={submitting} theme="link" to="/reset">
-              Забули пароль?
             </Button>
           </ButtonsGroup>
         </div>

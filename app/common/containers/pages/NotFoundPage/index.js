@@ -14,7 +14,7 @@ export default class NotFoundPage extends React.Component {
 
         <div className={styles.code}>404</div>
 
-        <H1 tag="h2">Сторінку не знайдено</H1>
+        <H1 tag="h2">От халепа! Сторінки, що ви шукаєте тут немає</H1>
 
         <footer className={styles.footer}>
           При виникненні питань, будь ласка, зверніться в <br />
