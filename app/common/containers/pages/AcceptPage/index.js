@@ -73,6 +73,18 @@ export default class AcceptPage extends React.Component {
       </section>
     );
   }
+  renderNotFoundClientRole() {
+    return (
+      <section className={styles.main} id="accept-page">
+        <header className={styles.header}>
+          <b>Помилка</b>
+        </header>
+        <article className={styles.content}>
+          <p>У даного користувача не має доступу</p>
+        </article>
+      </section>
+    );
+  }
   renderNotFoundClient() {
     return (
       <section className={styles.main} id="accept-page">
@@ -120,6 +132,7 @@ export default class AcceptPage extends React.Component {
     if (!client_id) return this.renderNotFoundClientId();
     if (!client) return this.renderNotFoundClient();
     if (!scope) return this.renderNotFoundScope();
+    if (scope === 'empty_roles') return this.renderNotFoundClientRole();
     if (!redirect_uri) return this.renderNotFoundRedirectUri();
 
     return (
