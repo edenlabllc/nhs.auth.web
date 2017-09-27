@@ -9,14 +9,20 @@ const setScope = createAction('AcceptPage/SET_SCOPE');
 export const fetchScope = clientId => dispatch =>
   dispatch(fromUserRoles.fetchRoles({ client_id: clientId }))
   .then((action) => {
-    if (action.error) return action;
+    if (action.error) {
+      return action;
+    }
 
-    const roles = Object.values(action.payload.entities.userRoles);
-    const scope = roles.reduce((prev, cur) => `${prev} ${cur.scope}`, '');
-    const scopeArr = uniqFn(scope.split(' ').filter(i => i));
+    if (Object.keys(action.payload.entities).length !== 0) {
+      const roles = Object.values(action.payload.entities.userRoles);
+      const scope = roles.reduce((prev, cur) => `${prev} ${cur.scope}`, '');
+      const scopeArr = uniqFn(scope.split(' ').filter(i => i));
+      dispatch(setScope(scopeArr.join(' ')));
+      return action;
+    }
 
-    dispatch(setScope(scopeArr.join(' ')));
-    return action;
+    const scope = 'empty_roles';
+    return dispatch(setScope(scope));
   });
 
 const scope = handleAction(setScope, (state, action) => action.payload, []);
