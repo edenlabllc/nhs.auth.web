@@ -1,12 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { provideHooks } from 'redial';
 import { SITEMAP_HOSTNAME } from 'config';
-import { fetchDictionaries } from 'redux/dictionaries';
 
-@provideHooks({
-  fetch: ({ dispatch }) => dispatch(fetchDictionaries({}, { useCache: true })),
-})
 export default class App extends React.Component {
   render() {
     const { children, location } = this.props;
