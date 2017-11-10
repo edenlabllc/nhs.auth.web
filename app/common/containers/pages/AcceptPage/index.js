@@ -9,6 +9,7 @@ import DictionaryValue from 'components/DictionaryValue';
 
 import { fetchClientById } from 'redux/clients';
 import { authorize } from 'redux/auth';
+import { fetchDictionaries } from 'redux/dictionaries';
 
 import { getClientById, getUser } from 'reducers';
 
@@ -17,6 +18,7 @@ import styles from './styles.scss';
 
 @provideHooks({
   fetch: ({ dispatch, location: { query } }) => Promise.all([
+    dispatch(fetchDictionaries({}, { useCache: true })),
     dispatch(fetchClientById(query.client_id)),
     dispatch(fetchScope(query.client_id)),
   ]),
