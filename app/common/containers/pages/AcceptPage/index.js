@@ -60,6 +60,7 @@ export default class AcceptPage extends React.Component {
         isLoading: false,
         error: null,
       });
+      console.log(payload.headers.get('location'));
       return window && (window.location = payload.headers.get('location'));
     });
   }
