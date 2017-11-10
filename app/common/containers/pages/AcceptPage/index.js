@@ -46,6 +46,7 @@ export default class AcceptPage extends React.Component {
       scope,
       redirectUri: query.redirect_uri,
     }).then(({ payload, error }) => {
+      console.log('debug: ', payload, error);
       if (error) {
         return this.setState({
           error: Object.entries(payload.response.error).map(([key, value]) => ({
