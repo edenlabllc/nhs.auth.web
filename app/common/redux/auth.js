@@ -33,10 +33,13 @@ export const authorize = ({ clientId, scope, redirectUri }) => invoke({
   types: ['auth/AUTHORIZE_REQUEST', {
     type: 'auth/AUTHORIZE_SUCCESS',
     payload: (action, state, res) => res.json().then(
-    json => ({
-      ...json,
-      headers: res.headers,
-    })),
+      (json) => {
+        console.log(res.headers, json);
+        return ({
+          ...json,
+          headers: res.headers,
+        });
+      }),
   }, 'auth/AUTHORIZE_FAILURE'],
   body: {
     app: {
