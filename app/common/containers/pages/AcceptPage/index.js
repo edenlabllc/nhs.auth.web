@@ -46,7 +46,6 @@ export default class AcceptPage extends React.Component {
       scope,
       redirectUri: query.redirect_uri,
     }).then(({ payload, error }) => {
-      console.log(payload, error);
       if (error) {
         return this.setState({
           error: Object.entries(payload.response.error).map(([key, value]) => ({
@@ -60,7 +59,6 @@ export default class AcceptPage extends React.Component {
         isLoading: false,
         error: null,
       });
-      console.log(payload.headers.get('location'));
       return window && (window.location = payload.headers.get('location'));
     });
   }
