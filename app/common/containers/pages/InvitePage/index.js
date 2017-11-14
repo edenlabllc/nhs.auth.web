@@ -26,7 +26,7 @@ const toArray = v => (!Array.isArray(v) ? [v] : v);
 @withRouter
 @withStyles(styles)
 @provideHooks({
-  fetch: ({ dispatch }) => dispatch(fetchDictionaries({}, { useCache: true })),
+  fetch: ({ dispatch }) => dispatch(fetchDictionaries()),
 })
 @connect((state, { location: { query } }) => ({
   request: getRequestById(state, query.invite),

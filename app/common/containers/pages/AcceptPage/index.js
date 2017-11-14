@@ -18,7 +18,7 @@ import styles from './styles.scss';
 
 @provideHooks({
   fetch: ({ dispatch, location: { query } }) => Promise.all([
-    dispatch(fetchDictionaries({}, { useCache: true })),
+    dispatch(fetchDictionaries({ name: 'SCOPES' })),
     dispatch(fetchClientById(query.client_id)),
     dispatch(fetchScope(query.client_id)),
   ]),

@@ -5,10 +5,9 @@ import { dictionary } from 'schemas';
 import { createUrl } from 'helpers/url';
 import { invoke } from './api';
 
-export const fetchDictionaries = (options, { useCache = false } = {}) => invoke({
+export const fetchDictionaries = options => invoke({
   endpoint: createUrl(`${API_URL}/api/dictionaries`, options),
   method: 'GET',
-  bailout: state => useCache && state.data.dictionaries,
   types: ['dictionaries/FETCH_DICTIONARIES_REQUEST', {
     type: 'dictionaries/FETCH_DICTIONARIES_SUCCESS',
     payload: (action, state, res) => res.json().then(
