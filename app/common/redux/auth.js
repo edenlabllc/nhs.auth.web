@@ -7,14 +7,57 @@ export const createSessionToken = body => invoke({
   method: 'POST',
   types: ['auth/CREATE_SESSION_TOKEN_REQUEST', {
     type: 'auth/CREATE_SESSION_TOKEN_SUCCESS',
-    payload: (action, state, res) => res.json().then(
+    meta: (action, state, res) =>
+      res.clone().json().then(json => json.urgent),
+    payload: (action, state, res) => res.clone().json().then(
       json => json.data
     ),
+
   }, 'auth/CREATE_SESSION_TOKEN_FAILURE'],
   body: {
     token: body,
   },
 });
+
+export const otpVerifyToken = code => invoke({
+  endpoint: `${AUTH_URL}/oauth/tokens`,
+  method: 'POST',
+  types: ['auth/OTP_VERIFY_TOKEN_REQUEST', {
+    type: 'auth/OTP_VERIFY_TOKEN_SUCCESS',
+    meta: (action, state, res) =>
+      res.clone().json().then(json => json.urgent),
+    payload: (action, state, res) => res.clone().json().then(
+      json => json.data
+    ),
+
+  }, 'auth/OTP_VERIFY_TOKEN_FAILURE'],
+  body: {
+    token: {
+      grant_type: 'authorize_2fa_access_token',
+      otp: code,
+    },
+  },
+}, { auth: true });
+
+export const otpResendToken = () => invoke({
+  endpoint: `${AUTH_URL}/oauth/tokens`,
+  method: 'POST',
+  types: ['auth/OTP_RESEND_TOKEN_REQUEST', {
+    type: 'auth/OTP_RESEND_TOKEN_SUCCESS',
+    meta: (action, state, res) =>
+      res.clone().json().then(json => json.urgent),
+    payload: (action, state, res) => res.clone().json().then(
+      json => json.data
+    ),
+
+  }, 'auth/OTP_RESEND_TOKEN_FAILURE'],
+  body: {
+    token: {
+      grant_type: 'refresh_2fa_access_token',
+    },
+  },
+}, { auth: true });
+
 
 export const fetchSessionToken = token => invoke({
   endpoint: `${AUTH_URL}/admin/tokens/${token}/verify`,

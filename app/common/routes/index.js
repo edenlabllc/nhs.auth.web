@@ -13,6 +13,7 @@ import InviteAcceptPage from 'containers/pages/InviteAcceptPage';
 import InviteSuccessPage from 'containers/pages/InviteSuccessPage';
 import InviteRejectPage from 'containers/pages/InviteRejectPage';
 import SignInPage from 'containers/pages/SignInPage';
+import OtpPage from 'containers/pages/OtpPage';
 import AcceptPage from 'containers/pages/AcceptPage';
 import ConditionPage from 'containers/pages/ConditionPage';
 
@@ -79,10 +80,12 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
               />
             </Route>
             <Route path="sign-in" component={SignInPage} />
+
             <Route path="reset" component={ResetPasswordPage} />
             <Route path="reset/:id" component={NewPasswordPage} />
             <Route onEnter={requireAuth}>
               <Route path="accept" component={AcceptPage} />
+              <Route path="otp-send" component={OtpPage} />
             </Route>
 
             <Route path="*" component={NotFoundPage} />

@@ -41,6 +41,10 @@ export default class SignInForm extends React.Component {
           <Button disabled={submitting} theme="link" to="/reset">
             Забули пароль?
           </Button>
+          <Button disabled={submitting} theme="link" to="/auth-factors">
+            Змінити додатковий фактор авторизації
+          </Button>
+
         </ButtonsGroup>
       </form>
     );

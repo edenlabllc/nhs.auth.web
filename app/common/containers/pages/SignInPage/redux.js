@@ -15,25 +15,71 @@ dispatch(createSessionToken({
   scope: 'app:authorize',
 }))
 .then((action) => {
-  if (action.error) return action;
-
-  dispatch(login(action.payload.value));
-  return dispatch(fetchUserData(action.payload.value));
-}).then((action) => {
+  console.log('action', action);
   if (action.error) {
-    throw new SubmissionError({
-      email: {
-        accountPasswordMismatch: true,
-      },
-    });
+    console.log('error');
+    if (action.payload.status === 401) {
+      console.log('401', action.payload.response.error.message);
+      if (action.payload.response.error.message === 'User blocked.') {
+        console.log('User blocked');
+        throw new SubmissionError({
+          email: {
+            userBlocked: true,
+          },
+        });
+      }
+      return action;
+    }
   }
-  const state = getState();
-  const location = getLocation(state);
+  const { next_step } = action.meta;
+  console.log('Saving token:', action.payload.value);
+  dispatch(login(action.payload.value));
 
-  return dispatch([
-    push({
-      ...location,
-      pathname: '/accept',
-    }),
-  ]);
+  switch (next_step) {
+    case 'REQUEST_APPS': {
+      return dispatch(fetchUserData(action.payload.value)).then((action) => {
+        if (action.error) {
+          throw new SubmissionError({
+            email: {
+              accountPasswordMismatch: true,
+            },
+          });
+        }
+        const state = getState();
+        const location = getLocation(state);
+
+        return dispatch(push({ ...location, pathname: '/accept' }));
+      });
+    }
+
+    case 'REQUEST_OTP': {
+      const state = getState();
+      const location = getLocation(state);
+      console.log('/opt-send');
+      return dispatch([
+        push({
+          ...location,
+          pathname: '/otp-send',
+        }),
+      ]);
+    }
+
+    case 'RESEND_OTP': {
+      throw new SubmissionError({
+        email: {
+          resentOtp: true,
+        },
+      });
+    }
+
+    case 'REQUEST_FACTOR':
+      // - REQUEST_FACTOR - go to separate process "request & approve factor"
+      return true;
+
+    default:
+      break;
+  }
+  return true;
 });
+
+export const onChangeFactor = () => {};
