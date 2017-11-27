@@ -17,11 +17,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class UpdateFactorSignInPage extends React.Component {
   render() {
-    const {
-      onSubmit = () => {},
-      location,
-      router,
-    } = this.props;
+    const { onSubmit = () => {}, location, router } = this.props;
 
     return (
       <section className={styles.main} id="sign-in-page">

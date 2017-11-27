@@ -7,7 +7,6 @@ export const onSubmit = ({ phone }) => (dispatch, getState) =>
   dispatch(initFactor(phone))
     .then((action) => {
       if (action.error) {
-        console.log('error', action);
         return action;
       }
 

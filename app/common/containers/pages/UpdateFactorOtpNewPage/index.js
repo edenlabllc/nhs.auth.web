@@ -13,9 +13,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class UpdateFactorOtpNewPage extends React.Component {
   render() {
-    const {
-      onSubmit = () => {},
-    } = this.props;
+    const { onSubmit = () => {} } = this.props;
 
     return (
       <section className={styles.main} id="otp-page">

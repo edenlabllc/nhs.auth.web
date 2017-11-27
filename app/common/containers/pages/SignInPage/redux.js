@@ -15,13 +15,9 @@ dispatch(createSessionToken({
   scope: 'app:authorize',
 }))
 .then((action) => {
-  console.log('action', action);
   if (action.error) {
-    console.log('error');
     if (action.payload.status === 401) {
-      console.log('401', action.payload.response.error.message);
       if (action.payload.response.error.message === 'User blocked.') {
-        console.log('User blocked');
         throw new SubmissionError({
           email: { userBlocked: true },
         });
@@ -30,7 +26,6 @@ dispatch(createSessionToken({
     }
   }
   const { next_step } = action.meta;
-  console.log('Saving token:', action.payload.value);
   dispatch(login(action.payload.value));
 
   switch (next_step) {

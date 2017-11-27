@@ -17,10 +17,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class SignInPage extends React.Component {
   render() {
-    const {
-      onSubmit = () => {},
-      location,
-    } = this.props;
+    const { onSubmit = () => {}, location } = this.props;
 
     return (
       <section className={styles.main} id="sign-in-page">

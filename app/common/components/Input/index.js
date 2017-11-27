@@ -60,7 +60,6 @@ export const Component = ({
     onBlur,
     onFocus,
   };
-  // inputProps && console.log('input', inputProps);
 
   return (<span>
     <label className={styles['label-wrapper']}>
