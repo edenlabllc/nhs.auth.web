@@ -72,5 +72,3 @@ dispatch(createSessionToken({
   }
   return true;
 });
-
-export const onChangeFactor = () => {};

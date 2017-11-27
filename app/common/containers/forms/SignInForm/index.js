@@ -5,7 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 import FieldInput from 'components/reduxForm/FieldInput';
 import Button, { ButtonsGroup } from 'components/Button';
 
-import { reduxFormValidate } from 'react-nebo15-validate';
+import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 
 import styles from './styles.scss';
 
@@ -29,7 +29,11 @@ export default class SignInForm extends React.Component {
     return (
       <form className={styles.main} onSubmit={handleSubmit}>
         <div>
-          <Field placeholder="E-mail" name="email" component={FieldInput} />
+          <Field placeholder="E-mail" name="email" component={FieldInput}>
+            <ErrorMessage when="notAllowed">
+              У вас немає доступу до даного функціоналу
+            </ErrorMessage>
+          </Field>
         </div>
         <div>
           <Field type="password" placeholder="Пароль" name="password" component={FieldInput} />
@@ -38,13 +42,6 @@ export default class SignInForm extends React.Component {
           <Button disabled={submitting} type="submit" color="blue">
             далі
           </Button>
-          <Button disabled={submitting} theme="link" to="/reset">
-            Забули пароль?
-          </Button>
-          <Button disabled={submitting} theme="link" to="/auth-factors">
-            Змінити додатковий фактор авторизації
-          </Button>
-
         </ButtonsGroup>
       </form>
     );

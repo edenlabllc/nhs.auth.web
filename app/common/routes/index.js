@@ -20,8 +20,16 @@ import ConditionPage from 'containers/pages/ConditionPage';
 import RequestFactorPage from 'containers/pages/RequestFactorPage';
 import RequestFactorOtpPage from 'containers/pages/RequestFactorOtpPage';
 
+
 import ResetPasswordPage from 'containers/pages/ResetPasswordPage';
 import NewPasswordPage from 'containers/pages/NewPasswordPage';
+
+
+import UpdateFactorSignInPage from 'containers/pages/UpdateFactorSignInPage';
+import UpdateOldFactorOtpPage from 'containers/pages/UpdateOldFactorOtpPage';
+import UpdateFactorNewPage from 'containers/pages/UpdateFactorNewPage';
+import UpdateFactorOtpNewPage from 'containers/pages/UpdateFactorOtpNewPage';
+import UpdateFactorSuccessPage from 'containers/pages/UpdateFactorSuccessPage';
 
 import NotFoundPage from 'containers/pages/NotFoundPage';
 
@@ -83,6 +91,7 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
               />
             </Route>
             <Route path="sign-in" component={SignInPage} />
+            <Route path="update-factor" component={UpdateFactorSignInPage} />
 
             <Route path="reset" component={ResetPasswordPage} />
             <Route path="reset/:id" component={NewPasswordPage} />
@@ -91,6 +100,11 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
               <Route path="otp-send" component={OtpPage} />
               <Route path="request-factor" component={RequestFactorPage} />
               <Route path="request-factor/approve" component={RequestFactorOtpPage} />
+
+              <Route path="update-factor/otp" component={UpdateOldFactorOtpPage} />
+              <Route path="update-factor/phone" component={UpdateFactorNewPage} />
+              <Route path="update-factor/phone/otp" component={UpdateFactorOtpNewPage} />
+              <Route path="update-factor/success" component={UpdateFactorSuccessPage} />
             </Route>
 
             <Route path="*" component={NotFoundPage} />
