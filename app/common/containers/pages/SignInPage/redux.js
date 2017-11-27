@@ -51,7 +51,6 @@ dispatch(createSessionToken({
     case 'REQUEST_OTP': {
       const state = getState();
       const location = getLocation(state);
-      console.log('/opt-send');
       return dispatch(push({ ...location, pathname: '/otp-send' }));
     }
 
@@ -61,12 +60,15 @@ dispatch(createSessionToken({
       });
     }
 
-    case 'REQUEST_FACTOR':
-      // - REQUEST_FACTOR - go to separate process "request & approve factor"
-      return true;
+    case 'REQUEST_FACTOR': {
+      const state = getState();
+      const location = getLocation(state);
+      return dispatch(push({ ...location, pathname: '/request-factor' }));
+    }
 
-    default:
+    default: {
       break;
+    }
   }
   return true;
 });

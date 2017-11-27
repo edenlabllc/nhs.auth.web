@@ -33,7 +33,6 @@ export default class OtpForm extends React.Component {
         <div>
           <Field
             placeholder="Введіть код, що прийшов на телефон"
-            // labelText=""
             name="code"
             component={FieldInput}
           >
