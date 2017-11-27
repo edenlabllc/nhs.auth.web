@@ -1,7 +1,7 @@
 import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
-import { otpVerifyToken, otpResendToken } from 'redux/auth';
+import { otpVerifyToken, otpResendOtp } from 'redux/auth';
 import { fetchUserData } from 'redux/user';
 import { login } from 'redux/session';
 
@@ -14,33 +14,19 @@ export const onSubmit = ({ code }) => (dispatch, getState) => {
         const { type } = action.payload.response.error;
         if (type === 'otp_invalid') {
           throw new SubmissionError({
-            code: {
-              wrongOtp: true,
-            },
+            code: { wrongOtp: true },
           });
         } else if (type === 'otp_expired') {
           throw new SubmissionError({
-            code: {
-              otp_expired: true,
-            },
+            code: { otp_expired: true },
           });
         } else if (type === 'token_invalid') {
           throw new SubmissionError({
-            code: {
-              wrongOtp: true,
-            },
+            code: { token_invalid: true },
           });
         } else if (type === 'otp_reached_max_attempts' || type === 'user_blocked') {
           throw new SubmissionError({
-            code: {
-              userBlocked: true,
-            },
-          });
-        } else if (type === 'user_blocked') {
-          throw new SubmissionError({
-            code: {
-              userBlocked: true,
-            },
+            code: { userBlocked: true },
           });
         }
         return action;
@@ -54,19 +40,19 @@ export const onSubmit = ({ code }) => (dispatch, getState) => {
         const state = getState();
         const location = getLocation(state);
 
-        return dispatch([
-          push({
-            ...location,
-            pathname: '/accept',
-          }),
-        ]);
+        return dispatch(push({ ...location, pathname: '/accept' }));
       });
     });
 };
 
 export const onResend = () => (dispatch) => {
   console.log('Resent opt');
-  return dispatch(otpResendToken).then((action) => {
+  return dispatch(otpResendOtp()).then((action) => {
     console.log('Resent opt', action);
+    if (action.error) {
+      return action;
+    }
+    dispatch(login(action.payload.value));
+    return action;
   });
 };

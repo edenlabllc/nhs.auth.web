@@ -39,7 +39,7 @@ export const otpVerifyToken = code => invoke({
   },
 }, { auth: true });
 
-export const otpResendToken = () => invoke({
+export const otpResendOtp = () => invoke({
   endpoint: `${AUTH_URL}/oauth/tokens`,
   method: 'POST',
   types: ['auth/OTP_RESEND_TOKEN_REQUEST', {

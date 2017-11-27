@@ -23,9 +23,7 @@ dispatch(createSessionToken({
       if (action.payload.response.error.message === 'User blocked.') {
         console.log('User blocked');
         throw new SubmissionError({
-          email: {
-            userBlocked: true,
-          },
+          email: { userBlocked: true },
         });
       }
       return action;
@@ -40,9 +38,7 @@ dispatch(createSessionToken({
       return dispatch(fetchUserData(action.payload.value)).then((action) => {
         if (action.error) {
           throw new SubmissionError({
-            email: {
-              accountPasswordMismatch: true,
-            },
+            email: { accountPasswordMismatch: true },
           });
         }
         const state = getState();
@@ -56,19 +52,12 @@ dispatch(createSessionToken({
       const state = getState();
       const location = getLocation(state);
       console.log('/opt-send');
-      return dispatch([
-        push({
-          ...location,
-          pathname: '/otp-send',
-        }),
-      ]);
+      return dispatch(push({ ...location, pathname: '/otp-send' }));
     }
 
     case 'RESEND_OTP': {
       throw new SubmissionError({
-        email: {
-          resentOtp: true,
-        },
+        email: { resentOtp: true },
       });
     }
 

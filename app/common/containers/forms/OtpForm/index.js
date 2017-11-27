@@ -49,7 +49,7 @@ export default class OtpForm extends React.Component {
           <Button disabled={submitting} type="submit" color="blue">
             Ввести
           </Button>
-          <Button disabled={submitting} theme="link" onClick={() => onResend()}>
+          <Button disabled={submitting} theme="link" onClick={onResend}>
             Відправити знову
           </Button>
           <Button disabled={submitting} theme="link" onClick={() => router.goBack()}>
