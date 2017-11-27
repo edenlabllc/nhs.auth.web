@@ -8,21 +8,11 @@ export const onSubmit = ({ code }) => dispatch =>
     .then((action) => {
       if (action.error) {
         const { type } = action.payload.response.error;
-        if (type === 'otp_invalid') {
+        if (type) {
           throw new SubmissionError({
-            code: { wrongOtp: true },
-          });
-        } else if (type === 'otp_expired') {
-          throw new SubmissionError({
-            code: { otp_expired: true },
-          });
-        } else if (type === 'token_invalid') {
-          throw new SubmissionError({
-            code: { token_invalid: true },
-          });
-        } else if (type === 'otp_reached_max_attempts' || type === 'user_blocked') {
-          throw new SubmissionError({
-            code: { userBlocked: true },
+            code: {
+              [type]: true,
+            },
           });
         }
         return action;

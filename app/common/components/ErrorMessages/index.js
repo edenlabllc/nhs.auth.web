@@ -25,7 +25,16 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="max">{t('Maximum value is <%= params %>')}</ErrorMessage>
         <ErrorMessage when="passwordMismatch">{t('Password mismatch with existing account')}</ErrorMessage>
         <ErrorMessage when="accountPasswordMismatch">{t('Account, password combination is mismatch')}</ErrorMessage>
-        <ErrorMessage when="userBlocked">Користувача заблоковано. Зверніться в службу підтримки</ErrorMessage>
+
+        <ErrorMessage when="user_blocked">Користувача заблоковано. Зверніться в службу підтримки</ErrorMessage>
+        <ErrorMessage when="otp_reached_max_attempts">Ви використали всі спроби. Вас заблоковано!</ErrorMessage>
+
+        <ErrorMessage when="otp_invalid">Не вірно введено код підтверження</ErrorMessage>
+        <ErrorMessage when="resentOtp">Не вдалося відправити код. Повторіть спробу через декілька хвилин</ErrorMessage>
+        <ErrorMessage when="otp_expired">Термін дії коду вичерпано. Спробуйте відправити знову.</ErrorMessage>
+        <ErrorMessage when="token_invalid">
+          Термін доступу користувача вичерпано. Радимо повернутися до попереднього кроку.
+        </ErrorMessage>
       </ErrorMessages>
     );
   }

@@ -13,10 +13,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit, onResend })
 export default class OtpPage extends React.Component {
   render() {
-    const {
-      onSubmit = () => {},
-      onResend = () => {},
-    } = this.props;
+    const { onSubmit = () => {}, onResend = () => {} } = this.props;
 
     return (
       <section className={styles.main} id="otp-page">
@@ -24,10 +21,7 @@ export default class OtpPage extends React.Component {
           <H1>Вхід у систему eHealth</H1>
         </header>
         <article className={styles.form}>
-          <OtpForm
-            onSubmit={onSubmit}
-            onResend={onResend}
-          />
+          <OtpForm onSubmit={onSubmit} onResend={onResend} />
         </article>
       </section>
     );

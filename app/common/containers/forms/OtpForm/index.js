@@ -5,7 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 import FieldInput from 'components/reduxForm/FieldInput';
 import Button, { ButtonsGroup } from 'components/Button';
 
-import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
+import { reduxFormValidate } from 'react-nebo15-validate';
 
 import styles from './styles.scss';
 
@@ -35,14 +35,7 @@ export default class OtpForm extends React.Component {
             placeholder="Введіть код, що прийшов на телефон"
             name="code"
             component={FieldInput}
-          >
-            <ErrorMessage when="wrongOtp">Не вірно введено код підтверження</ErrorMessage>
-            <ErrorMessage when="resentOtp">Не вдалося відправити код. Повторіть спробу через декілька хвилин</ErrorMessage>
-            <ErrorMessage when="otp_expired">Термін дії коду вичерпано. Спробуйте відправити знову.</ErrorMessage>
-            <ErrorMessage when="token_invalid">
-              Термін доступу користувача вичерпано. Радимо повернутися до попереднього кроку.
-            </ErrorMessage>
-          </Field>
+          />
         </div>
         <ButtonsGroup>
           <Button disabled={submitting} type="submit" color="blue">

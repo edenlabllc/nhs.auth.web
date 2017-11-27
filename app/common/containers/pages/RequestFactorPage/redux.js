@@ -3,9 +3,8 @@ import { getLocation } from 'reducers';
 import { initFactor } from 'redux/factors';
 import { login } from 'redux/session';
 
-export const onSubmit = ({ phone }) => (dispatch, getState) => {
-  console.log('phone', phone);
-  return dispatch(initFactor(phone))
+export const onSubmit = ({ phone }) => (dispatch, getState) =>
+  dispatch(initFactor(phone))
     .then((action) => {
       if (action.error) {
         console.log('error', action);
@@ -16,6 +15,8 @@ export const onSubmit = ({ phone }) => (dispatch, getState) => {
       const state = getState();
       const location = getLocation(state);
 
-      return dispatch(push({ ...location, pathname: '/request-factor/approve' }));
+      return dispatch(push({
+        ...location,
+        pathname: '/request-factor/approve',
+      }));
     });
-};
