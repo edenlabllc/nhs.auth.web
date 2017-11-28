@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from 'withStyles';
 
-import { H1 } from 'components/Title';
+import { H2 } from 'components/Title';
 import Button from 'components/Button';
 
 import styles from './styles.scss';
@@ -12,7 +12,7 @@ export default class UpdateFactorSuccessPage extends React.Component {
     return (
       <section className={styles.main} id="success-page">
         <header className={styles.header}>
-          <H1>Фактор було успішно змінено</H1>
+          <H2>Фактор було успішно змінено!</H2>
         </header>
         <article className={styles.form}>
           <Button color="blue" to="/sign-in">

@@ -26,6 +26,7 @@ export default class OtpForm extends React.Component {
       onResend = () => {},
       submitting,
       router,
+      otp_old = true,
     } = this.props;
 
     return (
@@ -41,9 +42,13 @@ export default class OtpForm extends React.Component {
           <Button disabled={submitting} type="submit" color="blue">
             Ввести
           </Button>
-          <Button disabled={submitting} theme="link" onClick={onResend}>
-            Відправити знову
-          </Button>
+          {
+            otp_old && (
+              <Button disabled={submitting} theme="link" onClick={onResend}>
+                Відправити знову
+              </Button>
+            )
+          }
           <Button disabled={submitting} theme="link" onClick={() => router.goBack()}>
             Назад
           </Button>

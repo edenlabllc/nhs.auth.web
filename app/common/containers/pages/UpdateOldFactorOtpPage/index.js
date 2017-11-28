@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import withStyles from 'withStyles';
 
-import { H1 } from 'components/Title';
+import { H2 } from 'components/Title';
 import OtpForm from 'containers/forms/OtpForm';
 
 import { onSubmit, onResend } from './redux';
@@ -18,7 +18,7 @@ export default class UpdateOldFactorOtpPage extends React.Component {
     return (
       <section className={styles.main} id="otp-page">
         <header className={styles.header}>
-          <H1>Введіть код, який було відправлено на Ваш старий телефон</H1>
+          <H2>Введіть код, який було відправлено на Ваш існуючий телефон</H2>
         </header>
         <article className={styles.form}>
           <OtpForm onSubmit={onSubmit} onResend={onResend} />

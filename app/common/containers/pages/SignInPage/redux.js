@@ -19,7 +19,15 @@ dispatch(createSessionToken({
     if (action.payload.status === 401) {
       if (action.payload.response.error.message === 'User blocked.') {
         throw new SubmissionError({
-          email: { userBlocked: true },
+          email: { user_blocked: true },
+        });
+      } else if (action.payload.response.error.invalid_grant === 'Identity, password combination is wrong.') {
+        throw new SubmissionError({
+          password: { passwordMismatch: true },
+        });
+      } else if (action.payload.response.error.invalid_grant === 'Identity not found.') {
+        throw new SubmissionError({
+          email: { identityMismatch: true },
         });
       }
       return action;
