@@ -3,18 +3,6 @@ import { AUTH_URL, API_URL } from 'config';
 import { invoke } from './api';
 import { fetchSessionToken } from './auth';
 
-//
-// export const fetchUserData = token => invoke({
-//   endpoint: `${AUTH_URL}/admin/tokens/${token}/user`,
-//   method: 'GET',
-//   types: ['user/FETCH_USER_REQUEST', {
-//     type: 'user/FETCH_USER_SUCCESS',
-//     payload: (action, state, res) => res.json().then(
-//       json => json.data
-//     ),
-//   }, 'user/FETCH_USER_FAILURE'],
-// });
-
 export const fetchUserData = token => dispatch =>
   dispatch(fetchSessionToken(token)).then((action) => {
     if (action.error) return action;
