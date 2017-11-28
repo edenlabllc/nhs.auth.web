@@ -20,10 +20,8 @@ import ConditionPage from 'containers/pages/ConditionPage';
 import RequestFactorPage from 'containers/pages/RequestFactorPage';
 import RequestFactorOtpPage from 'containers/pages/RequestFactorOtpPage';
 
-
 import ResetPasswordPage from 'containers/pages/ResetPasswordPage';
 import NewPasswordPage from 'containers/pages/NewPasswordPage';
-
 
 import UpdateFactorSignInPage from 'containers/pages/UpdateFactorSignInPage';
 import UpdateOldFactorOtpPage from 'containers/pages/UpdateOldFactorOtpPage';

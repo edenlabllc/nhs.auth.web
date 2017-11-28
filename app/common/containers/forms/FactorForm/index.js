@@ -7,7 +7,6 @@ import { reduxFormValidate } from 'react-nebo15-validate';
 import Button, { ButtonsGroup } from 'components/Button';
 import FieldMasked from 'components/reduxForm/FieldMasked';
 
-
 import styles from './styles.scss';
 
 @withRouter

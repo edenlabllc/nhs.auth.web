@@ -14,8 +14,7 @@ import styles from './styles.scss';
 export default class RequestFactorPage extends React.Component {
   render() {
     const {
-      onSubmit = () => {},
-    } = this.props;
+      onSubmit = () => {} } = this.props;
 
     return (
       <section className={styles.main} id="otp-page">

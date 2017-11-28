@@ -1,7 +1,5 @@
-// import { handleAction } from 'redux-actions';
 import { AUTH_URL } from 'config';
 import { invoke } from './api';
-
 
 export const initFactor = phone => invoke({
   endpoint: `${AUTH_URL}/oauth/users/actions/init_factor`,
@@ -20,7 +18,6 @@ export const initFactor = phone => invoke({
     type: 'SMS',
   },
 }, { auth: true });
-
 
 export const approveFactor = code => invoke({
   endpoint: `${AUTH_URL}/oauth/users/actions/approve_factor`,
