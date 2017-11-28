@@ -7,27 +7,12 @@ import styles from './styles.scss';
 
 const FormComponent = props =>
   <form className={classnames(styles.form)} noValidate {...props} />;
-
 export default withStyles(styles)(FormComponent);
 
-
-const FormBlockComponent = ({ title, children, border, ...rest }) =>
-  <div
-    className={classnames(
-      styles.block,
-      border && styles.block_border
-    )}
-    {...rest}
-  >
-    { title && <FormBlockTitle>{title}</FormBlockTitle>}
-    <div className={styles.block__content}>{ children }</div>
-  </div>;
-
+const FormBlockComponent = ({ children }) => <div className={styles.block}>{ children }</div>;
 export const FormBlock = withStyles(styles)(FormBlockComponent);
 
-
 const FormRowComponent = props => <div className={styles.row} {...props} />;
-
 export const FormRow = withStyles(styles)(FormRowComponent);
 
 const FormBlockTitleComponent = ({ children, right, ...rest }) =>
@@ -37,7 +22,6 @@ const FormBlockTitleComponent = ({ children, right, ...rest }) =>
   </div>;
 
 export const FormBlockTitle = withStyles(styles)(FormBlockTitleComponent);
-
 
 const sizeToClassName = (size) => {
   const [part, count] = size.split('/');
@@ -53,13 +37,10 @@ const FormColumnComponent = ({ size, align = 'top', ...rest }) =>
     )}
     {...rest}
   />;
-
 export const FormColumn = withStyles(styles)(FormColumnComponent);
-
 
 const FormButtonsComponent = props =>
   <div className={classnames(styles.buttons)} {...props} />;
-
 export const FormButtons = withStyles(styles)(FormButtonsComponent);
 
 const FormIconComponent = ({ icon = 'add', color = 'green', children, ...rest }) =>
@@ -72,10 +53,7 @@ const FormIconComponent = ({ icon = 'add', color = 'green', children, ...rest })
     </span>
     <span className={styles.icon__text}>{ children }</span>
   </a>;
-
 export const FormIcon = withStyles(styles)(FormIconComponent);
 
-
 const FormErrorComponent = props => <div {...props} className={styles.error} />;
-
 export const FormError = withStyles(styles)(FormErrorComponent);

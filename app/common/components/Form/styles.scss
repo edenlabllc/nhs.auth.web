@@ -4,12 +4,8 @@
 }
 
 .block {
-  margin-bottom: 38px;
-
-  &_border {
-    margin-bottom: 38px;
-    padding-bottom: 38px;
-    border-bottom: 1px solid #d3dce6;
+  & > div {
+    margin-bottom: 32px;
   }
 }
 

@@ -1,15 +1,11 @@
 import React from 'react';
-import withStyles from 'withStyles';
 import { reduxForm, Field } from 'redux-form';
+import { reduxFormValidate } from 'react-nebo15-validate';
 
 import FieldInput from 'components/reduxForm/FieldInput';
 import Button, { ButtonsGroup } from 'components/Button';
+import { FormBlock } from 'components/Form';
 
-import { reduxFormValidate } from 'react-nebo15-validate';
-
-import styles from './styles.scss';
-
-@withStyles(styles)
 @reduxForm({
   form: 'sign-in-form',
   validate: reduxFormValidate({
@@ -27,18 +23,20 @@ export default class SignInForm extends React.Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <form className={styles.main} onSubmit={handleSubmit}>
-        <div>
-          <Field placeholder="E-mail" name="email" component={FieldInput} />
-        </div>
-        <div>
-          <Field type="password" placeholder="Пароль" name="password" component={FieldInput} />
-        </div>
-        <ButtonsGroup>
-          <Button disabled={submitting} type="submit" color="blue">
-            далі
-          </Button>
-        </ButtonsGroup>
+      <form onSubmit={handleSubmit}>
+        <FormBlock>
+          <div>
+            <Field placeholder="E-mail" name="email" component={FieldInput} />
+          </div>
+          <div>
+            <Field type="password" placeholder="Пароль" name="password" component={FieldInput} />
+          </div>
+          <ButtonsGroup>
+            <Button disabled={submitting} type="submit" color="blue">
+              далі
+            </Button>
+          </ButtonsGroup>
+        </FormBlock>
       </form>
     );
   }
