@@ -8,7 +8,7 @@ import OtpForm from 'containers/forms/OtpForm';
 import { onSubmit, onResend } from './redux';
 
 @connect(null, { onSubmit, onResend })
-export default class UpdateOldFactorOtpPage extends React.Component {
+export default class UpdateFactorOtpPage extends React.Component {
   render() {
     const { onSubmit = () => {}, onResend = () => {} } = this.props;
 

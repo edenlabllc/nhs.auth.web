@@ -8,7 +8,7 @@ import { Main, Header, Article } from 'components/CenterLayout';
 import { onSubmit } from './redux';
 
 @connect(null, { onSubmit })
-export default class UpdateFactorNewPage extends React.Component {
+export default class UpdateFactorPhonePage extends React.Component {
   render() {
     const { onSubmit = () => {} } = this.props;
 
