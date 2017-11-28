@@ -39,13 +39,13 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="resentOtp">Не вдалося відправити код. Повторіть спробу через декілька хвилин</ErrorMessage>
         <ErrorMessage when="otp_expired">Термін дії коду вичерпано. Спробуйте відправити знову.</ErrorMessage>
         <ErrorMessage when="token_invalid">
-          Термін доступу користувача вичерпано. Радимо повернутися до попереднього кроку.
+          Термін cecії  користувача вичерпано. Радимо повернутися до попереднього кроку.
         </ErrorMessage>
         <ErrorMessage when="token_expired">
-          Термін доступу користувача вичерпано. Радимо повернутися до попереднього кроку.
+          Термін cecії користувача вичерпано. Радимо повернутися до попереднього кроку.
         </ErrorMessage>
         <ErrorMessage when="access_denied">
-          Термін доступу користувача вичерпано. Радимо повернутися до попереднього кроку.
+          Термін cecії користувача вичерпано. Радимо повернутися до попереднього кроку.
         </ErrorMessage>
         <ErrorMessage when="notAllowed">
           Можливість зміни фактору Вам не доступна
