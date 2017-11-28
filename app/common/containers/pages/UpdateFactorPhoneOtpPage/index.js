@@ -19,7 +19,7 @@ export default class UpdateFactorOtpNewPage extends React.Component {
           <H2>Введіть код, що було надіслано на Ваш новий телефон</H2>
         </Header>
         <Article>
-          <OtpForm onSubmit={onSubmit} otp_old={false} />
+          <OtpForm onSubmit={onSubmit} />
         </Article>
       </Main>
     );

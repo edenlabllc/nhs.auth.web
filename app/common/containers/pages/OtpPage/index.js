@@ -21,7 +21,7 @@ export default class OtpPage extends React.Component {
           <H1>Вхід у систему eHealth</H1>
         </header>
         <article className={styles.form}>
-          <OtpForm onSubmit={onSubmit} onResend={onResend} />
+          <OtpForm onSubmit={onSubmit} onResend={onResend} repeat />
         </article>
       </section>
     );
