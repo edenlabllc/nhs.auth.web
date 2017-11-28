@@ -1,31 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import withStyles from 'withStyles';
 
 import { H1 } from 'components/Title';
 import FactorForm from 'containers/forms/FactorForm';
+import { Main, Header, Article } from 'components/CenterLayout';
 
 import { onSubmit } from './redux';
 
-import styles from './styles.scss';
-
-@withStyles(styles)
 @connect(null, { onSubmit })
 export default class UpdateFactorNewPage extends React.Component {
   render() {
     const { onSubmit = () => {} } = this.props;
 
     return (
-      <section className={styles.main} id="otp-page">
-        <header className={styles.header}>
+      <Main id="new-factor-page">
+        <Header>
           <H1>Введіть Ваш новий номер телефону</H1>
-        </header>
-        <article className={styles.form}>
+        </Header>
+        <Article>
           <FactorForm
             onSubmit={onSubmit}
           />
-        </article>
-      </section>
+        </Article>
+      </Main>
     );
   }
 }

@@ -1,29 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import withStyles from 'withStyles';
 
+import { Main, Header, Article } from 'components/CenterLayout';
 import { H2 } from 'components/Title';
 import OtpForm from 'containers/forms/OtpForm';
 
 import { onSubmit, onResend } from './redux';
 
-import styles from './styles.scss';
-
-@withStyles(styles)
 @connect(null, { onSubmit, onResend })
 export default class UpdateOldFactorOtpPage extends React.Component {
   render() {
     const { onSubmit = () => {}, onResend = () => {} } = this.props;
 
     return (
-      <section className={styles.main} id="otp-page">
-        <header className={styles.header}>
+      <Main id="new-factor-approve-page">
+        <Header>
           <H2>Введіть код, який було відправлено на Ваш існуючий телефон</H2>
-        </header>
-        <article className={styles.form}>
+        </Header>
+        <Article>
           <OtpForm onSubmit={onSubmit} onResend={onResend} />
-        </article>
-      </section>
+        </Article>
+      </Main>
     );
   }
 }

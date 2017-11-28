@@ -18,7 +18,7 @@ import AcceptPage from 'containers/pages/AcceptPage';
 import ConditionPage from 'containers/pages/ConditionPage';
 
 import RequestFactorPage from 'containers/pages/RequestFactorPage';
-import RequestFactorOtpPage from 'containers/pages/RequestFactorOtpPage';
+import RequestFactorApprovePage from 'containers/pages/RequestFactorApprovePage';
 
 import ResetPasswordPage from 'containers/pages/ResetPasswordPage';
 import NewPasswordPage from 'containers/pages/NewPasswordPage';
@@ -97,7 +97,7 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
               <Route path="accept" component={AcceptPage} />
               <Route path="otp-send" component={OtpPage} />
               <Route path="request-factor" component={RequestFactorPage} />
-              <Route path="request-factor/approve" component={RequestFactorOtpPage} />
+              <Route path="request-factor/approve" component={RequestFactorApprovePage} />
 
               <Route path="update-factor/otp" component={UpdateOldFactorOtpPage} />
               <Route path="update-factor/phone" component={UpdateFactorNewPage} />
