@@ -17,6 +17,7 @@ dispatch(createSessionToken({
 .then((action) => {
   if (action.error) {
     if (action.payload.status === 401) {
+      // need to use helpers fn here!!
       if (action.payload.response.error.message === 'User blocked.') {
         throw new SubmissionError({
           email: { user_blocked: true },
