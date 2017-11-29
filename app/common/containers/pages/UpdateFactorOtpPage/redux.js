@@ -1,9 +1,10 @@
 import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
+import { getLocation } from 'reducers';
 import { otpVerifyToken, otpResendOtp } from 'redux/auth';
 import { login } from 'redux/session';
 
-export const onSubmit = ({ code }) => dispatch =>
+export const onSubmit = ({ code }) => (dispatch, getState) =>
   dispatch(otpVerifyToken(parseInt(code, 10)))
     .then((action) => {
       if (action.error) {
@@ -19,7 +20,10 @@ export const onSubmit = ({ code }) => dispatch =>
       }
 
       dispatch(login(action.payload.value));
-      return dispatch(push({ pathname: '/update-factor/phone' }));
+      const state = getState();
+      const location = getLocation(state);
+
+      return dispatch(push({ ...location, pathname: '/update-factor/phone' }));
     });
 
 export const onResend = () => dispatch =>

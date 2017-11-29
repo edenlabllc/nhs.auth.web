@@ -9,6 +9,7 @@ import Button from 'components/Button';
 import { H1 } from 'components/Title';
 import Points from 'components/Points';
 import Icon from 'components/Icon';
+import { FormBlock } from 'components/Form';
 import DictionaryValue from 'components/DictionaryValue';
 
 import InviteSignInForm from 'containers/forms/InviteSignInForm';
@@ -136,8 +137,9 @@ export default class SignUpPage extends React.Component {
   render() {
     const {
       request: { party = {}, legal_entity = {}, position, user_id } = {},
-      location,
+      location: { query },
     } = this.props;
+    const invite = query && query.invite ? `invite=${query.invite}` : false;
 
     return (
       <section className={styles.main} id="sign-up-page">
@@ -172,26 +174,30 @@ export default class SignUpPage extends React.Component {
           </div>
           { this.state.showDetails && this.renderDetails() }
         </div>
+        <FormBlock>
+          <div className={styles.form}>
+            {user_id && <InviteSignInForm
+              email={party.email}
+              onSubmit={({ password }) => this.props.onSubmitSignIn(
+                location.query.invite,
+                party.email,
+                password
+              )}
+            />}
 
-        <div className={styles.form}>
-          {user_id && <InviteSignInForm
-            email={party.email}
-            onSubmit={({ password }) => this.props.onSubmitSignIn(
-              location.query.invite,
-              party.email,
-              password
-            )}
-          />}
-
-          {!user_id && <InviteSignUpForm
-            email={party.email}
-            onSubmit={({ password }) => this.props.onSubmitSignUp(
-              location.query.invite,
-              party.email,
-              password,
-            )}
-          />}
-        </div>
+            {!user_id && <InviteSignUpForm
+              email={party.email}
+              onSubmit={({ password }) => this.props.onSubmitSignUp(
+                location.query.invite,
+                party.email,
+                password,
+              )}
+            />}
+          </div>
+        </FormBlock>
+        <Button theme="link" to={`/update-factor?${invite}`}>
+          Змінити додатковий фактор авторизації
+        </Button>
       </section>
     );
   }

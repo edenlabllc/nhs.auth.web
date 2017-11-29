@@ -42,21 +42,48 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
-    throw new SubmissionError({
-      password: {
-        passwordMismatch: true,
-      },
-    });
+    // duplicate from sign-in page
+    if (action.payload.response.error.message === 'User blocked.') {
+      throw new SubmissionError({
+        password: { user_blocked: true },
+      });
+    } else if (action.payload.response.error.message === 'Identity, password combination is wrong.') {
+      throw new SubmissionError({
+        password: { passwordMismatch: true },
+      });
+    }
+    return action;
   }
 
-  const state = getState();
-  const location = getLocation(state);
+  const { next_step } = action.meta;
+  dispatch(login(action.payload.value));
 
-  return dispatch([
-    login(action.payload.value),
-    push({
-      ...location,
-      pathname: '/invite/accept',
-    }),
-  ]);
+  switch (next_step) {
+    case 'REQUEST_APPS': {
+      return dispatch(push({ ...location, pathname: '/invite/accept' }));
+    }
+
+    case 'REQUEST_OTP': {
+      const state = getState();
+      const location = getLocation(state);
+      return dispatch(push({ ...location, pathname: '/otp-send' }));
+    }
+
+    case 'RESEND_OTP': {
+      throw new SubmissionError({
+        email: { resentOtp: true },
+      });
+    }
+
+    case 'REQUEST_FACTOR': {
+      const state = getState();
+      const location = getLocation(state);
+      return dispatch(push({ ...location, pathname: '/request-factor' }));
+    }
+
+    default: {
+      break;
+    }
+  }
+  return true;
 });

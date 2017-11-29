@@ -2,9 +2,10 @@ import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { createSessionToken } from 'redux/auth';
 import { login } from 'redux/session';
+import { getLocation } from 'reducers';
 import { CLIENT_ID } from 'config';
 
-export const onSubmit = ({ email, password }) => dispatch =>
+export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   dispatch(createSessionToken({
     grant_type: 'password',
     email,
@@ -14,22 +15,23 @@ export const onSubmit = ({ email, password }) => dispatch =>
   }))
   .then((action) => {
     if (action.error) {
-      if (action.payload.status === 401) {
-        if (action.payload.response.error.message === 'User blocked.') {
-          throw new SubmissionError({
-            email: { user_blocked: true },
-          });
-        } else if (action.payload.response.error.invalid_grant === 'Identity, password combination is wrong.') {
-          throw new SubmissionError({
-            password: { passwordMismatch: true },
-          });
-        } else if (action.payload.response.error.invalid_grant === 'Identity not found.') {
-          throw new SubmissionError({
-            email: { identityMismatch: true },
-          });
-        }
-        return action;
+      if (action.payload.response.error.message === 'User blocked.') {
+        throw new SubmissionError({
+          email: { user_blocked: true },
+        });
+      } else if (action.payload.response.error.message === 'Identity, password combination is wrong.') {
+        // here different api response invalid_grant  || message
+        throw new SubmissionError({
+          password: { passwordMismatch: true },
+        });
+      } else if (action.payload.response.error.message === 'User not found.') {
+        // here different api response invalid_grant === Identity not found.
+        //  || message = 'User not found.'
+        throw new SubmissionError({
+          email: { identityMismatch: true },
+        });
       }
+      return action;
     }
     const { next_step } = action.meta;
     if (next_step !== 'REQUEST_OTP') {
@@ -40,5 +42,7 @@ export const onSubmit = ({ email, password }) => dispatch =>
       });
     }
     dispatch(login(action.payload.value));
-    return dispatch(push({ pathname: '/update-factor/otp' }));
+    const state = getState();
+    const location = getLocation(state);
+    return dispatch(push({ ...location, pathname: '/update-factor/otp' }));
   });

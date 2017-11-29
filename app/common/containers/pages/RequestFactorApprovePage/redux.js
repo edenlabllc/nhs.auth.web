@@ -23,5 +23,11 @@ export const onSubmit = ({ code }) => (dispatch, getState) =>
       const state = getState();
       const location = getLocation(state);
 
-      return dispatch(push({ ...location, pathname: '/accept' }));
+      return dispatch(
+        push({
+          ...location,
+          pathname: location.query.invite ?
+            '/invite/accept' : '/accept',
+        }),
+      );
     });
