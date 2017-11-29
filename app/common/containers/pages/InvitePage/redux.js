@@ -42,14 +42,18 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
-    // duplicate from sign-in page
-    if (action.payload.response.error.message === 'User blocked.') {
+    const { message } = action.payload.response.error;
+    if (message === 'User blocked.') {
       throw new SubmissionError({
         password: { user_blocked: true },
       });
-    } else if (action.payload.response.error.message === 'Identity, password combination is wrong.') {
+    } else if (message === 'Identity, password combination is wrong.') {
       throw new SubmissionError({
         password: { passwordMismatch: true },
+      });
+    } else if (message === 'SMS not send. Try later') {
+      throw new SubmissionError({
+        password: { resentOtp: true },
       });
     }
     return action;

@@ -15,20 +15,22 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   }))
   .then((action) => {
     if (action.error) {
-      if (action.payload.response.error.message === 'User blocked.') {
+      const { message } = action.payload.response.error;
+      if (message === 'User blocked.') {
         throw new SubmissionError({
           email: { user_blocked: true },
         });
-      } else if (action.payload.response.error.message === 'Identity, password combination is wrong.') {
-        // here different api response invalid_grant  || message
+      } else if (message === 'Identity, password combination is wrong.') {
         throw new SubmissionError({
           password: { passwordMismatch: true },
         });
-      } else if (action.payload.response.error.message === 'User not found.') {
-        // here different api response invalid_grant === Identity not found.
-        //  || message = 'User not found.'
+      } else if (message === 'User not found.') {
         throw new SubmissionError({
           email: { identityMismatch: true },
+        });
+      } else if (message === 'SMS not send. Try later') {
+        throw new SubmissionError({
+          email: { resentOtp: true },
         });
       }
       return action;
