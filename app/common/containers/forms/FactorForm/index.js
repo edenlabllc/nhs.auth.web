@@ -2,11 +2,11 @@ import React from 'react';
 
 import { withRouter } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
-import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 import { FormBlock } from 'components/Form';
 import Button, { ButtonsGroup } from 'components/Button';
 import FieldMasked from 'components/reduxForm/FieldMasked';
 
+import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 
 @withRouter
 @reduxForm({
@@ -40,6 +40,9 @@ export default class FactorForm extends React.Component {
             >
               <ErrorMessage when="access_denied">
                 Термін доступу користувача вичерпано. Радимо повернутися до попереднього кроку.
+              </ErrorMessage>
+              <ErrorMessage when="token_invalid_type">
+                Термін cecії користувача вичерпано. Радимо повернутися до попереднього кроку
               </ErrorMessage>
             </Field>
           </div>
