@@ -137,9 +137,10 @@ export default class SignUpPage extends React.Component {
   render() {
     const {
       request: { party = {}, legal_entity = {}, position, user_id } = {},
-      location: { query },
+      location,
     } = this.props;
-    const invite = query && query.invite ? `invite=${query.invite}` : false;
+    const invite = location.query && location.query.invite ?
+      `invite=${location.query.invite}` : false;
 
     return (
       <section className={styles.main} id="sign-up-page">

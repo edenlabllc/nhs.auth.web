@@ -20,11 +20,11 @@ dispatch(createSessionToken({
       throw new SubmissionError({
         email: { user_blocked: true },
       });
-    } else if (action.payload.response.error.invalid_grant === 'Identity, password combination is wrong.') {
+    } else if (action.payload.response.error.message === 'Identity, password combination is wrong.') {
       throw new SubmissionError({
         password: { passwordMismatch: true },
       });
-    } else if (action.payload.response.error.invalid_grant === 'Identity not found.') {
+    } else if (action.payload.response.error.message === 'Identity not found.') {
       throw new SubmissionError({
         email: { identityMismatch: true },
       });
