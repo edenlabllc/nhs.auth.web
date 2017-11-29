@@ -139,6 +139,7 @@ export default class SignUpPage extends React.Component {
       request: { party = {}, legal_entity = {}, position, user_id } = {},
       location,
     } = this.props;
+    const query = location.query.invite ? `invite=${location.query.invite}` : false;
 
     return (
       <section className={styles.main} id="sign-up-page">
@@ -194,7 +195,7 @@ export default class SignUpPage extends React.Component {
             />}
           </div>
         </FormBlock>
-        <Button theme="link" to="/update-factor">
+        <Button theme="link" to={`/update-factor?${query}`}>
           Змінити додатковий фактор авторизації
         </Button>
       </section>

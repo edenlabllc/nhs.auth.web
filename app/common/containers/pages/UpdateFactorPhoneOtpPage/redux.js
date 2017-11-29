@@ -23,8 +23,5 @@ export const onSubmit = ({ code }) => (dispatch, getState) =>
       const state = getState();
       const location = getLocation(state);
 
-      return dispatch(push({
-        ...location,
-        pathname: '/update-factor/success',
-      }));
+      return dispatch(push({ ...location, pathname: '/update-factor/success' }));
     });
