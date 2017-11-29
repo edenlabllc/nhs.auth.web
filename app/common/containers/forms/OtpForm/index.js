@@ -18,15 +18,35 @@ import { FormBlock } from 'components/Form';
   }),
 })
 export default class OtpForm extends React.Component {
+
+  state = {
+    send: false,
+    isSending: false,
+  };
+
+  onClickResend() {
+    if (!this.props.onResend) return null;
+    const res = this.props.onResend();
+    if (!res || typeof res.then !== 'function') return res;
+
+    this.setState({ sent: false, isSending: true });
+    setTimeout(() => {
+      res.then(() => {
+        this.setState({ isSending: false, sent: true });
+        setTimeout(() => this.setState({ sent: false }), 5000);
+      }, () => {
+        this.setState({ isSending: false });
+      });
+    }, 1000);
+    return res;
+  }
   render() {
     const {
       handleSubmit,
-      onResend = () => {},
       submitting,
       router,
       repeat = false,
     } = this.props;
-
     return (
       <form onSubmit={handleSubmit}>
         <FormBlock>
@@ -45,8 +65,14 @@ export default class OtpForm extends React.Component {
             </Button>
             {
               repeat && (
-                <Button disabled={submitting} theme="link" onClick={onResend}>
-                  Відправити знову
+                <Button
+                  theme="link"
+                  onClick={() => this.onClickResend()}
+                  disabled={this.state.sent || this.state.isSending}
+                >
+                  { this.state.sent && 'Відправлено'}
+                  { this.state.isSending && 'Відправляємо...'}
+                  { !this.state.sent && !this.state.isSending && 'Відправити знову'}
                 </Button>
               )
             }
