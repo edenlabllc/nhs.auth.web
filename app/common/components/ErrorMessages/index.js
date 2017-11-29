@@ -34,9 +34,10 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="otp_reached_max_attempts">Ви використали всі спроби. Вас заблоковано!</ErrorMessage>
         <ErrorMessage when="otp_reached_max_attempts">Ви використали всі спроби. Вас заблоковано!</ErrorMessage>
 
-
         <ErrorMessage when="otp_invalid">Не вірно введено код підтверження</ErrorMessage>
         <ErrorMessage when="resentOtp">Не вдалося відправити код. Повторіть спробу через декілька хвилин</ErrorMessage>
+        <ErrorMessage when="internal_error">Не вдалося відправити код. Повторіть спробу через декілька хвилин</ErrorMessage>
+
         <ErrorMessage when="otp_expired">Термін дії коду вичерпано. Спробуйте відправити знову</ErrorMessage>
         <ErrorMessage when="token_invalid">
           Термін cecії  користувача вичерпано. Радимо повернутися до попереднього кроку
