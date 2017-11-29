@@ -23,7 +23,7 @@ export default class OtpForm extends React.Component {
       onResend = () => {},
       submitting,
       router,
-      otp_old = true,
+      repeat = false,
     } = this.props;
 
     return (
@@ -33,6 +33,7 @@ export default class OtpForm extends React.Component {
             <Field
               placeholder="Введіть код, що прийшов на телефон"
               name="code"
+              type="number"
               component={FieldInput}
             />
           </div>
@@ -41,7 +42,7 @@ export default class OtpForm extends React.Component {
               Ввести
             </Button>
             {
-              otp_old && (
+              repeat && (
                 <Button disabled={submitting} theme="link" onClick={onResend}>
                   Відправити знову
                 </Button>
