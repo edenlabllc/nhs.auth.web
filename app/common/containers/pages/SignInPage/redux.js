@@ -29,6 +29,10 @@ dispatch(createSessionToken({
       throw new SubmissionError({
         email: { identityMismatch: true },
       });
+    } else if (message === 'SMS not send. Try later') {
+      throw new SubmissionError({
+        email: { resentOtp: true },
+      });
     }
     return action;
   }
@@ -54,12 +58,6 @@ dispatch(createSessionToken({
       const state = getState();
       const location = getLocation(state);
       return dispatch(push({ ...location, pathname: '/otp-send' }));
-    }
-
-    case 'RESEND_OTP': {
-      throw new SubmissionError({
-        email: { resentOtp: true },
-      });
     }
 
     case 'REQUEST_FACTOR': {

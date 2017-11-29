@@ -15,7 +15,7 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   }))
   .then((action) => {
     if (action.error) {
-      const { message } = action.payload.response.error.message;
+      const { message } = action.payload.response.error;
       if (message === 'User blocked.') {
         throw new SubmissionError({
           email: { user_blocked: true },
@@ -27,6 +27,10 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
       } else if (message === 'User not found.') {
         throw new SubmissionError({
           email: { identityMismatch: true },
+        });
+      } else if (message === 'SMS not send. Try later') {
+        throw new SubmissionError({
+          email: { resentOtp: true },
         });
       }
       return action;
