@@ -22,10 +22,8 @@ export const onSubmit = ({ code }) => (dispatch, getState) =>
       dispatch(login(action.payload.value));
       const state = getState();
       const location = getLocation(state);
-      if (location.query.invite) {
-        return dispatch(push({ ...location, pathname: '/update-factor/phone' }));
-      }
-      return dispatch(push({ pathname: '/update-factor/phone' }));
+
+      return dispatch(push({ ...location, pathname: '/update-factor/phone' }));
     });
 
 export const onResend = () => dispatch =>

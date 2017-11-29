@@ -51,6 +51,7 @@ dispatch(createSessionToken({
         password: { passwordMismatch: true },
       });
     }
+    return action;
   }
 
   const { next_step } = action.meta;

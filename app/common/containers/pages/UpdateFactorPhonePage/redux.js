@@ -22,8 +22,6 @@ dispatch(initFactor(phone))
     dispatch(login(action.payload.value));
     const state = getState();
     const location = getLocation(state);
-    if (location.query.invite) {
-      return dispatch(push({ ...location, pathname: '/update-factor/phone/otp' }));
-    }
-    return dispatch(push('/update-factor/phone/otp'));
+
+    return dispatch(push({ ...location, pathname: '/update-factor/phone/otp' }));
   });

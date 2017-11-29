@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import FieldInput from 'components/reduxForm/FieldInput';
 import Button, { ButtonsGroup } from 'components/Button';
 
-import { reduxFormValidate } from 'react-nebo15-validate';
+import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 import { FormBlock } from 'components/Form';
 
 @withRouter
@@ -13,6 +13,7 @@ import { FormBlock } from 'components/Form';
   validate: reduxFormValidate({
     code: {
       required: true,
+      format: /^\d*$/,
     },
   }),
 })
@@ -33,9 +34,10 @@ export default class OtpForm extends React.Component {
             <Field
               placeholder="Введіть код, що прийшов на телефон"
               name="code"
-              type="number"
               component={FieldInput}
-            />
+            >
+              <ErrorMessage when="format">Значення повинном бути числом</ErrorMessage>
+            </Field>
           </div>
           <ButtonsGroup>
             <Button disabled={submitting} type="submit" color="blue">
