@@ -51,6 +51,10 @@ dispatch(createSessionToken({
       throw new SubmissionError({
         password: { passwordMismatch: true },
       });
+    } else if (message === 'SMS not send. Try later') {
+      throw new SubmissionError({
+        password: { resentOtp: true },
+      });
     }
     return action;
   }
