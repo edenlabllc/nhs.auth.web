@@ -42,6 +42,7 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
+    // duplicate from sign-in page
     if (action.payload.response.error.message === 'User blocked.') {
       throw new SubmissionError({
         password: { user_blocked: true },
