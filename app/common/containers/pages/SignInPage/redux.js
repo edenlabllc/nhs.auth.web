@@ -23,7 +23,7 @@ dispatch(createSessionToken({
       });
     } else if (message === 'Identity, password combination is wrong.') {
       throw new SubmissionError({
-        email: { accountPasswordMismatch: true },
+        email: { emailOrPasswordMismatch: true },
       });
     } else if (message === 'SMS not send. Try later') {
       throw new SubmissionError({
