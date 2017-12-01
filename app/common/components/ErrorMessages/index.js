@@ -29,6 +29,7 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="identityMismatch">Такого користувача не існує</ErrorMessage>
 
         <ErrorMessage when="accountPasswordMismatch">{t('Account or password combination mismatch')}</ErrorMessage>
+        <ErrorMessage when="emailOrPasswordMismatch">{t('Account, password combination is mismatch')}</ErrorMessage>
 
         <ErrorMessage when="user_blocked">Користувача заблоковано. Зверніться в службу підтримки</ErrorMessage>
         <ErrorMessage when="otp_reached_max_attempts">Ви використали всі спроби. Вас заблоковано!</ErrorMessage>
