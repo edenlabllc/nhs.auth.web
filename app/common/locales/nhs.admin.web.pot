@@ -30,10 +30,10 @@ msgstr ""
 msgid "Invalid card number"
 msgstr ""
 
-msgid "Card with such names already exist"
+msgid "Card with such name already exists"
 msgstr ""
 
-msgid "Card with such number already exist"
+msgid "Card with such number already exists"
 msgstr ""
 
 msgid "Support only {{types}} cards"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Password mismatch with existing account"
 msgstr ""
 
-msgid "Account, password combination is mismatch"
+msgid "Account or password combination mismatch"
 msgstr ""
 
 msgid "Yes"

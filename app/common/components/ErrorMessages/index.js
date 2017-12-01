@@ -17,8 +17,8 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="maxLength">{t('Length must be less than <%= params %>')}</ErrorMessage>
         <ErrorMessage when="minLength">{t('Length must be more than <%= params %>')}</ErrorMessage>
         <ErrorMessage when="card_number">{ t('Invalid card number') }</ErrorMessage>
-        <ErrorMessage when="uniqueCardName">{t('Card with such names already exist')}</ErrorMessage>
-        <ErrorMessage when="uniqueCardNumber">{t('Card with such number already exist')}</ErrorMessage>
+        <ErrorMessage when="uniqueCardName">{t('Card with such name already exists')}</ErrorMessage>
+        <ErrorMessage when="uniqueCardNumber">{t('Card with such number already exists')}</ErrorMessage>
         <ErrorMessage when="cardType">
           {t('Support only {{types}} cards', { types: this.props.error.cardType && this.props.error.cardType.join(', ') })}
         </ErrorMessage>
@@ -28,7 +28,7 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="passwordMismatch">Не вірно введено пароль</ErrorMessage>
         <ErrorMessage when="identityMismatch">Такого користувача не існує</ErrorMessage>
 
-        <ErrorMessage when="accountPasswordMismatch">{t('Account, password combination is mismatch')}</ErrorMessage>
+        <ErrorMessage when="accountPasswordMismatch">{t('Account or password combination mismatch')}</ErrorMessage>
 
         <ErrorMessage when="user_blocked">Користувача заблоковано. Зверніться в службу підтримки</ErrorMessage>
         <ErrorMessage when="otp_reached_max_attempts">Ви використали всі спроби. Вас заблоковано!</ErrorMessage>

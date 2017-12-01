@@ -31,10 +31,10 @@ msgstr "Довжина повинна бути більша за <%= params %>"
 msgid "Invalid card number"
 msgstr "Невірний номер карти"
 
-msgid "Card with such names already exist"
+msgid "Card with such name already exists"
 msgstr "Карта з такою назвою вже існує"
 
-msgid "Card with such number already exist"
+msgid "Card with such number already exists"
 msgstr "Карта з таким номером вже існує"
 
 msgid "Support only {{types}} cards"
@@ -49,7 +49,7 @@ msgstr "* Максимальне значення"
 msgid "Password mismatch with existing account"
 msgstr "Невірний email або пароль"
 
-msgid "Account, password combination is mismatch"
+msgid "Account or password combination mismatch"
 msgstr "Невірний email або пароль"
 
 msgid "Yes"
