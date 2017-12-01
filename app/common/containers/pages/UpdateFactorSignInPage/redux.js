@@ -22,11 +22,7 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
         });
       } else if (message === 'Identity, password combination is wrong.') {
         throw new SubmissionError({
-          password: { passwordMismatch: true },
-        });
-      } else if (message === 'User not found.') {
-        throw new SubmissionError({
-          email: { identityMismatch: true },
+          email: { accountPasswordMismatch: true },
         });
       } else if (message === 'SMS not send. Try later') {
         throw new SubmissionError({
