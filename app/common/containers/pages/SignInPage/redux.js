@@ -19,7 +19,7 @@ dispatch(createSessionToken({
     const { message } = action.payload.response.error;
     if (message === 'User blocked.') {
       throw new SubmissionError({
-        email: { accountPasswordMismatch: true },
+        email: { user_blocked: true },
       });
     } else if (message === 'Identity, password combination is wrong.') {
       throw new SubmissionError({
