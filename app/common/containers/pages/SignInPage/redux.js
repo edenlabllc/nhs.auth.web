@@ -23,11 +23,7 @@ dispatch(createSessionToken({
       });
     } else if (message === 'Identity, password combination is wrong.') {
       throw new SubmissionError({
-        password: { passwordMismatch: true },
-      });
-    } else if (message === 'User not found.') {
-      throw new SubmissionError({
-        email: { identityMismatch: true },
+        email: { emailOrPasswordMismatch: true },
       });
     } else if (message === 'SMS not send. Try later') {
       throw new SubmissionError({
