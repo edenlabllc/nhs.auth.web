@@ -15,6 +15,7 @@ import { onSubmit } from './redux';
 export default class UpdateFactorSignInPage extends React.Component {
   render() {
     const { onSubmit = () => {}, location, router } = this.props;
+    const invite = location.query && location.query.invite ? `invite=${location.query.invite}` : false;
 
     return (
       <Main id="update-factor-page">
@@ -29,7 +30,13 @@ export default class UpdateFactorSignInPage extends React.Component {
             }}
           />
           <ButtonsGroup>
-            <Button theme="link" onClick={() => router.goBack()}>
+            <Button
+              theme="link"
+              onClick={() => {
+                if (invite) return router.goBack();
+                return router.push('/sign-in');
+              }}
+            >
               Назад
             </Button>
           </ButtonsGroup>

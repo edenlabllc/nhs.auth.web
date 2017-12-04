@@ -4,7 +4,7 @@ import { Main, Header, Article } from 'components/CenterLayout';
 
 import { H2 } from 'components/Title';
 import OtpForm from 'containers/forms/OtpForm';
-
+import Button from 'components/Button';
 import { onSubmit } from './redux';
 
 
@@ -20,6 +20,9 @@ export default class UpdateFactorOtpNewPage extends React.Component {
         </Header>
         <Article>
           <OtpForm onSubmit={onSubmit} />
+          <Button theme="link" to="/update-factor">
+            Повернутися на початок
+          </Button>
         </Article>
       </Main>
     );

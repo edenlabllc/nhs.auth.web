@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import withStyles from 'withStyles';
+import { withRouter } from 'react-router';
 
 import { H1 } from 'components/Title';
 import OtpForm from 'containers/forms/OtpForm';
+import Button, { ButtonsGroup } from 'components/Button';
 
 import { onSubmit, onResend } from './redux';
 
 import styles from './styles.scss';
 
+@withRouter
 @withStyles(styles)
 @connect(null, { onSubmit, onResend })
 export default class OtpPage extends React.Component {
   render() {
-    const { onSubmit = () => {}, onResend = () => {} } = this.props;
-
+    const { onSubmit = () => {}, onResend = () => {}, router } = this.props;
     return (
       <section className={styles.main} id="otp-page">
         <header className={styles.header}>
@@ -22,6 +24,14 @@ export default class OtpPage extends React.Component {
         </header>
         <article className={styles.form}>
           <OtpForm onSubmit={onSubmit} onResend={onResend} repeat />
+          <ButtonsGroup>
+            <Button
+              theme="link"
+              onClick={() => router.goBack()}
+            >
+              Назад
+            </Button>
+          </ButtonsGroup>
         </article>
       </section>
     );

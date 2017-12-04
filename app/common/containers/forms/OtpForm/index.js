@@ -44,7 +44,6 @@ export default class OtpForm extends React.Component {
     const {
       handleSubmit,
       submitting,
-      router,
       repeat = false,
     } = this.props;
     return (
@@ -76,9 +75,6 @@ export default class OtpForm extends React.Component {
                 </Button>
               )
             }
-            <Button disabled={submitting} theme="link" onClick={() => router.goBack()}>
-              Назад
-            </Button>
           </ButtonsGroup>
         </FormBlock>
       </form>
