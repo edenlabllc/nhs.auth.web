@@ -4,6 +4,8 @@ import { routerReducer as routing } from 'react-router-redux';
 import { denormalize } from 'normalizr';
 import * as schemas from 'schemas';
 
+import Invitelayout from 'containers/layouts/InviteLayout/redux';
+
 import loading from 'redux/loading';
 import session from 'redux/session';
 import auth from 'redux/auth';
@@ -22,6 +24,7 @@ const blocks = combineReducers({
 
 const pages = combineReducers({
   AcceptPage,
+  Invitelayout,
 });
 
 const data = combineReducers({

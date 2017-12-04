@@ -4,19 +4,19 @@ import { provideHooks } from 'redial';
 import withStyles from 'withStyles';
 
 import { H1 } from 'components/Title';
-
-import { fetchRequestById } from 'redux/requests';
 import { getRequestById } from 'reducers';
+
+import { fetchRequestByHash } from './redux';
 
 import styles from './styles.scss';
 
+@withStyles(styles)
 @provideHooks({
   fetch: ({ dispatch, location: { query } }) =>
-    query.invite && dispatch(fetchRequestById(query.invite)),
+    query.invite && dispatch(fetchRequestByHash(query.invite)),
 })
-@withStyles(styles)
-@connect((state, { location: { query } }) => ({
-  request: query.invite && getRequestById(state, query.invite),
+@connect(state => ({
+  request: getRequestById(state, state.pages.Invitelayout.request),
 }))
 export default class InviteLayout extends React.Component {
   get routeScopes() {
