@@ -15,8 +15,8 @@ import styles from './styles.scss';
   fetch: ({ dispatch, location: { query } }) =>
     query.invite && dispatch(fetchRequestByHash(query.invite)),
 })
-@connect((state, { location: { query } }) => ({
-  request: query.invite && getRequestById(state, state.pages.Invitelayout.request),
+@connect(state => ({
+  request: getRequestById(state, state.pages.Invitelayout.request),
 }))
 export default class InviteLayout extends React.Component {
   get routeScopes() {
