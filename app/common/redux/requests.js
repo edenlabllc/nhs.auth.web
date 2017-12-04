@@ -7,8 +7,8 @@ import { invoke } from './api';
 export const APPROVE_REQUEST_ACTION = 'approve';
 export const REJECT_REQUEST_ACTION = 'reject';
 
-export const fetchRequestById = id => invoke({
-  endpoint: `${API_URL}/api/employee_requests/${id}`,
+export const fetchRequestByHash = hash => invoke({
+  endpoint: `${API_URL}/api/invite/${hash}`,
   method: 'GET',
   types: ['requests/FETCH_REQUEST_REQUEST', {
     type: 'requests/FETCH_REQUEST_SUCCESS',

@@ -101,6 +101,7 @@ export default class SignUpPage extends React.Component {
   }
   renderDetails() {
     const { request: { doctor, party } } = this.props;
+    console.log('request', this.props.request);
 
     return (
       <div className={styles.details__body}>
