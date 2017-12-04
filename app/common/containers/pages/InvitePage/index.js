@@ -29,8 +29,8 @@ const toArray = v => (!Array.isArray(v) ? [v] : v);
 @provideHooks({
   fetch: ({ dispatch }) => dispatch(fetchDictionaries()),
 })
-@connect((state, { location: { query } }) => ({
-  request: getRequestById(state, query.invite),
+@connect(state => ({
+  request: getRequestById(state, state.pages.Invitelayout.request),
 }), { onSubmitSignUp, onSubmitSignIn })
 export default class SignUpPage extends React.Component {
   constructor(props) {
