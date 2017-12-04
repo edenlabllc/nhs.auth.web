@@ -21,12 +21,11 @@ export const onSubmitSignUp = (employeeRequestId, email, password) => (dispatch,
 
       const state = getState();
       const location = getLocation(state);
-
       return dispatch([
         login(action.payload.value),
         push({
           ...location,
-          pathname: '/invite/accept',
+          pathname: '/request-factor',
         }),
       ]);
     });
