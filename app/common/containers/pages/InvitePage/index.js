@@ -136,7 +136,7 @@ export default class SignUpPage extends React.Component {
   }
   render() {
     const {
-      request: { party = {}, legal_entity = {}, position, user_id } = {},
+      request: { party = {}, legal_entity = {}, position, user_id, id } = {},
       location,
     } = this.props;
     const invite = location.query && location.query.invite ?
@@ -180,7 +180,7 @@ export default class SignUpPage extends React.Component {
             {user_id && <InviteSignInForm
               email={party.email}
               onSubmit={({ password }) => this.props.onSubmitSignIn(
-                location.query.invite,
+                id,
                 party.email,
                 password
               )}
@@ -189,7 +189,7 @@ export default class SignUpPage extends React.Component {
             {!user_id && <InviteSignUpForm
               email={party.email}
               onSubmit={({ password }) => this.props.onSubmitSignUp(
-                location.query.invite,
+                id,
                 party.email,
                 password,
               )}
