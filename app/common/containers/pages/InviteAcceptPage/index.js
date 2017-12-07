@@ -7,6 +7,7 @@ import { H1 } from 'components/Title';
 import Points from 'components/Points';
 
 import InviteAcceptForm from 'containers/forms/InviteAcceptForm';
+import { getRequestById } from 'reducers';
 
 import { onSubmit, onReject } from './redux';
 
@@ -14,10 +15,12 @@ import styles from './styles.scss';
 
 @withRouter
 @withStyles(styles)
-@connect(null, { onSubmit, onReject })
+@connect(state => ({
+  request: getRequestById(state, state.pages.Invitelayout.request),
+}), { onSubmit, onReject })
 export default class SignUpStep2Page extends React.Component {
   render() {
-    const { onSubmit, onReject, location } = this.props;
+    const { onSubmit, onReject, request: { id } } = this.props;
 
     return (
       <section className={styles.main} id="sign-up-page">
@@ -33,10 +36,10 @@ export default class SignUpStep2Page extends React.Component {
           </p>
 
           <div className={styles.form}>
-            <InviteAcceptForm onSubmit={() => onSubmit(location.query.invite)} />
+            <InviteAcceptForm onSubmit={() => onSubmit(id)} />
           </div>
           <div className={styles.reject}>
-            <button onClick={() => onReject(location.query.invite)}>Відхилити запрошення</button>
+            <button onClick={() => onReject(id)}>Відхилити запрошення</button>
           </div>
         </article>
       </section>
