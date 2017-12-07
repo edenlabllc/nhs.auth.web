@@ -11,7 +11,7 @@ import { fetchClientById } from 'redux/clients';
 import { authorize } from 'redux/auth';
 import { fetchDictionaries } from 'redux/dictionaries';
 
-import { getClientById, getUser } from 'reducers';
+import { getClientById, getUser, getRequestById } from 'reducers';
 
 import { fetchScope } from './redux';
 import styles from './styles.scss';
@@ -28,6 +28,7 @@ import styles from './styles.scss';
 @connect((state, { location: { query } }) => ({
   scope: query.scope || state.pages.AcceptPage.scope,
   client: getClientById(state, query.client_id),
+  request: getRequestById(state, state.pages.Invitelayout.request),
   user: getUser(state),
 }), { authorize })
 export default class AcceptPage extends React.Component {
@@ -37,12 +38,12 @@ export default class AcceptPage extends React.Component {
   };
 
   approval() {
-    const { location: { query }, scope } = this.props;
+    const { location: { query }, scope, request: { id } } = this.props;
 
     this.setState({ isLoading: true });
 
     this.props.authorize({
-      clientId: query.client_id,
+      clientId: id,
       scope,
       redirectUri: query.redirect_uri,
     }).then(({ payload, error }) => {
@@ -128,10 +129,11 @@ export default class AcceptPage extends React.Component {
       client,
       user,
       scope,
-      location: { query: { client_id, redirect_uri } },
+      location: { query: { redirect_uri } },
+      request: { id },
     } = this.props;
 
-    if (!client_id) return this.renderNotFoundClientId();
+    if (!id) return this.renderNotFoundClientId();
     if (!client) return this.renderNotFoundClient();
     if (!scope) return this.renderNotFoundScope();
     if (scope === 'empty_roles') return this.renderNotFoundClientRole();
