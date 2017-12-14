@@ -29,6 +29,10 @@ dispatch(createSessionToken({
       throw new SubmissionError({
         email: { resentOtp: true },
       });
+    } else if (message === 'Sending OTP timeout. Try later.') {
+      throw new SubmissionError({
+        email: { otp_timeout: true },
+      });
     }
     return action;
   }

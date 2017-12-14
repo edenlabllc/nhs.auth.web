@@ -50,6 +50,10 @@ dispatch(createSessionToken({
       throw new SubmissionError({
         password: { passwordMismatch: true },
       });
+    } else if (message === 'Sending OTP timeout. Try later.') {
+      throw new SubmissionError({
+        password: { otp_timeout: true },
+      });
     } else if (message === 'SMS not send. Try later') {
       throw new SubmissionError({
         password: { resentOtp: true },

@@ -8,7 +8,12 @@ export const onSubmit = ({ phone }) => (dispatch, getState) =>
   dispatch(initFactor(phone))
     .then((action) => {
       if (action.error) {
-        const { type } = action.payload.response.error;
+        const { type, message } = action.payload.response.error;
+        if (message === 'Sending OTP timeout. Try later.') {
+          throw new SubmissionError({
+            phone: { otp_timeout: true },
+          });
+        }
         if (type) {
           throw new SubmissionError({
             phone: {
