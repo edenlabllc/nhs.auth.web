@@ -47,6 +47,7 @@ export default class OtpForm extends React.Component {
       submitting,
       repeat = false,
     } = this.props;
+    const { sent, isSending, otp_timeout } = this.state;
     return (
       <form onSubmit={handleSubmit}>
         <FormBlock>
@@ -69,12 +70,12 @@ export default class OtpForm extends React.Component {
                   theme="link"
                   onClick={() => this.onClickResend().then(resp =>
                     !resp && this.setState({ otp_timeout: true }))}
-                  disabled={this.state.sent || this.state.isSending || this.state.otp_timeout}
+                  disabled={sent || isSending || otp_timeout}
                 >
-                  { this.state.sent && !this.state.otp_timeout && 'Відправлено'}
-                  { this.state.isSending && !this.state.otp_timeout && 'Відправляємо...'}
-                  { !this.state.sent && !this.state.otp_timeout && !this.state.isSending && 'Відправити знову'}
-                  { this.state.otp_timeout && 'Перевищено кількість спроб авторизації. Спробуйте пізніше'}
+                  { sent && !otp_timeout && 'Відправлено'}
+                  { isSending && !otp_timeout && 'Відправляємо...'}
+                  { !sent && !otp_timeout && !isSending && 'Відправити знову'}
+                  { otp_timeout && 'Перевищено кількість спроб авторизації. Спробуйте пізніше'}
                 </Button>
               )
             }
