@@ -55,6 +55,9 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="notAllowed">
           Можливість зміни фактору Вам не доступна
         </ErrorMessage>
+        <ErrorMessage when="otp_timeout">
+          Перевищено кількість спроб авторизації. Спробуйте пізніше
+        </ErrorMessage>
       </ErrorMessages>
     );
   }

@@ -29,6 +29,10 @@ export const onSubmit = ({ code }) => (dispatch, getState) =>
 export const onResend = () => dispatch =>
   dispatch(otpResendOtp()).then((action) => {
     if (action.error) {
+      const { message } = action.payload.response.error;
+      if (message === 'Sending OTP timeout. Try later.') {
+        return false;
+      }
       return action;
     }
     dispatch(login(action.payload.value));
