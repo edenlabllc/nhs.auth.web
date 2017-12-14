@@ -31,9 +31,7 @@ export const onResend = () => dispatch =>
     if (action.error) {
       const { message } = action.payload.response.error;
       if (message === 'Sending OTP timeout. Try later.') {
-        throw new SubmissionError({
-          code: { otp_timeout: true },
-        });
+        return false;
       }
       return action;
     }
