@@ -32,7 +32,7 @@ export default class SignInPage extends React.Component {
             <Button theme="link" to="/reset">
               Забули пароль?
             </Button>
-            <Button theme="link" to="/update-factor">
+            <Button theme="link" to={`/update-factor/${location.search}`}>
               Змінити додатковий фактор авторизації
             </Button>
           </ButtonsGroup>

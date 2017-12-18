@@ -11,7 +11,7 @@ import { onSubmit } from './redux';
 @connect(null, { onSubmit })
 export default class UpdateFactorOtpNewPage extends React.Component {
   render() {
-    const { onSubmit = () => {} } = this.props;
+    const { onSubmit = () => {}, location } = this.props;
 
     return (
       <Main id="new-factor-approve-page">
@@ -20,7 +20,7 @@ export default class UpdateFactorOtpNewPage extends React.Component {
         </Header>
         <Article>
           <OtpForm onSubmit={onSubmit} />
-          <Button theme="link" to="/update-factor">
+          <Button theme="link" to={`/update-factor/${location.search}`}>
             Повернутися на початок
           </Button>
         </Article>

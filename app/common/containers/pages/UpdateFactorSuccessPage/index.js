@@ -19,7 +19,7 @@ export default class UpdateFactorSuccessPage extends React.Component {
           {
             invite ? <Button color="blue" to={`/invite?${invite}`}>
                 Повернутися до запрошення
-            </Button> : <Button color="blue" to="/sign-in">
+            </Button> : <Button color="blue" to={`/sign-in/${location.search}`}>
               Повернутися до входу
             </Button>
           }
