@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 import FieldInput from 'components/reduxForm/FieldInput';
 import Button, { ButtonsGroup } from 'components/Button';
+import ColoredText from 'components/ColoredText';
 
 import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 import { FormBlock } from 'components/Form';
@@ -23,6 +24,7 @@ export default class OtpForm extends React.Component {
     send: false,
     isSending: false,
     otp_timeout: false,
+    token_expires: false,
   };
 
   onClickResend() {
@@ -47,7 +49,7 @@ export default class OtpForm extends React.Component {
       submitting,
       repeat = false,
     } = this.props;
-    const { sent, isSending, otp_timeout } = this.state;
+    const { sent, isSending, otp_timeout, token_expires } = this.state;
     return (
       <form onSubmit={handleSubmit}>
         <FormBlock>
@@ -68,14 +70,27 @@ export default class OtpForm extends React.Component {
               repeat && (
                 <Button
                   theme="link"
-                  onClick={() => this.onClickResend().then(resp =>
-                    !resp && this.setState({ otp_timeout: true }))}
-                  disabled={sent || isSending || otp_timeout}
+                  onClick={() => this.onClickResend().then((action) => {
+                    if (!action) return this.setState({ otp_timeout: true });
+                    if (action.payload.response.error.message === 'Token expired') {
+                      return this.setState({ token_expires: true });
+                    }
+                    if (action.payload.response.error.message === 'Sending OTP timeout. Try later.') {
+                      return this.setState({ token_expires: true });
+                    }
+                    return action;
+                  })}
+                  disabled={sent || isSending || otp_timeout || token_expires}
                 >
-                  { sent && !otp_timeout && 'Відправлено'}
-                  { isSending && !otp_timeout && 'Відправляємо...'}
-                  { !sent && !otp_timeout && !isSending && 'Відправити знову'}
-                  { otp_timeout && 'Перевищено кількість спроб авторизації. Спробуйте пізніше'}
+                  { sent && !otp_timeout && !token_expires && 'Відправлено'}
+                  { isSending && !otp_timeout && !token_expires && 'Відправляємо...'}
+                  { !sent && !otp_timeout && !isSending && !token_expires && 'Відправити знову'}
+                  { otp_timeout && !token_expires && (
+                    <ColoredText color="red">Перевищено кількість спроб авторизації. Спробуйте пізніше</ColoredText>
+                  )}
+                  { token_expires && (
+                    <ColoredText color="red">Термін cecії користувача вичерпано. Радимо повернутися до попереднього кроку</ColoredText>
+                  )}
                 </Button>
               )
             }
