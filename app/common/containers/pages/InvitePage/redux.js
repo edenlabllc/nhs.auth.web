@@ -21,13 +21,33 @@ export const onSubmitSignUp = (employeeRequestId, email, password) => (dispatch,
 
       const state = getState();
       const location = getLocation(state);
-      return dispatch([
-        login(action.payload.value),
-        push({
-          ...location,
-          pathname: '/request-factor',
-        }),
-      ]);
+      const { next_step } = action.meta;
+      dispatch(login(action.payload.value));
+
+      switch (next_step) {
+        case 'REQUEST_APPS': {
+          return dispatch(push({ ...location, pathname: '/invite/accept' }));
+        }
+
+        case 'REQUEST_OTP': {
+          return dispatch(push({ ...location, pathname: '/otp-send' }));
+        }
+
+        case 'RESEND_OTP': {
+          throw new SubmissionError({
+            email: { resentOtp: true },
+          });
+        }
+
+        case 'REQUEST_FACTOR': {
+          return dispatch(push({ ...location, pathname: '/request-factor' }));
+        }
+
+        default: {
+          break;
+        }
+      }
+      return true;
     });
   })
 );
@@ -65,14 +85,15 @@ dispatch(createSessionToken({
   const { next_step } = action.meta;
   dispatch(login(action.payload.value));
 
+  const state = getState();
+  const location = getLocation(state);
+
   switch (next_step) {
     case 'REQUEST_APPS': {
       return dispatch(push({ ...location, pathname: '/invite/accept' }));
     }
 
     case 'REQUEST_OTP': {
-      const state = getState();
-      const location = getLocation(state);
       return dispatch(push({ ...location, pathname: '/otp-send' }));
     }
 
@@ -83,8 +104,6 @@ dispatch(createSessionToken({
     }
 
     case 'REQUEST_FACTOR': {
-      const state = getState();
-      const location = getLocation(state);
       return dispatch(push({ ...location, pathname: '/request-factor' }));
     }
 
