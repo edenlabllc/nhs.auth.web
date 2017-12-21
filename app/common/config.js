@@ -9,8 +9,8 @@ if (__CLIENT__ && window && window.__CONFIG__) {
 
 export const PORT = config.PORT || process.env.PORT || 8080;
 export const HOSTNAME = typeof window !== 'undefined' ? window.location.origin : (config.HOSTNAME || 'http://localhost:8080');
-export const API_ENDPOINT = config.API_ENDPOINT || process.env.API_ENDPOINT || 'http://dev.ehealth.world';
-export const AUTH_ENDPOINT = config.API_ENDPOINT || process.env.AUTH_ENDPOINT || 'http://dev.ehealth.world';
+export const API_ENDPOINT = config.API_ENDPOINT || process.env.API_ENDPOINT || 'https://dev.ehealth.world';
+export const AUTH_ENDPOINT = config.API_ENDPOINT || process.env.AUTH_ENDPOINT || 'https://dev.ehealth.world';
 
 export const SITEMAP_HOSTNAME = config.SITEMAP_HOSTNAME || process.env.SITEMAP_HOSTNAME || 'http://localhost:8080'; // used in sitemap
 export const LANG_COOKIE_NAME = 'lang';
