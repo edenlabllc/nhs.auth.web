@@ -90,7 +90,7 @@ export default class SignUpPage extends React.Component {
               <p><DictionaryValue dictionary="SPECIALITY_TYPE" value={speciality.speciality} /> <DictionaryValue dictionary="SPECIALITY_LEVEL" value={speciality.level} /></p>
               <p><b>Сертифікат:</b> {speciality.certificate_number}</p>
               <p><b>Виданий:</b> {speciality.attestation_name} {speciality.attestation_date}</p>
-              <p><b>Тип кваліфікації:</b> {<DictionaryValue dictionary="QUALIFICATION_TYPE" value={speciality.qualification_type} />}</p>
+              <p><b>Тип кваліфікації:</b> {<DictionaryValue dictionary="SPEC_QUALIFICATION_TYPE" value={speciality.qualification_type} />}</p>
               <p><b>Спеціальність за посадою:</b> {speciality.speciality_officio ? 'Так' : 'Ні'}</p>
               <p><b>Дійсний до:</b> {speciality.valid_to_date}</p>
             </div>
