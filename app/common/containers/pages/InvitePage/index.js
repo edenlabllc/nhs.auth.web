@@ -109,7 +109,7 @@ export default class SignUpPage extends React.Component {
           <p>{party.first_name} {party.second_name} {party.last_name}</p>
           <p>{format(party.birth_date, 'DD.MM.YYYY')} р.н.</p>
           <p><b>Стать:</b> <DictionaryValue dictionary="GENDER" value={party.gender} /></p>
-          <p><b>ІНН:</b> {party.tax_id}</p>
+          <p><b>ІПН:</b> {party.tax_id}</p>
           <p><b>Email:</b> {party.email}</p>
         </div>
         <div className={styles.details__title}>Документи</div>
