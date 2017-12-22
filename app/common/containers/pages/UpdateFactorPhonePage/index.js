@@ -18,7 +18,9 @@ export default class UpdateFactorPhonePage extends React.Component {
           <H1>Введіть Ваш новий номер телефону</H1>
         </Header>
         <Article>
-          <FactorForm onSubmit={onSubmit} />
+          <FactorForm
+            onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ''))}
+          />
         </Article>
       </Main>
     );
