@@ -68,7 +68,7 @@ dispatch(createSessionToken({
       'You reached login attempts limit. Try again later': 'reached_max_attemps',
       'Identity, password combination is wrong.': 'passwordMismatch',
       'SMS not send. Try later': 'resentOtp',
-      'Sending OTP timeout. Try later.': 'resentOtp',
+      'Sending OTP timeout. Try later.': 'otp_timeout',
     };
 
     if (message) {
