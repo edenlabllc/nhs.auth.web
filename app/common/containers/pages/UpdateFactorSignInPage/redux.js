@@ -24,6 +24,10 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
         throw new SubmissionError({
           email: { emailOrPasswordMismatch: true },
         });
+      } else if (message === 'Sending OTP timeout. Try later.') {
+        throw new SubmissionError({
+          email: { otp_timeout: true },
+        });
       } else if (message === 'SMS not send. Try later') {
         throw new SubmissionError({
           email: { resentOtp: true },
