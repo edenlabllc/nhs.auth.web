@@ -4,7 +4,7 @@ import { login } from 'redux/session';
 import { getLocation } from 'reducers';
 import { SubmissionError } from 'redux-form';
 
-export const onSubmit = ({ phone }) => (dispatch, getState) =>
+export const onSubmit = phone => (dispatch, getState) =>
 dispatch(initFactor(phone))
   .then((action) => {
     if (action.error) {

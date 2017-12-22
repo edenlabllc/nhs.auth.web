@@ -20,7 +20,7 @@ export default class RequestFactorPage extends React.Component {
         </Header>
         <Article>
           <FactorForm
-            onSubmit={onSubmit}
+            onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ''))}
           />
         </Article>
       </Main>

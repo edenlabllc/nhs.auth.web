@@ -23,7 +23,7 @@ $errored: #ff1f44;
 
     .prefix-wrapper,
     .postfix-wrapper {
-      color: $errored;
+      color: #3d3d3d;
     }
 
     .required-label {
@@ -36,7 +36,7 @@ $errored: #ff1f44;
 
     .prefix-wrapper,
     .postfix-wrapper {
-      color: $focused;
+      color: $label;
     }
 
     .required-label {
@@ -73,12 +73,14 @@ textarea.input {
 
 .prefix-wrapper {
   position: relative;
-  padding: 0 11px;
+  padding: 0 20px;
   padding-right: 0;
   line-height: 32px;
-  color: rgba(61, 61, 61, 0.5);
   border-right: none;
   font-size: 16px;
+  color: #3c4858;
+  margin: 10px 0;
+  margin-right: -15px;
 }
 
 .postfix-wrapper {

@@ -4,7 +4,8 @@ import { withRouter } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 import { FormBlock } from 'components/Form';
 import Button, { ButtonsGroup } from 'components/Button';
-import FieldMasked from 'components/reduxForm/FieldMasked';
+import FieldInput from 'components/reduxForm/FieldInput';
+import normalizePhone from 'helpers/phone';
 
 import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 
@@ -14,17 +15,13 @@ import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
   validate: reduxFormValidate({
     phone: {
       required: true,
-      phone_number: () => /^\d{9}$/,
+      phone_number: () => /^\d{2} \d{3} \d{2} \d{2}$/,
     },
   }),
 })
 export default class FactorForm extends React.Component {
   render() {
-    const {
-      handleSubmit,
-      submitting,
-      router,
-    } = this.props;
+    const { submitting, handleSubmit, router } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
@@ -34,9 +31,9 @@ export default class FactorForm extends React.Component {
               labelText="Введіть номер телефона, що буде використано для авторизації"
               type="tel"
               name="phone"
-              placeholder="+380 XX XXX XX XX"
-              mask="+380 11 111 11 11"
-              component={FieldMasked}
+              prefix="+380"
+              component={FieldInput}
+              normalize={normalizePhone}
             >
               <ErrorMessage when="access_denied">
                 Термін доступу користувача вичерпано. Радимо повернутися до попереднього кроку.
