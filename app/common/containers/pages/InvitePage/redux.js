@@ -61,22 +61,21 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
-    const { message } = action.payload.response.error;
-    if (message === 'User blocked.') {
+    const { message = 'SMS not send. Try later' } = action.payload.response.error;
+
+    const error_messages = {
+      'User blocked': 'user_blocked',
+      'You reached login attempts limit. Try again later': 'reached_max_attemps',
+      'Identity, password combination is wrong.': 'passwordMismatch',
+      'SMS not send. Try later': 'resentOtp',
+      'Sending OTP timeout. Try later.': 'resentOtp',
+    };
+
+    if (message) {
       throw new SubmissionError({
-        password: { user_blocked: true },
-      });
-    } else if (message === 'Identity, password combination is wrong.') {
-      throw new SubmissionError({
-        password: { passwordMismatch: true },
-      });
-    } else if (message === 'Sending OTP timeout. Try later.') {
-      throw new SubmissionError({
-        password: { otp_timeout: true },
-      });
-    } else if (message === 'SMS not send. Try later') {
-      throw new SubmissionError({
-        password: { resentOtp: true },
+        password: {
+          [error_messages[message]]: true,
+        },
       });
     }
     return action;

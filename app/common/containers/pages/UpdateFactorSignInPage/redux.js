@@ -16,23 +16,23 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   .then((action) => {
     if (action.error) {
       const { message } = action.payload.response.error;
-      if (message === 'User blocked.') {
+
+      const error_messages = {
+        'User blocked': 'user_blocked',
+        'You reached login attempts limit. Try again later': 'reached_max_attemps',
+        'Identity, password combination is wrong.': 'emailOrPasswordMismatch',
+        'SMS not send. Try later': 'resentOtp',
+        'Sending OTP timeout. Try later.': 'otp_timeout',
+      };
+
+      if (message) {
         throw new SubmissionError({
-          email: { user_blocked: true },
-        });
-      } else if (message === 'Identity, password combination is wrong.') {
-        throw new SubmissionError({
-          email: { emailOrPasswordMismatch: true },
-        });
-      } else if (message === 'Sending OTP timeout. Try later.') {
-        throw new SubmissionError({
-          email: { otp_timeout: true },
-        });
-      } else if (message === 'SMS not send. Try later') {
-        throw new SubmissionError({
-          email: { resentOtp: true },
+          email: {
+            [error_messages[message]]: true,
+          },
         });
       }
+
       return action;
     }
     const { next_step } = action.meta;
