@@ -9,6 +9,9 @@ import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 @reduxForm({
   form: 'new-password-form',
   validate: reduxFormValidate({
+    current_password: {
+      required: true,
+    },
     password: {
       required: true,
       format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
@@ -16,19 +19,25 @@ import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
     },
     confirm_password: {
       required: true,
-      format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
-      length: 12,
       confirmation: 'password',
     },
   }),
 })
-export default class NewPasswordForm extends React.Component {
+export default class ExpiredPasswordForm extends React.Component {
   render() {
     const { handleSubmit, submitting } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
         <FormBlock>
+          <div>
+            <Field
+              placeholder="Введіть старий пароль"
+              name="current_password"
+              type="password"
+              component={FieldInput}
+            />
+          </div>
           <div>
             <Field
               placeholder="Введіть новий пароль"

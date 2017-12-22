@@ -61,7 +61,17 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
-    const { message } = action.payload.response.error;
+    const { message, type } = action.payload.response.error;
+
+    if (type === 'password_expired') {
+      const state = getState();
+      const location = getLocation(state);
+      return dispatch(push({
+        ...location,
+        pathname: '/sign-in/expiredPassword',
+      }));
+    }
+
     if (message === 'User blocked.') {
       throw new SubmissionError({
         password: { user_blocked: true },

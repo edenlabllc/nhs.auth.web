@@ -16,7 +16,21 @@ dispatch(createSessionToken({
 }))
 .then((action) => {
   if (action.error) {
-    const { message } = action.payload.response.error;
+    const { message, type } = action.payload.response.error;
+    if (type === 'password_expired') {
+      const state = getState();
+      const location = getLocation(state);
+      const user_id =
+        message.match(/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/)[0];
+      return dispatch(push({
+        query: {
+          ...location.query,
+          user_id,
+        },
+        pathname: '/sign-in/expiredPassword',
+      }));
+    }
+
     if (message === 'User blocked.') {
       throw new SubmissionError({
         email: { user_blocked: true },

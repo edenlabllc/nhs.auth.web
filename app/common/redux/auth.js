@@ -70,6 +70,19 @@ export const fetchSessionToken = token => invoke({
   }, 'auth/FETCH_SESSION_TOKEN_FAILURE'],
 });
 
+export const updatePassword = (id, body) => invoke({
+  endpoint: `${AUTH_URL}/users/${id}/actions/change_password`,
+  method: 'PATCH',
+  types: ['auth/UPDATE_PASSWORD_REQUEST',
+    'auth/UPDATE_PASSWORD_SUCCESS',
+    'auth/UPDATE_PASSWORD_FAILURE'],
+  body: {
+    user: {
+      ...body,
+    },
+  },
+});
+
 export const authorize = ({ clientId, scope, redirectUri }) => invoke({
   endpoint: `${AUTH_URL}/oauth/apps/authorize`,
   method: 'POST',
