@@ -4,7 +4,7 @@ import { createSessionToken } from 'redux/auth';
 import { login } from 'redux/session';
 import { getLocation } from 'reducers';
 import { CLIENT_ID } from 'config';
-import error_messages from 'helpers/errors';
+import error_messages, { default_error } from 'helpers/errors';
 
 export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   dispatch(createSessionToken({
@@ -16,7 +16,7 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   }))
   .then((action) => {
     if (action.error) {
-      const { message = 'SMS not send. Try later' } = action.payload.response.error;
+      const { message = default_error } = action.payload.response.error;
 
       if (message) {
         throw new SubmissionError({

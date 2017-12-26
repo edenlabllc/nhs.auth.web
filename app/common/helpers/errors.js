@@ -5,5 +5,7 @@ const error_messages = {
   'Sending OTP timeout. Try later.': 'otp_timeout',
   'Identity, password combination is wrong.': 'emailOrPasswordMismatch',
 };
-
 export default error_messages;
+
+
+export const default_error = 'SMS not send. Try later';
