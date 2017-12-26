@@ -4,6 +4,7 @@ import { createSessionToken } from 'redux/auth';
 import { login } from 'redux/session';
 import { getLocation } from 'reducers';
 import { CLIENT_ID } from 'config';
+import error_messages from 'helpers/errors';
 
 export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   dispatch(createSessionToken({
@@ -15,15 +16,7 @@ export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   }))
   .then((action) => {
     if (action.error) {
-      const { message } = action.payload.response.error;
-
-      const error_messages = {
-        'User blocked': 'user_blocked',
-        'You reached login attempts limit. Try again later': 'reached_max_attemps',
-        'Identity, password combination is wrong.': 'emailOrPasswordMismatch',
-        'SMS not send. Try later': 'resentOtp',
-        'Sending OTP timeout. Try later.': 'otp_timeout',
-      };
+      const { message = 'SMS not send. Try later' } = action.payload.response.error;
 
       if (message) {
         throw new SubmissionError({
