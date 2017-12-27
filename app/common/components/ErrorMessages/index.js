@@ -65,7 +65,7 @@ export default class ErrorMessagesTranslated extends React.Component {
           Ви досягнули максимальної кількості спроб авторизації. Спробуйте пізніше
         </ErrorMessage>
         <ErrorMessage when="password_expired">
-          Ваш пароль застарів. Рекомендуємо оновити пароль
+          Ваш пароль застарів. Необхідно змінити пароль
         </ErrorMessage>
       </ErrorMessages>
   );

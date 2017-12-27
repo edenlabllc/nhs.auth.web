@@ -16,7 +16,7 @@ import styles from './styles.scss';
 @connect(null, { onSubmit })
 export default class PasswordExpiredPage extends React.Component {
   render() {
-    const { onSubmit = () => {}, router, location } = this.props;
+    const { onSubmit = () => {}, router } = this.props;
 
     return (
       <section className={styles.main} id="otp-page">
@@ -24,14 +24,7 @@ export default class PasswordExpiredPage extends React.Component {
           <H1>Сторінка встановлення нового паролю</H1>
         </header>
         <article className={styles.form}>
-          <ExpiredPasswordForm
-            onSubmit={({ current_password, password }) =>
-              onSubmit(
-                location.query.user_id,
-                { current_password, password }
-              )
-            }
-          />
+          <ExpiredPasswordForm onSubmit={onSubmit} />
           <ButtonsGroup>
             <Button
               theme="link"

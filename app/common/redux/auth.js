@@ -28,6 +28,19 @@ export const passwordUpdateRequest = body => invoke({
   body,
 });
 
+export const newPasswordRequest = new_password => invoke({
+  endpoint: `${AUTH_URL}/oauth/users/actions/update_password`,
+  method: 'POST',
+  types: ['auth/PASSWORD_UPDATE_REQUEST',
+    'auth/PASSWORD_UPDATE_SUCCESS',
+    'auth/PASSWORD_UPDATE_FAILURE'],
+  body: {
+    user: {
+      new_password,
+    },
+  },
+}, { auth: true });
+
 
 export const otpVerifyToken = code => invoke({
   endpoint: `${AUTH_URL}/oauth/tokens`,
