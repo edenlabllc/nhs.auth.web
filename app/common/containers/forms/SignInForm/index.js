@@ -15,8 +15,6 @@ import { FormBlock } from 'components/Form';
     },
     password: {
       required: true,
-      // format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
-      // length: 12,
     },
   }),
 })

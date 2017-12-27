@@ -27,7 +27,6 @@ dispatch(passwordUpdateRequest({
     }
     return action;
   }
-  console.log('action', action);
 
   dispatch(login(action.payload.data.value));
   const state = getState();
