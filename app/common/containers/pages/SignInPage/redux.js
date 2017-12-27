@@ -18,11 +18,8 @@ dispatch(createSessionToken({
 .then((action) => {
   if (action.error) {
     const { message } = action.payload.response.error;
-    throw new SubmissionError({
-      email: {
-        [error_messages[message] || error_messages.defaultError]: true,
-      },
-    });
+    const error = error_messages[message] || error_messages.defaultError;
+    throw new SubmissionError({ email: { [error]: true } });
   }
   const { next_step } = action.meta;
   dispatch(login(action.payload.value));
