@@ -21,7 +21,7 @@ export default class PasswordExpiredPage extends React.Component {
     return (
       <section className={styles.main} id="otp-page">
         <header className={styles.header}>
-          <H1>Ваш пароль застарів</H1>
+          <H1>Сторінка встановлення нового паролю</H1>
         </header>
         <article className={styles.form}>
           <ExpiredPasswordForm

@@ -61,7 +61,13 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="password_already_taken">
           Такий пароль вже використовувався нещодавно. Спробуйте інший
         </ErrorMessage>
+        <ErrorMessage when="reached_max_attempts">
+          Ви досягнули максимальної кількості спроб авторизації. Спробуйте пізніше
+        </ErrorMessage>
+        <ErrorMessage when="password_expired">
+          Ваш пароль застарів. Рекомендуємо оновити пароль
+        </ErrorMessage>
       </ErrorMessages>
-    );
+  );
   }
 }

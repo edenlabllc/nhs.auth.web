@@ -29,6 +29,7 @@ import UpdateFactorPhonePage from 'containers/pages/UpdateFactorPhonePage';
 import UpdateFactorPhoneOtpPage from 'containers/pages/UpdateFactorPhoneOtpPage';
 import UpdateFactorSuccessPage from 'containers/pages/UpdateFactorSuccessPage';
 
+import PasswordExpiredSignInPage from 'containers/pages/PasswordExpiredSignInPage';
 import PasswordExpiredPage from 'containers/pages/PasswordExpiredPage';
 
 import NotFoundPage from 'containers/pages/NotFoundPage';
@@ -91,7 +92,8 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
               />
             </Route>
             <Route path="sign-in" component={SignInPage} />
-            <Route path="sign-in/expiredPassword" component={PasswordExpiredPage} />
+            <Route path="update-password" component={PasswordExpiredSignInPage} />
+            <Route path="update-password/new" component={PasswordExpiredPage} />
 
             <Route path="update-factor" component={UpdateFactorSignInPage} />
 

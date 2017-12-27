@@ -19,6 +19,16 @@ export const createSessionToken = body => invoke({
   },
 });
 
+export const passwordUpdateRequest = body => invoke({
+  endpoint: `${AUTH_URL}/oauth/tokens/actions/change_password`,
+  method: 'POST',
+  types: ['auth/PASSWORD_UPDATE_REQUEST',
+    'auth/PASSWORD_UPDATE_SUCCESS',
+    'auth/PASSWORD_UPDATE_FAILURE'],
+  body,
+});
+
+
 export const otpVerifyToken = code => invoke({
   endpoint: `${AUTH_URL}/oauth/tokens`,
   method: 'POST',

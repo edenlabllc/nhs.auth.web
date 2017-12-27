@@ -2,9 +2,10 @@ import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
 import { createSessionToken } from 'redux/auth';
-import { fetchUserData } from 'redux/user';
 import { login } from 'redux/session';
+import { fetchUserData } from 'redux/user';
 import { CLIENT_ID } from 'config';
+import error_messages, { default_error } from 'helpers/errors';
 
 export const onSubmit = ({ email, password }) => (dispatch, getState) =>
 dispatch(createSessionToken({
@@ -16,36 +17,32 @@ dispatch(createSessionToken({
 }))
 .then((action) => {
   if (action.error) {
-    const { message, type } = action.payload.response.error;
+    const { message = default_error, type } = action.payload.response.error;
     if (type === 'password_expired') {
-      const state = getState();
-      const location = getLocation(state);
-      const user_id =
-        message.match(/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/)[0];
-      return dispatch(push({
-        query: {
-          ...location.query,
-          user_id,
+      throw new SubmissionError({
+        password: {
+          password_expired: true,
         },
-        pathname: '/sign-in/expiredPassword',
-      }));
+      });
+    //   const state = getState();
+    //   const location = getLocation(state);
+    //   const user_id =
+    //     message.match(/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]
+    // {3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/)[0];
+    //   return dispatch(push({
+    //     query: {
+    //       ...location.query,
+    //       user_id,
+    //     },
+    //     pathname: '/sign-in/expiredPassword',
+    //   }));
     }
 
-    if (message === 'User blocked.') {
+    if (message) {
       throw new SubmissionError({
-        email: { user_blocked: true },
-      });
-    } else if (message === 'Identity, password combination is wrong.') {
-      throw new SubmissionError({
-        email: { emailOrPasswordMismatch: true },
-      });
-    } else if (message === 'SMS not send. Try later') {
-      throw new SubmissionError({
-        email: { resentOtp: true },
-      });
-    } else if (message === 'Sending OTP timeout. Try later.') {
-      throw new SubmissionError({
-        email: { otp_timeout: true },
+        email: {
+          [error_messages[message]]: true,
+        },
       });
     }
     return action;
