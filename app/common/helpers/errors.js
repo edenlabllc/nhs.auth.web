@@ -1,4 +1,5 @@
 const error_messages = {
+  defaultError: 'unexpected_error',
   'User blocked': 'user_blocked',
   'You reached login attempts limit. Try again later': 'reached_max_attemps',
   'SMS not send. Try later': 'resentOtp',
@@ -6,6 +7,3 @@ const error_messages = {
   'Identity, password combination is wrong.': 'emailOrPasswordMismatch',
 };
 export default error_messages;
-
-
-export const default_error = 'SMS not send. Try later';
