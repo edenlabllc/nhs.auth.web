@@ -97,7 +97,6 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
             <Route path="update-password/new" component={PasswordExpiredPage} />
             <Route path="update-password/success" component={UpdatePasswordSuccessPage} />
 
-
             <Route path="update-factor" component={UpdateFactorSignInPage} />
 
             <Route path="reset" component={ResetPasswordPage} />
