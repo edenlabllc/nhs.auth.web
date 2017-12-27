@@ -18,11 +18,11 @@ import styles from './styles.scss';
   validate: reduxFormValidate({
     password: {
       required: true,
-      minLength: 8,
+      format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
+      minLength: 12,
     },
     confirmPassword: {
       required: true,
-      minLength: 8,
       confirmation: 'password',
     },
     confirm: {

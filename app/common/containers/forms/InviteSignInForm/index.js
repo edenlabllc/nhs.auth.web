@@ -17,8 +17,6 @@ import styles from './styles.scss';
   validate: reduxFormValidate({
     password: {
       required: true,
-      format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
-      length: 12,
     },
   }),
 })

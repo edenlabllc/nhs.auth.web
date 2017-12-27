@@ -5,7 +5,7 @@ import { provideHooks } from 'redial';
 import { withRouter } from 'react-router';
 import format from 'date-fns/format';
 
-import Button from 'components/Button';
+import Button, { ButtonsGroup } from 'components/Button';
 import { H1 } from 'components/Title';
 import Points from 'components/Points';
 import Icon from 'components/Icon';
@@ -196,12 +196,14 @@ export default class SignUpPage extends React.Component {
             />}
           </div>
         </FormBlock>
-        <Button theme="link" to={`/update-password?${location.search}`}>
-          Змінити пароль
-        </Button>
-        <Button theme="link" to={`/update-factor?${invite}`}>
-          Змінити додатковий фактор авторизації
-        </Button>
+        <ButtonsGroup>
+          <Button theme="link" to={`/update-password?${location.search}`}>
+            Змінити пароль
+          </Button>
+          <Button theme="link" to={`/update-factor?${invite}`}>
+            Змінити додатковий фактор авторизації
+          </Button>
+        </ButtonsGroup>
       </section>
     );
   }
