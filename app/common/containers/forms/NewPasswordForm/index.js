@@ -12,12 +12,11 @@ import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
     password: {
       required: true,
       format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
-      length: 12,
+      minLength: 12,
     },
     confirm_password: {
       required: true,
       format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
-      length: 12,
       confirmation: 'password',
     },
   }),
