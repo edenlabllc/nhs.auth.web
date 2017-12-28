@@ -5,7 +5,7 @@ import { createSessionToken } from 'redux/auth';
 import { createUserFromRequest } from 'redux/user';
 import { login } from 'redux/session';
 import { CLIENT_ID } from 'config';
-import error_messages, { default_error } from 'helpers/errors';
+import error_messages from 'helpers/errors';
 
 export const onSubmitSignUp = (employeeRequestId, email, password) => (dispatch, getState) => (
   dispatch(createUserFromRequest(employeeRequestId, { password })).then((action) => {
@@ -62,16 +62,10 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
-    const { message = default_error } = action.payload.response.error;
+    const { message } = action.payload.response.error;
+    const error = error_messages[message] || error_messages.defaultError;
 
-    if (message) {
-      throw new SubmissionError({
-        password: {
-          [error_messages[message]]: true,
-        },
-      });
-    }
-    return action;
+    throw new SubmissionError({ password: { [error]: true } });
   }
 
   const { next_step } = action.meta;

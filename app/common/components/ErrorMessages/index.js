@@ -61,6 +61,9 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="reached_max_attemps">
           Ви досягнули максимальної кількості спроб авторизації. Спробуйте пізніше
         </ErrorMessage>
+        <ErrorMessage when="unexpected_error">
+          Щось пішло не так. Спробуйте пізніше
+        </ErrorMessage>
       </ErrorMessages>
     );
   }
