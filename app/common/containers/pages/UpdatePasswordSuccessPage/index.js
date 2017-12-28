@@ -8,8 +8,9 @@ import { Main, Header, Article } from 'components/CenterLayout';
 @withRouter
 export default class UpdatePasswordSuccessPage extends React.Component {
   render() {
-    const { location } = this.props;
+    const { location:  { query : { password_update, ...query } } } = this.props; //eslint-disable-line
     const invite = location.query && location.query.invite ? `invite=${location.query.invite}` : false;
+
     return (
       <Main id="update-factor-success-page">
         <Header>
@@ -19,7 +20,7 @@ export default class UpdatePasswordSuccessPage extends React.Component {
           {
             invite ? <Button color="blue" to={`/invite?${invite}`}>
                 Повернутися до запрошення
-            </Button> : <Button color="blue" to={`/sign-in/${location.search}`}>
+            </Button> : <Button color="blue" to={{ pathname: '/sign-in', query }}>
               Повернутися до входу
             </Button>
           }

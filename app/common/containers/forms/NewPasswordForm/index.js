@@ -11,7 +11,7 @@ import { password_validate } from 'helpers/validate';
   form: 'new-password-form',
   validate: reduxFormValidate({
     password: {
-      password_validate,
+      ...password_validate,
     },
     confirm_password: {
       required: true,

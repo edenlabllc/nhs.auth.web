@@ -197,7 +197,7 @@ export default class SignUpPage extends React.Component {
           </div>
         </FormBlock>
         <ButtonsGroup>
-          <Button theme="link" to={`/update-password?${location.search}`}>
+          <Button theme="link" to={`/update-password${location.search}`}>
             Змінити пароль
           </Button>
           <Button theme="link" to={`/update-factor?${invite}`}>

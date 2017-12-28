@@ -22,8 +22,12 @@ export const onSubmit = ({ code }) => (dispatch, getState) =>
       dispatch(login(action.payload.value));
       const state = getState();
       const location = getLocation(state);
+      console.log(location);
 
-      return dispatch(push({ ...location, pathname: '/update-password/new' }));
+      return dispatch(push({
+        ...location,
+        pathname: '/update-password/new',
+      }));
     });
 
 export const onResend = () => dispatch =>

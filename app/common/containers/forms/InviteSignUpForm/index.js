@@ -18,7 +18,7 @@ import styles from './styles.scss';
   form: 'sign-up-form',
   validate: reduxFormValidate({
     password: {
-      password_validate,
+      ...password_validate,
     },
     confirmPassword: {
       required: true,

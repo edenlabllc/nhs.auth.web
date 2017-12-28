@@ -2,16 +2,12 @@ import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
 import { newPasswordRequest } from 'redux/auth';
-import { default_error } from 'helpers/errors';
 
 export const onSubmit = ({ password }) => (dispatch, getState) =>
   dispatch(newPasswordRequest(password))
     .then((action) => {
       if (action.error) {
-        const {
-          message = default_error,
-          invalid,
-        } = action.payload.response.error;
+        const { message, invalid } = action.payload.response.error;
         if (invalid && invalid[0].entry === '$.password') {
           throw new SubmissionError({
             password: {

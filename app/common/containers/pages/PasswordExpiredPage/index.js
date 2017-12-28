@@ -8,7 +8,6 @@ import Button, { ButtonsGroup } from 'components/Button';
 import ExpiredPasswordForm from 'containers/forms/ExpiredPasswordForm';
 
 import { onSubmit } from './redux';
-
 import styles from './styles.scss';
 
 @withRouter
