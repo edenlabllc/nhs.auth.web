@@ -18,10 +18,15 @@ export const onSubmit = ({ code }) => (dispatch, getState) =>
         }
         return action;
       }
-
       dispatch(login(action.payload.value));
       const state = getState();
       const location = getLocation(state);
+      if (location.query && location.query.password_update) {
+        return dispatch(push({
+          ...location,
+          pathname: 'update-password/new',
+        }));
+      }
 
       return dispatch(
         push({

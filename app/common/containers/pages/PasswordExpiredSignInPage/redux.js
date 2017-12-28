@@ -35,14 +35,25 @@ dispatch(createSessionToken({
   const { next_step } = action.meta;
 
   switch (next_step) {
-    case 'REQUEST_FACTOR':
     case 'REQUEST_APPS': {
       return dispatch(push({
         ...location,
         pathname: 'update-password/new',
-      }),
-      );
+      }));
     }
+
+    case 'REQUEST_FACTOR': {
+      const state = getState();
+      const location = getLocation(state);
+      return dispatch(push({
+        query: {
+          ...location.query,
+          password_update: true,
+        },
+        pathname: '/request-factor',
+      }));
+    }
+
     case 'REQUEST_OTP': {
       const state = getState();
       const location = getLocation(state);
