@@ -5,18 +5,16 @@ import FieldInput from 'components/reduxForm/FieldInput';
 import Button from 'components/Button';
 import { FormBlock } from 'components/Form';
 import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
+import { password_validate } from 'helpers/validate';
 
 @reduxForm({
   form: 'new-password-form',
   validate: reduxFormValidate({
     password: {
-      required: true,
-      format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
-      minLength: 12,
+      password_validate,
     },
     confirm_password: {
       required: true,
-      format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
       confirmation: 'password',
     },
   }),

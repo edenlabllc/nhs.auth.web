@@ -9,6 +9,7 @@ import FieldCheckbox from 'components/reduxForm/FieldCheckbox';
 import Button from 'components/Button';
 
 import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
+import { password_validate } from 'helpers/validate';
 
 import styles from './styles.scss';
 
@@ -17,9 +18,7 @@ import styles from './styles.scss';
   form: 'sign-up-form',
   validate: reduxFormValidate({
     password: {
-      required: true,
-      format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
-      minLength: 12,
+      password_validate,
     },
     confirmPassword: {
       required: true,
