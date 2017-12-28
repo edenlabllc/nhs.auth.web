@@ -1,0 +1,11 @@
+@keyframes autofill {
+  to {
+    color: black;
+    background: transparent;
+  }
+}
+
+input:-webkit-autofill {
+  animation-name: autofill;
+  animation-fill-mode: both;
+}

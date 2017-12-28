@@ -5,7 +5,7 @@ import { createSessionToken } from 'redux/auth';
 import { login } from 'redux/session';
 import { fetchUserData } from 'redux/user';
 import { CLIENT_ID } from 'config';
-import error_messages, { default_error } from 'helpers/errors';
+import error_messages from 'helpers/errors';
 
 export const onSubmit = ({ email, password }) => (dispatch, getState) =>
 dispatch(createSessionToken({
@@ -17,7 +17,8 @@ dispatch(createSessionToken({
 }))
 .then((action) => {
   if (action.error) {
-    const { message = default_error, type } = action.payload.response.error;
+    const { message, type } = action.payload.response.error;
+    const error = error_messages[message] || error_messages.defaultError;
     if (type === 'password_expired') {
       throw new SubmissionError({
         password: {
@@ -28,13 +29,12 @@ dispatch(createSessionToken({
 
     if (message) {
       throw new SubmissionError({
-        email: {
-          [error_messages[message]]: true,
-        },
+        email: { [error]: true },
       });
     }
     return action;
   }
+
   const { next_step } = action.meta;
   dispatch(login(action.payload.value));
 

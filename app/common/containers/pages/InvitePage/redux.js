@@ -5,7 +5,7 @@ import { createSessionToken } from 'redux/auth';
 import { createUserFromRequest } from 'redux/user';
 import { login } from 'redux/session';
 import { CLIENT_ID } from 'config';
-import error_messages, { default_error } from 'helpers/errors';
+import error_messages from 'helpers/errors';
 
 export const onSubmitSignUp = (employeeRequestId, email, password) => (dispatch, getState) => (
   dispatch(createUserFromRequest(employeeRequestId, { password })).then((action) => {
@@ -62,7 +62,8 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
-    const { message = default_error, type } = action.payload.response.error;
+    const { message, type } = action.payload.response.error;
+    const error = error_messages[message] || error_messages.defaultError;
 
     if (type === 'password_expired') {
       const state = getState();
@@ -72,15 +73,11 @@ dispatch(createSessionToken({
         pathname: '/sign-in/expiredPassword',
       }));
     }
-
-    if (message) {
+    if (error) {
       throw new SubmissionError({
-        password: {
-          [error_messages[message]]: true,
-        },
+        password: { [error]: true },
       });
     }
-    return action;
   }
 
   const { next_step } = action.meta;
