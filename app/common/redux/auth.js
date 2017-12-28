@@ -28,7 +28,7 @@ export const passwordUpdateRequest = body => invoke({
   body,
 });
 
-export const newPasswordRequest = new_password => invoke({
+export const newPasswordRequest = password => invoke({
   endpoint: `${AUTH_URL}/oauth/users/actions/update_password`,
   method: 'POST',
   types: ['auth/PASSWORD_UPDATE_REQUEST',
@@ -36,7 +36,7 @@ export const newPasswordRequest = new_password => invoke({
     'auth/PASSWORD_UPDATE_FAILURE'],
   body: {
     user: {
-      new_password,
+      password,
     },
   },
 }, { auth: true });

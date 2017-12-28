@@ -4,8 +4,8 @@ import { getLocation } from 'reducers';
 import { newPasswordRequest } from 'redux/auth';
 import { default_error } from 'helpers/errors';
 
-export const onSubmit = ({ new_password }) => (dispatch, getState) =>
-  dispatch(newPasswordRequest(new_password))
+export const onSubmit = ({ password }) => (dispatch, getState) =>
+  dispatch(newPasswordRequest(password))
     .then((action) => {
       if (action.error) {
         const {
@@ -14,13 +14,13 @@ export const onSubmit = ({ new_password }) => (dispatch, getState) =>
         } = action.payload.response.error;
         if (invalid && invalid[0].entry === '$.password') {
           throw new SubmissionError({
-            new_password: {
+            password: {
               password_already_taken: true,
             },
           });
         } else if (message === 'Token expired') {
           throw new SubmissionError({
-            new_password: {
+            password: {
               access_denied: true,
             },
           });

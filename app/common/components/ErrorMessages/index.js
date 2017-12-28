@@ -67,6 +67,9 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="password_expired">
           Ваш пароль застарів. Необхідно змінити пароль
         </ErrorMessage>
+        <ErrorMessage when="unexpected_error">
+          Щось пішло не так. Спробуйте пізніше
+        </ErrorMessage>
       </ErrorMessages>
   );
   }
