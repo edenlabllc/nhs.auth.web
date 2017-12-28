@@ -19,7 +19,7 @@ import { password_validate } from 'helpers/validate';
     },
   }),
 })
-export default class NewPasswordForm extends React.Component {
+export default class ExpiredPasswordForm extends React.Component {
   render() {
     const { handleSubmit, submitting } = this.props;
 
@@ -44,7 +44,7 @@ export default class NewPasswordForm extends React.Component {
               type="password"
               component={FieldInput}
             >
-              <ErrorMessage when="confirmation">Паролі не співпадаюсть</ErrorMessage>
+              <ErrorMessage when="confirmation">Паролі не співпадають</ErrorMessage>
             </Field>
           </div>
           <div>

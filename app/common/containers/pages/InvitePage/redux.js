@@ -62,10 +62,21 @@ dispatch(createSessionToken({
   scope: 'employee_request:approve employee_request:reject',
 })).then((action) => {
   if (action.error) {
-    const { message } = action.payload.response.error;
+    const { message, type } = action.payload.response.error;
     const error = error_messages[message] || error_messages.defaultError;
 
-    throw new SubmissionError({ password: { [error]: true } });
+    if (type === 'password_expired') {
+      throw new SubmissionError({
+        password: {
+          password_expired: true,
+        },
+      });
+    }
+    if (error) {
+      throw new SubmissionError({
+        password: { [error]: true },
+      });
+    }
   }
 
   const { next_step } = action.meta;

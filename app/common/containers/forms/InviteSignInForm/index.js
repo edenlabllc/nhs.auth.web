@@ -7,7 +7,7 @@ import FieldInput from 'components/reduxForm/FieldInput';
 import Button, { ButtonsGroup } from 'components/Button';
 import { H1 } from 'components/Title';
 
-import { reduxFormValidate } from 'react-nebo15-validate';
+import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
 
 import styles from './styles.scss';
 
@@ -38,7 +38,10 @@ export default class InviteSignInForm extends React.Component {
             placeholder="Пароль"
             name="password"
             component={FieldInput}
-          />
+          >
+            <ErrorMessage when="format">Пароль повинен містити великі, малі літери та цифри</ErrorMessage>
+            <ErrorMessage when="length">Повинен складатися хоча б з 12 символів</ErrorMessage>
+          </Field>
         </div>
         <div className={styles.btns}>
           <ButtonsGroup>

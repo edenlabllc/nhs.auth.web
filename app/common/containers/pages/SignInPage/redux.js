@@ -2,8 +2,8 @@ import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
 import { createSessionToken } from 'redux/auth';
-import { fetchUserData } from 'redux/user';
 import { login } from 'redux/session';
+import { fetchUserData } from 'redux/user';
 import { CLIENT_ID } from 'config';
 import error_messages from 'helpers/errors';
 
@@ -17,10 +17,24 @@ dispatch(createSessionToken({
 }))
 .then((action) => {
   if (action.error) {
-    const { message } = action.payload.response.error;
+    const { message, type } = action.payload.response.error;
     const error = error_messages[message] || error_messages.defaultError;
-    throw new SubmissionError({ email: { [error]: true } });
+    if (type === 'password_expired') {
+      throw new SubmissionError({
+        password: {
+          password_expired: true,
+        },
+      });
+    }
+
+    if (message) {
+      throw new SubmissionError({
+        email: { [error]: true },
+      });
+    }
+    return action;
   }
+
   const { next_step } = action.meta;
   dispatch(login(action.payload.value));
 

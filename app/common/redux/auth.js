@@ -19,6 +19,29 @@ export const createSessionToken = body => invoke({
   },
 });
 
+export const passwordUpdateRequest = body => invoke({
+  endpoint: `${AUTH_URL}/oauth/tokens/actions/change_password`,
+  method: 'POST',
+  types: ['auth/PASSWORD_UPDATE_REQUEST',
+    'auth/PASSWORD_UPDATE_SUCCESS',
+    'auth/PASSWORD_UPDATE_FAILURE'],
+  body,
+});
+
+export const newPasswordRequest = password => invoke({
+  endpoint: `${AUTH_URL}/oauth/users/actions/update_password`,
+  method: 'POST',
+  types: ['auth/PASSWORD_UPDATE_REQUEST',
+    'auth/PASSWORD_UPDATE_SUCCESS',
+    'auth/PASSWORD_UPDATE_FAILURE'],
+  body: {
+    user: {
+      password,
+    },
+  },
+}, { auth: true });
+
+
 export const otpVerifyToken = code => invoke({
   endpoint: `${AUTH_URL}/oauth/tokens`,
   method: 'POST',
@@ -68,6 +91,19 @@ export const fetchSessionToken = token => invoke({
       json => json.data
     ),
   }, 'auth/FETCH_SESSION_TOKEN_FAILURE'],
+});
+
+export const updatePassword = (id, body) => invoke({
+  endpoint: `${AUTH_URL}/users/${id}/actions/change_password`,
+  method: 'PATCH',
+  types: ['auth/UPDATE_PASSWORD_REQUEST',
+    'auth/UPDATE_PASSWORD_SUCCESS',
+    'auth/UPDATE_PASSWORD_FAILURE'],
+  body: {
+    user: {
+      ...body,
+    },
+  },
 });
 
 export const authorize = ({ clientId, scope, redirectUri }) => invoke({

@@ -58,13 +58,19 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="otp_timeout">
           Перевищено кількість спроб авторизації. Спробуйте пізніше
         </ErrorMessage>
-        <ErrorMessage when="reached_max_attemps">
+        <ErrorMessage when="password_already_taken">
+          Такий пароль вже використовувався нещодавно. Спробуйте інший
+        </ErrorMessage>
+        <ErrorMessage when="reached_max_attempts">
           Ви досягнули максимальної кількості спроб авторизації. Спробуйте пізніше
+        </ErrorMessage>
+        <ErrorMessage when="password_expired">
+          Ваш пароль застарів. Необхідно змінити пароль
         </ErrorMessage>
         <ErrorMessage when="unexpected_error">
           Щось пішло не так. Спробуйте пізніше
         </ErrorMessage>
       </ErrorMessages>
-    );
+  );
   }
 }

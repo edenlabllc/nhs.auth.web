@@ -1,11 +1,11 @@
 import { push } from 'react-router-redux';
 import { SubmissionError } from 'redux-form';
 import { getLocation } from 'reducers';
-import { approveFactor } from 'redux/factors';
+import { otpVerifyToken, otpResendOtp } from 'redux/auth';
 import { login } from 'redux/session';
 
 export const onSubmit = ({ code }) => (dispatch, getState) =>
-  dispatch(approveFactor(parseInt(code, 10)))
+  dispatch(otpVerifyToken(parseInt(code, 10)))
     .then((action) => {
       if (action.error) {
         const { type } = action.payload.response.error;
@@ -18,21 +18,27 @@ export const onSubmit = ({ code }) => (dispatch, getState) =>
         }
         return action;
       }
+
       dispatch(login(action.payload.value));
       const state = getState();
       const location = getLocation(state);
-      if (location.query && location.query.password_update) {
-        return dispatch(push({
-          ...location,
-          pathname: 'update-password/new',
-        }));
-      }
+      console.log(location);
 
-      return dispatch(
-        push({
-          ...location,
-          pathname: location.query.invite ?
-            '/invite/accept' : '/accept',
-        }),
-      );
+      return dispatch(push({
+        ...location,
+        pathname: '/update-password/new',
+      }));
     });
+
+export const onResend = () => dispatch =>
+  dispatch(otpResendOtp()).then((action) => {
+    if (action.error) {
+      const { message } = action.payload.response.error;
+      if (message === 'Sending OTP timeout. Try later.') {
+        return false;
+      }
+      return action;
+    }
+    dispatch(login(action.payload.value));
+    return action;
+  });

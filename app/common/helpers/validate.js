@@ -19,3 +19,9 @@ export const mapServerErrorsToClient = (
   }, {}));
   return prev;
 }, {});
+
+export const password_validate = {
+  required: true,
+  format: /^(?=.*[a-zа-яёїієґ])(?=.*[A-ZА-ЯЁЇIЄҐ])(?=.*\d)/,
+  minLength: 12,
+};
