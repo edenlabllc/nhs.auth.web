@@ -66,12 +66,11 @@ dispatch(createSessionToken({
     const error = error_messages[message] || error_messages.defaultError;
 
     if (type === 'password_expired') {
-      const state = getState();
-      const location = getLocation(state);
-      return dispatch(push({
-        ...location,
-        pathname: '/sign-in/expiredPassword',
-      }));
+      throw new SubmissionError({
+        password: {
+          password_expired: true,
+        },
+      });
     }
     if (error) {
       throw new SubmissionError({
