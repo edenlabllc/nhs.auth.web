@@ -45,7 +45,7 @@ export default class ExpiredPasswordForm extends React.Component {
               type="password"
               component={FieldInput}
             >
-              <ErrorMessage when="confirmation">Паролі не співпадаюсть</ErrorMessage>
+              <ErrorMessage when="confirmation">Паролі не співпадають</ErrorMessage>
             </Field>
           </div>
           <div>
