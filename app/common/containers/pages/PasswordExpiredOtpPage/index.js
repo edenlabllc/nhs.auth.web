@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import { Main, Header, Article } from 'components/CenterLayout';
-import { H2 } from 'components/Title';
+import { H2, H1 } from 'components/Title';
 import Button, { ButtonsGroup } from 'components/Button';
 import OtpForm from 'containers/forms/OtpForm';
+import BackgroundLayout from 'components/BackgroundLayout';
 
 import { onSubmit, onResend } from './redux';
 
@@ -18,10 +19,19 @@ export default class PasswordExpiredOtpPage extends React.Component {
     return (
       <Main id="new-factor-approve-page">
         <Header>
-          <H2>Введіть код, який було відправлено на Ваш телефон</H2>
+          <BackgroundLayout />
+          <H1>Введення коду з СМС</H1>
+          <br />
+          <br />
+          <H2 textTransform="initial" color="red">Введіть код, що прийшов на телефон</H2>
         </Header>
         <Article>
-          <OtpForm onSubmit={onSubmit} onResend={onResend} repeat />
+          <OtpForm
+            onSubmit={onSubmit}
+            onResend={onResend}
+            btnColor="green"
+            repeat
+          />
           <ButtonsGroup>
             <Button theme="link" onClick={() => router.goBack()}>
               Назад

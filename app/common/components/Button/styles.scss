@@ -8,9 +8,9 @@ $blue-bg-gradient-from: #1ba4f7;
 $blue-bg-gradient-to: #41d3d7;
 $blue-border-color: #1582c9;
 
-$green-bg-color: #55eb3f;
-$green-bg-gradient-from: #4de936;
-$green-bg-gradient-to: #7ef36d;
+$green-bg-color: #b9dd2f;
+$green-bg-gradient-from: #c2e639;
+$green-bg-gradient-to: #c2e639;
 $green-border-color: #47c132;
 
 $red-bg-color: #f65082;
@@ -47,7 +47,7 @@ $red-border-color: #d74472;
 
   &.color-green {
     background: $green-bg-color linear-gradient(0deg, $green-bg-gradient-from 0%, $green-bg-gradient-to 100%);
-    box-shadow: inset 0 -2px 0 0 $green-border-color;
+    color: #292b37;
 
     &:hover {
       background-image: linear-gradient(180deg, $green-bg-gradient-from 0%, $green-bg-gradient-to 100%);
@@ -56,18 +56,15 @@ $red-border-color: #d74472;
     &:active,
     &.active {
       background-image: none;
-      box-shadow: inset 0 2px 0 0 $green-border-color;
     }
 
     &:disabled,
     &.disabled {
       background-image: none;
-      box-shadow: inset 0 2px 0 0 $green-border-color;
     }
 
     &.theme-border {
       background: #fff;
-      box-shadow: inset 0 0 0 2px $green-bg-color;
 
       &.inherit-color {
         color: $green-bg-color;

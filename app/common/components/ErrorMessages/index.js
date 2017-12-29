@@ -13,6 +13,7 @@ export default class ErrorMessagesTranslated extends React.Component {
         <ErrorMessage when="email">{t('Invalid email format')}</ErrorMessage>
         <ErrorMessage when="userName">{t('Invalid surname')}</ErrorMessage>
         <ErrorMessage when="phone_number">Не вірний формат номеру телефону</ErrorMessage>
+        <ErrorMessage when="format">Пароль повинен містити великі, малі літери та цифри</ErrorMessage>
 
         <ErrorMessage when="maxLength">{t('Length must be less than <%= params %>')}</ErrorMessage>
         <ErrorMessage when="minLength">{t('Length must be more than <%= params %>')}</ErrorMessage>

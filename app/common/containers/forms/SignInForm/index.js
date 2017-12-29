@@ -20,7 +20,7 @@ import { FormBlock } from 'components/Form';
 })
 export default class SignInForm extends React.Component {
   render() {
-    const { handleSubmit, submitting } = this.props;
+    const { handleSubmit, submitting, btnColor = 'blue' } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ export default class SignInForm extends React.Component {
             <Field type="password" placeholder="Пароль" name="password" component={FieldInput} />
           </div>
           <ButtonsGroup>
-            <Button disabled={submitting} type="submit" color="blue">
+            <Button disabled={submitting} type="submit" color={btnColor}>
               далі
             </Button>
           </ButtonsGroup>

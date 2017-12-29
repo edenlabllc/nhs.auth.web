@@ -25,7 +25,7 @@ import styles from './styles.scss';
 })
 export default class FactorForm extends React.Component {
   render() {
-    const { submitting, handleSubmit, router } = this.props;
+    const { submitting, handleSubmit, router, btnColor = 'blue' } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ export default class FactorForm extends React.Component {
             </Field>
           </div>
           <ButtonsGroup>
-            <Button disabled={submitting} type="submit" color="blue">
+            <Button disabled={submitting} type="submit" color={btnColor}>
               Ввести
             </Button>
             <Button disabled={submitting} theme="link" onClick={() => router.goBack()}>
