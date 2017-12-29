@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import withStyles from 'withStyles';
 import { withRouter } from 'react-router';
 
-import { H1 } from 'components/Title';
+import { H1, H2 } from 'components/Title';
 import Button, { ButtonsGroup } from 'components/Button';
 import ExpiredPasswordForm from 'containers/forms/ExpiredPasswordForm';
+import BackgroundLayout from 'components/BackgroundLayout';
 
 import { onSubmit } from './redux';
 import styles from './styles.scss';
@@ -20,10 +21,14 @@ export default class PasswordExpiredPage extends React.Component {
     return (
       <section className={styles.main} id="otp-page">
         <header className={styles.header}>
-          <H1>Сторінка встановлення нового паролю</H1>
+          <BackgroundLayout />
+          <H1>Введення нового паролю</H1>
+          <br />
+          <br />
+          <H2 textTransform="initial" color="red">Введіть новий пароль та підтвердіть його</H2>
         </header>
         <article className={styles.form}>
-          <ExpiredPasswordForm onSubmit={onSubmit} />
+          <ExpiredPasswordForm onSubmit={onSubmit} btnColor="green" />
           <ButtonsGroup>
             <Button
               theme="link"

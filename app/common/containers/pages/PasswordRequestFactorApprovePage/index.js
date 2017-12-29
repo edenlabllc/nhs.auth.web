@@ -12,21 +12,21 @@ import { onSubmit } from './redux';
 
 @withRouter
 @connect(null, { onSubmit })
-export default class RequestFactorOtpPage extends React.Component {
+export default class PasswordRequestFactorApprovePage extends React.Component {
   render() {
     const { onSubmit = () => {}, location } = this.props;
     const invite = location.query && location.query.invite ? `invite=${location.query.invite}` : false;
     return (
-      <Main id="factor-approve-page">
+      <Main id="password-factor-approve-page">
         <Header>
           <BackgroundLayout />
-          <H1>Введення нового паролю</H1>
+          <H1>Підтвердження фактору</H1>
           <br />
           <br />
-          <H2 textTransform="initial" color="red">Введіть новий пароль та підтвердіть його</H2>
+          <H2 textTransform="initial" color="red">Введіть, код який було надіслано в СМС</H2>
         </Header>
         <Article>
-          <OtpForm onSubmit={onSubmit} />
+          <OtpForm onSubmit={onSubmit} btnColor="green" />
           {
             invite ? <Button theme="link" to={`/invite?${invite}`}>
               Повернутися до запрошення

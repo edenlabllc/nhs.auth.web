@@ -48,6 +48,7 @@ export default class OtpForm extends React.Component {
       handleSubmit,
       submitting,
       repeat = false,
+      btnColor = 'blue',
     } = this.props;
     const { sent, isSending, otp_timeout, token_expires } = this.state;
     return (
@@ -63,7 +64,7 @@ export default class OtpForm extends React.Component {
             </Field>
           </div>
           <ButtonsGroup>
-            <Button disabled={submitting} type="submit" color="blue">
+            <Button disabled={submitting} type="submit" color={btnColor}>
               Ввести
             </Button>
             {

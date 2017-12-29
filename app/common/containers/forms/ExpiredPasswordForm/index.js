@@ -21,7 +21,7 @@ import { password_validate } from 'helpers/validate';
 })
 export default class ExpiredPasswordForm extends React.Component {
   render() {
-    const { handleSubmit, submitting } = this.props;
+    const { handleSubmit, submitting, btnColor = 'blue' } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ export default class ExpiredPasswordForm extends React.Component {
             </Field>
           </div>
           <div>
-            <Button disabled={submitting} type="submit" color="blue">
+            <Button disabled={submitting} type="submit" color={btnColor}>
               Зберегти новий пароль
             </Button>
           </div>

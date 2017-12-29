@@ -50,7 +50,7 @@ dispatch(createSessionToken({
           ...location.query,
           password_update: true,
         },
-        pathname: '/request-factor',
+        pathname: '/update-password/factor',
       }));
     }
 
