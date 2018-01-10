@@ -21,7 +21,7 @@ export default class RequestFactorOtpPage extends React.Component {
           <H1>Введення коду</H1>
           <br />
           <br />
-          <H2 textTransform="initial" color="red">Введіть код, що прийшов на телефон</H2>
+          <H2 textTransform="initial">Введіть код, що прийшов на телефон</H2>
         </Header>
         <Article>
           <OtpForm onSubmit={onSubmit} />
