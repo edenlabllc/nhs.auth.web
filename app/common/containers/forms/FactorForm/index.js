@@ -25,14 +25,14 @@ import styles from './styles.scss';
 })
 export default class FactorForm extends React.Component {
   render() {
-    const { submitting, handleSubmit, router, btnColor = 'blue' } = this.props;
+    const { submitting, handleSubmit, router, btnColor = 'blue', noLabel } = this.props;
 
     return (
       <form onSubmit={handleSubmit}>
         <FormBlock>
           <div>
             <Field
-              labelText="Введіть номер телефона, що буде використано для авторизації"
+              labelText={noLabel && 'Введіть номер телефона, що буде використано для авторизації'}
               type="tel"
               name="phone"
               prefix="+380"

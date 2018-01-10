@@ -6,7 +6,6 @@ import { H1, H2 } from 'components/Title';
 import OtpForm from 'containers/forms/OtpForm';
 import { Main, Header, Article } from 'components/CenterLayout';
 import Button from 'components/Button';
-import BackgroundLayout from 'components/BackgroundLayout';
 
 import { onSubmit } from './redux';
 
@@ -19,11 +18,10 @@ export default class RequestFactorOtpPage extends React.Component {
     return (
       <Main id="factor-approve-page">
         <Header>
-          <BackgroundLayout />
-          <H1>Введення нового паролю</H1>
+          <H1>Введення коду</H1>
           <br />
           <br />
-          <H2 textTransform="initial" color="red">Введіть новий пароль та підтвердіть його</H2>
+          <H2 textTransform="initial">Введіть код, що прийшов на телефон</H2>
         </Header>
         <Article>
           <OtpForm onSubmit={onSubmit} />
