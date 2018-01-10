@@ -24,6 +24,7 @@ export default class PasswordRequestFactorPage extends React.Component {
         </Header>
         <Article>
           <FactorForm
+            noLabel={false}
             btnColor="green"
             onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ''))}
           />
