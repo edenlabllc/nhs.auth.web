@@ -52,7 +52,7 @@ export default class SignUpForm extends React.Component {
           </div>
         </div>
         <div className={styles.description}>
-          Пароль має містити не менш ніж 8 символів
+          Пароль повинен містити великі, малі літери та цифри
         </div>
         <div
           className={classnames(
