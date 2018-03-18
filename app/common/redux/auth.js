@@ -1,5 +1,5 @@
 import { handleAction } from "redux-actions";
-import { AUTH_URL } from "config";
+import { AUTH_URL } from "../config";
 import { invoke } from "./api";
 
 export const createSessionToken = body =>

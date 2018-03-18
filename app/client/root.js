@@ -6,7 +6,7 @@ import { useRedial } from "react-router-redial";
 
 import { I18nextProvider } from "react-i18next";
 
-import { showLoading, hideLoading } from "redux/loading";
+import { showLoading, hideLoading } from "../common/redux/loading";
 
 const trackPage = route => {}; // eslint-disable-line
 

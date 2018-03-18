@@ -1,12 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { reduxForm, Field } from "redux-form";
-import FieldInput from "components/reduxForm/FieldInput";
-import Button, { ButtonsGroup } from "components/Button";
-import ColoredText from "components/ColoredText";
+import FieldInput from "../../../components/reduxForm/FieldInput";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import ColoredText from "../../../components/ColoredText";
 
 import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
-import { FormBlock } from "components/Form";
+import { FormBlock } from "../../../components/Form";
 
 @withRouter
 @reduxForm({

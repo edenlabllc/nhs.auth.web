@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import Icon from "components/Icon";
+import Icon from "../Icon";
 
 import styles from "./styles.css";
 

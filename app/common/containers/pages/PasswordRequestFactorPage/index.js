@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Main, Header, Article } from "components/CenterLayout";
-import { H1, H2 } from "components/Title";
-import FactorForm from "containers/forms/FactorForm";
-import BackgroundLayout from "components/BackgroundLayout";
+import { Main, Header, Article } from "../../../components/CenterLayout";
+import { H1, H2 } from "../../../components/Title";
+import FactorForm from "../../forms/FactorForm";
+import BackgroundLayout from "../../../components/BackgroundLayout";
 
 import { onSubmit } from "./redux";
 

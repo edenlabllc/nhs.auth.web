@@ -1,8 +1,8 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
 
-import Icon from "components/Icon";
-import OuterClick from "components/OuterClick";
+import Icon from "../Icon";
+import OuterClick from "../OuterClick";
 
 import styles from "./styles.css";
 

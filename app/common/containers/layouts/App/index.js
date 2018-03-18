@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { SITEMAP_HOSTNAME } from "config";
+import { SITEMAP_HOSTNAME } from "../../../config";
 
 export default class App extends React.Component {
   render() {

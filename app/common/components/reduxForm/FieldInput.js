@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getForm } from "reducers";
+import { getForm } from "../../reducers";
 
 import Input from "../Input";
 

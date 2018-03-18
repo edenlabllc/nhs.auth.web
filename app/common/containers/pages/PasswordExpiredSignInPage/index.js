@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import { H1, H2 } from "components/Title";
-import Button, { ButtonsGroup } from "components/Button";
-import { Main, Header, Article } from "components/CenterLayout";
-import BackgroundLayout from "components/BackgroundLayout";
+import { H1, H2 } from "../../../components/Title";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import { Main, Header, Article } from "../../../components/CenterLayout";
+import BackgroundLayout from "../../../components/BackgroundLayout";
 
-import SignInForm from "containers/forms/SignInForm";
+import SignInForm from "../../forms/SignInForm";
 
 import { onSubmit } from "./redux";
 

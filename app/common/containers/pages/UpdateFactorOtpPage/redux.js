@@ -1,8 +1,8 @@
 import { push } from "react-router-redux";
 import { SubmissionError } from "redux-form";
-import { getLocation } from "reducers";
-import { otpVerifyToken, otpResendOtp } from "redux/auth";
-import { login } from "redux/session";
+import { getLocation } from "../../../reducers";
+import { otpVerifyToken, otpResendOtp } from "../../../redux/auth";
+import { login } from "../../../redux/session";
 
 export const onSubmit = ({ code }) => (dispatch, getState) =>
   dispatch(otpVerifyToken(parseInt(code, 10))).then(action => {

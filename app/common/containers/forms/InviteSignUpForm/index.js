@@ -3,13 +3,13 @@ import classnames from "classnames";
 
 import { reduxForm, Field } from "redux-form";
 
-import FieldInput from "components/reduxForm/FieldInput";
-import FieldCheckbox from "components/reduxForm/FieldCheckbox";
+import FieldInput from "../../../components/reduxForm/FieldInput";
+import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 
-import Button from "components/Button";
+import Button from "../../../components/Button";
 
 import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
-import { password_validate } from "helpers/validate";
+import { password_validate } from "../../../helpers/validate";
 
 import styles from "./styles.css";
 

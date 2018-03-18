@@ -1,9 +1,9 @@
 import { handleAction, combineActions } from "redux-actions";
 import { normalize } from "normalizr";
 
-import { API_URL } from "config";
-import { createUrl } from "helpers/url";
-import { userRole } from "schemas";
+import { API_URL } from "../config";
+import { createUrl } from "../helpers/url";
+import { userRole } from "../schemas";
 
 import { invoke } from "./api";
 

@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-import { H1, H3 } from "components/Title";
-import Button from "components/Button";
+import { H1, H3 } from "../../../components/Title";
+import Button from "../../../components/Button";
 
-import NewPasswordForm from "containers/forms/NewPasswordForm";
+import NewPasswordForm from "../../forms/NewPasswordForm";
 
 import { onSubmit } from "./redux";
 

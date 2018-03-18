@@ -1,8 +1,10 @@
 import { handleAction, combineActions } from "redux-actions";
-import { API_URL } from "config";
 import { normalize } from "normalizr";
-import { dictionary } from "schemas";
-import { createUrl } from "helpers/url";
+
+import { API_URL } from "../config";
+import { dictionary } from "../schemas";
+import { createUrl } from "../helpers/url";
+
 import { invoke } from "./api";
 
 export const fetchDictionaries = options =>

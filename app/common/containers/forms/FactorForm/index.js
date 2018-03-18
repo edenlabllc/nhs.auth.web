@@ -2,10 +2,10 @@ import React from "react";
 
 import { withRouter } from "react-router";
 import { reduxForm, Field } from "redux-form";
-import { FormBlock } from "components/Form";
-import Button, { ButtonsGroup } from "components/Button";
-import FieldInput from "components/reduxForm/FieldInput";
-import normalizePhone from "helpers/phone";
+import { FormBlock } from "../../../components/Form";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import FieldInput from "../../../components/reduxForm/FieldInput";
+import normalizePhone from "../../../helpers/phone";
 
 import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
 

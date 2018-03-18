@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 
-import Nav from "containers/blocks/Nav";
-import Gamburger from "containers/blocks/Gamburger";
+import Nav from "../Nav";
+import Gamburger from "../Gamburger";
 
 import { toggleMenu } from "./redux";
 

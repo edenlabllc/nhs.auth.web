@@ -1,7 +1,7 @@
 import { handleAction, combineActions } from "redux-actions";
-import { API_URL } from "config";
+import { API_URL } from "../config";
 import { normalize } from "normalizr";
-import { request } from "schemas";
+import { request } from "../schemas";
 import { invoke } from "./api";
 
 export const APPROVE_REQUEST_ACTION = "approve";

@@ -1,10 +1,10 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-import { H2 } from "components/Title";
-import Button from "components/Button";
-import { Main, Header, Article } from "components/CenterLayout";
-import BackgroundLayout from "components/BackgroundLayout";
+import { H2 } from "../../../components/Title";
+import Button from "../../../components/Button";
+import { Main, Header, Article } from "../../../components/CenterLayout";
+import BackgroundLayout from "../../../components/BackgroundLayout";
 
 @withRouter
 export default class UpdatePasswordSuccessPage extends React.Component {

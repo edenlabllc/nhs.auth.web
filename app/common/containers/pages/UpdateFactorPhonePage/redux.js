@@ -1,7 +1,7 @@
 import { push } from "react-router-redux";
-import { initFactor } from "redux/factors";
-import { login } from "redux/session";
-import { getLocation } from "reducers";
+import { initFactor } from "../../../redux/factors";
+import { login } from "../../../redux/session";
+import { getLocation } from "../../../reducers";
 import { SubmissionError } from "redux-form";
 
 export const onSubmit = phone => (dispatch, getState) =>

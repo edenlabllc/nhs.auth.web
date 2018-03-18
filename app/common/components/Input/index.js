@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
 
-import ErrorMessages from "components/ErrorMessages";
+import ErrorMessages from "../ErrorMessages";
 
 import styles from "./styles.css";
 

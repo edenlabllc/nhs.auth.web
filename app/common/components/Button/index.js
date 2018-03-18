@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import classnames from "classnames";
 
-import Icon, { icons } from "components/Icon";
+import Icon, { icons } from "../Icon";
 
 import styles from "./styles.css";
 

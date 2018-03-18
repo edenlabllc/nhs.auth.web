@@ -11,10 +11,10 @@ import CookieDough from "cookie-dough";
 import { browserHistory, match } from "react-router";
 import { syncHistoryWithStore } from "react-router-redux";
 
-import i18n from "services/i18next";
+import i18n from "../common/services/i18next";
 
-import { configureStore } from "store";
-import { configureRoutes } from "routes";
+import { configureStore } from "../common/store";
+import { configureRoutes } from "../common/routes";
 
 import Root from "./root";
 

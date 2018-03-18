@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { provideHooks } from "redial";
 
-import { H1 } from "components/Title";
-import { getRequestById } from "reducers";
+import { H1 } from "../../../components/Title";
+import { getRequestById } from "../../../reducers";
 
 import { fetchRequestByHash } from "./redux";
 

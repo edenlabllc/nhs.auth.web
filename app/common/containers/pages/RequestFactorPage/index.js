@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Main, Header, Article } from "components/CenterLayout";
-import { H1 } from "components/Title";
-import FactorForm from "containers/forms/FactorForm";
+import { Main, Header, Article } from "../../../components/CenterLayout";
+import { H1 } from "../../../components/Title";
+import FactorForm from "../../forms/FactorForm";
 
 import { onSubmit } from "./redux";
 

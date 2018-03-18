@@ -1,10 +1,10 @@
 import { push } from "react-router-redux";
 import { SubmissionError } from "redux-form";
-import { getLocation } from "reducers";
-import { createSessionToken } from "redux/auth";
-import { CLIENT_ID } from "config";
-import { login } from "redux/session";
-import error_messages from "helpers/errors";
+import { getLocation } from "../../../reducers";
+import { createSessionToken } from "../../../redux/auth";
+import { CLIENT_ID } from "../../../config";
+import { login } from "../../../redux/session";
+import error_messages from "../../../helpers/errors";
 
 export const onSubmit = ({ email, password }) => (dispatch, getState) =>
   dispatch(

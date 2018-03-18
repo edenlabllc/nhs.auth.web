@@ -1,5 +1,5 @@
 import { handleAction, combineActions } from "redux-actions";
-import { AUTH_URL, API_URL } from "config";
+import { AUTH_URL, API_URL } from "../config";
 import { invoke } from "./api";
 import { fetchSessionToken } from "./auth";
 

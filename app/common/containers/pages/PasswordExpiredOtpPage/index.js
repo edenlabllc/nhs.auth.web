@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import { Main, Header, Article } from "components/CenterLayout";
-import { H2, H1 } from "components/Title";
-import Button, { ButtonsGroup } from "components/Button";
-import OtpForm from "containers/forms/OtpForm";
-import BackgroundLayout from "components/BackgroundLayout";
+import { Main, Header, Article } from "../../../components/CenterLayout";
+import { H2, H1 } from "../../../components/Title";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import OtpForm from "../../forms/OtpForm";
+import BackgroundLayout from "../../../components/BackgroundLayout";
 
 import { onSubmit, onResend } from "./redux";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import getFn from "lodash/get";
 import { connect } from "react-redux";
-import { getDictionary } from "reducers";
+import { getDictionary } from "../../reducers";
 
 export default connect((state, { dictionary }) => ({
   dictionaryObj: getDictionary(state, dictionary)

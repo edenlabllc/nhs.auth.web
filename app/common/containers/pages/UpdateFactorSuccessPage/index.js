@@ -1,9 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-import { H2 } from "components/Title";
-import Button from "components/Button";
-import { Main, Header, Article } from "components/CenterLayout";
+import { H2 } from "../../../components/Title";
+import Button from "../../../components/Button";
+import { Main, Header, Article } from "../../../components/CenterLayout";
 
 @withRouter
 export default class UpdateFactorSuccessPage extends React.Component {

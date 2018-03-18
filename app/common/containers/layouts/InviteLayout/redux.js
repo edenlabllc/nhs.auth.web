@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { handleAction, createAction } from "redux-actions";
 
-import * as fetchRequest from "redux/requests";
+import * as fetchRequest from "../../../redux/requests";
 
 export const showRequest = createAction("inviteLayout/SHOW_INVITE");
 

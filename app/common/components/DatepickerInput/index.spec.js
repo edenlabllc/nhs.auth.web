@@ -1,7 +1,7 @@
 import React from "react";
 import { expect } from "chai";
 import { shallow, mount } from "enzyme";
-import Input from "components/Input";
+import Input from "../Input";
 import DatepickerComponent from "react-datepicker";
 import { ComponentInput as DatepickerInput } from "./index";
 

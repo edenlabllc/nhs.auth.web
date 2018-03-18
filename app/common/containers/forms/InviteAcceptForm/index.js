@@ -2,8 +2,8 @@ import React from "react";
 
 import { reduxForm, Field } from "redux-form";
 
-import FieldCheckbox from "components/reduxForm/FieldCheckbox";
-import Button from "components/Button";
+import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
+import Button from "../../../components/Button";
 
 import { reduxFormValidate } from "react-nebo15-validate";
 

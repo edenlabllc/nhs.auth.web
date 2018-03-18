@@ -1,19 +1,6 @@
 require("babel-register")({
   presets: ["es2015", "react", "stage-0"],
-  plugins: [
-    "transform-runtime",
-    "transform-decorators-legacy",
-    [
-      "module-resolver",
-      {
-        root: ["../../app/common"],
-        alias: {
-          tests: "../../tests",
-          public: "../../public"
-        }
-      }
-    ]
-  ]
+  plugins: ["transform-runtime", "transform-decorators-legacy"]
 });
 
 require("ignore-styles").default([

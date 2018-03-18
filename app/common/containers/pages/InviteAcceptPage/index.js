@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-import { H1 } from "components/Title";
-import Points from "components/Points";
+import { H1 } from "../../../components/Title";
+import Points from "../../../components/Points";
 
-import InviteAcceptForm from "containers/forms/InviteAcceptForm";
-import { getRequestById } from "reducers";
+import InviteAcceptForm from "../../forms/InviteAcceptForm";
+import { getRequestById } from "../../../reducers";
 
 import { onSubmit, onReject } from "./redux";
 

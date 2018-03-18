@@ -1,8 +1,8 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
 
-import Icon from "components/Icon";
-import Table, { TableRow } from "components/Table";
+import Icon from "../Icon";
+import Table, { TableRow } from "../Table";
 
 import styles from "./styles.css";
 

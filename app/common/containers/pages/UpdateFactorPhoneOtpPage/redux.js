@@ -1,8 +1,8 @@
 import { push } from "react-router-redux";
 import { SubmissionError } from "redux-form";
-import { getLocation } from "reducers";
-import { approveFactor } from "redux/factors";
-import { login } from "redux/session";
+import { getLocation } from "../../../reducers";
+import { approveFactor } from "../../../redux/factors";
+import { login } from "../../../redux/session";
 
 export const onSubmit = ({ code }) => (dispatch, getState) =>
   dispatch(approveFactor(parseInt(code, 10))).then(action => {

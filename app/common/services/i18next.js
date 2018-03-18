@@ -1,5 +1,5 @@
 import i18n from "i18next";
-import { LANG_COOKIE_NAME } from "config";
+import { LANG_COOKIE_NAME } from "../config";
 
 import uk from "../locales/uk.po";
 

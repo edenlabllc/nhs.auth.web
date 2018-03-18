@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-import { H1, H2 } from "components/Title";
-import Button, { ButtonsGroup } from "components/Button";
-import ExpiredPasswordForm from "containers/forms/ExpiredPasswordForm";
-import BackgroundLayout from "components/BackgroundLayout";
+import { H1, H2 } from "../../../components/Title";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import ExpiredPasswordForm from "../../forms/ExpiredPasswordForm";
+import BackgroundLayout from "../../../components/BackgroundLayout";
 
 import { onSubmit } from "./redux";
 import styles from "./styles.css";

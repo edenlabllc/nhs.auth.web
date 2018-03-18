@@ -2,7 +2,7 @@ import React from "react";
 
 import { withRouter } from "react-router";
 
-import { H2 } from "components/Title";
+import { H2 } from "../../../components/Title";
 
 import styles from "./styles.css";
 

@@ -1,11 +1,11 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 
-import FieldInput from "components/reduxForm/FieldInput";
-import Button from "components/Button";
-import { FormBlock } from "components/Form";
+import FieldInput from "../../../components/reduxForm/FieldInput";
+import Button from "../../../components/Button";
+import { FormBlock } from "../../../components/Form";
 import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
-import { password_validate } from "helpers/validate";
+import { password_validate } from "../../../helpers/validate";
 
 @reduxForm({
   form: "new-password-form",

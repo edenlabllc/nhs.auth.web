@@ -2,9 +2,9 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { reduxFormValidate } from "react-nebo15-validate";
 
-import FieldInput from "components/reduxForm/FieldInput";
-import Button, { ButtonsGroup } from "components/Button";
-import { FormBlock } from "components/Form";
+import FieldInput from "../../../components/reduxForm/FieldInput";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import { FormBlock } from "../../../components/Form";
 
 @reduxForm({
   form: "sign-in-form",

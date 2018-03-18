@@ -1,5 +1,5 @@
 import { SubmissionError } from "redux-form";
-import { passwordRecoveryRequest } from "redux/password";
+import { passwordRecoveryRequest } from "../../../redux/password";
 
 export const onSubmit = ({ email }) => dispatch =>
   dispatch(passwordRecoveryRequest(email)).then(action => {

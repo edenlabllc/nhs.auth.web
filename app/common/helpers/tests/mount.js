@@ -1,9 +1,10 @@
 import React from "react";
 
-import { configureStore } from "store";
 import { Provider } from "react-redux";
 import createMemoryHistory from "history/lib/createMemoryHistory";
 import { mount } from "enzyme";
+
+import { configureStore } from "../../store";
 
 export default (component, ...args) =>
   mount(

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { H1 } from "components/Title";
+import { H1 } from "../../../components/Title";
 
 import styles from "./styles.css";
 

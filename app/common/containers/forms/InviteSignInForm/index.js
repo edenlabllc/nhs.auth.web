@@ -2,10 +2,10 @@ import React from "react";
 
 import { reduxForm, Field } from "redux-form";
 
-import FieldInput from "components/reduxForm/FieldInput";
+import FieldInput from "../../../components/reduxForm/FieldInput";
 
-import Button, { ButtonsGroup } from "components/Button";
-import { H1 } from "components/Title";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import { H1 } from "../../../components/Title";
 
 import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
 

@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import { connect } from "react-redux";
 
-import OuterClick from "components/OuterClick";
+import OuterClick from "../OuterClick";
 
 import { open, close } from "./redux";
 import styles from "./styles.css";

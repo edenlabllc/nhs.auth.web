@@ -4,8 +4,8 @@ import { translate } from "react-i18next";
 import { reduxForm, Field } from "redux-form";
 import { ErrorMessage, reduxFormValidate } from "react-nebo15-validate";
 
-import FieldInput from "components/reduxForm/FieldInput";
-import Button, { ButtonsGroup } from "components/Button";
+import FieldInput from "../../../components/reduxForm/FieldInput";
+import Button, { ButtonsGroup } from "../../../components/Button";
 
 import styles from "./styles.css";
 

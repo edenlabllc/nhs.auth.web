@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { provideHooks } from "redial";
 
-import Button from "components/Button";
-import DictionaryValue from "components/DictionaryValue";
+import Button from "../../../components/Button";
+import DictionaryValue from "../../../components/DictionaryValue";
 
-import { fetchClientById } from "redux/clients";
-import { authorize } from "redux/auth";
-import { fetchDictionaries } from "redux/dictionaries";
+import { fetchClientById } from "../../../redux/clients";
+import { authorize } from "../../../redux/auth";
+import { fetchDictionaries } from "../../../redux/dictionaries";
 
-import { getClientById, getUser } from "reducers";
+import { getClientById, getUser } from "../../../reducers";
 
 import { fetchScope } from "./redux";
 import styles from "./styles.css";

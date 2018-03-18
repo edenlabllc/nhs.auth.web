@@ -1,5 +1,5 @@
 import { SubmissionError } from "redux-form";
-import { newPasswordRequest } from "redux/password";
+import { newPasswordRequest } from "../../../redux/password";
 
 export const onSubmit = (values, props) => dispatch => {
   if (values.password !== values.confirm_password) {

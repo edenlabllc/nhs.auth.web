@@ -1,5 +1,5 @@
 import { CALL_API } from "redux-api-middleware";
-import { getToken } from "reducers";
+import { getToken } from "../reducers";
 
 export const invoke = (config, { auth = true } = {}) => (
   dispatch,

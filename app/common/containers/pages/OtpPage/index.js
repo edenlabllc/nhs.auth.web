@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-import { H1 } from "components/Title";
-import OtpForm from "containers/forms/OtpForm";
-import Button, { ButtonsGroup } from "components/Button";
+import { H1 } from "../../../components/Title";
+import OtpForm from "../../forms/OtpForm";
+import Button, { ButtonsGroup } from "../../../components/Button";
 
 import { onSubmit, onResend } from "./redux";
 

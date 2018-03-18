@@ -1,7 +1,7 @@
 import { handleAction } from "redux-actions";
-import { AUTH_URL } from "config";
+import { AUTH_URL } from "../config";
 import { normalize } from "normalizr";
-import { client } from "schemas";
+import { client } from "../schemas";
 import { invoke } from "./api";
 
 export const fetchClientById = id =>

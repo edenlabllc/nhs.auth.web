@@ -2,8 +2,8 @@ import {
   performActionWithRequest,
   APPROVE_REQUEST_ACTION,
   REJECT_REQUEST_ACTION
-} from "redux/requests";
-import { getLocation } from "reducers";
+} from "../../../redux/requests";
+import { getLocation } from "../../../reducers";
 import { push } from "react-router-redux";
 
 export const onSubmit = id => (dispatch, getState) =>

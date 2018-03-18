@@ -5,18 +5,18 @@ import { provideHooks } from "redial";
 import { withRouter } from "react-router";
 import format from "date-fns/format";
 
-import Button, { ButtonsGroup } from "components/Button";
-import { H1 } from "components/Title";
-import Points from "components/Points";
-import Icon from "components/Icon";
-import { FormBlock } from "components/Form";
-import DictionaryValue from "components/DictionaryValue";
+import Button, { ButtonsGroup } from "../../../components/Button";
+import { H1 } from "../../../components/Title";
+import Points from "../../../components/Points";
+import Icon from "../../../components/Icon";
+import { FormBlock } from "../../../components/Form";
+import DictionaryValue from "../../../components/DictionaryValue";
 
-import InviteSignInForm from "containers/forms/InviteSignInForm";
-import InviteSignUpForm from "containers/forms/InviteSignUpForm";
+import InviteSignInForm from "../../forms/InviteSignInForm";
+import InviteSignUpForm from "../../forms/InviteSignUpForm";
 
-import { fetchDictionaries } from "redux/dictionaries";
-import { getRequestById } from "reducers";
+import { fetchDictionaries } from "../../../redux/dictionaries";
+import { getRequestById } from "../../../reducers";
 
 import { onSubmitSignUp, onSubmitSignIn } from "./redux";
 

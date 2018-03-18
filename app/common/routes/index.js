@@ -2,47 +2,47 @@ import React from "react";
 
 import { Route, IndexRedirect, IndexRoute } from "react-router";
 
-import App from "containers/layouts/App";
-import Main from "containers/layouts/Main";
-import Default from "containers/layouts/Default";
-import FAQ from "containers/layouts/FAQ";
-import InviteLayout from "containers/layouts/InviteLayout";
+import App from "../containers/layouts/App";
+import Main from "../containers/layouts/Main";
+import Default from "../containers/layouts/Default";
+import FAQ from "../containers/layouts/FAQ";
+import InviteLayout from "../containers/layouts/InviteLayout";
 
-import InvitePage from "containers/pages/InvitePage";
-import InviteAcceptPage from "containers/pages/InviteAcceptPage";
-import InviteSuccessPage from "containers/pages/InviteSuccessPage";
-import InviteRejectPage from "containers/pages/InviteRejectPage";
-import SignInPage from "containers/pages/SignInPage";
-import OtpPage from "containers/pages/OtpPage";
-import AcceptPage from "containers/pages/AcceptPage";
-import ConditionPage from "containers/pages/ConditionPage";
+import InvitePage from "../containers/pages/InvitePage";
+import InviteAcceptPage from "../containers/pages/InviteAcceptPage";
+import InviteSuccessPage from "../containers/pages/InviteSuccessPage";
+import InviteRejectPage from "../containers/pages/InviteRejectPage";
+import SignInPage from "../containers/pages/SignInPage";
+import OtpPage from "../containers/pages/OtpPage";
+import AcceptPage from "../containers/pages/AcceptPage";
+import ConditionPage from "../containers/pages/ConditionPage";
 
-import RequestFactorPage from "containers/pages/RequestFactorPage";
-import RequestFactorApprovePage from "containers/pages/RequestFactorApprovePage";
+import RequestFactorPage from "../containers/pages/RequestFactorPage";
+import RequestFactorApprovePage from "../containers/pages/RequestFactorApprovePage";
 
-import ResetPasswordPage from "containers/pages/ResetPasswordPage";
-import NewPasswordPage from "containers/pages/NewPasswordPage";
+import ResetPasswordPage from "../containers/pages/ResetPasswordPage";
+import NewPasswordPage from "../containers/pages/NewPasswordPage";
 
-import UpdateFactorSignInPage from "containers/pages/UpdateFactorSignInPage";
-import UpdateFactorOtpPage from "containers/pages/UpdateFactorOtpPage";
-import UpdateFactorPhonePage from "containers/pages/UpdateFactorPhonePage";
-import UpdateFactorPhoneOtpPage from "containers/pages/UpdateFactorPhoneOtpPage";
-import UpdateFactorSuccessPage from "containers/pages/UpdateFactorSuccessPage";
+import UpdateFactorSignInPage from "../containers/pages/UpdateFactorSignInPage";
+import UpdateFactorOtpPage from "../containers/pages/UpdateFactorOtpPage";
+import UpdateFactorPhonePage from "../containers/pages/UpdateFactorPhonePage";
+import UpdateFactorPhoneOtpPage from "../containers/pages/UpdateFactorPhoneOtpPage";
+import UpdateFactorSuccessPage from "../containers/pages/UpdateFactorSuccessPage";
 
-import PasswordExpiredSignInPage from "containers/pages/PasswordExpiredSignInPage";
-import PasswordExpiredPage from "containers/pages/PasswordExpiredPage";
-import PasswordExpiredOtpPage from "containers/pages/PasswordExpiredOtpPage";
-import UpdatePasswordSuccessPage from "containers/pages/UpdatePasswordSuccessPage";
+import PasswordExpiredSignInPage from "../containers/pages/PasswordExpiredSignInPage";
+import PasswordExpiredPage from "../containers/pages/PasswordExpiredPage";
+import PasswordExpiredOtpPage from "../containers/pages/PasswordExpiredOtpPage";
+import UpdatePasswordSuccessPage from "../containers/pages/UpdatePasswordSuccessPage";
 
-import PasswordRequestFactorPage from "containers/pages/PasswordRequestFactorPage";
-import PasswordRequestFactorApprovePage from "containers/pages/PasswordRequestFactorApprovePage";
+import PasswordRequestFactorPage from "../containers/pages/PasswordRequestFactorPage";
+import PasswordRequestFactorApprovePage from "../containers/pages/PasswordRequestFactorApprovePage";
 
-import NotFoundPage from "containers/pages/NotFoundPage";
+import NotFoundPage from "../containers/pages/NotFoundPage";
 
-import { getUser, getToken } from "reducers";
+import { getUser, getToken } from "../reducers";
 
-import { isLoginned, logout } from "redux/session";
-import { fetchUserData } from "redux/user";
+import { isLoginned, logout } from "../redux/session";
+import { fetchUserData } from "../redux/user";
 
 export const configureRoutes = ({ store }) => {
   // eslint-disable-line

@@ -2,7 +2,7 @@ import { createAction, handleAction } from "redux-actions";
 import { combineReducers } from "redux";
 import uniqFn from "lodash/uniq";
 
-import * as fromUserRoles from "redux/userRoles";
+import * as fromUserRoles from "../../../redux/userRoles";
 
 const setScope = createAction("AcceptPage/SET_SCOPE");
 
