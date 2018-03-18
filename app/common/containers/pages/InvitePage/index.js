@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import withStyles from "withStyles";
+
 import { provideHooks } from "redial";
 import { withRouter } from "react-router";
 import format from "date-fns/format";
@@ -25,7 +25,6 @@ import styles from "./styles.css";
 const toArray = v => (!Array.isArray(v) ? [v] : v);
 
 @withRouter
-@withStyles(styles)
 @provideHooks({
   fetch: ({ dispatch }) => dispatch(fetchDictionaries())
 })

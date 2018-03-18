@@ -1,8 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-
 import styles from "./styles.css";
 
 const StatusCode = ({ code }) => (
@@ -17,4 +15,4 @@ const StatusCode = ({ code }) => (
   </span>
 );
 
-export default withStyles(styles)(StatusCode);
+export default StatusCode;

@@ -1,8 +1,6 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
 
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-
 import Icon from "components/Icon";
 import Table, { TableRow } from "components/Table";
 
@@ -120,4 +118,4 @@ FoldingTable.propTypes = {
   name: PropTypes.string
 };
 
-export default withStyles(styles)(FoldingTable);
+export default FoldingTable;

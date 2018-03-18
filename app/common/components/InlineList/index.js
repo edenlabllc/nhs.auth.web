@@ -1,9 +1,8 @@
 import React from "react";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import styles from "./styles.css";
 
-export default withStyles(styles)(({ list = [], separator = "," }) => (
+export default ({ list = [], separator = "," }) => (
   <ul className={styles.list}>
     {list.map((name, i) => (
       <li key={i}>
@@ -12,4 +11,4 @@ export default withStyles(styles)(({ list = [], separator = "," }) => (
       </li>
     ))}
   </ul>
-));
+);

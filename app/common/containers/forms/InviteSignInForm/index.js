@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "withStyles";
+
 import { reduxForm, Field } from "redux-form";
 
 import FieldInput from "components/reduxForm/FieldInput";
@@ -11,7 +11,6 @@ import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
 
 import styles from "./styles.css";
 
-@withStyles(styles)
 @reduxForm({
   form: "invite-sign-in-form",
   validate: reduxFormValidate({

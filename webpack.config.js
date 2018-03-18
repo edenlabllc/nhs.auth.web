@@ -75,8 +75,7 @@ const serverConfig = webpackMerge(
     ],
     externals: [/^[a-z\/\-0-9]+$/i]
   },
-  parts.setupCssCritical(),
-  parts.setupFontGenCritical(),
+  parts.__temporarySetupServerCss(),
   genConfig
 );
 

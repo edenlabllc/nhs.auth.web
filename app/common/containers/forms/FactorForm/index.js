@@ -1,6 +1,5 @@
 import React from "react";
 
-import withStyles from "withStyles";
 import { withRouter } from "react-router";
 import { reduxForm, Field } from "redux-form";
 import { FormBlock } from "components/Form";
@@ -12,7 +11,6 @@ import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
 
 import styles from "./styles.css";
 
-@withStyles(styles)
 @withRouter
 @reduxForm({
   form: "factor-form",

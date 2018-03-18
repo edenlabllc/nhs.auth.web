@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
+
 import ErrorMessages from "components/ErrorMessages";
 
 import styles from "./styles.css";
@@ -97,4 +97,4 @@ Component.propTypes = {
   theme: PropTypes.oneOf(["light"])
 };
 
-export default withStyles(styles)(Component);
+export default Component;

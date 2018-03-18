@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import styles from "./styles.css";
 
@@ -33,4 +32,4 @@ Component.PropTypes = {
   onChange: PropTypes.func
 };
 
-export default withStyles(styles)(Component);
+export default Component;

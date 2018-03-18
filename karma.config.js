@@ -15,9 +15,7 @@ const IS_COVERALLS = process.env.COVERAGE === "coveralls";
 
 const webpackTestConfig = webpackMerge(
   parts.setupJs(),
-  parts.setupCssCritical(),
   parts.setupFont(),
-  parts.setupFontGenCritical(),
   parts.setupImages(),
   parts.setupJson(),
   parts.setupI18n(),

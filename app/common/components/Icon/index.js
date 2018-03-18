@@ -1,6 +1,5 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import styles from "./icons.font";
 
 export const icons = [
@@ -29,4 +28,4 @@ Icon.propTypes = {
   name: PropTypes.oneOf(icons).isRequired
 };
 
-export default withStyles(styles)(Icon);
+export default Icon;

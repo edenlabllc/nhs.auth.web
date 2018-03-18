@@ -1,7 +1,6 @@
 import React from "react";
 
 import CodeMirror from "react-codemirror";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import codeMirrorStyles from "codemirror/lib/codemirror.css";
 import lintStyles from "codemirror/addon/lint/lint.css";
@@ -9,9 +8,6 @@ import styles from "./styles.css";
 
 import FieldInput from "../FieldInput";
 
-@withStyles(codeMirrorStyles)
-@withStyles(lintStyles)
-@withStyles(styles)
 export default class FieldCode extends React.Component {
   render() {
     const { input, mode, ...rest } = this.props;

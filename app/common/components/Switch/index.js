@@ -1,8 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-
 import styles from "./styles.css";
 
 const generateName = () =>
@@ -50,4 +48,4 @@ Switch.propTypes = {
   onChange: React.PropTypes.func
 };
 
-export default withStyles(styles)(Switch);
+export default Switch;

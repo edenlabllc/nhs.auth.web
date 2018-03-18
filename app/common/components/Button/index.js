@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import Icon, { icons } from "components/Icon";
 
@@ -96,8 +95,9 @@ Button.propTypes = {
   onClick: React.PropTypes.func
 };
 
-export default withStyles(styles)(Button);
-export const ButtonsGroup = withStyles(styles)(({ children, ...props }) => (
+export default Button;
+
+export const ButtonsGroup = ({ children, ...props }) => (
   <div {...props} className={styles.buttonsGroup}>
     {React.Children.toArray(children).map((i, key) => (
       <div className={styles.buttonsGroupItem} key={key}>
@@ -105,4 +105,4 @@ export const ButtonsGroup = withStyles(styles)(({ children, ...props }) => (
       </div>
     ))}
   </div>
-));
+);

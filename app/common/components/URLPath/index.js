@@ -1,5 +1,4 @@
 import React from "react";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import styles from "./styles.css";
 
@@ -17,4 +16,4 @@ const URLPath = ({ children }) => (
   </span>
 );
 
-export default withStyles(styles)(URLPath);
+export default URLPath;

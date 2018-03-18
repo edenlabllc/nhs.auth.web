@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "withStyles";
+
 import { withRouter } from "react-router";
 
 import { H1 } from "components/Title";
@@ -7,7 +7,6 @@ import { H1 } from "components/Title";
 import styles from "./styles.css";
 
 @withRouter
-@withStyles(styles)
 export default class InviteRejectPage extends React.Component {
   render() {
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "withStyles";
+
 import { translate } from "react-i18next";
 
 import styles from "./styles.css";
@@ -12,4 +12,4 @@ const App = ({ children, t }) => (
     </footer>
   </div>
 );
-export default translate()(withStyles(styles)(App));
+export default translate()(App);

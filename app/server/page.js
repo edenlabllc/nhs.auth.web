@@ -24,7 +24,6 @@ import useQueries from "history/lib/useQueries";
 import { configureStore } from "../common/store";
 
 import { configureRoutes } from "../common/routes";
-import WithStylesContext from "../common/WithStylesContext";
 
 const cache = new NodeCache({
   stdTTL: 5 * 60, // 5 minutes
@@ -36,7 +35,6 @@ export default () => (req, res, next) => {
     return res.render("index", {
       html: null,
       reduxState: null,
-      inlineCss: null,
       helmet: Helmet.rewind()
     });
   }
@@ -98,21 +96,14 @@ export default () => (req, res, next) => {
           }
 
           const reduxState = escape(JSON.stringify(state));
-          const css = new Set();
           /* eslint-disable no-underscore-dangle */
           let html;
           try {
             html = ReactDOMServer.renderToString(
               <I18nextProvider i18n={req.i18n}>
-                <WithStylesContext
-                  onInsertCss={styles =>
-                    styles._getCss && css.add(styles._getCss())
-                  }
-                >
-                  <Provider store={store}>
-                    <RouterContext {...renderProps} />
-                  </Provider>
-                </WithStylesContext>
+                <Provider store={store}>
+                  <RouterContext {...renderProps} />
+                </Provider>
               </I18nextProvider>
             );
           } catch (e) {
@@ -126,8 +117,7 @@ export default () => (req, res, next) => {
           res.render("index", {
             html,
             reduxState,
-            helmet,
-            inlineCss: arrayFrom(css).join("")
+            helmet
           });
         })
         .catch(err => next(err));

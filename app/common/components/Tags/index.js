@@ -1,5 +1,4 @@
 import React from "react";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import styles from "./styles.css";
 
@@ -13,4 +12,4 @@ const Component = ({ tags = [], formatter = i => i }) => (
   </div>
 );
 
-export default withStyles(styles)(Component);
+export default Component;

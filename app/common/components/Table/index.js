@@ -1,6 +1,5 @@
 import React, { PropTypes, Children } from "react";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import styles from "./styles.css";
 
@@ -36,14 +35,14 @@ const TableHeadComponent = ({ columns = [] }) => (
   </thead>
 );
 
-const TablePlaceholder = withStyles(styles)(({ colSpan, placeholder }) => (
+const TablePlaceholder = ({ colSpan, placeholder }) => (
   <tr className={styles.placeholder}>
     <td colSpan={colSpan}>{placeholder}</td>
   </tr>
-));
+);
 
-export const TableRow = withStyles(styles)(TableRowComponent);
-export const TableHead = withStyles(styles)(TableHeadComponent);
+export const TableRow = TableRowComponent;
+export const TableHead = TableHeadComponent;
 
 const Table = props => {
   const {
@@ -135,4 +134,4 @@ TableRowComponent.propTypes = {
   data: PropTypes.objectOf(PropTypes.any)
 };
 
-export default withStyles(styles)(Table);
+export default Table;

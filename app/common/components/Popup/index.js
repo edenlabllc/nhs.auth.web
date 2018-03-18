@@ -1,6 +1,5 @@
 import React from "react";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import { H2 } from "../Title";
 import Button from "../Button";
@@ -137,6 +136,6 @@ ConfirmComponent.defaultProps = {
   cancel: DEFAULT_CANCEL_BTN_TEXT
 };
 
-export const Popup = withStyles(styles)(PopupComponent);
-export const Alert = withStyles(styles)(AlertComponent);
-export const Confirm = withStyles(styles)(ConfirmComponent);
+export const Popup = PopupComponent;
+export const Alert = AlertComponent;
+export const Confirm = ConfirmComponent;

@@ -42,23 +42,23 @@ const fontLoaders = [
   }
 ];
 
-exports.setupCssCritical = () => ({
-  module: {
-    rules: [
-      {
-        test: /\.css/,
-        use: ["nebo15-isomorphic-style-loader", cssLoader]
-      }
-    ]
-  }
-});
-
 exports.setupCss = () => ({
   module: {
     rules: [
       {
         test: /\.css/,
         use: ["style-loader", cssLoader]
+      }
+    ]
+  }
+});
+
+exports.__temporarySetupServerCss = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.css/,
+        use: [cssLoader]
       }
     ]
   }
@@ -78,34 +78,12 @@ exports.setupCssExtract = () => ({
   plugins: [extractStyles]
 });
 
-exports.setupCssIgnore = () => ({
-  module: {
-    rules: [
-      {
-        test: /\.css/,
-        use: ["ignore-loader"]
-      }
-    ]
-  }
-});
-
 exports.setupFontGen = () => ({
   module: {
     rules: [
       {
         test: /\.font\.(js|json)$/,
         use: ["style-loader"].concat(fontLoaders)
-      }
-    ]
-  }
-});
-
-exports.setupFontGenCritical = () => ({
-  module: {
-    rules: [
-      {
-        test: /\.font\.(js|json)$/,
-        use: ["nebo15-isomorphic-style-loader"].concat(fontLoaders)
       }
     ]
   }

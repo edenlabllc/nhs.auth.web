@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { provideHooks } from "redial";
-import withStyles from "withStyles";
 
 import { H1 } from "components/Title";
 import { getRequestById } from "reducers";
@@ -10,7 +9,6 @@ import { fetchRequestByHash } from "./redux";
 
 import styles from "./styles.css";
 
-@withStyles(styles)
 @provideHooks({
   fetch: ({ dispatch, location: { query } }) =>
     query.invite && dispatch(fetchRequestByHash(query.invite))

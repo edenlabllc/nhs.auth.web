@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import withStyles from "withStyles";
+
 import { withRouter } from "react-router";
 
 import { H1, H2 } from "components/Title";
@@ -12,7 +12,6 @@ import { onSubmit } from "./redux";
 import styles from "./styles.css";
 
 @withRouter
-@withStyles(styles)
 @connect(null, { onSubmit })
 export default class PasswordExpiredPage extends React.Component {
   render() {

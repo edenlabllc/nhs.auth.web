@@ -1,9 +1,7 @@
 import React from "react";
 
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import styles from "./styles.css";
 
-@withStyles(styles)
 export default class LoadingBar extends React.Component {
   static defaultProps = {
     speed: 3000,

@@ -4,11 +4,8 @@ import classnames from "classnames";
 
 import Icon from "components/Icon";
 
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-
 import styles from "./styles.css";
 
-@withStyles(styles)
 export default class Pagination extends Component {
   constructor(props) {
     super(props);

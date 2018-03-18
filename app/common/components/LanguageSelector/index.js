@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "withStyles";
+
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import classnames from "classnames";
@@ -23,7 +23,6 @@ const Item = ({ lang, active, onChange }) => (
 );
 
 @translate()
-@withStyles(styles)
 @connect(null, {
   changeLanguage
 })

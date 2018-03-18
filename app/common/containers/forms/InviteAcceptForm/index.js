@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "withStyles";
+
 import { reduxForm, Field } from "redux-form";
 
 import FieldCheckbox from "components/reduxForm/FieldCheckbox";
@@ -9,7 +9,6 @@ import { reduxFormValidate } from "react-nebo15-validate";
 
 import styles from "./styles.css";
 
-@withStyles(styles)
 @reduxForm({
   form: "invite-accept-form",
   validate: reduxFormValidate({

@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import withStyles from "withStyles";
+
 import { reduxForm, Field } from "redux-form";
 
 import FieldInput from "components/reduxForm/FieldInput";
@@ -13,7 +13,6 @@ import { password_validate } from "helpers/validate";
 
 import styles from "./styles.css";
 
-@withStyles(styles)
 @reduxForm({
   form: "sign-up-form",
   validate: reduxFormValidate({

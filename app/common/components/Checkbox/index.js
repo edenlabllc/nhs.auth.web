@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import classnames from "classnames";
 
 import Icon from "components/Icon";
@@ -53,7 +52,8 @@ Checkbox.PropTypes = {
   onFocus: PropTypes.func
 };
 
-export const CheckboxGroup = withStyles(styles)(({ children }) => (
+export default Checkbox;
+
+export const CheckboxGroup = ({ children }) => (
   <span className={styles.group}>{children}</span>
-));
-export default withStyles(styles)(Checkbox);
+);

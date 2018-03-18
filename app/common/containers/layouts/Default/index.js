@@ -1,5 +1,4 @@
 import React from "react";
-import withStyles from "withStyles";
 
 import styles from "./styles.css";
 
@@ -13,4 +12,4 @@ const App = ({ children }) => (
     {children}
   </div>
 );
-export default withStyles(styles)(App);
+export default App;

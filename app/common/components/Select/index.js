@@ -1,6 +1,5 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import Icon from "components/Icon";
 import OuterClick from "components/OuterClick";
@@ -126,4 +125,4 @@ class Select extends React.Component {
   }
 }
 
-export default withStyles(styles)(Select);
+export default Select;

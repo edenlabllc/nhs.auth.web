@@ -1,6 +1,5 @@
 import React, { PropTypes } from "react";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import styles from "./styles.css";
 
@@ -40,4 +39,4 @@ ToggleCheckbox.propTypes = {
   onFocus: PropTypes.func
 };
 
-export default withStyles(styles)(ToggleCheckbox);
+export default ToggleCheckbox;

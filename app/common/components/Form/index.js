@@ -1,5 +1,4 @@
 import React from "react";
-import withStyles from "withStyles";
 import classnames from "classnames";
 import Icon from "components/Icon";
 
@@ -8,15 +7,15 @@ import styles from "./styles.css";
 const FormComponent = props => (
   <form className={classnames(styles.form)} noValidate {...props} />
 );
-export default withStyles(styles)(FormComponent);
+export default FormComponent;
 
 const FormBlockComponent = ({ children }) => (
   <div className={styles.block}>{children}</div>
 );
-export const FormBlock = withStyles(styles)(FormBlockComponent);
+export const FormBlock = FormBlockComponent;
 
 const FormRowComponent = props => <div className={styles.row} {...props} />;
-export const FormRow = withStyles(styles)(FormRowComponent);
+export const FormRow = FormRowComponent;
 
 const FormBlockTitleComponent = ({ children, right, ...rest }) => (
   <div className={styles.blockTitle} {...rest}>
@@ -25,7 +24,7 @@ const FormBlockTitleComponent = ({ children, right, ...rest }) => (
   </div>
 );
 
-export const FormBlockTitle = withStyles(styles)(FormBlockTitleComponent);
+export const FormBlockTitle = FormBlockTitleComponent;
 
 const sizeToClassName = size => {
   const [part, count] = size.split("/");
@@ -42,12 +41,12 @@ const FormColumnComponent = ({ size, align = "top", ...rest }) => (
     {...rest}
   />
 );
-export const FormColumn = withStyles(styles)(FormColumnComponent);
+export const FormColumn = FormColumnComponent;
 
 const FormButtonsComponent = props => (
   <div className={classnames(styles.buttons)} {...props} />
 );
-export const FormButtons = withStyles(styles)(FormButtonsComponent);
+export const FormButtons = FormButtonsComponent;
 
 const FormIconComponent = ({
   icon = "add",
@@ -67,7 +66,7 @@ const FormIconComponent = ({
     <span className={styles.icon__text}>{children}</span>
   </a>
 );
-export const FormIcon = withStyles(styles)(FormIconComponent);
+export const FormIcon = FormIconComponent;
 
 const FormErrorComponent = props => <div {...props} className={styles.error} />;
-export const FormError = withStyles(styles)(FormErrorComponent);
+export const FormError = FormErrorComponent;

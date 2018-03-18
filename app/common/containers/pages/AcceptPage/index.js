@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import withStyles from "withStyles";
+
 import { withRouter } from "react-router";
 import { provideHooks } from "redial";
 
@@ -25,7 +25,6 @@ import styles from "./styles.css";
     ])
 })
 @withRouter
-@withStyles(styles)
 @connect(
   (state, { location: { query } }) => ({
     scope: query.scope || state.pages.AcceptPage.scope,

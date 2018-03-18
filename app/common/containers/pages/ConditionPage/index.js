@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "withStyles";
+
 import { withRouter } from "react-router";
 
 import { H2 } from "components/Title";
@@ -7,7 +7,6 @@ import { H2 } from "components/Title";
 import styles from "./styles.css";
 
 @withRouter
-@withStyles(styles)
 export default class ConditionPage extends React.Component {
   render() {
     return (

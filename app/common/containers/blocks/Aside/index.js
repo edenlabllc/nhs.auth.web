@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router";
 import { connect } from "react-redux";
 
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-
 import Nav from "containers/blocks/Nav";
 import Gamburger from "containers/blocks/Gamburger";
 
@@ -11,7 +9,6 @@ import { toggleMenu } from "./redux";
 
 import styles from "./styles.css";
 
-@withStyles(styles)
 @connect(state => state.blocks.Aside, { toggleMenu })
 export default class Aside extends React.Component {
   render() {

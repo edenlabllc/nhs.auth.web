@@ -3,14 +3,12 @@ import { connect } from "react-redux";
 import { translate } from "react-i18next";
 import classnames from "classnames";
 import { Link } from "react-router";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import NavItem from "components/NavItem";
 import Icon from "components/Icon";
 
 import styles from "./styles.css";
 
-@withStyles(styles)
 @translate()
 @connect(state => ({
   location: state.routing

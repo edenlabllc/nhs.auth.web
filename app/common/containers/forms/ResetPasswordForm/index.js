@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "withStyles";
+
 import { translate } from "react-i18next";
 import { reduxForm, Field } from "redux-form";
 import { ErrorMessage, reduxFormValidate } from "react-nebo15-validate";
@@ -10,7 +10,6 @@ import Button, { ButtonsGroup } from "components/Button";
 import styles from "./styles.css";
 
 @translate()
-@withStyles(styles)
 @reduxForm({
   form: "reset-password-form",
   validate: reduxFormValidate({

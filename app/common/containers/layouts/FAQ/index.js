@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router";
-import withStyles from "withStyles";
 
 import styles from "./styles.css";
 
@@ -38,4 +37,4 @@ const FAQ = ({ children }) => (
   </div>
 );
 
-export default withStyles(styles)(FAQ);
+export default FAQ;
