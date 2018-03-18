@@ -1,0 +1,50 @@
+.main {
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 0 20px;
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .content {
+    margin-bottom: 42px;
+  }
+
+  .links {
+    margin-top: 30px;
+    display: block;
+
+    a {
+      min-width: 0;
+    }
+
+    & > div {
+      display: inline-block;
+      margin-right: 24px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+}
+
+.error {
+  margin-bottom: 30px;
+
+  b {
+    color: #ff1f44;
+  }
+}
+
+.list {
+  margin-top: 15px;
+}

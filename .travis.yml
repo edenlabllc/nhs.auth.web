@@ -1,0 +1,43 @@
+language: node_js
+services:
+- docker
+cache:
+  directories:
+  - "~/.nvm"
+  - node_modules
+notifications:
+  slack: 
+    rooms:
+      - secure: "e98LYlv2F8R5m8+jmKmxTmkoRB6v8CVHkh+2BMDwCcHG1Z04bnnPW4JCSgD3M5INEuB6HTDKKI12vw/VI1Cpodopj2G+z6Am18LzmXBDGqE1SMvv6plK9JPnUkUDHZ/TcEO10WMzL3yDlvNm0GILvypyseKKpStNmkwPkG5mN79nMRSq+WUMP4PiKRlKZlLCgM3vbzdF3epHWNKYVsoZpOzScpzZjY2JelHJ+8JEqI63BCjgnA6C6XCAjNT3U+ggF56VKZOWJig7Zy8mYQ3jDU522iYhlNOLOKCdoH3X24E4a+CvBFiE/b7wcDQddJGqeTmUUN8bnn89+mv94qZV2Byf2RFxXm/vEUXa6qPLKJDQCQ2dR6ygi8zGepB6KQgHVXfZrSOcYKZzizmTapSj22tFvtRgPsZBMNU9+iM63K4o18j3k0Xh7XbRPOtLz9zC/36Pzpaqbn2aq0SliK1pWeBlLYPGntEd8O2s4uPsyb+TzXSD2m1/7s63AIbA0ZFJiJSj0Rtt/fG/Jz2iSGrdcnXwW7R2EssW8ytdaHGMiMGAdG3yI2q05+FWT9NLnqzKYY2UmbgTMA9QBYkfvE7kP7MQeF/58SCG0OEYWCdGxKaccpHjGDnQHNZAbluaKEa3gkihgTCiE0RYpGZkDI2aIKE6LNcrs/Vgx0twEoanf6o="
+    on_success: always
+env:
+  global:
+  - Chart=fe
+  - RELEASE_BRANCH="master"
+  - DOCKER_HUB_ACCOUNT="edenlabllc"
+  - MAIN_BRANCHES="master develop develop"
+  # DOCKER_USERNAME DOCKER_PASSWORD
+  - secure: "Iq+UX6Rlg7MGIPBOOBPEgLPjm8ZDnBUdAQEnXU7QItSWT5sjaB5s3nvuBboE2STwfSJAalrjnJDZo28wmWCcRPiIeCuODYqF7jxfBZhe+nDvXUozEfcC1PUwizh5LxIT7zcb3W943XQJ6iQAeq24KDM5AKHjV3mgLBwwql+ViC8H6dOP3ILkqiGnn1X+DikmV1ddceS4nrftAT2fIwYwuunWIMxUr/QoHn6XthoQTpigrHVYLAz4JVCaVAETFZnsmOJKfNcs7SoDLBmsNf3nkuLAuSJsRbRMftYAwc7xYLfjGuppeP0EldOxcshiPT7Wr/v1cMFgscKch2XuZ5JhnHcys4PV22e5oufveIX+DwTu0Y4WchyyLAV4DB/unGoCmD59mpJlNnt8XDuaZHkYCzBB/FgDnJ169uXeCDZm0xigOSvuVkctbv7SgL9pRk8IdLpkvDz1LBIORPqB96rV0vGGCfwMadsb6DGR/Movlfu6HP1Dp/TIcet8oiQa9sM0NPrgvKF3EAQbjKKqamYzgK8E1M+pu2+leQ1cLyAvEFrk1ogL38p/9PPmeXfz90qJVmr/JkLnbni14XMiSOhh6MfSG3EHJAuo4a5+57LbMr2zBO58AuxyXyPpiExNaMC1Y6hJmQfxvPdDuZQlOKFGq9b0nYAWX+YUoysBhlrrCzE="
+  # GITHUB_TOKEN
+  - secure: "tRw6gcvznU3ivEou6HqrHC09Ke5ApgDaVslCiEl/SpalCZDVji8p8qJhXtGtha/hPWzYdTkOA9pbhwaryMiqGhpvVMeOl2EzKRV+n2yczkaBy+sbeZsRvsCPvIEZHfMABoZgdp8oDCYajj7wSyvYJpdSLoc6KzQJpzd47HoqDlefSP7DS8zA4fhw+N4AXt5hwezDyHzl3IAZrgak8a9CiTBfbjvR6SxpqULYtUe2CDjmQi/uDP8NIqkf2qByJACrfemUmDYuvxgrg/4L9Cpv8TcdFgRFaHeX2wlM5abPRoKEDDTSEinEyT63ZlYuNxlugtXUgnS6KAj7EIrfpCo7a6hpCV3/gOXkum82LW7tzEgeTmwPTJWsbwOdQgZMiQ0P/LHGsFMWoa6FH6HgYl8/be7R3oUiB1PSI4SGzxp/nG5kGTZTuIYtjef33H5nszxSJ8Kf23Ib6OI/pR/s2VKKixDila+xMEKD2oMHYIkCjIqVB/j9S0eRGYjjsk+8la6xY15kZwkvtiMyoTrWZ/NNdU8o0uYuutYyM2jnfcAJ57IXW81JieVwEvSwyTZgXcn0SHWw9cZ3Y0bkr1Ox1YeBVaGXJpU10oCXhlBnUNKBGNaM6yjx3IiHTqCo8hvObS0eUi7txrVjtZ+x83DrO/fsXCcnboUzjnFyna763QtvjY8="
+node_js:
+- 7.5.0
+before_install:
+- npm run docker:up
+- chmod -R +x bin
+script:
+- npm run test
+- npm run lint || travis_terminate 1
+- ./bin/version-increment.sh || travis_terminate 1
+- ./bin/build.sh || travis_terminate 1
+- ./bin/start.sh || travis_terminate 1
+- sleep 5
+- docker ps
+- RUNNING_CONTAINERS=`docker ps | wc -l`; if [ "${RUNNING_CONTAINERS//[[:space:]]/}"
+  == "1" ]; then echo "[E] Container is not started\!"; docker logs nhs.auth.web --details
+  --since 5h; exit 1; fi;
+- npm run nightwatch -- -e travis || travis_terminate 1
+- sleep 5
+- ./bin/ci/push.sh
+- openssl aes-256-cbc -K $encrypted_ea9094922e6d_key -iv $encrypted_ea9094922e6d_iv -in eHealth-8110bd102a69.json.enc -out eHealth-8110bd102a69.json -d
+- sudo ./bin/deploy.sh || travis_terminate 1
