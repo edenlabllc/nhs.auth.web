@@ -1,4 +1,3 @@
-require("dotenv").config({ silent: true });
 require("babel-register")({
   presets: ["es2015", "react", "stage-0"],
   plugins: [

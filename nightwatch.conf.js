@@ -1,4 +1,3 @@
-require("dotenv").config({ silent: true });
 require("babel-core/register");
 
 const config = {
