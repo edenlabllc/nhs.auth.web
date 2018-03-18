@@ -3,7 +3,7 @@ import chai, { expect } from "chai";
 import { shallow, mount } from "enzyme";
 import spies from "chai-spies";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 import { Popup, Confirm, Alert } from "./index";
 
 chai.use(spies);

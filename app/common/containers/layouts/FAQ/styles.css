@@ -1,0 +1,59 @@
+.faq {
+  padding: 0 20px;
+  min-width: 980px;
+}
+
+.header {
+  margin-bottom: 72px;
+  text-align: left;
+}
+
+.header .logo img {
+  display: inline-block;
+  height: 80px;
+}
+
+.main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+
+.main .aside {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 400px;
+  -ms-flex: 0 0 400px;
+  flex: 0 0 400px;
+  padding-right: 20px;
+}
+
+.main .content {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.main .list {
+  font-size: 12px;
+}
+
+.main .list li {
+  margin-bottom: 16px;
+}
+
+.main .list a {
+  display: inline-block;
+  text-decoration: none;
+  color: #292b37;
+}
+
+.main .active {
+  font-weight: 700;
+}

@@ -9,7 +9,7 @@ import Gamburger from "containers/blocks/Gamburger";
 
 import { toggleMenu } from "./redux";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withStyles(styles)
 @connect(state => state.blocks.Aside, { toggleMenu })

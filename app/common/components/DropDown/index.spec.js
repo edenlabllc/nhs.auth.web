@@ -4,7 +4,7 @@ import { shallow, mount } from "enzyme";
 import spies from "chai-spies";
 
 import { Component, DropDownControl, DropDownItem } from "./index";
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 chai.use(spies);
 

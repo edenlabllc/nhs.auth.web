@@ -5,7 +5,7 @@ import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import Icon from "components/Icon";
 import OuterClick from "components/OuterClick";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const LIST_HEIGHT_PADDING = 32;
 

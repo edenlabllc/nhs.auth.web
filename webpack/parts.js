@@ -32,10 +32,6 @@ const cssLoader = {
   }
 };
 
-const scssLoaders = [cssLoader, "postcss-loader"];
-
-const cssLoaders = ["css-loader"];
-
 const fontLoaders = [
   cssLoader,
   {
@@ -50,12 +46,8 @@ exports.setupCssCritical = () => ({
   module: {
     rules: [
       {
-        test: /\.scss/,
-        use: ["nebo15-isomorphic-style-loader"].concat(scssLoaders)
-      },
-      {
         test: /\.css/,
-        use: ["nebo15-isomorphic-style-loader"].concat(cssLoaders)
+        use: ["nebo15-isomorphic-style-loader", cssLoader]
       }
     ]
   }
@@ -65,12 +57,8 @@ exports.setupCss = () => ({
   module: {
     rules: [
       {
-        test: /\.scss/,
-        use: ["style-loader", ...scssLoaders]
-      },
-      {
         test: /\.css/,
-        use: ["style-loader", ...cssLoaders]
+        use: ["style-loader", cssLoader]
       }
     ]
   }
@@ -80,15 +68,9 @@ exports.setupCssExtract = () => ({
   module: {
     rules: [
       {
-        test: /\.scss/,
-        use: extractStyles.extract({
-          use: scssLoaders
-        })
-      },
-      {
         test: /\.css/,
         use: extractStyles.extract({
-          use: cssLoaders
+          use: cssLoader
         })
       }
     ]
@@ -100,7 +82,7 @@ exports.setupCssIgnore = () => ({
   module: {
     rules: [
       {
-        test: /\.(scss|css)/,
+        test: /\.css/,
         use: ["ignore-loader"]
       }
     ]

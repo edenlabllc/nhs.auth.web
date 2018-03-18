@@ -1,7 +1,7 @@
 import React from "react";
 import withStyles from "withStyles";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const MainComponent = ({ id, children }) => (
   <section className={styles.main} id={id}>

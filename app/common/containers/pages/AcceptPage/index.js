@@ -14,7 +14,7 @@ import { fetchDictionaries } from "redux/dictionaries";
 import { getClientById, getUser } from "reducers";
 
 import { fetchScope } from "./redux";
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @provideHooks({
   fetch: ({ dispatch, location: { query } }) =>

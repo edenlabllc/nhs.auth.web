@@ -8,7 +8,7 @@ import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import NavItem from "components/NavItem";
 import Icon from "components/Icon";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withStyles(styles)
 @translate()

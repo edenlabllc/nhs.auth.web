@@ -5,7 +5,7 @@ import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import codeMirrorStyles from "codemirror/lib/codemirror.css";
 import lintStyles from "codemirror/addon/lint/lint.css";
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 import FieldInput from "../FieldInput";
 

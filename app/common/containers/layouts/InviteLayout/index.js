@@ -8,7 +8,7 @@ import { getRequestById } from "reducers";
 
 import { fetchRequestByHash } from "./redux";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withStyles(styles)
 @provideHooks({

@@ -3,7 +3,7 @@ import classnames from "classnames";
 import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import ErrorMessages from "components/ErrorMessages";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const Prefix = ({ prefix }) => (
   <span className={styles["prefix-wrapper"]}>{prefix}</span>

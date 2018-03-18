@@ -1,7 +1,7 @@
 import React from "react";
 import withStyles from "withStyles";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 export default withStyles(styles)(({ count = 2, active = 0 }) => (
   <ul className={styles.points}>

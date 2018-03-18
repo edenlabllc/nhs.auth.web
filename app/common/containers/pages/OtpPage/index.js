@@ -9,7 +9,7 @@ import Button, { ButtonsGroup } from "components/Button";
 
 import { onSubmit, onResend } from "./redux";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withRouter
 @withStyles(styles)

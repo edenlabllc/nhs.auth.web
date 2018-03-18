@@ -5,7 +5,7 @@ import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import { H2 } from "../Title";
 import Button from "../Button";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const DEFAULT_CONFIRM_BTN_TEXT = "Confirm";
 const DEFAULT_CANCEL_BTN_TEXT = "Cancel";

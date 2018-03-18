@@ -7,7 +7,7 @@ import { ErrorMessage, reduxFormValidate } from "react-nebo15-validate";
 import FieldInput from "components/reduxForm/FieldInput";
 import Button, { ButtonsGroup } from "components/Button";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @translate()
 @withStyles(styles)

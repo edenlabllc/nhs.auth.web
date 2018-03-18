@@ -2,7 +2,7 @@ import React from "react";
 import withStyles from "withStyles";
 import { translate } from "react-i18next";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const App = ({ children, t }) => (
   <div className={styles.main}>

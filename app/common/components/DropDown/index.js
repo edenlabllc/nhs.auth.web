@@ -6,7 +6,7 @@ import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import OuterClick from "components/OuterClick";
 
 import { open, close } from "./redux";
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 export const Component = props => {
   const { children = [], name, isOpened, onOpen, onClose } = props;

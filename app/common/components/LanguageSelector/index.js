@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { changeLanguage } from "redux/language";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const LANGS = {
   uk: "УКР",

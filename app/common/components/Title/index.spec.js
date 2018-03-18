@@ -4,7 +4,7 @@ import { shallow, mount } from "enzyme";
 import spies from "chai-spies";
 
 import { Title, H1, H2, H3, H4, H5, H6 } from "./index";
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 chai.use(spies);
 

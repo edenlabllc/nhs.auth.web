@@ -3,7 +3,7 @@ import withStyles from "withStyles";
 import classnames from "classnames";
 import Icon from "components/Icon";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const FormComponent = props => (
   <form className={classnames(styles.form)} noValidate {...props} />

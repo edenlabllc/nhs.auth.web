@@ -10,7 +10,7 @@ import normalizePhone from "helpers/phone";
 
 import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withStyles(styles)
 @withRouter

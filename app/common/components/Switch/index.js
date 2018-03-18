@@ -3,7 +3,7 @@ import classnames from "classnames";
 
 import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const generateName = () =>
   `switch-${(Math.random() * Math.pow(10, 4)).toFixed()}`;

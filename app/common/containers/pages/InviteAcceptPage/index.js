@@ -11,7 +11,7 @@ import { getRequestById } from "reducers";
 
 import { onSubmit, onReject } from "./redux";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withRouter
 @withStyles(styles)

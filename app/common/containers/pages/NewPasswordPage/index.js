@@ -10,7 +10,7 @@ import NewPasswordForm from "containers/forms/NewPasswordForm";
 
 import { onSubmit } from "./redux";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withRouter
 @withStyles(styles)

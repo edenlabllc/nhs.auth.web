@@ -1,0 +1,77 @@
+.row-sub {
+  background-color: #fff !important;
+}
+
+.row-sub > td {
+  padding: 0 !important;
+}
+
+.row-sub > td::before,
+.row-sub > td::after {
+  display: none;
+}
+
+.row {
+  cursor: pointer;
+}
+
+.row .arrow.arrow-down {
+  color: #ff1149;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.row .arrow.arrow-up {
+  color: #29e28a;
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.row .arrow.arrow-up,
+.row .arrow.arrow-down {
+  margin: 0 10px;
+}
+
+.row .right {
+  text-align: right;
+}
+
+.row .arrow {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 4px;
+  vertical-align: middle;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
+}
+
+.row .arrow.arrow-active {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+.row .percent {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.row .percent div:last-child {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 30px;
+  -ms-flex: 0 1 30px;
+  flex: 0 1 30px;
+  text-align: left;
+}
+
+.row.active {
+  background-color: #f3fdff !important;
+}

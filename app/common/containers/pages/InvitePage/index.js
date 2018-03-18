@@ -20,7 +20,7 @@ import { getRequestById } from "reducers";
 
 import { onSubmitSignUp, onSubmitSignIn } from "./redux";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const toArray = v => (!Array.isArray(v) ? [v] : v);
 

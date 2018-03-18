@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import classnames from "classnames";
 import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 /* eslint-disable jsx-a11y/label-has-for */
 const ToggleCheckbox = ({

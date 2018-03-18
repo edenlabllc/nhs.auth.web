@@ -4,7 +4,7 @@ import classnames from "classnames";
 
 import Icon from "components/Icon";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 /* eslint-disable jsx-a11y/label-has-for */
 const Checkbox = ({

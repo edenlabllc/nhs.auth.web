@@ -7,7 +7,7 @@ import Button from "components/Button";
 
 import { reduxFormValidate } from "react-nebo15-validate";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withStyles(styles)
 @reduxForm({

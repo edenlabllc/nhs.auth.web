@@ -9,7 +9,7 @@ import ExpiredPasswordForm from "containers/forms/ExpiredPasswordForm";
 import BackgroundLayout from "components/BackgroundLayout";
 
 import { onSubmit } from "./redux";
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withRouter
 @withStyles(styles)

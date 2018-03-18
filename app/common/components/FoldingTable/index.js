@@ -6,7 +6,7 @@ import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 import Icon from "components/Icon";
 import Table, { TableRow } from "components/Table";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 

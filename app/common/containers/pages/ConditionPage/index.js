@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 
 import { H2 } from "components/Title";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 @withRouter
 @withStyles(styles)

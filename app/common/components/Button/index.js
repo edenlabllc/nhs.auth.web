@@ -5,7 +5,7 @@ import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
 import Icon, { icons } from "components/Icon";
 
-import styles from "./styles.scss";
+import styles from "./styles.css";
 
 const URL_TEST_REG_EXP = /^((?:[a-z]+:)?\/\/)|mailto:/i;
 
