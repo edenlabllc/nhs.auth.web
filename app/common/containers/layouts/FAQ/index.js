@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router';
-import withStyles from 'withStyles';
+import React from "react";
+import { Link } from "react-router";
+import withStyles from "withStyles";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 const FAQ = ({ children }) => (
   <div className={styles.faq}>
@@ -33,9 +33,7 @@ const FAQ = ({ children }) => (
           </ul>
         </nav>
       </aside>
-      <section className={styles.content}>
-        {children}
-      </section>
+      <section className={styles.content}>{children}</section>
     </section>
   </div>
 );

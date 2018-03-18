@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
-import { H1 } from 'components/Title';
-import Button, { ButtonsGroup } from 'components/Button';
-import { Main, Header, Article } from 'components/CenterLayout';
+import { H1 } from "components/Title";
+import Button, { ButtonsGroup } from "components/Button";
+import { Main, Header, Article } from "components/CenterLayout";
 
-import SignInForm from 'containers/forms/SignInForm';
+import SignInForm from "containers/forms/SignInForm";
 
-import { onSubmit } from './redux';
+import { onSubmit } from "./redux";
 
 @withRouter
 @connect(null, { onSubmit })
@@ -25,7 +25,7 @@ export default class SignInPage extends React.Component {
           <SignInForm
             onSubmit={onSubmit}
             initialValues={{
-              email: location.query.email,
+              email: location.query.email
             }}
           />
           <ButtonsGroup>

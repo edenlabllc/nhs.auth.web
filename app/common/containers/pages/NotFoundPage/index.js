@@ -1,9 +1,9 @@
-import React from 'react';
-import withStyles from 'withStyles';
+import React from "react";
+import withStyles from "withStyles";
 
-import { H1 } from 'components/Title';
+import { H1 } from "components/Title";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 @withStyles(styles)
 export default class NotFoundPage extends React.Component {

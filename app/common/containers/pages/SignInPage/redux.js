@@ -1,73 +1,74 @@
-import { push } from 'react-router-redux';
-import { SubmissionError } from 'redux-form';
-import { getLocation } from 'reducers';
-import { createSessionToken } from 'redux/auth';
-import { login } from 'redux/session';
-import { fetchUserData } from 'redux/user';
-import { CLIENT_ID } from 'config';
-import error_messages from 'helpers/errors';
+import { push } from "react-router-redux";
+import { SubmissionError } from "redux-form";
+import { getLocation } from "reducers";
+import { createSessionToken } from "redux/auth";
+import { login } from "redux/session";
+import { fetchUserData } from "redux/user";
+import { CLIENT_ID } from "config";
+import error_messages from "helpers/errors";
 
 export const onSubmit = ({ email, password }) => (dispatch, getState) =>
-dispatch(createSessionToken({
-  grant_type: 'password',
-  email,
-  password,
-  client_id: CLIENT_ID,
-  scope: 'app:authorize',
-}))
-.then((action) => {
-  if (action.error) {
-    const { message, type } = action.payload.response.error;
-    const error = error_messages[message] || error_messages.defaultError;
-    if (type === 'password_expired') {
-      throw new SubmissionError({
-        password: {
-          password_expired: true,
-        },
-      });
+  dispatch(
+    createSessionToken({
+      grant_type: "password",
+      email,
+      password,
+      client_id: CLIENT_ID,
+      scope: "app:authorize"
+    })
+  ).then(action => {
+    if (action.error) {
+      const { message, type } = action.payload.response.error;
+      const error = error_messages[message] || error_messages.defaultError;
+      if (type === "password_expired") {
+        throw new SubmissionError({
+          password: {
+            password_expired: true
+          }
+        });
+      }
+
+      if (message) {
+        throw new SubmissionError({
+          email: { [error]: true }
+        });
+      }
+      return action;
     }
 
-    if (message) {
-      throw new SubmissionError({
-        email: { [error]: true },
-      });
-    }
-    return action;
-  }
+    const { next_step } = action.meta;
+    dispatch(login(action.payload.value));
 
-  const { next_step } = action.meta;
-  dispatch(login(action.payload.value));
+    switch (next_step) {
+      case "REQUEST_APPS": {
+        return dispatch(fetchUserData(action.payload.value)).then(action => {
+          if (action.error) {
+            throw new SubmissionError({
+              email: { accountPasswordMismatch: true }
+            });
+          }
+          const state = getState();
+          const location = getLocation(state);
 
-  switch (next_step) {
-    case 'REQUEST_APPS': {
-      return dispatch(fetchUserData(action.payload.value)).then((action) => {
-        if (action.error) {
-          throw new SubmissionError({
-            email: { accountPasswordMismatch: true },
-          });
-        }
+          return dispatch(push({ ...location, pathname: "/accept" }));
+        });
+      }
+
+      case "REQUEST_OTP": {
         const state = getState();
         const location = getLocation(state);
+        return dispatch(push({ ...location, pathname: "/otp-send" }));
+      }
 
-        return dispatch(push({ ...location, pathname: '/accept' }));
-      });
-    }
+      case "REQUEST_FACTOR": {
+        const state = getState();
+        const location = getLocation(state);
+        return dispatch(push({ ...location, pathname: "/request-factor" }));
+      }
 
-    case 'REQUEST_OTP': {
-      const state = getState();
-      const location = getLocation(state);
-      return dispatch(push({ ...location, pathname: '/otp-send' }));
+      default: {
+        break;
+      }
     }
-
-    case 'REQUEST_FACTOR': {
-      const state = getState();
-      const location = getLocation(state);
-      return dispatch(push({ ...location, pathname: '/request-factor' }));
-    }
-
-    default: {
-      break;
-    }
-  }
-  return true;
-});
+    return true;
+  });

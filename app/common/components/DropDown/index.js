@@ -1,14 +1,14 @@
-import React from 'react';
-import classnames from 'classnames';
-import { connect } from 'react-redux';
-import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import React from "react";
+import classnames from "classnames";
+import { connect } from "react-redux";
+import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
-import OuterClick from 'components/OuterClick';
+import OuterClick from "components/OuterClick";
 
-import { open, close } from './redux';
-import styles from './styles.scss';
+import { open, close } from "./redux";
+import styles from "./styles.scss";
 
-export const Component = (props) => {
+export const Component = props => {
   const { children = [], name, isOpened, onOpen, onClose } = props;
 
   const childrenArray = React.Children.toArray(children);
@@ -22,38 +22,49 @@ export const Component = (props) => {
       } else {
         onOpen(name);
       }
-    },
+    }
   });
 
   return (
     <OuterClick onClick={() => onClose(name)}>
-      <section className={classnames(styles.dropdown, isOpened && styles.active)}>
+      <section
+        className={classnames(styles.dropdown, isOpened && styles.active)}
+      >
         {control}
-        <ul>
-          {items}
-        </ul>
+        <ul>{items}</ul>
       </section>
     </OuterClick>
   );
 };
 
-export const DropDown = withStyles(styles)(connect(
-  (state, { name }) => ({
-    isOpened: state.dropDown[name],
-  }), {
-    onOpen: open,
-    onClose: close,
-  }
-)(Component));
+export const DropDown = withStyles(styles)(
+  connect(
+    (state, { name }) => ({
+      isOpened: state.dropDown[name]
+    }),
+    {
+      onOpen: open,
+      onClose: close
+    }
+  )(Component)
+);
 
 export const DropDownControl = withStyles(styles)(({ children, ...props }) => (
-  <div className={styles.control} {...props}>{children}</div>
+  <div className={styles.control} {...props}>
+    {children}
+  </div>
 ));
 
-export const DropDownItem = withStyles(styles)(({ children, active = false, separate = false }) => (
-  <li
-    className={classnames(styles.item, active && styles.active, separate && styles.separate)}
-  >
-    {children}
-  </li>
-));
+export const DropDownItem = withStyles(styles)(
+  ({ children, active = false, separate = false }) => (
+    <li
+      className={classnames(
+        styles.item,
+        active && styles.active,
+        separate && styles.separate
+      )}
+    >
+      {children}
+    </li>
+  )
+);

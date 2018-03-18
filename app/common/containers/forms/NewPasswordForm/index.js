@@ -1,23 +1,23 @@
-import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import React from "react";
+import { reduxForm, Field } from "redux-form";
 
-import FieldInput from 'components/reduxForm/FieldInput';
-import Button from 'components/Button';
-import { FormBlock } from 'components/Form';
-import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
-import { password_validate } from 'helpers/validate';
+import FieldInput from "components/reduxForm/FieldInput";
+import Button from "components/Button";
+import { FormBlock } from "components/Form";
+import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
+import { password_validate } from "helpers/validate";
 
 @reduxForm({
-  form: 'new-password-form',
+  form: "new-password-form",
   validate: reduxFormValidate({
     password: {
-      ...password_validate,
+      ...password_validate
     },
     confirm_password: {
       required: true,
-      confirmation: 'password',
-    },
-  }),
+      confirmation: "password"
+    }
+  })
 })
 export default class NewPasswordForm extends React.Component {
   render() {
@@ -33,8 +33,12 @@ export default class NewPasswordForm extends React.Component {
               type="password"
               component={FieldInput}
             >
-              <ErrorMessage when="format">Пароль повинен містити великі, малі літери та цифри</ErrorMessage>
-              <ErrorMessage when="length">Повинен складатися хоча б з 12 символів</ErrorMessage>
+              <ErrorMessage when="format">
+                Пароль повинен містити великі, малі літери та цифри
+              </ErrorMessage>
+              <ErrorMessage when="length">
+                Повинен складатися хоча б з 12 символів
+              </ErrorMessage>
             </Field>
           </div>
           <div>
@@ -44,7 +48,9 @@ export default class NewPasswordForm extends React.Component {
               type="password"
               component={FieldInput}
             >
-              <ErrorMessage when="confirmation">Паролі не співпадаюсть</ErrorMessage>
+              <ErrorMessage when="confirmation">
+                Паролі не співпадаюсть
+              </ErrorMessage>
             </Field>
           </div>
           <div>

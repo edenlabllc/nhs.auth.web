@@ -1,22 +1,22 @@
-import React from 'react';
-import withStyles from 'withStyles';
-import { reduxForm, Field } from 'redux-form';
+import React from "react";
+import withStyles from "withStyles";
+import { reduxForm, Field } from "redux-form";
 
-import FieldCheckbox from 'components/reduxForm/FieldCheckbox';
-import Button from 'components/Button';
+import FieldCheckbox from "components/reduxForm/FieldCheckbox";
+import Button from "components/Button";
 
-import { reduxFormValidate } from 'react-nebo15-validate';
+import { reduxFormValidate } from "react-nebo15-validate";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 @withStyles(styles)
 @reduxForm({
-  form: 'invite-accept-form',
+  form: "invite-accept-form",
   validate: reduxFormValidate({
     confirm: {
-      required: true,
-    },
-  }),
+      required: true
+    }
+  })
 })
 export default class InviteAcceptForm extends React.Component {
   render() {
@@ -25,7 +25,12 @@ export default class InviteAcceptForm extends React.Component {
     return (
       <form className={styles.main} onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <Field labelText="Погоджуюсь з Регламентом функціонування системи eHealth" type="checkbox" name="confirm" component={FieldCheckbox} />
+          <Field
+            labelText="Погоджуюсь з Регламентом функціонування системи eHealth"
+            type="checkbox"
+            name="confirm"
+            component={FieldCheckbox}
+          />
         </div>
         <div>
           <Button disabled={submitting} type="submit" color="blue">

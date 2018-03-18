@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
-import styles from './styles.scss';
+import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
+import styles from "./styles.scss";
 
 @withStyles(styles)
 export default class LoadingBar extends React.Component {
@@ -10,8 +10,8 @@ export default class LoadingBar extends React.Component {
     height: 20,
     classes: {
       wrap: styles.wrap,
-      bar: styles.bar,
-    },
+      bar: styles.bar
+    }
   };
 
   render() {
@@ -20,7 +20,7 @@ export default class LoadingBar extends React.Component {
         <div
           className={this.props.classes.bar}
           style={{
-            animationDuration: `${this.props.speed}ms`,
+            animationDuration: `${this.props.speed}ms`
           }}
         />
       </div>

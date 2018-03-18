@@ -1,54 +1,55 @@
-import React from 'react';
+import React from "react";
 
-import { Route, IndexRedirect, IndexRoute } from 'react-router';
+import { Route, IndexRedirect, IndexRoute } from "react-router";
 
-import App from 'containers/layouts/App';
-import Main from 'containers/layouts/Main';
-import Default from 'containers/layouts/Default';
-import FAQ from 'containers/layouts/FAQ';
-import InviteLayout from 'containers/layouts/InviteLayout';
+import App from "containers/layouts/App";
+import Main from "containers/layouts/Main";
+import Default from "containers/layouts/Default";
+import FAQ from "containers/layouts/FAQ";
+import InviteLayout from "containers/layouts/InviteLayout";
 
-import InvitePage from 'containers/pages/InvitePage';
-import InviteAcceptPage from 'containers/pages/InviteAcceptPage';
-import InviteSuccessPage from 'containers/pages/InviteSuccessPage';
-import InviteRejectPage from 'containers/pages/InviteRejectPage';
-import SignInPage from 'containers/pages/SignInPage';
-import OtpPage from 'containers/pages/OtpPage';
-import AcceptPage from 'containers/pages/AcceptPage';
-import ConditionPage from 'containers/pages/ConditionPage';
+import InvitePage from "containers/pages/InvitePage";
+import InviteAcceptPage from "containers/pages/InviteAcceptPage";
+import InviteSuccessPage from "containers/pages/InviteSuccessPage";
+import InviteRejectPage from "containers/pages/InviteRejectPage";
+import SignInPage from "containers/pages/SignInPage";
+import OtpPage from "containers/pages/OtpPage";
+import AcceptPage from "containers/pages/AcceptPage";
+import ConditionPage from "containers/pages/ConditionPage";
 
-import RequestFactorPage from 'containers/pages/RequestFactorPage';
-import RequestFactorApprovePage from 'containers/pages/RequestFactorApprovePage';
+import RequestFactorPage from "containers/pages/RequestFactorPage";
+import RequestFactorApprovePage from "containers/pages/RequestFactorApprovePage";
 
-import ResetPasswordPage from 'containers/pages/ResetPasswordPage';
-import NewPasswordPage from 'containers/pages/NewPasswordPage';
+import ResetPasswordPage from "containers/pages/ResetPasswordPage";
+import NewPasswordPage from "containers/pages/NewPasswordPage";
 
-import UpdateFactorSignInPage from 'containers/pages/UpdateFactorSignInPage';
-import UpdateFactorOtpPage from 'containers/pages/UpdateFactorOtpPage';
-import UpdateFactorPhonePage from 'containers/pages/UpdateFactorPhonePage';
-import UpdateFactorPhoneOtpPage from 'containers/pages/UpdateFactorPhoneOtpPage';
-import UpdateFactorSuccessPage from 'containers/pages/UpdateFactorSuccessPage';
+import UpdateFactorSignInPage from "containers/pages/UpdateFactorSignInPage";
+import UpdateFactorOtpPage from "containers/pages/UpdateFactorOtpPage";
+import UpdateFactorPhonePage from "containers/pages/UpdateFactorPhonePage";
+import UpdateFactorPhoneOtpPage from "containers/pages/UpdateFactorPhoneOtpPage";
+import UpdateFactorSuccessPage from "containers/pages/UpdateFactorSuccessPage";
 
-import PasswordExpiredSignInPage from 'containers/pages/PasswordExpiredSignInPage';
-import PasswordExpiredPage from 'containers/pages/PasswordExpiredPage';
-import PasswordExpiredOtpPage from 'containers/pages/PasswordExpiredOtpPage';
-import UpdatePasswordSuccessPage from 'containers/pages/UpdatePasswordSuccessPage';
+import PasswordExpiredSignInPage from "containers/pages/PasswordExpiredSignInPage";
+import PasswordExpiredPage from "containers/pages/PasswordExpiredPage";
+import PasswordExpiredOtpPage from "containers/pages/PasswordExpiredOtpPage";
+import UpdatePasswordSuccessPage from "containers/pages/UpdatePasswordSuccessPage";
 
-import PasswordRequestFactorPage from 'containers/pages/PasswordRequestFactorPage';
-import PasswordRequestFactorApprovePage from 'containers/pages/PasswordRequestFactorApprovePage';
+import PasswordRequestFactorPage from "containers/pages/PasswordRequestFactorPage";
+import PasswordRequestFactorApprovePage from "containers/pages/PasswordRequestFactorApprovePage";
 
-import NotFoundPage from 'containers/pages/NotFoundPage';
+import NotFoundPage from "containers/pages/NotFoundPage";
 
-import { getUser, getToken } from 'reducers';
+import { getUser, getToken } from "reducers";
 
-import { isLoginned, logout } from 'redux/session';
-import { fetchUserData } from 'redux/user';
+import { isLoginned, logout } from "redux/session";
+import { fetchUserData } from "redux/user";
 
-export const configureRoutes = ({ store }) => { // eslint-disable-line
+export const configureRoutes = ({ store }) => {
+  // eslint-disable-line
   const requireAuth = (nextState, replace, next) =>
-    store.dispatch(isLoginned()).then((loginned) => {
+    store.dispatch(isLoginned()).then(loginned => {
       if (!loginned) {
-        replace({ pathname: '/' });
+        replace({ pathname: "/" });
         return next();
       }
 
@@ -57,14 +58,16 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
 
       if (person) return next();
 
-      return store.dispatch(fetchUserData(getToken(currentState))).then((action) => {
-        if (action.error) {
-          store.dispatch(logout());
-          replace({ pathname: '/' });
-        }
+      return store
+        .dispatch(fetchUserData(getToken(currentState)))
+        .then(action => {
+          if (action.error) {
+            store.dispatch(logout());
+            replace({ pathname: "/" });
+          }
 
-        return next();
-      });
+          return next();
+        });
     });
 
   return (
@@ -76,33 +79,45 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
           </Route>
           <Route component={Default}>
             <Route path="invite" component={InviteLayout}>
-              <IndexRoute
-                inviteStatuses={['NEW']}
-                component={InvitePage}
-              />
+              <IndexRoute inviteStatuses={["NEW"]} component={InvitePage} />
               <Route
                 path="accept"
-                inviteStatuses={['NEW']}
+                inviteStatuses={["NEW"]}
                 component={InviteAcceptPage}
               />
               <Route
                 path="success"
-                inviteStatuses={['APPROVED']}
+                inviteStatuses={["APPROVED"]}
                 component={InviteSuccessPage}
               />
               <Route
                 path="reject"
-                inviteStatuses={['REJECTED']}
+                inviteStatuses={["REJECTED"]}
                 component={InviteRejectPage}
               />
             </Route>
             <Route path="sign-in" component={SignInPage} />
-            <Route path="update-password" component={PasswordExpiredSignInPage} />
+            <Route
+              path="update-password"
+              component={PasswordExpiredSignInPage}
+            />
             <Route path="update-password/new" component={PasswordExpiredPage} />
-            <Route path="update-password/otp" component={PasswordExpiredOtpPage} />
-            <Route path="update-password/factor" component={PasswordRequestFactorPage} />
-            <Route path="update-password/factor/approve" component={PasswordRequestFactorApprovePage} />
-            <Route path="update-password/success" component={UpdatePasswordSuccessPage} />
+            <Route
+              path="update-password/otp"
+              component={PasswordExpiredOtpPage}
+            />
+            <Route
+              path="update-password/factor"
+              component={PasswordRequestFactorPage}
+            />
+            <Route
+              path="update-password/factor/approve"
+              component={PasswordRequestFactorApprovePage}
+            />
+            <Route
+              path="update-password/success"
+              component={UpdatePasswordSuccessPage}
+            />
 
             <Route path="update-factor" component={UpdateFactorSignInPage} />
 
@@ -112,11 +127,23 @@ export const configureRoutes = ({ store }) => { // eslint-disable-line
               <Route path="accept" component={AcceptPage} />
               <Route path="otp-send" component={OtpPage} />
               <Route path="request-factor" component={RequestFactorPage} />
-              <Route path="request-factor/approve" component={RequestFactorApprovePage} />
+              <Route
+                path="request-factor/approve"
+                component={RequestFactorApprovePage}
+              />
               <Route path="update-factor/otp" component={UpdateFactorOtpPage} />
-              <Route path="update-factor/phone" component={UpdateFactorPhonePage} />
-              <Route path="update-factor/phone/otp" component={UpdateFactorPhoneOtpPage} />
-              <Route path="update-factor/success" component={UpdateFactorSuccessPage} />
+              <Route
+                path="update-factor/phone"
+                component={UpdateFactorPhonePage}
+              />
+              <Route
+                path="update-factor/phone/otp"
+                component={UpdateFactorPhoneOtpPage}
+              />
+              <Route
+                path="update-factor/success"
+                component={UpdateFactorSuccessPage}
+              />
             </Route>
 
             <Route path="*" component={NotFoundPage} />

@@ -1,9 +1,15 @@
-import React, { PropTypes } from 'react';
-import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import React, { PropTypes } from "react";
+import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
-export const Component = ({ selected = false, onChange = e => e, disabled, value, name }) => (
+export const Component = ({
+  selected = false,
+  onChange = e => e,
+  disabled,
+  value,
+  name
+}) => (
   <label className={styles.wrap}>
     <input
       type="radio"
@@ -12,7 +18,7 @@ export const Component = ({ selected = false, onChange = e => e, disabled, value
         checked: selected,
         value,
         name,
-        disabled,
+        disabled
       }}
     />
     <span className={styles.view} />
@@ -24,7 +30,7 @@ Component.PropTypes = {
   value: PropTypes.isReqiored,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default withStyles(styles)(Component);

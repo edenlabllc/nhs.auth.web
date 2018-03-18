@@ -1,15 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import withStyles from 'withStyles';
-import { withRouter } from 'react-router';
+import React from "react";
+import { connect } from "react-redux";
+import withStyles from "withStyles";
+import { withRouter } from "react-router";
 
-import { H1 } from 'components/Title';
-import OtpForm from 'containers/forms/OtpForm';
-import Button, { ButtonsGroup } from 'components/Button';
+import { H1 } from "components/Title";
+import OtpForm from "containers/forms/OtpForm";
+import Button, { ButtonsGroup } from "components/Button";
 
-import { onSubmit, onResend } from './redux';
+import { onSubmit, onResend } from "./redux";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 @withRouter
 @withStyles(styles)
@@ -25,10 +25,7 @@ export default class OtpPage extends React.Component {
         <article className={styles.form}>
           <OtpForm onSubmit={onSubmit} onResend={onResend} repeat />
           <ButtonsGroup>
-            <Button
-              theme="link"
-              onClick={() => router.goBack()}
-            >
+            <Button theme="link" onClick={() => router.goBack()}>
               Назад
             </Button>
           </ButtonsGroup>

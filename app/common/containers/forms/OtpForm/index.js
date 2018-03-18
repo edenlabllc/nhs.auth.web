@@ -1,45 +1,47 @@
-import React from 'react';
-import { withRouter } from 'react-router';
-import { reduxForm, Field } from 'redux-form';
-import FieldInput from 'components/reduxForm/FieldInput';
-import Button, { ButtonsGroup } from 'components/Button';
-import ColoredText from 'components/ColoredText';
+import React from "react";
+import { withRouter } from "react-router";
+import { reduxForm, Field } from "redux-form";
+import FieldInput from "components/reduxForm/FieldInput";
+import Button, { ButtonsGroup } from "components/Button";
+import ColoredText from "components/ColoredText";
 
-import { reduxFormValidate, ErrorMessage } from 'react-nebo15-validate';
-import { FormBlock } from 'components/Form';
+import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
+import { FormBlock } from "components/Form";
 
 @withRouter
 @reduxForm({
-  form: 'otp-form',
+  form: "otp-form",
   validate: reduxFormValidate({
     code: {
       required: true,
-      format: /^\d*$/,
-    },
-  }),
+      format: /^\d*$/
+    }
+  })
 })
 export default class OtpForm extends React.Component {
-
   state = {
     send: false,
     isSending: false,
     otp_timeout: false,
-    token_expires: false,
+    token_expires: false
   };
 
   onClickResend() {
     if (!this.props.onResend) return null;
     const res = this.props.onResend();
-    if (!res || typeof res.then !== 'function') return res;
+    if (!res || typeof res.then !== "function") return res;
 
     this.setState({ sent: false, isSending: true });
     setTimeout(() => {
-      res.then(() => {
-        this.setState({ isSending: false, sent: true });
-        setTimeout(() => this.setState({ sent: false }), 5000);
-      }, () => {
-        this.setState({ isSending: false });
-      });
+      res.then(
+        () => {
+          this.setState({ isSending: false, sent: true });
+          setTimeout(() => this.setState({ sent: false }), 5000);
+        },
+        () => {
+          this.setState({ isSending: false });
+        }
+      );
     }, 1000);
     return res;
   }
@@ -48,7 +50,7 @@ export default class OtpForm extends React.Component {
       handleSubmit,
       submitting,
       repeat = false,
-      btnColor = 'blue',
+      btnColor = "blue"
     } = this.props;
     const { sent, isSending, otp_timeout, token_expires } = this.state;
     return (
@@ -60,41 +62,61 @@ export default class OtpForm extends React.Component {
               name="code"
               component={FieldInput}
             >
-              <ErrorMessage when="format">Значення повинном бути числом</ErrorMessage>
+              <ErrorMessage when="format">
+                Значення повинном бути числом
+              </ErrorMessage>
             </Field>
           </div>
           <ButtonsGroup>
             <Button disabled={submitting} type="submit" color={btnColor}>
               Ввести
             </Button>
-            {
-              repeat && (
-                <Button
-                  theme="link"
-                  onClick={() => this.onClickResend().then((action) => {
+            {repeat && (
+              <Button
+                theme="link"
+                onClick={() =>
+                  this.onClickResend().then(action => {
                     if (!action) return this.setState({ otp_timeout: true });
-                    if (action.payload.response.error.message === 'Token expired') {
+                    if (
+                      action.payload.response.error.message === "Token expired"
+                    ) {
                       return this.setState({ token_expires: true });
                     }
-                    if (action.payload.response.error.message === 'Sending OTP timeout. Try later.') {
+                    if (
+                      action.payload.response.error.message ===
+                      "Sending OTP timeout. Try later."
+                    ) {
                       return this.setState({ token_expires: true });
                     }
                     return action;
-                  })}
-                  disabled={sent || isSending || otp_timeout || token_expires}
-                >
-                  { sent && !otp_timeout && !token_expires && 'Відправлено'}
-                  { isSending && !otp_timeout && !token_expires && 'Відправляємо...'}
-                  { !sent && !otp_timeout && !isSending && !token_expires && 'Відправити знову'}
-                  { otp_timeout && !token_expires && (
-                    <ColoredText color="red">Перевищено кількість спроб авторизації. Спробуйте пізніше</ColoredText>
+                  })
+                }
+                disabled={sent || isSending || otp_timeout || token_expires}
+              >
+                {sent && !otp_timeout && !token_expires && "Відправлено"}
+                {isSending &&
+                  !otp_timeout &&
+                  !token_expires &&
+                  "Відправляємо..."}
+                {!sent &&
+                  !otp_timeout &&
+                  !isSending &&
+                  !token_expires &&
+                  "Відправити знову"}
+                {otp_timeout &&
+                  !token_expires && (
+                    <ColoredText color="red">
+                      Перевищено кількість спроб авторизації. Спробуйте пізніше
+                    </ColoredText>
                   )}
-                  { token_expires && (
-                    <ColoredText color="red">Термін cecії користувача вичерпано. Радимо повернутися до попереднього кроку</ColoredText>
-                  )}
-                </Button>
-              )
-            }
+                {token_expires && (
+                  <ColoredText color="red">
+                    Термін cecії користувача вичерпано. Радимо повернутися до
+                    попереднього кроку
+                  </ColoredText>
+                )}
+              </Button>
+            )}
           </ButtonsGroup>
         </FormBlock>
       </form>

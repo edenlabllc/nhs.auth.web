@@ -1,10 +1,10 @@
-import React, { PropTypes, Children } from 'react';
-import classnames from 'classnames';
-import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import React, { PropTypes, Children } from "react";
+import classnames from "classnames";
+import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
-const DEFAULT_PLACEHOLDER = 'No data';
+const DEFAULT_PLACEHOLDER = "No data";
 
 const TableRowComponent = ({ columns = [], data = {}, ...rest }) => (
   <tr {...rest}>
@@ -16,7 +16,9 @@ const TableRowComponent = ({ columns = [], data = {}, ...rest }) => (
         className={align && styles[align]}
         key={key}
       >
-        { typeof data[key] !== 'undefined' || React.isValidElement(data[key]) ? data[key] : '' }
+        {typeof data[key] !== "undefined" || React.isValidElement(data[key])
+          ? data[key]
+          : ""}
       </td>
     ))}
   </tr>
@@ -26,7 +28,9 @@ const TableHeadComponent = ({ columns = [] }) => (
   <thead>
     <tr>
       {columns.map(({ key, title, width, align }) => (
-        <th className={align && styles[align]} width={width} key={key}>{title}</th>
+        <th className={align && styles[align]} width={width} key={key}>
+          {title}
+        </th>
       ))}
     </tr>
   </thead>
@@ -41,7 +45,7 @@ const TablePlaceholder = withStyles(styles)(({ colSpan, placeholder }) => (
 export const TableRow = withStyles(styles)(TableRowComponent);
 export const TableHead = withStyles(styles)(TableHeadComponent);
 
-const Table = (props) => {
+const Table = props => {
   const {
     columns = [],
     data = [],
@@ -52,8 +56,9 @@ const Table = (props) => {
     head = true,
     tbody = true,
     keyColumn,
-    rowComponent, headComponent,
-    children = [],
+    rowComponent,
+    headComponent,
+    children = []
   } = props;
 
   const Head = headComponent || TableHead;
@@ -69,17 +74,24 @@ const Table = (props) => {
   let rows = [];
 
   if (children.length !== 0) {
-    rows = Children.map(children, (child, key) => React.cloneElement(child, { columns, key }));
+    rows = Children.map(children, (child, key) =>
+      React.cloneElement(child, { columns, key })
+    );
   } else {
-    rows = data.map((item, key) => React.createElement(Row, {
-      columns,
-      key: item[keyColumn] || key,
-      data: item,
-    }));
+    rows = data.map((item, key) =>
+      React.createElement(Row, {
+        columns,
+        key: item[keyColumn] || key,
+        data: item
+      })
+    );
   }
 
   if (rows.length === 0) {
-    rows = React.createElement(TablePlaceholder, { colSpan: columns.length, placeholder });
+    rows = React.createElement(TablePlaceholder, {
+      colSpan: columns.length,
+      placeholder
+    });
   }
 
   return (
@@ -97,8 +109,8 @@ const columnsType = PropTypes.arrayOf(
     key: PropTypes.any.isRequired,
     title: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    align: PropTypes.oneOf(['left', 'center', 'right']),
-    colspan: PropTypes.number,
+    align: PropTypes.oneOf(["left", "center", "right"]),
+    colspan: PropTypes.number
   })
 );
 
@@ -111,16 +123,16 @@ Table.propTypes = {
   head: PropTypes.bool,
   tbody: PropTypes.bool,
   rowComponent: PropTypes.func,
-  headComponent: PropTypes.func,
+  headComponent: PropTypes.func
 };
 
 TableHeadComponent.propTypes = {
-  columns: columnsType.isRequired,
+  columns: columnsType.isRequired
 };
 
 TableRowComponent.propTypes = {
   columns: columnsType,
-  data: PropTypes.objectOf(PropTypes.any),
+  data: PropTypes.objectOf(PropTypes.any)
 };
 
 export default withStyles(styles)(Table);

@@ -1,11 +1,18 @@
-import React, { PropTypes } from 'react';
-import classnames from 'classnames';
-import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import React, { PropTypes } from "react";
+import classnames from "classnames";
+import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 /* eslint-disable jsx-a11y/label-has-for */
-const ToggleCheckbox = ({ checked = false, onChange = e => e, onBlur, onFocus, name, color = 'blue' }) => (
+const ToggleCheckbox = ({
+  checked = false,
+  onChange = e => e,
+  onBlur,
+  onFocus,
+  name,
+  color = "blue"
+}) => (
   <label className={classnames(styles.wrap, styles[`color-${color}`])}>
     <input
       type="checkbox"
@@ -14,7 +21,7 @@ const ToggleCheckbox = ({ checked = false, onChange = e => e, onBlur, onFocus, n
       {...{
         onBlur,
         onFocus,
-        name,
+        name
       }}
     />
 
@@ -26,11 +33,11 @@ const ToggleCheckbox = ({ checked = false, onChange = e => e, onBlur, onFocus, n
 
 ToggleCheckbox.propTypes = {
   checked: PropTypes.bool,
-  color: PropTypes.oneOf(['blue', 'orange', 'green', 'red']),
+  color: PropTypes.oneOf(["blue", "orange", "green", "red"]),
   onChange: PropTypes.func,
   name: PropTypes.string,
   onBlur: PropTypes.func,
-  onFocus: PropTypes.func,
+  onFocus: PropTypes.func
 };
 
 export default withStyles(styles)(ToggleCheckbox);

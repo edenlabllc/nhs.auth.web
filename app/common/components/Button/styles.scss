@@ -24,7 +24,12 @@ $red-border-color: #d74472;
   min-width: 300px;
   line-height: 1.2;
   color: #fff;
-  background: $orange-bg-color linear-gradient(0deg, $orange-bg-gradient-from 0%, $orange-bg-gradient-to 100%);
+  background: $orange-bg-color
+    linear-gradient(
+      0deg,
+      $orange-bg-gradient-from 0%,
+      $orange-bg-gradient-to 100%
+    );
   font-size: 16px;
   font-weight: 700;
   text-align: center;
@@ -34,23 +39,43 @@ $red-border-color: #d74472;
   cursor: pointer;
 
   &.color-blue {
-    background: #5791ef linear-gradient(to top, rgba(75, 133, 238, 0.67) 0%, rgba(116, 176, 248, 0.67) 99%, rgba(116, 176, 248, 0.67) 100%);
+    background: #5791ef
+      linear-gradient(
+        to top,
+        rgba(75, 133, 238, 0.67) 0%,
+        rgba(116, 176, 248, 0.67) 99%,
+        rgba(116, 176, 248, 0.67) 100%
+      );
 
     &:hover {
       background-color: #74b0f8;
     }
 
     &:active {
-      background-image: linear-gradient(to bottom, rgba(75, 133, 238, 0.67) 0%, rgba(116, 176, 248, 0.67) 99%, rgba(116, 176, 248, 0.67) 100%);
+      background-image: linear-gradient(
+        to bottom,
+        rgba(75, 133, 238, 0.67) 0%,
+        rgba(116, 176, 248, 0.67) 99%,
+        rgba(116, 176, 248, 0.67) 100%
+      );
     }
   }
 
   &.color-green {
-    background: $green-bg-color linear-gradient(0deg, $green-bg-gradient-from 0%, $green-bg-gradient-to 100%);
+    background: $green-bg-color
+      linear-gradient(
+        0deg,
+        $green-bg-gradient-from 0%,
+        $green-bg-gradient-to 100%
+      );
     color: #292b37;
 
     &:hover {
-      background-image: linear-gradient(180deg, $green-bg-gradient-from 0%, $green-bg-gradient-to 100%);
+      background-image: linear-gradient(
+        180deg,
+        $green-bg-gradient-from 0%,
+        $green-bg-gradient-to 100%
+      );
     }
 
     &:active,
@@ -148,11 +173,16 @@ $red-border-color: #d74472;
 .theme-border,
 .theme-fill {
   &.color-red {
-    background: $red-bg-color linear-gradient(0deg, $red-bg-gradient-from 0%, $red-bg-gradient-to 100%);
+    background: $red-bg-color
+      linear-gradient(0deg, $red-bg-gradient-from 0%, $red-bg-gradient-to 100%);
     box-shadow: inset 0 -2px 0 0 $red-border-color;
 
     &:hover {
-      background-image: linear-gradient(180deg, $red-bg-gradient-from 0%, $red-bg-gradient-to 100%);
+      background-image: linear-gradient(
+        180deg,
+        $red-bg-gradient-from 0%,
+        $red-bg-gradient-to 100%
+      );
     }
 
     &:active,

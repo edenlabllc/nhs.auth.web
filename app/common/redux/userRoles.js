@@ -1,34 +1,32 @@
-import { handleAction, combineActions } from 'redux-actions';
-import { normalize } from 'normalizr';
+import { handleAction, combineActions } from "redux-actions";
+import { normalize } from "normalizr";
 
-import { API_URL } from 'config';
-import { createUrl } from 'helpers/url';
-import { userRole } from 'schemas';
+import { API_URL } from "config";
+import { createUrl } from "helpers/url";
+import { userRole } from "schemas";
 
-import { invoke } from './api';
+import { invoke } from "./api";
 
-export const fetchRoles = options => invoke({
-  endpoint: createUrl(`${API_URL}/user/roles`, options),
-  method: 'GET',
-  types: [
-    'userRoles/FETCH_USER_ROLES_REQUEST',
-    {
-      type: 'userRoles/FETCH_USER_ROLES_SUCCESS',
-      payload: (action, state, res) => res.json().then(
-        json => normalize(json.data, [userRole]),
-      ),
-    },
-    'userRoles/FETCH_USER_ROLES_FAILURE',
-  ],
-});
+export const fetchRoles = options =>
+  invoke({
+    endpoint: createUrl(`${API_URL}/user/roles`, options),
+    method: "GET",
+    types: [
+      "userRoles/FETCH_USER_ROLES_REQUEST",
+      {
+        type: "userRoles/FETCH_USER_ROLES_SUCCESS",
+        payload: (action, state, res) =>
+          res.json().then(json => normalize(json.data, [userRole]))
+      },
+      "userRoles/FETCH_USER_ROLES_FAILURE"
+    ]
+  });
 
 export default handleAction(
-  combineActions(
-    'userRoles/FETCH_USER_ROLES_SUCCESS'
-  ),
+  combineActions("userRoles/FETCH_USER_ROLES_SUCCESS"),
   (state, action) => ({
     ...state,
-    ...action.payload.entities.userRoles,
+    ...action.payload.entities.userRoles
   }),
   null
 );

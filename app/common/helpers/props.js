@@ -1,4 +1,4 @@
-import getFn from 'lodash/get';
+import getFn from "lodash/get";
 
 export const isPropsChangedAndExist = (newProps, prevProps, paths = []) =>
   paths.every(i => !!getFn(newProps, i)) &&

@@ -1,21 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
-import { H1 } from 'components/Title';
-import Button, { ButtonsGroup } from 'components/Button';
-import { Main, Header, Article } from 'components/CenterLayout';
+import { H1 } from "components/Title";
+import Button, { ButtonsGroup } from "components/Button";
+import { Main, Header, Article } from "components/CenterLayout";
 
-import SignInForm from 'containers/forms/SignInForm';
+import SignInForm from "containers/forms/SignInForm";
 
-import { onSubmit } from './redux';
+import { onSubmit } from "./redux";
 
 @withRouter
 @connect(null, { onSubmit })
 export default class UpdateFactorSignInPage extends React.Component {
   render() {
     const { onSubmit = () => {}, location, router } = this.props;
-    const invite = location.query && location.query.invite ? `invite=${location.query.invite}` : false;
+    const invite =
+      location.query && location.query.invite
+        ? `invite=${location.query.invite}`
+        : false;
 
     return (
       <Main id="update-factor-page">
@@ -26,7 +29,7 @@ export default class UpdateFactorSignInPage extends React.Component {
           <SignInForm
             onSubmit={onSubmit}
             initialValues={{
-              email: location.query.email,
+              email: location.query.email
             }}
           />
           <ButtonsGroup>
@@ -34,7 +37,7 @@ export default class UpdateFactorSignInPage extends React.Component {
               theme="link"
               onClick={() => {
                 if (invite) return router.goBack();
-                return router.push('/sign-in');
+                return router.push("/sign-in");
               }}
             >
               Назад

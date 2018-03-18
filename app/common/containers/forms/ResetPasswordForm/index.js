@@ -1,24 +1,24 @@
-import React from 'react';
-import withStyles from 'withStyles';
-import { translate } from 'react-i18next';
-import { reduxForm, Field } from 'redux-form';
-import { ErrorMessage, reduxFormValidate } from 'react-nebo15-validate';
+import React from "react";
+import withStyles from "withStyles";
+import { translate } from "react-i18next";
+import { reduxForm, Field } from "redux-form";
+import { ErrorMessage, reduxFormValidate } from "react-nebo15-validate";
 
-import FieldInput from 'components/reduxForm/FieldInput';
-import Button, { ButtonsGroup } from 'components/Button';
+import FieldInput from "components/reduxForm/FieldInput";
+import Button, { ButtonsGroup } from "components/Button";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 @translate()
 @withStyles(styles)
 @reduxForm({
-  form: 'reset-password-form',
+  form: "reset-password-form",
   validate: reduxFormValidate({
     email: {
       required: true,
-      email: true,
-    },
-  }),
+      email: true
+    }
+  })
 })
 export default class ResetPasswordForm extends React.Component {
   render() {
@@ -32,7 +32,9 @@ export default class ResetPasswordForm extends React.Component {
             name="email"
             component={FieldInput}
           >
-            <ErrorMessage when="accountPasswordMismatch">{t('Email does register')}</ErrorMessage>
+            <ErrorMessage when="accountPasswordMismatch">
+              {t("Email does register")}
+            </ErrorMessage>
           </Field>
         </div>
         <ButtonsGroup>

@@ -20,7 +20,7 @@ $border-color: #dadcde;
     li:first-child {
       &::before,
       &::after {
-        content: '';
+        content: "";
         display: block;
         width: 0;
         height: 0;

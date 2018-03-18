@@ -1,18 +1,17 @@
+const karmaWebpack = require("karma-webpack");
+const karmaMocha = require("karma-mocha");
+const karmaChai = require("karma-chai");
+const karmaSinon = require("karma-sinon");
+const karmaCoverage = require("karma-coverage");
+const karmaPhantomjsLauncher = require("karma-phantomjs-launcher");
+const karmaSourcemapLoader = require("karma-sourcemap-loader");
+const karmaSpecReporter = require("karma-spec-reporter");
+const karmaCoveralls = require("karma-coveralls");
+const webpackMerge = require("webpack-merge");
 
-const karmaWebpack = require('karma-webpack');
-const karmaMocha = require('karma-mocha');
-const karmaChai = require('karma-chai');
-const karmaSinon = require('karma-sinon');
-const karmaCoverage = require('karma-coverage');
-const karmaPhantomjsLauncher = require('karma-phantomjs-launcher');
-const karmaSourcemapLoader = require('karma-sourcemap-loader');
-const karmaSpecReporter = require('karma-spec-reporter');
-const karmaCoveralls = require('karma-coveralls');
-const webpackMerge = require('webpack-merge');
+const parts = require("./webpack/parts");
 
-const parts = require('./webpack/parts');
-
-const IS_COVERALLS = process.env.COVERAGE === 'coveralls';
+const IS_COVERALLS = process.env.COVERAGE === "coveralls";
 
 const webpackTestConfig = webpackMerge(
   parts.setupJs(),
@@ -24,10 +23,10 @@ const webpackTestConfig = webpackMerge(
   parts.setupI18n(),
   {
     externals: {
-      'react/addons': true,
-      'react/lib/ExecutionEnvironment': true,
-      'react/lib/ReactContext': true,
-    },
+      "react/addons": true,
+      "react/lib/ExecutionEnvironment": true,
+      "react/lib/ReactContext": true
+    }
   }
 );
 
@@ -39,34 +38,29 @@ const plugins = [
   karmaCoverage,
   karmaPhantomjsLauncher,
   karmaSourcemapLoader,
-  karmaSpecReporter,
+  karmaSpecReporter
 ];
 
-const reporters = [
-  'spec',
-  'coverage',
-];
+const reporters = ["spec", "coverage"];
 
 if (IS_COVERALLS) {
   plugins.push(karmaCoveralls);
-  reporters.push('coveralls');
+  reporters.push("coveralls");
 }
 
-module.exports = (config) => {
+module.exports = config => {
   config.set({
-    basePath: '.',
+    basePath: ".",
 
     reporters,
     plugins,
 
-    files: [
-      'app/common/components/Icon/index.spec.js',
-    ],
+    files: ["app/common/components/Icon/index.spec.js"],
 
-    frameworks: ['mocha'],
+    frameworks: ["mocha"],
 
     preprocessors: {
-      'app/**/*.spec.js': ['webpack'],
+      "app/**/*.spec.js": ["webpack"]
     },
 
     browserNoActivityTimeout: 30000,
@@ -75,20 +69,20 @@ module.exports = (config) => {
 
     webpackMiddleware: {
       noInfo: true,
-      stats: 'errors-only',
+      stats: "errors-only"
     },
 
-    browsers: ['PhantomJS'],
+    browsers: ["PhantomJS"],
     client: {
       mocha: {
-        timeout: 6000, // 6 seconds - upped from 2 seconds
-      },
+        timeout: 6000 // 6 seconds - upped from 2 seconds
+      }
     },
     coverageReporter: {
-      type: 'lcov',
-      dir: './coverage',
+      type: "lcov",
+      dir: "./coverage"
     },
 
-    concurrency: Infinity,
+    concurrency: Infinity
   });
 };

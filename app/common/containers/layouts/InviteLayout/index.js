@@ -1,22 +1,22 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { provideHooks } from 'redial';
-import withStyles from 'withStyles';
+import React from "react";
+import { connect } from "react-redux";
+import { provideHooks } from "redial";
+import withStyles from "withStyles";
 
-import { H1 } from 'components/Title';
-import { getRequestById } from 'reducers';
+import { H1 } from "components/Title";
+import { getRequestById } from "reducers";
 
-import { fetchRequestByHash } from './redux';
+import { fetchRequestByHash } from "./redux";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 @withStyles(styles)
 @provideHooks({
   fetch: ({ dispatch, location: { query } }) =>
-    query.invite && dispatch(fetchRequestByHash(query.invite)),
+    query.invite && dispatch(fetchRequestByHash(query.invite))
 })
 @connect(state => ({
-  request: getRequestById(state, state.pages.Invitelayout.request),
+  request: getRequestById(state, state.pages.Invitelayout.request)
 }))
 export default class InviteLayout extends React.Component {
   get routeScopes() {
@@ -45,7 +45,8 @@ export default class InviteLayout extends React.Component {
   render() {
     const { request, children } = this.props;
     if (!request) return this.renderNotFound();
-    if (this.routeScopes.indexOf(request.status) === -1) return this.renderError();
+    if (this.routeScopes.indexOf(request.status) === -1)
+      return this.renderError();
     return children;
   }
 }

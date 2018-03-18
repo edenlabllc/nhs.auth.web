@@ -1,10 +1,10 @@
-import React from 'react';
-import withStyles from 'withStyles';
-import { withRouter } from 'react-router';
+import React from "react";
+import withStyles from "withStyles";
+import { withRouter } from "react-router";
 
-import { H1 } from 'components/Title';
+import { H1 } from "components/Title";
 
-import styles from './styles.scss';
+import styles from "./styles.scss";
 
 @withRouter
 @withStyles(styles)

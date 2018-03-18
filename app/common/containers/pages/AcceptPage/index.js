@@ -1,39 +1,43 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import withStyles from 'withStyles';
-import { withRouter } from 'react-router';
-import { provideHooks } from 'redial';
+import React from "react";
+import { connect } from "react-redux";
+import withStyles from "withStyles";
+import { withRouter } from "react-router";
+import { provideHooks } from "redial";
 
-import Button from 'components/Button';
-import DictionaryValue from 'components/DictionaryValue';
+import Button from "components/Button";
+import DictionaryValue from "components/DictionaryValue";
 
-import { fetchClientById } from 'redux/clients';
-import { authorize } from 'redux/auth';
-import { fetchDictionaries } from 'redux/dictionaries';
+import { fetchClientById } from "redux/clients";
+import { authorize } from "redux/auth";
+import { fetchDictionaries } from "redux/dictionaries";
 
-import { getClientById, getUser } from 'reducers';
+import { getClientById, getUser } from "reducers";
 
-import { fetchScope } from './redux';
-import styles from './styles.scss';
+import { fetchScope } from "./redux";
+import styles from "./styles.scss";
 
 @provideHooks({
-  fetch: ({ dispatch, location: { query } }) => Promise.all([
-    dispatch(fetchDictionaries({ name: 'SCOPES' })),
-    dispatch(fetchClientById(query.client_id)),
-    dispatch(fetchScope(query.client_id)),
-  ]),
+  fetch: ({ dispatch, location: { query } }) =>
+    Promise.all([
+      dispatch(fetchDictionaries({ name: "SCOPES" })),
+      dispatch(fetchClientById(query.client_id)),
+      dispatch(fetchScope(query.client_id))
+    ])
 })
 @withRouter
 @withStyles(styles)
-@connect((state, { location: { query } }) => ({
-  scope: query.scope || state.pages.AcceptPage.scope,
-  client: getClientById(state, query.client_id),
-  user: getUser(state),
-}), { authorize })
+@connect(
+  (state, { location: { query } }) => ({
+    scope: query.scope || state.pages.AcceptPage.scope,
+    client: getClientById(state, query.client_id),
+    user: getUser(state)
+  }),
+  { authorize }
+)
 export default class AcceptPage extends React.Component {
   state = {
     isLoading: false,
-    error: null,
+    error: null
   };
 
   approval() {
@@ -41,26 +45,30 @@ export default class AcceptPage extends React.Component {
 
     this.setState({ isLoading: true });
 
-    this.props.authorize({
-      clientId: query.client_id,
-      scope,
-      redirectUri: query.redirect_uri,
-    }).then(({ payload, error }) => {
-      if (error) {
-        return this.setState({
-          error: Object.entries(payload.response.error).map(([key, value]) => ({
-            key,
-            value,
-          })),
+    this.props
+      .authorize({
+        clientId: query.client_id,
+        scope,
+        redirectUri: query.redirect_uri
+      })
+      .then(({ payload, error }) => {
+        if (error) {
+          return this.setState({
+            error: Object.entries(payload.response.error).map(
+              ([key, value]) => ({
+                key,
+                value
+              })
+            ),
+            isLoading: false
+          });
+        }
+        this.setState({
           isLoading: false,
+          error: null
         });
-      }
-      this.setState({
-        isLoading: false,
-        error: null,
+        return window && (window.location = payload.headers.get("location"));
       });
-      return window && (window.location = payload.headers.get('location'));
-    });
   }
 
   renderNotFoundClientId() {
@@ -128,13 +136,13 @@ export default class AcceptPage extends React.Component {
       client,
       user,
       scope,
-      location: { query: { client_id, redirect_uri } },
+      location: { query: { client_id, redirect_uri } }
     } = this.props;
 
     if (!client_id) return this.renderNotFoundClientId();
     if (!client) return this.renderNotFoundClient();
     if (!scope) return this.renderNotFoundScope();
-    if (scope === 'empty_roles') return this.renderNotFoundClientRole();
+    if (scope === "empty_roles") return this.renderNotFoundClientRole();
     if (!redirect_uri) return this.renderNotFoundRedirectUri();
 
     return (
@@ -142,30 +150,56 @@ export default class AcceptPage extends React.Component {
         <header className={styles.header}>
           Ви даєте доступ додатку <b>{client.name}</b> на наступні дії:
           <ul className={styles.list}>
-            { scope.split(' ').map(i => <li key={i}>• <DictionaryValue dictionary="SCOPES" value={i} /></li>)}
+            {scope.split(" ").map(i => (
+              <li key={i}>
+                • <DictionaryValue dictionary="SCOPES" value={i} />
+              </li>
+            ))}
           </ul>
         </header>
         <article className={styles.content}>
-          <p>
-            {user.email}
-          </p>
+          <p>{user.email}</p>
         </article>
-        { this.state.error && (
+        {this.state.error && (
           <article className={styles.error}>
             <b>Помилка:</b>
-            {this.state.error.map(i => (<div key={i.key}>{i.value} ({i.key})</div>))}
+            {this.state.error.map(i => (
+              <div key={i.key}>
+                {i.value} ({i.key})
+              </div>
+            ))}
           </article>
         )}
         <footer className={styles.footer}>
           <div>
-            <Button disabled={this.state.isLoading} onClick={() => this.approval()} color="blue">прийняти та продовжити</Button>
+            <Button
+              disabled={this.state.isLoading}
+              onClick={() => this.approval()}
+              color="blue"
+            >
+              прийняти та продовжити
+            </Button>
           </div>
           <div className={styles.links}>
             <div>
-              <Button rel="noopener noreferrer" target="__blank" to="https://ti-ukraine.org/news/rehlament-funktsionuvannia-pilotnoho-proektu-elektronnoi-systemy-okhorony-zdorov-ia/" theme="link">Угода користувача</Button>
+              <Button
+                rel="noopener noreferrer"
+                target="__blank"
+                to="https://ti-ukraine.org/news/rehlament-funktsionuvannia-pilotnoho-proektu-elektronnoi-systemy-okhorony-zdorov-ia/"
+                theme="link"
+              >
+                Угода користувача
+              </Button>
             </div>
             <div>
-              <Button rel="noopener noreferrer" target="__blank" to="https://ti-ukraine.org/news/rehlament-funktsionuvannia-pilotnoho-proektu-elektronnoi-systemy-okhorony-zdorov-ia/" theme="link">Умови використання</Button>
+              <Button
+                rel="noopener noreferrer"
+                target="__blank"
+                to="https://ti-ukraine.org/news/rehlament-funktsionuvannia-pilotnoho-proektu-elektronnoi-systemy-okhorony-zdorov-ia/"
+                theme="link"
+              >
+                Умови використання
+              </Button>
             </div>
           </div>
         </footer>

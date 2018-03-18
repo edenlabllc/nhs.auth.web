@@ -1,12 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Main, Header, Article } from 'components/CenterLayout';
+import React from "react";
+import { connect } from "react-redux";
+import { Main, Header, Article } from "components/CenterLayout";
 
-import { H2 } from 'components/Title';
-import OtpForm from 'containers/forms/OtpForm';
-import Button from 'components/Button';
-import { onSubmit } from './redux';
-
+import { H2 } from "components/Title";
+import OtpForm from "containers/forms/OtpForm";
+import Button from "components/Button";
+import { onSubmit } from "./redux";
 
 @connect(null, { onSubmit })
 export default class UpdateFactorOtpNewPage extends React.Component {
