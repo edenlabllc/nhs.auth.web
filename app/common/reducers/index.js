@@ -2,10 +2,9 @@ import { combineReducers } from "redux";
 import { reducer as form } from "redux-form";
 import { routerReducer as routing } from "react-router-redux";
 import { denormalize } from "normalizr";
-import * as schemas from "../schemas";
 
+import AcceptPage from "../containers/pages/AcceptPage/redux";
 import Invitelayout from "../containers/layouts/InviteLayout/redux";
-
 import loading from "../redux/loading";
 import session from "../redux/session";
 import auth from "../redux/auth";
@@ -14,13 +13,7 @@ import user from "../redux/user";
 import userRoles from "../redux/userRoles";
 import requests from "../redux/requests";
 import dictionaries from "../redux/dictionaries";
-
-import Aside from "../containers/blocks/Aside/redux";
-import AcceptPage from "../containers/pages/AcceptPage/redux";
-
-const blocks = combineReducers({
-  Aside
-});
+import * as schemas from "../schemas";
 
 const pages = combineReducers({
   AcceptPage,
@@ -37,7 +30,6 @@ const data = combineReducers({
 
 export default combineReducers({
   pages,
-  blocks,
   session,
   auth,
   data,

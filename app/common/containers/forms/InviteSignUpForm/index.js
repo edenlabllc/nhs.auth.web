@@ -28,7 +28,7 @@ import styles from "./styles.css";
     }
   })
 })
-export default class SignUpForm extends React.Component {
+export default class InviteSignUpForm extends React.Component {
   render() {
     const { handleSubmit, onSubmit = () => {}, submitting, email } = this.props;
 
