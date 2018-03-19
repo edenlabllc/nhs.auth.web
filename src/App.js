@@ -2,6 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import { Provider } from "react-redux";
 
+import "./global.css";
 import store from "./store";
 import Routes from "./Routes";
 
