@@ -1,4 +1,4 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import classnames from "classnames";
 
 import Icon from "../Icon";
@@ -8,7 +8,7 @@ import styles from "./styles.css";
 
 const LIST_HEIGHT_PADDING = 32;
 
-class Select extends React.Component {
+class Select extends Component {
   static propTypes = {
     active: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     labelText: PropTypes.string,

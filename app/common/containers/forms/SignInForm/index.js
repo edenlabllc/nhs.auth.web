@@ -6,7 +6,30 @@ import FieldInput from "../../../components/reduxForm/FieldInput";
 import Button, { ButtonsGroup } from "../../../components/Button";
 import { FormBlock } from "../../../components/Form";
 
-@reduxForm({
+const SignInForm = ({ handleSubmit, submitting, btnColor = "blue" }) => (
+  <form onSubmit={handleSubmit}>
+    <FormBlock>
+      <div>
+        <Field placeholder="E-mail" name="email" component={FieldInput} />
+      </div>
+      <div>
+        <Field
+          type="password"
+          placeholder="Пароль"
+          name="password"
+          component={FieldInput}
+        />
+      </div>
+      <ButtonsGroup>
+        <Button disabled={submitting} type="submit" color={btnColor}>
+          далі
+        </Button>
+      </ButtonsGroup>
+    </FormBlock>
+  </form>
+);
+
+export default reduxForm({
   form: "sign-in-form",
   validate: reduxFormValidate({
     email: {
@@ -17,32 +40,4 @@ import { FormBlock } from "../../../components/Form";
       required: true
     }
   })
-})
-export default class SignInForm extends React.Component {
-  render() {
-    const { handleSubmit, submitting, btnColor = "blue" } = this.props;
-
-    return (
-      <form onSubmit={handleSubmit}>
-        <FormBlock>
-          <div>
-            <Field placeholder="E-mail" name="email" component={FieldInput} />
-          </div>
-          <div>
-            <Field
-              type="password"
-              placeholder="Пароль"
-              name="password"
-              component={FieldInput}
-            />
-          </div>
-          <ButtonsGroup>
-            <Button disabled={submitting} type="submit" color={btnColor}>
-              далі
-            </Button>
-          </ButtonsGroup>
-        </FormBlock>
-      </form>
-    );
-  }
-}
+})(SignInForm);

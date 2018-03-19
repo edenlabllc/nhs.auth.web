@@ -1,6 +1,6 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 
-export default class OuterClick extends React.Component {
+export default class OuterClick extends Component {
   static propTypes = {
     onClick: PropTypes.func.isRequired
   };

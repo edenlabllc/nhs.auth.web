@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { Provider } from "react-redux";
 import { Router, applyRouterMiddleware } from "react-router";
 import { useRedial } from "react-router-redial";
 
 import { showLoading, hideLoading } from "../common/redux/loading";
 
-export default class RootComponent extends React.Component {
+export default class RootComponent extends Component {
   constructor(props) {
     super(props);
     // History and routes in Router can't be replaced
@@ -15,6 +15,7 @@ export default class RootComponent extends React.Component {
     // Store in Provider can't be replaced
     this.store = props.store;
   }
+
   render() {
     const { renderProps, locals } = this.props;
 

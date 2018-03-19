@@ -1,4 +1,5 @@
 import React from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
@@ -11,32 +12,28 @@ import SignInForm from "../../forms/SignInForm";
 
 import { onSubmit } from "./redux";
 
-@withRouter
-@connect(null, { onSubmit })
-export default class PasswordExpiredSignInPage extends React.Component {
-  render() {
-    const { onSubmit = () => {}, router } = this.props;
+const PasswordExpiredSignInPage = ({ onSubmit = () => {}, router }) => (
+  <Main id="sign-in-page">
+    <Header>
+      <BackgroundLayout />
+      <H1>Вхід для зміни пароля</H1>
+      <br />
+      <br />
+      <H2 textTransform="initial" color="red">
+        Введіть електронну адресу та старий пароль
+      </H2>
+    </Header>
+    <Article>
+      <SignInForm onSubmit={onSubmit} btnColor="green" />
+      <ButtonsGroup>
+        <Button theme="link" onClick={() => router.goBack()}>
+          Назад
+        </Button>
+      </ButtonsGroup>
+    </Article>
+  </Main>
+);
 
-    return (
-      <Main id="sign-in-page">
-        <Header>
-          <BackgroundLayout />
-          <H1>Вхід для зміни пароля</H1>
-          <br />
-          <br />
-          <H2 textTransform="initial" color="red">
-            Введіть електронну адресу та старий пароль
-          </H2>
-        </Header>
-        <Article>
-          <SignInForm onSubmit={onSubmit} btnColor="green" />
-          <ButtonsGroup>
-            <Button theme="link" onClick={() => router.goBack()}>
-              Назад
-            </Button>
-          </ButtonsGroup>
-        </Article>
-      </Main>
-    );
-  }
-}
+export default compose(withRouter, connect(null, { onSubmit }))(
+  PasswordExpiredSignInPage
+);

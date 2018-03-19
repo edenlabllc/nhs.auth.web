@@ -1,24 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
+import { compose } from "redux";
 import { withRouter } from "react-router";
 import { reduxForm, Field } from "redux-form";
+import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
+
 import FieldInput from "../../../components/reduxForm/FieldInput";
 import Button, { ButtonsGroup } from "../../../components/Button";
 import ColoredText from "../../../components/ColoredText";
-
-import { reduxFormValidate, ErrorMessage } from "react-nebo15-validate";
 import { FormBlock } from "../../../components/Form";
 
-@withRouter
-@reduxForm({
-  form: "otp-form",
-  validate: reduxFormValidate({
-    code: {
-      required: true,
-      format: /^\d*$/
-    }
-  })
-})
-export default class OtpForm extends React.Component {
+class OtpForm extends Component {
   state = {
     send: false,
     isSending: false,
@@ -45,6 +36,7 @@ export default class OtpForm extends React.Component {
     }, 1000);
     return res;
   }
+
   render() {
     const {
       handleSubmit,
@@ -123,3 +115,15 @@ export default class OtpForm extends React.Component {
     );
   }
 }
+
+export default compose;
+(withRouter,
+reduxForm({
+  form: "otp-form",
+  validate: reduxFormValidate({
+    code: {
+      required: true,
+      format: /^\d*$/
+    }
+  })
+}))(OtpForm);

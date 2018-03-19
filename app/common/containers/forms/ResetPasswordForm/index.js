@@ -7,7 +7,31 @@ import Button, { ButtonsGroup } from "../../../components/Button";
 
 import styles from "./styles.css";
 
-@reduxForm({
+const ResetPasswordForm = ({ handleSubmit, submitting, t }) => (
+  <form className={styles.main} onSubmit={handleSubmit}>
+    <div>
+      <Field
+        placeholder="Введіть свою адресу електронної пошти"
+        name="email"
+        component={FieldInput}
+      >
+        <ErrorMessage when="accountPasswordMismatch">
+          Користувача з таким email не існує
+        </ErrorMessage>
+      </Field>
+    </div>
+    <ButtonsGroup>
+      <Button disabled={submitting} type="submit" color="blue">
+        далі
+      </Button>
+      <Button to="/sign-in" theme="link">
+        Назад
+      </Button>
+    </ButtonsGroup>
+  </form>
+);
+
+export default reduxForm({
   form: "reset-password-form",
   validate: reduxFormValidate({
     email: {
@@ -15,33 +39,4 @@ import styles from "./styles.css";
       email: true
     }
   })
-})
-export default class ResetPasswordForm extends React.Component {
-  render() {
-    const { handleSubmit, submitting, t } = this.props;
-
-    return (
-      <form className={styles.main} onSubmit={handleSubmit}>
-        <div>
-          <Field
-            placeholder="Введіть свою адресу електронної пошти"
-            name="email"
-            component={FieldInput}
-          >
-            <ErrorMessage when="accountPasswordMismatch">
-              Користувача з таким email не існує
-            </ErrorMessage>
-          </Field>
-        </div>
-        <ButtonsGroup>
-          <Button disabled={submitting} type="submit" color="blue">
-            далі
-          </Button>
-          <Button to="/sign-in" theme="link">
-            Назад
-          </Button>
-        </ButtonsGroup>
-      </form>
-    );
-  }
-}
+})(ResetPasswordForm);

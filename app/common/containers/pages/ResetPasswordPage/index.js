@@ -1,20 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
-
 import { withRouter } from "react-router";
 
 import { H1, H3 } from "../../../components/Title";
-
 import ResetPasswordForm from "../../forms/ResetPasswordForm";
 import Button, { ButtonsGroup } from "../../../components/Button";
 
 import { onSubmit } from "./redux";
-
 import styles from "./styles.css";
 
-@withRouter
-@connect(null, { onSubmit })
-export default class ResetPasswordPage extends React.Component {
+class ResetPasswordPage extends Component {
   constructor(props) {
     super(props);
     this.onClickResend = this.onClickResend.bind(this);
@@ -90,3 +86,7 @@ export default class ResetPasswordPage extends React.Component {
     );
   }
 }
+
+export default compose(withRouter, connect(null, { onSubmit }))(
+  ResetPasswordPage
+);

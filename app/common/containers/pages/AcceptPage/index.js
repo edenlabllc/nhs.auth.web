@@ -1,12 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
-
 import { withRouter } from "react-router";
 import { provideHooks } from "redial";
 
 import Button from "../../../components/Button";
 import DictionaryValue from "../../../components/DictionaryValue";
-
 import { fetchClientById } from "../../../redux/clients";
 import { authorize } from "../../../redux/auth";
 import { fetchDictionaries } from "../../../redux/dictionaries";
@@ -16,24 +15,7 @@ import { getClientById, getUser } from "../../../reducers";
 import { fetchScope } from "./redux";
 import styles from "./styles.css";
 
-@provideHooks({
-  fetch: ({ dispatch, location: { query } }) =>
-    Promise.all([
-      dispatch(fetchDictionaries({ name: "SCOPES" })),
-      dispatch(fetchClientById(query.client_id)),
-      dispatch(fetchScope(query.client_id))
-    ])
-})
-@withRouter
-@connect(
-  (state, { location: { query } }) => ({
-    scope: query.scope || state.pages.AcceptPage.scope,
-    client: getClientById(state, query.client_id),
-    user: getUser(state)
-  }),
-  { authorize }
-)
-export default class AcceptPage extends React.Component {
+class AcceptPage extends Component {
   state = {
     isLoading: false,
     error: null
@@ -94,6 +76,7 @@ export default class AcceptPage extends React.Component {
       </section>
     );
   }
+
   renderNotFoundClient() {
     return (
       <section className={styles.main} id="accept-page">
@@ -118,6 +101,7 @@ export default class AcceptPage extends React.Component {
       </section>
     );
   }
+
   renderNotFoundRedirectUri() {
     return (
       <section className={styles.main} id="accept-page">
@@ -130,6 +114,7 @@ export default class AcceptPage extends React.Component {
       </section>
     );
   }
+
   render() {
     const {
       client,
@@ -206,3 +191,23 @@ export default class AcceptPage extends React.Component {
     );
   }
 }
+
+export default compose(
+  provideHooks({
+    fetch: ({ dispatch, location: { query } }) =>
+      Promise.all([
+        dispatch(fetchDictionaries({ name: "SCOPES" })),
+        dispatch(fetchClientById(query.client_id)),
+        dispatch(fetchScope(query.client_id))
+      ])
+  }),
+  withRouter,
+  connect(
+    (state, { location: { query } }) => ({
+      scope: query.scope || state.pages.AcceptPage.scope,
+      client: getClientById(state, query.client_id),
+      user: getUser(state)
+    }),
+    { authorize }
+  )
+)(AcceptPage);

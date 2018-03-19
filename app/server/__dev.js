@@ -1,6 +1,6 @@
 require("babel-register")({
   presets: ["es2015", "react", "stage-0"],
-  plugins: ["transform-runtime", "transform-decorators-legacy"]
+  plugins: ["transform-runtime"]
 });
 
 require("ignore-styles").default([

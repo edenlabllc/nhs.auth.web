@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
-
 import { provideHooks } from "redial";
 import { withRouter } from "react-router";
 import format from "date-fns/format";
@@ -11,30 +11,17 @@ import Points from "../../../components/Points";
 import Icon from "../../../components/Icon";
 import { FormBlock } from "../../../components/Form";
 import DictionaryValue from "../../../components/DictionaryValue";
-
 import InviteSignInForm from "../../forms/InviteSignInForm";
 import InviteSignUpForm from "../../forms/InviteSignUpForm";
-
 import { fetchDictionaries } from "../../../redux/dictionaries";
 import { getRequestById } from "../../../reducers";
 
 import { onSubmitSignUp, onSubmitSignIn } from "./redux";
-
 import styles from "./styles.css";
 
 const toArray = v => (!Array.isArray(v) ? [v] : v);
 
-@withRouter
-@provideHooks({
-  fetch: ({ dispatch }) => dispatch(fetchDictionaries())
-})
-@connect(
-  state => ({
-    request: getRequestById(state, state.pages.Invitelayout.request)
-  }),
-  { onSubmitSignUp, onSubmitSignIn }
-)
-export default class SignUpPage extends React.Component {
+class SignUpPage extends Component {
   constructor(props) {
     super(props);
     this.toggleDetails = this.toggleDetails.bind(this);
@@ -42,11 +29,13 @@ export default class SignUpPage extends React.Component {
       showDetails: false
     };
   }
+
   toggleDetails() {
     this.setState({
       showDetails: !this.state.showDetails
     });
   }
+
   renderDoctorDetails() {
     const { request: { doctor } } = this.props;
     return (
@@ -174,6 +163,7 @@ export default class SignUpPage extends React.Component {
       </div>
     );
   }
+
   renderDetails() {
     const { request: { doctor, party } } = this.props;
 
@@ -313,3 +303,16 @@ export default class SignUpPage extends React.Component {
     );
   }
 }
+
+export default compose(
+  withRouter,
+  provideHooks({
+    fetch: ({ dispatch }) => dispatch(fetchDictionaries())
+  }),
+  connect(
+    state => ({
+      request: getRequestById(state, state.pages.Invitelayout.request)
+    }),
+    { onSubmitSignUp, onSubmitSignIn }
+  )
+)(SignUpPage);

@@ -7,23 +7,18 @@ import OtpForm from "../../forms/OtpForm";
 import Button from "../../../components/Button";
 import { onSubmit } from "./redux";
 
-@connect(null, { onSubmit })
-export default class UpdateFactorOtpNewPage extends React.Component {
-  render() {
-    const { onSubmit = () => {}, location } = this.props;
+const UpdateFactorOtpNewPage = ({ onSubmit = () => {}, location }) => (
+  <Main id="new-factor-approve-page">
+    <Header>
+      <H2>Введіть код, що було надіслано на Ваш новий телефон</H2>
+    </Header>
+    <Article>
+      <OtpForm onSubmit={onSubmit} />
+      <Button theme="link" to={`/update-factor/${location.search}`}>
+        Повернутися на початок
+      </Button>
+    </Article>
+  </Main>
+);
 
-    return (
-      <Main id="new-factor-approve-page">
-        <Header>
-          <H2>Введіть код, що було надіслано на Ваш новий телефон</H2>
-        </Header>
-        <Article>
-          <OtpForm onSubmit={onSubmit} />
-          <Button theme="link" to={`/update-factor/${location.search}`}>
-            Повернутися на початок
-          </Button>
-        </Article>
-      </Main>
-    );
-  }
-}
+export default connect(null, { onSubmit })(UpdateFactorOtpNewPage);

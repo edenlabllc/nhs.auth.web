@@ -8,30 +8,25 @@ import BackgroundLayout from "../../../components/BackgroundLayout";
 
 import { onSubmit } from "./redux";
 
-@connect(null, { onSubmit })
-export default class PasswordRequestFactorPage extends React.Component {
-  render() {
-    const { onSubmit = () => {} } = this.props;
+const PasswordRequestFactorPage = ({ onSubmit = () => {} }) => (
+  <Main id="change-otp-page">
+    <Header>
+      <BackgroundLayout />
+      <H1>Встановлення фактора авторизації</H1>
+      <br />
+      <br />
+      <H2 textTransform="initial" color="red">
+        Введіть телефон, який буде використано при вході в систему
+      </H2>
+    </Header>
+    <Article>
+      <FactorForm
+        noLabel={false}
+        btnColor="green"
+        onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ""))}
+      />
+    </Article>
+  </Main>
+);
 
-    return (
-      <Main id="change-otp-page">
-        <Header>
-          <BackgroundLayout />
-          <H1>Встановлення фактора авторизації</H1>
-          <br />
-          <br />
-          <H2 textTransform="initial" color="red">
-            Введіть телефон, який буде використано при вході в систему
-          </H2>
-        </Header>
-        <Article>
-          <FactorForm
-            noLabel={false}
-            btnColor="green"
-            onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ""))}
-          />
-        </Article>
-      </Main>
-    );
-  }
-}
+export default connect(null, { onSubmit })(PasswordRequestFactorPage);

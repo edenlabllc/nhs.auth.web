@@ -5,8 +5,7 @@
     "stage-0"
   ],
   "plugins": [
-    "transform-runtime",
-    "transform-decorators-legacy"
+    "transform-runtime"
   ],
   "env": {
     "development": {

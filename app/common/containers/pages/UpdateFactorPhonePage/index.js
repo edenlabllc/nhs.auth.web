@@ -7,22 +7,17 @@ import { Main, Header, Article } from "../../../components/CenterLayout";
 
 import { onSubmit } from "./redux";
 
-@connect(null, { onSubmit })
-export default class UpdateFactorPhonePage extends React.Component {
-  render() {
-    const { onSubmit = () => {} } = this.props;
+const UpdateFactorPhonePage = ({ onSubmit = () => {} }) => (
+  <Main id="new-factor-page">
+    <Header>
+      <H1>Введіть Ваш новий номер телефону</H1>
+    </Header>
+    <Article>
+      <FactorForm
+        onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ""))}
+      />
+    </Article>
+  </Main>
+);
 
-    return (
-      <Main id="new-factor-page">
-        <Header>
-          <H1>Введіть Ваш новий номер телефону</H1>
-        </Header>
-        <Article>
-          <FactorForm
-            onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ""))}
-          />
-        </Article>
-      </Main>
-    );
-  }
-}
+export default connect(null, { onSubmit })(UpdateFactorPhonePage);

@@ -7,22 +7,17 @@ import FactorForm from "../../forms/FactorForm";
 
 import { onSubmit } from "./redux";
 
-@connect(null, { onSubmit })
-export default class RequestFactorPage extends React.Component {
-  render() {
-    const { onSubmit = () => {} } = this.props;
+const RequestFactorPage = ({ onSubmit = () => {} }) => (
+  <Main id="change-otp-page">
+    <Header>
+      <H1>Вхід у систему eHealth</H1>
+    </Header>
+    <Article>
+      <FactorForm
+        onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ""))}
+      />
+    </Article>
+  </Main>
+);
 
-    return (
-      <Main id="change-otp-page">
-        <Header>
-          <H1>Вхід у систему eHealth</H1>
-        </Header>
-        <Article>
-          <FactorForm
-            onSubmit={({ phone }) => onSubmit(phone.replace(/\s/g, ""))}
-          />
-        </Article>
-      </Main>
-    );
-  }
-}
+export default connect(null, { onSubmit })(RequestFactorPage);

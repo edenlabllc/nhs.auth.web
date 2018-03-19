@@ -1,4 +1,5 @@
 import React from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
@@ -9,26 +10,26 @@ import OtpForm from "../../forms/OtpForm";
 
 import { onSubmit, onResend } from "./redux";
 
-@withRouter
-@connect(null, { onSubmit, onResend })
-export default class UpdateFactorOtpPage extends React.Component {
-  render() {
-    const { onSubmit = () => {}, onResend = () => {}, router } = this.props;
+const UpdateFactorOtpPage = ({
+  onSubmit = () => {},
+  onResend = () => {},
+  router
+}) => (
+  <Main id="new-factor-approve-page">
+    <Header>
+      <H2>Введіть код, який було відправлено на Ваш існуючий телефон</H2>
+    </Header>
+    <Article>
+      <OtpForm onSubmit={onSubmit} onResend={onResend} repeat />
+      <ButtonsGroup>
+        <Button theme="link" onClick={() => router.goBack()}>
+          Назад
+        </Button>
+      </ButtonsGroup>
+    </Article>
+  </Main>
+);
 
-    return (
-      <Main id="new-factor-approve-page">
-        <Header>
-          <H2>Введіть код, який було відправлено на Ваш існуючий телефон</H2>
-        </Header>
-        <Article>
-          <OtpForm onSubmit={onSubmit} onResend={onResend} repeat />
-          <ButtonsGroup>
-            <Button theme="link" onClick={() => router.goBack()}>
-              Назад
-            </Button>
-          </ButtonsGroup>
-        </Article>
-      </Main>
-    );
-  }
-}
+export default compose(withRouter, connect(null, { onSubmit, onResend }))(
+  UpdateFactorOtpPage
+);

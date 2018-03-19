@@ -1,8 +1,7 @@
 import React from "react";
-import Checkbox, {
-  CheckboxGroup as CheckboxGroupWrap
-} from "../Checkbox";
 import { Field } from "redux-form";
+
+import Checkbox, { CheckboxGroup as CheckboxGroupWrap } from "../Checkbox";
 
 import FieldInput from "./FieldInput";
 
