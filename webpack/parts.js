@@ -143,17 +143,6 @@ exports.setupJson = () => ({
   }
 });
 
-exports.setupI18n = () => ({
-  module: {
-    rules: [
-      {
-        test: /\.po$/,
-        use: ["i18next-po-loader"]
-      }
-    ]
-  }
-});
-
 exports.setupProduction = () => ({
   plugins: [
     new webpack.LoaderOptionsPlugin({

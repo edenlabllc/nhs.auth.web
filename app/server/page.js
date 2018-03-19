@@ -12,7 +12,6 @@ import Router from "react-router/lib/Router";
 import Helmet from "react-helmet";
 import NodeCache from "node-cache";
 
-import { I18nextProvider } from "react-i18next";
 import { triggerHooks } from "react-router-redial";
 import { syncHistoryWithStore } from "react-router-redux";
 
@@ -43,8 +42,7 @@ export default () => (req, res, next) => {
   const store = configureStore(
     {
       history: memoryHistory,
-      cookies: new CookieDough(req),
-      i18n: req.i18n
+      cookies: new CookieDough(req)
     },
     {
       data: {
@@ -100,11 +98,9 @@ export default () => (req, res, next) => {
           let html;
           try {
             html = ReactDOMServer.renderToString(
-              <I18nextProvider i18n={req.i18n}>
-                <Provider store={store}>
-                  <RouterContext {...renderProps} />
-                </Provider>
-              </I18nextProvider>
+              <Provider store={store}>
+                <RouterContext {...renderProps} />
+              </Provider>
             );
           } catch (e) {
             console.log("page render error", e.message, e.stack);

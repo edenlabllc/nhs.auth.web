@@ -20,7 +20,6 @@ const genConfig = webpackMerge(
   parts.setupFont(),
   parts.setupImages(),
   parts.setupJson(),
-  parts.setupI18n(),
   !DEBUG && parts.setupProduction()
 );
 

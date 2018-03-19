@@ -24,8 +24,7 @@
     "report-coverage": "cat ./coverage/**/*.info | ./node_modules/.bin/coveralls",
     "docker:reset": "npm run docker:down && npm run docker:up",
     "docker:up": "docker-compose -f ./docker/dc.selenium.yml up -d",
-    "docker:down": "docker-compose -f ./docker/dc.selenium.yml down",
-    "locales:extract": "i18next-extract-gettext --files='./+(app)/**/*.+(js|json)' --output=app/common/locales/nhs.admin.web.pot"
+    "docker:down": "docker-compose -f ./docker/dc.selenium.yml down"
   },
   "lint-staged": {
     "*.js": "eslint app",
@@ -78,10 +77,6 @@
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.9.0",
     "history": "3.0.0",
-    "i18next": "7.0.1",
-    "i18next-browser-languagedetector": "1.0.1",
-    "i18next-express-middleware": "1.0.2",
-    "i18next-po-loader": "1.0.0",
     "ignore-styles": "5.0.1",
     "json-loader": "0.5.4",
     "lodash": "4.16.0",
@@ -96,7 +91,6 @@
     "react-dom": "15.2.1",
     "react-helmet": "4.0.0",
     "react-hot-loader": "3.0.0-beta.6",
-    "react-i18next": "2.2.0",
     "react-nebo15-validate": "~0.1.11",
     "react-redux": "4.4.5",
     "react-router": "2.8.1",
@@ -136,7 +130,6 @@
     "eslint-plugin-jsx-a11y": "2.2.2",
     "eslint-plugin-react": "6.3.0",
     "ghooks": "1.3.2",
-    "i18next-extract-gettext": "3.1.3",
     "isparta-loader": "2.0.0",
     "karma": "1.6.0",
     "karma-chai": "0.1.0",

@@ -1,6 +1,4 @@
 import React from "react";
-
-import { translate } from "react-i18next";
 import { reduxForm, Field } from "redux-form";
 import { ErrorMessage, reduxFormValidate } from "react-nebo15-validate";
 
@@ -9,7 +7,6 @@ import Button, { ButtonsGroup } from "../../../components/Button";
 
 import styles from "./styles.css";
 
-@translate()
 @reduxForm({
   form: "reset-password-form",
   validate: reduxFormValidate({
@@ -32,7 +29,7 @@ export default class ResetPasswordForm extends React.Component {
             component={FieldInput}
           >
             <ErrorMessage when="accountPasswordMismatch">
-              {t("Email does register")}
+              Користувача з таким email не існує
             </ErrorMessage>
           </Field>
         </div>

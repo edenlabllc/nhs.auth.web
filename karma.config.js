@@ -18,7 +18,6 @@ const webpackTestConfig = webpackMerge(
   parts.setupFont(),
   parts.setupImages(),
   parts.setupJson(),
-  parts.setupI18n(),
   {
     externals: {
       "react/addons": true,

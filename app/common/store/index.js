@@ -14,14 +14,14 @@ if (process.NODE_ENV !== "production") {
   middlewares.push(require("redux-freeze")); // eslint-disable-line global-require
 }
 
-export function configureStore({ history, cookies, i18n }, initialState) {
+export function configureStore({ history, cookies }, initialState) {
   // eslint-disable-line
   const createStoreWithMiddleware = compose(
     applyMiddleware.apply(
       this,
       middlewares.concat([
         routerMiddleware(history),
-        thunkMiddleware.withExtraArgument({ cookies, i18n })
+        thunkMiddleware.withExtraArgument({ cookies })
       ])
     ),
     process.NODE_ENV !== "production" &&

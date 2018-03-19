@@ -11,8 +11,6 @@ import CookieDough from "cookie-dough";
 import { browserHistory, match } from "react-router";
 import { syncHistoryWithStore } from "react-router-redux";
 
-import i18n from "../common/services/i18next";
-
 import { configureStore } from "../common/store";
 import { configureRoutes } from "../common/routes";
 
@@ -30,8 +28,7 @@ if (window.__REDUX_STATE__) {
 const store = configureStore(
   {
     history: browserHistory,
-    cookies: CookieDough(),
-    i18n
+    cookies: CookieDough()
   },
   reduxState
 );
@@ -56,7 +53,6 @@ const render = (Component, { renderProps }) => {
           locals,
           store,
           routes,
-          i18n,
           history
         }}
       />
@@ -74,12 +70,9 @@ match({ history, routes }, (error, redirectLocation, renderProps) => {
 
 // enable hot reloading, will be stripped in production
 if (process.env.NODE_ENV !== "production" && module.hot) {
-  module.hot.accept(
-    ["./root", "../common/routes", "../common/services/i18next"],
-    () => {
-      render(Root, lastRenderProps);
-    }
-  );
+  module.hot.accept(["./root", "../common/routes"], () => {
+    render(Root, lastRenderProps);
+  });
 
   module.hot.accept("../common/reducers", () => {
     const nextRootReducer = require("../common/reducers").default; // eslint-disable-line
