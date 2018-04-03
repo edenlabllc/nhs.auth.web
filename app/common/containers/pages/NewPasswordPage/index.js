@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import withStyles from 'withStyles';
 import { withRouter } from 'react-router';
+import { SubmissionError } from 'redux-form';
 
 import { H1, H3 } from 'components/Title';
 import Button from 'components/Button';
@@ -26,6 +27,18 @@ export default class NewPasswordPage extends React.Component {
   onSubmit(values) {
     return this.props.onSubmit(values, this.props).then((action) => {
       if (action.error) {
+        if (action.payload.response.error.type === 'not_found') {
+          return this.setState({
+            code: 404,
+          });
+        }
+        if (action.payload.response.error.invalid[0].rules[0].description === 'This password has been used recently. Try another one') {
+          throw new SubmissionError({
+            password: {
+              password_already_taken: true,
+            },
+          });
+        }
         return this.setState({
           code: action.payload.status,
         });
@@ -57,7 +70,7 @@ export default class NewPasswordPage extends React.Component {
             )
           }
           {
-            this.state.code === 422 && (
+            this.state.code === 404 && (
               <div>
                 <H3>Вийшов час дії токену</H3>
               </div>
