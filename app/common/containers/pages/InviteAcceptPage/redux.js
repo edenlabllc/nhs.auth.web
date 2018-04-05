@@ -5,9 +5,13 @@ import { push } from 'react-router-redux';
 export const onSubmit = id => (dispatch, getState) => (
   dispatch(performActionWithRequest(id, APPROVE_REQUEST_ACTION))
   .then((action) => {
-    if (action.error) return action;
+    if (action.error) {
+      return action.payload.response.error.message;
+    }
+
     const state = getState();
     const location = getLocation(state);
+
 
     return dispatch([
       push({
