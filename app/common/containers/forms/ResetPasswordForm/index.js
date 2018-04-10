@@ -25,7 +25,7 @@ export default class ResetPasswordForm extends React.Component {
     const { handleSubmit, submitting, t } = this.props;
 
     return (
-      <form className={styles.main} onSubmit={handleSubmit}>
+      <form className={styles.main} onSubmit={handleSubmit} method="post">
         <div>
           <Field
             placeholder="Введіть свою адресу електронної пошти"

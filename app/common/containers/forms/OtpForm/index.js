@@ -52,7 +52,7 @@ export default class OtpForm extends React.Component {
     } = this.props;
     const { sent, isSending, otp_timeout, token_expires } = this.state;
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post">
         <FormBlock>
           <div>
             <Field

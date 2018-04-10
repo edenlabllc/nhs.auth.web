@@ -34,7 +34,7 @@ export default class SignUpForm extends React.Component {
     const { handleSubmit, onSubmit = () => {}, submitting, email } = this.props;
 
     return (
-      <form className={styles.main} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.main} onSubmit={handleSubmit(onSubmit)} method="post">
         <div>
           {email}
         </div>
