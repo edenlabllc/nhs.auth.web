@@ -28,7 +28,7 @@ export default class FactorForm extends React.Component {
     const { submitting, handleSubmit, router, btnColor = 'blue', noLabel } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post">
         <FormBlock>
           <div>
             <Field

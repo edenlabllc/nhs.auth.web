@@ -23,7 +23,7 @@ export default class InviteAcceptForm extends React.Component {
     const { handleSubmit, onSubmit = () => {}, submitting } = this.props;
 
     return (
-      <form className={styles.main} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.main} onSubmit={handleSubmit(onSubmit)} method="post">
         <div>
           <Field labelText="Погоджуюсь з Регламентом функціонування системи eHealth" type="checkbox" name="confirm" component={FieldCheckbox} />
         </div>

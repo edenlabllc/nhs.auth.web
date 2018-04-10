@@ -25,7 +25,7 @@ export default class InviteSignInForm extends React.Component {
     const { handleSubmit, submitting, email } = this.props;
 
     return (
-      <form className={styles.main} onSubmit={handleSubmit}>
+      <form className={styles.main} onSubmit={handleSubmit} method="post">
         <div>
           <H1>Вхід у систему eHealth</H1>
         </div>

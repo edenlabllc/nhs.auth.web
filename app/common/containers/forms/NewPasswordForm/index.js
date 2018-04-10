@@ -24,7 +24,7 @@ export default class NewPasswordForm extends React.Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post">
         <FormBlock>
           <div>
             <Field

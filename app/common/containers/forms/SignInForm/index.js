@@ -23,7 +23,7 @@ export default class SignInForm extends React.Component {
     const { handleSubmit, submitting, btnColor = 'blue' } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post">
         <FormBlock>
           <div>
             <Field placeholder="E-mail" name="email" component={FieldInput} />
